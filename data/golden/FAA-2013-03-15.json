@@ -1,0 +1,26 @@
+{
+  "ad_number": "FAA:2013-03-15",
+  "federal_register_document_number": "2013-02897",
+  "effective_date": "2013-03-19",
+  "supersedes": [],
+  "applicability": [
+    {
+      "model": "172R",
+      "serial_from": "17281573",
+      "serial_to": "17281616",
+      "quote": "(1) Model 172R, serial numbers (S/N) 17281573 through 17281616; and"
+    },
+    {
+      "model": "172S",
+      "serial_from": "172S11074",
+      "serial_to": "172S11193",
+      "quote": "(2) Model 172S, S/N l72S11074 through 172S11193."
+    }
+  ],
+  "compliance_time_text": "Whichever occurs later: at the next annual inspection after March 19, 2013; within the next 100 hours time-in-service after March 19, 2013; within the next 12 calendar months after March 19, 2013",
+  "unsafe_condition_summary": "Fuel return line clearance: install the forward and aft fuel return line support clamps and brackets, and inspect the clearances.",
+  "out_of_scope_features": [],
+  "labelled_by": "Claude (DRAFT — must be checked)",
+  "checked_by": "",
+  "notes": "Affected ADs: none. The text we fetched shows the second serial as 'l72S11074' (lowercase L). Check the original PDF: if it's really there, ingestion must normalise it to '172S11074' and keep the original quote. That makes a good test case. The govinfo PDF also contains other rules: label only AD 2013-03-15."
+}

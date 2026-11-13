@@ -1,0 +1,15 @@
+{
+  "ad_number": "",
+  "federal_register_document_number": "",
+  "effective_date": "YYYY-MM-DD",
+  "supersedes": [],
+  "applicability": [
+    { "model": "", "serial_from": "", "serial_to": "", "quote": "" }
+  ],
+  "compliance_time_text": "",
+  "unsafe_condition_summary": "",
+  "out_of_scope_features": [],
+  "labelled_by": "",
+  "checked_by": "",
+  "notes": "Copy serial numbers exactly as written (e.g. 172S9491). 'quote' = the exact sentence you read it from. out_of_scope_features: part numbers, AMOC, terminating action, repetitive inspection — list any that appear."
+}

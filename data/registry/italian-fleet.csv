@@ -1,0 +1,6 @@
+mark,synthetic,base,model,serial,engine_model,kap140_installed,fuel_return_kit_MK172_28_01,eci_cylinders_AEL65102,tecnam_MOD2008_233,note
+DEMO-01,true,Torino Aeritalia (LIMA),Cessna 172S,172S9600,Lycoming IO-360-L2A,no,no,no,n/a,inside the AD 2012-02-02 range -> affected
+DEMO-02,true,Torino Aeritalia (LIMA),Cessna 172S,172S11100,Lycoming IO-360-L2A,unknown,no,no,n/a,inside the AD 2013-03-15 range; KAP 140 unknown -> open question for AD 2004-15-18
+DEMO-03,true,Torino Aeritalia (LIMA),Cessna 172S,172S10600,Lycoming IO-360-L2A,no,no,unknown,n/a,outside both fuel-line ranges -> negative case; ECi cylinders unknown -> open question
+DEMO-04,true,Torino Aeritalia (LIMA),Tecnam P2008 JC,1050,Rotax 912 S2,n/a,n/a,n/a,unknown,inside the EASA 2018-0072 range (1002-1085); MOD2008/233 unknown -> open question for EASA 2024-0152R1
+DEMO-05,true,Torino Aeritalia (LIMA),Tecnam P2008 JC,1150,Rotax 912 S2,n/a,n/a,n/a,yes,outside 2018-0072; MOD2008/233 embodied -> 2024-0152R1 not applicable (needs a signed decision with evidence)

@@ -1,0 +1,28 @@
+{
+  "ad_number": "FAA:2012-02-02",
+  "federal_register_document_number": "2012-1451",
+  "effective_date": "2012-03-13",
+  "supersedes": [
+    "FAA:2008-03-02"
+  ],
+  "applicability": [
+    {
+      "model": "172R",
+      "serial_from": "17281188",
+      "serial_to": "17281390",
+      "quote": "Group 1: Model 172R, serial numbers (S/N) 17281188 through 17281390"
+    },
+    {
+      "model": "172S",
+      "serial_from": "172S9491",
+      "serial_to": "172S10489",
+      "quote": "Group 2: Model 172S, S/N 172S9491 through 172S10489"
+    }
+  ],
+  "compliance_time_text": "CHECK IN TEXT — (g)(1), Group 1 and Group 2: within the next 100 hours TIS after March 6, 2008 or within the next 12 months after March 6, 2008 (retained from AD 2008-03-02). Read the rest of (g) for which of the two applies and for any further groups.",
+  "unsafe_condition_summary": "Fuel return line chafing could cause fuel leaks and vapours, which could lead to fire.",
+  "out_of_scope_features": [],
+  "labelled_by": "Claude (DRAFT — must be checked)",
+  "checked_by": "",
+  "notes": "Draft from the official text (EASA mirror of the FAA AD). Check every quote and complete the full applicability list (there may be more than two groups) before setting checked_by."
+}
