@@ -36,9 +36,9 @@ File naming: `data/raw/ads/FAA-<AD number>.txt` and `data/raw/ads/EASA-<AD numbe
 
 | ID | Subject | Effective | Applicability (short) | Relation | Source | Status | Role in the demo |
 |---|---|---|---|---|---|---|---|
-| EASA:2018-0072 | P2008 JC — firewall inspection | 27 Jun 2019 per the CAA NZ schedule (check on EASA) | P2008 JC S/N 1002 through 1085 | — | https://ad.easa.europa.eu/ad/2018-0072 | applicability verified | serial-range applicability, European |
+| EASA:2018-0072 | P2008 JC — firewall inspection | 11 Apr 2018 (EASA text: "Effective Date: 11 April 2018") | P2008 JC S/N 1002 through 1085 | — | https://ad.easa.europa.eu/ad/2018-0072 | applicability verified | serial-range applicability, European |
 | EASA:2024-0152 | P2008 JC — Advanced Start System deactivation | 15 Aug 2024 | P2008 JC all S/N, except those with Tecnam modification MOD2008/233 or SB-826-CS embodied | revised by 2024-0152R1 | https://ad.easa.europa.eu/ad/2024-0152 | verified | |
-| EASA:2024-0152R1 | same, revision 1 | 27 Feb 2025 | same | revises 2024-0152 | https://ad.easa.europa.eu/ad/2024-0152 | verified | `revises` link + "mod embodied?" → QUESTION |
+| EASA:2024-0152R1 | same, revision 1 | 05 Feb 2025 (EASA text: "Effective Date: Revision 1: 05 February 2025") | same | revises 2024-0152 | https://ad.easa.europa.eu/ad/2024-0152 | verified | `revises` link + "mod embodied?" → QUESTION |
 | EASA:2011-0153R1 | P2006T — landing gear emergency accumulator | dated 09 Sep 2011 | P2006T aeroplanes, all serial numbers | Own Revision field: “This AD revises EASA AD 2011-0153-E dated 25 August 2011.” · 2012-0043 Supersedure: “This AD supersedes EASA AD 2011-0153R1 dated 09 September 2011.” | https://ad.easa.europa.eu/ad/2011-0153 | verified | |
 | EASA:2012-0043 | P2006T — landing gear emergency accumulator replacement (SB-080-CS) | issued 2012-03-19, effective 2012-04-02 | read text | supersedes 2011-0153R1 | https://ad.easa.europa.eu/blob/easa_ad_2012_0043.pdf/AD_2012-0043_1 | verified | European supersession |
 

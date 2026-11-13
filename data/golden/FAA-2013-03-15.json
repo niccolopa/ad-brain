@@ -18,9 +18,38 @@
     }
   ],
   "compliance_time_text": "Whichever occurs later: at the next annual inspection after March 19, 2013; within the next 100 hours time-in-service after March 19, 2013; within the next 12 calendar months after March 19, 2013",
-  "unsafe_condition_summary": "Fuel return line clearance: install the forward and aft fuel return line support clamps and brackets, and inspect the clearances.",
-  "out_of_scope_features": [],
-  "labelled_by": "Claude (DRAFT — must be checked)",
+  "unsafe_condition_summary": "Chafing of a new configuration of the fuel return line assembly, which rubs against the right steering tube assembly during rudder pedal actuation.",
+  "out_of_scope_features": [
+    {
+      "feature": "AMOC",
+      "quote": "(m) Alternative Methods of Compliance (AMOCs)"
+    },
+    {
+      "feature": "part number: fuel return line assembly P/N 0516031-1",
+      "quote": "fuel return line assembly (Cessna part number (P/N) 0516031-1) for damage"
+    }
+  ],
+  "field_quotes": {
+    "federal_register_document_number": [
+      "[FR Doc No: 2013-02897]"
+    ],
+    "effective_date": [
+      "(a) Effective Date This AD is effective March 19, 2013."
+    ],
+    "supersedes": [
+      "(b) Affected ADs None."
+    ],
+    "compliance_time_text": [
+      "At whichever of the following compliance times that occurs later, inspect the fuel return line assembly",
+      "(1) At the next annual inspection after March 19, 2013 (the effective date of this AD);",
+      "(2) Within the next 100 hours time-in-service (TIS) after March 19, 2013 (the effective date of this AD); or",
+      "(3) Within the next 12 calendar months after March 19, 2013 (the effective date of this AD)."
+    ],
+    "unsafe_condition_summary": [
+      "(e) Unsafe Condition This AD was prompted by reports of chafing of a new configuration of the fuel return line assembly, which was caused by the fuel return line assembly rubbing against the right steering tube assembly during rudder pedal actuation."
+    ]
+  },
+  "labelled_by": "Niccolò: applicability, dates and relations checked against the text; summaries drafted by Claude Code, not checked",
   "checked_by": "",
-  "notes": "Affected ADs: none. The text we fetched shows the second serial as 'l72S11074' (lowercase L). Check the original PDF: if it's really there, ingestion must normalise it to '172S11074' and keep the original quote. That makes a good test case. The govinfo PDF also contains other rules: label only AD 2013-03-15."
+  "notes": "OCR: (c)(2) reads 'l72S11074' with a lowercase L; the quote keeps it exactly, serial_from uses the correct form '172S11074'. The govinfo PDF also contains other rules: only AD 2013-03-15 is labelled. Effective date: 'This AD is effective March 19, 2013.' appears twice (DATES and (a)); the quote includes the (a) heading so it is unique."
 }

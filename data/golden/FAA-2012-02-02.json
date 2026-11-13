@@ -17,12 +17,51 @@
       "serial_from": "172S9491",
       "serial_to": "172S10489",
       "quote": "Group 2: Model 172S, S/N 172S9491 through 172S10489"
+    },
+    {
+      "model": "172R",
+      "serial_from": "17281391",
+      "serial_to": "17281572",
+      "quote": "Group 3: Model 172R, S/N 17281391 through 17281572"
+    },
+    {
+      "model": "172S",
+      "serial_from": "172S10490",
+      "serial_to": "172S11073",
+      "quote": "Group 4: Model 172S, S/N 172S10490 through 172S11073"
     }
   ],
-  "compliance_time_text": "CHECK IN TEXT — (g)(1), Group 1 and Group 2: within the next 100 hours TIS after March 6, 2008 or within the next 12 months after March 6, 2008 (retained from AD 2008-03-02). Read the rest of (g) for which of the two applies and for any further groups.",
-  "unsafe_condition_summary": "Fuel return line chafing could cause fuel leaks and vapours, which could lead to fire.",
-  "out_of_scope_features": [],
-  "labelled_by": "Claude (DRAFT — must be checked)",
+  "compliance_time_text": "Groups 1 and 2: within the next 100 hours TIS or within the next 12 months after March 6, 2008, whichever occurs first (retained from AD 2008-03-02). Groups 3 and 4: within the next 100 hours TIS or within the next 12 months after March 13, 2012, whichever occurs first.",
+  "unsafe_condition_summary": "Chafing of the fuel return line assembly could cause fuel leaks and fuel vapours, which could lead to fire.",
+  "out_of_scope_features": [
+    {
+      "feature": "AMOC",
+      "quote": "(j) Alternative Methods of Compliance (AMOCs)"
+    },
+    {
+      "feature": "part number: fuel return line assembly P/N 0500118-49",
+      "quote": "fuel return line assembly (Cessna part number (P/N) 0500118-49) for chafing"
+    }
+  ],
+  "field_quotes": {
+    "federal_register_document_number": [
+      "[FR Doc No: 2012-1451]"
+    ],
+    "effective_date": [
+      "This airworthiness directive (AD) is effective March 13, 2012."
+    ],
+    "supersedes": [
+      "This AD supersedes AD 2008-03-02, Amendment 39-15351 (73 FR 5737, January 31, 2008)."
+    ],
+    "compliance_time_text": [
+      "(1) For Group 1 and Group 2 Airplanes: Within the next 100 hours time-in-service (TIS) after March 6, 2008 (the effective date retained from AD 2008-03-02) or within the next 12 months after March 6, 2008 (the effective date retained from AD 2008-03-02), whichever occurs first, inspect the fuel return line assembly (Cessna part number (P/N) 0500118-49) for chafing.",
+      "(2) For Group 3 and Group 4 Airplanes: Within the next 100 hours TIS after March 13, 2012 (the effective date of this AD) or within the next 12 months after March 13, 2012 (the effective date of this AD), whichever occurs first, inspect the fuel return line assembly (Cessna P/N 0500118-49) for chafing."
+    ],
+    "unsafe_condition_summary": [
+      "Chafing of the fuel return line assembly could result in fuel leaking and fuel vapors, which could lead to fire."
+    ]
+  },
+  "labelled_by": "Niccolò: applicability, dates and relations checked against the text; summaries drafted by Claude Code, not checked",
   "checked_by": "",
-  "notes": "Draft from the official text (EASA mirror of the FAA AD). Check every quote and complete the full applicability list (there may be more than two groups) before setting checked_by."
+  "notes": "All 4 groups from (c)(1)-(4). For Group 2, compliance with AD 2008-03-02 satisfies this AD: (g)(1), (h) and (i) are 'Retained From AD 2008-03-02'; only Groups 3 and 4 get a new obligation ((g)(2), from 2012-03-13). The DATES line says 'This AD is effective March 13, 2012.'; the quote is the rule text (a), which is unique."
 }

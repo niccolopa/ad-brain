@@ -1,0 +1,206 @@
+{
+  "ad_number": "FAA:2004-15-18",
+  "federal_register_document_number": "04-17217",
+  "effective_date": "2004-09-12",
+  "supersedes": [
+    "FAA:2003-24-13"
+  ],
+  "applicability": [
+    {
+      "model": "172R",
+      "serial_from": "17280001",
+      "serial_to": "17281073",
+      "quote": "172R 17280001 through 17281073, 17281075 through 17281127, and 17281130."
+    },
+    {
+      "model": "172R",
+      "serial_from": "17281075",
+      "serial_to": "17281127",
+      "quote": "172R 17280001 through 17281073, 17281075 through 17281127, and 17281130."
+    },
+    {
+      "model": "172R",
+      "serial_from": "17281130",
+      "serial_to": "17281130",
+      "quote": "172R 17280001 through 17281073, 17281075 through 17281127, and 17281130."
+    },
+    {
+      "model": "172S",
+      "serial_from": "172S8001",
+      "serial_to": "172S9195",
+      "quote": "172S 172S8001 through 172S9195, 172S9197, 172S9198, and 172S9200 through 172S9203."
+    },
+    {
+      "model": "172S",
+      "serial_from": "172S9197",
+      "serial_to": "172S9197",
+      "quote": "172S 172S8001 through 172S9195, 172S9197, 172S9198, and 172S9200 through 172S9203."
+    },
+    {
+      "model": "172S",
+      "serial_from": "172S9198",
+      "serial_to": "172S9198",
+      "quote": "172S 172S8001 through 172S9195, 172S9197, 172S9198, and 172S9200 through 172S9203."
+    },
+    {
+      "model": "172S",
+      "serial_from": "172S9200",
+      "serial_to": "172S9203",
+      "quote": "172S 172S8001 through 172S9195, 172S9197, 172S9198, and 172S9200 through 172S9203."
+    },
+    {
+      "model": "182S",
+      "serial_from": "18280001",
+      "serial_to": "18280944",
+      "quote": "182S 18280001 through 18280944."
+    },
+    {
+      "model": "182T",
+      "serial_from": "18280945",
+      "serial_to": "18281065",
+      "quote": "182T 18280945 through 18281065, 18281067 through 18281145, 18281147 through 18281163, 18281165 through 18281167, and 18281172."
+    },
+    {
+      "model": "182T",
+      "serial_from": "18281067",
+      "serial_to": "18281145",
+      "quote": "182T 18280945 through 18281065, 18281067 through 18281145, 18281147 through 18281163, 18281165 through 18281167, and 18281172."
+    },
+    {
+      "model": "182T",
+      "serial_from": "18281147",
+      "serial_to": "18281163",
+      "quote": "182T 18280945 through 18281065, 18281067 through 18281145, 18281147 through 18281163, 18281165 through 18281167, and 18281172."
+    },
+    {
+      "model": "182T",
+      "serial_from": "18281165",
+      "serial_to": "18281167",
+      "quote": "182T 18280945 through 18281065, 18281067 through 18281145, 18281147 through 18281163, 18281165 through 18281167, and 18281172."
+    },
+    {
+      "model": "182T",
+      "serial_from": "18281172",
+      "serial_to": "18281172",
+      "quote": "182T 18280945 through 18281065, 18281067 through 18281145, 18281147 through 18281163, 18281165 through 18281167, and 18281172."
+    },
+    {
+      "model": "T182T",
+      "serial_from": "T18208001",
+      "serial_to": "T18208109",
+      "quote": "T182T T18208001 through T18208109, and T18208111 through T18208177."
+    },
+    {
+      "model": "T182T",
+      "serial_from": "T18208111",
+      "serial_to": "T18208177",
+      "quote": "T182T T18208001 through T18208109, and T18208111 through T18208177."
+    },
+    {
+      "model": "206H",
+      "serial_from": "20608001",
+      "serial_to": "20608183",
+      "quote": "206H 20608001 through 20608183, 20608185, 20608187, and 20608188."
+    },
+    {
+      "model": "206H",
+      "serial_from": "20608185",
+      "serial_to": "20608185",
+      "quote": "206H 20608001 through 20608183, 20608185, 20608187, and 20608188."
+    },
+    {
+      "model": "206H",
+      "serial_from": "20608187",
+      "serial_to": "20608187",
+      "quote": "206H 20608001 through 20608183, 20608185, 20608187, and 20608188."
+    },
+    {
+      "model": "206H",
+      "serial_from": "20608188",
+      "serial_to": "20608188",
+      "quote": "206H 20608001 through 20608183, 20608185, 20608187, and 20608188."
+    },
+    {
+      "model": "T206H",
+      "serial_from": "T20608001",
+      "serial_to": "T20608039",
+      "quote": "T206H T20608001 through T20608039, T20608041 through T20608367, T20608369 through T20608379, T20608381, T20608382, and T20608385."
+    },
+    {
+      "model": "T206H",
+      "serial_from": "T20608041",
+      "serial_to": "T20608367",
+      "quote": "T206H T20608001 through T20608039, T20608041 through T20608367, T20608369 through T20608379, T20608381, T20608382, and T20608385."
+    },
+    {
+      "model": "T206H",
+      "serial_from": "T20608369",
+      "serial_to": "T20608379",
+      "quote": "T206H T20608001 through T20608039, T20608041 through T20608367, T20608369 through T20608379, T20608381, T20608382, and T20608385."
+    },
+    {
+      "model": "T206H",
+      "serial_from": "T20608381",
+      "serial_to": "T20608381",
+      "quote": "T206H T20608001 through T20608039, T20608041 through T20608367, T20608369 through T20608379, T20608381, T20608382, and T20608385."
+    },
+    {
+      "model": "T206H",
+      "serial_from": "T20608382",
+      "serial_to": "T20608382",
+      "quote": "T206H T20608001 through T20608039, T20608041 through T20608367, T20608369 through T20608379, T20608381, T20608382, and T20608385."
+    },
+    {
+      "model": "T206H",
+      "serial_from": "T20608385",
+      "serial_to": "T20608385",
+      "quote": "T206H T20608001 through T20608039, T20608041 through T20608367, T20608369 through T20608379, T20608381, T20608382, and T20608385."
+    }
+  ],
+  "conditions": [
+    {
+      "kind": "equipment_installed",
+      "value": "KAP 140 autopilot computer system, P/N 065-00176-2501, 065-00176-2602, 065-00176-5001, 065-00176-5101, 065-00176-5201, 065-00176-5402 or 065-00176-7702",
+      "quote": "(1) equipped with a KAP 140 autopilot computer system"
+    }
+  ],
+  "compliance_time_text": "Airplanes previously affected by AD 2003-24-13: within the next 100 hours TIS after January 20, 2004, unless already done. Airplanes not affected by AD 2003-24-13: within the next 100 hours TIS after September 12, 2004.",
+  "unsafe_condition_summary": "Inadvertent and undetected engagement of the KAP 140 autopilot could cause the pilot to take inappropriate actions.",
+  "out_of_scope_features": [
+    {
+      "feature": "AMOC",
+      "quote": "May I Request an Alternative Method of Compliance?"
+    },
+    {
+      "feature": "parts installation: only modified KC 140 computers may be installed",
+      "quote": "(4) For all affected airplanes: install only KC 140 autopilot computer systems"
+    },
+    {
+      "feature": "part numbers: flavor sticker P/N 057-02203-0003, M decal, software mod tag",
+      "quote": "flavor sticker, part number (P/N) 057–02203–0003"
+    }
+  ],
+  "field_quotes": {
+    "federal_register_document_number": [
+      "[FR Doc. 04-17217 Filed 7-29-04; 8:45 am]"
+    ],
+    "effective_date": [
+      "(a) This AD becomes effective on September 12, 2004."
+    ],
+    "supersedes": [
+      "(b) This AD supersedes AD 2003-24-13."
+    ],
+    "compliance_time_text": [
+      "(1) For airplanes previously affected by AD 2003–24–13: install the update to the KC 140 autopilot computer system operating software.",
+      "Within the next 100 hours time-in-service (TIS) after January 20, 2004 (the effective date of AD 2003–24–13), unless already done.",
+      "(3) For airplanes not affected by AD 2003– 24–13: install the update to the KC 140 autopilot computer system operating software.",
+      "Within the next 100 hours time-in-service (TIS) after September 12, 2004 (the effective date of this AD)."
+    ],
+    "unsafe_condition_summary": [
+      "The actions specified in this AD are intended to prevent unintentionally engaging the KAP 140 autopilot computer system, which could cause the pilot to take inappropriate actions."
+    ]
+  },
+  "labelled_by": "Niccolò: applicability, dates and relations checked against the text; summaries drafted by Claude Code, not checked",
+  "checked_by": "",
+  "notes": "Applicability covers 172R, 172S, 182S, 182T, T182T, 206H, T206H: one row per range or single serial (25 rows); serial_from = serial_to for a single serial. The KAP 140 P/N list in (c)(1) splits '065-' / '00176-5201' across lines, so the condition's quote stops before the P/N list; the P/Ns in value are read from lines 248-250. The (e) table uses en dashes ('2003–24–13', '057–02203–0003') and one stray space ('2003– 24–13'); quotes keep them exactly, values use plain hyphens. The AD says 'KAP 140' in (c) and 'KC 140' (the computer unit) in (e). (c)(2) ‘certificated in any category’ is also required but narrows nothing, so it is not a condition."
+}

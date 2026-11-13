@@ -1,0 +1,45 @@
+{
+  "ad_number": "EASA:2018-0072",
+  "federal_register_document_number": null,
+  "effective_date": "2018-04-11",
+  "supersedes": [],
+  "revises": [],
+  "applicability": [
+    {
+      "model": "P2008 JC",
+      "serial_from": "1002",
+      "serial_to": "1085",
+      "quote": "P2008 JC aeroplanes, serial numbers 1002 to 1085 inclusive."
+    }
+  ],
+  "compliance_time_text": "Within 25 flight hours, or 25 flight cycles, or within 6 months after the effective date, whichever occurs first: one-time visual inspection of the firewall per TECNAM SB 287-CS.",
+  "unsafe_condition_summary": "Firewall steel patches attached with sealant can detach in a fire, which could let an engine fire spread to other critical areas and lead to loss of the aeroplane.",
+  "out_of_scope_features": [
+    {
+      "feature": "AMOC",
+      "quote": "If requested and appropriately substantiated, EASA can approve Alternative Methods of Compliance for this AD."
+    },
+    {
+      "feature": "part numbers: patches P/N 28-2-1337-1 / 28-2-1337-2",
+      "quote": "patches with Part Number (P/N) 28-2-1337-1 or P/N 28-2-1337-2"
+    }
+  ],
+  "field_quotes": {
+    "effective_date": [
+      "Effective Date: 11 April 2018"
+    ],
+    "supersedes": [
+      "Supersedure: None"
+    ],
+    "revises": [],
+    "compliance_time_text": [
+      "(1) Within 25 flight hours, or 25 flight cycles, or within 6 months, whichever occurs first after the effective date of this AD, accomplish a visual inspection of the firewall in accordance with the instructions of the SB."
+    ],
+    "unsafe_condition_summary": [
+      "This condition, if not detected and corrected, could lead to propagation of an engine fire to other critical areas, possibly resulting in loss of the aeroplane."
+    ]
+  },
+  "labelled_by": "Niccolò: applicability, dates and relations checked against the text; summaries drafted by Claude Code, not checked",
+  "checked_by": "",
+  "notes": "EASA AD: no Federal Register number. Original issue, so there is no Revision field: revises is [] with no quote. The inspection is one-time ('this AD requires a one-time inspection of the firewall'), not repetitive. data/raw/INDEX.md gives a different effective date (27 Jun 2019, from the CAA NZ schedule); the EASA text says 11 April 2018."
+}

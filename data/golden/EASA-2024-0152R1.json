@@ -1,0 +1,56 @@
+{
+  "ad_number": "EASA:2024-0152R1",
+  "federal_register_document_number": null,
+  "effective_date": "2025-02-05",
+  "supersedes": [],
+  "revises": [
+    "EASA:2024-0152"
+  ],
+  "applicability": [
+    {
+      "model": "P2008 JC",
+      "serial_from": null,
+      "serial_to": null,
+      "quote": "Tecnam P2008 JC, all serial numbers (s/n), except those on which Tecnam modification MOD2008/233 or Service Bulletin (SB) SB-826-CS has been embodied."
+    }
+  ],
+  "conditions": [
+    {
+      "kind": "modification_not_embodied",
+      "value": "MOD2008/233",
+      "quote": "Tecnam P2008 JC, all serial numbers (s/n), except those on which Tecnam modification MOD2008/233 or Service Bulletin (SB) SB-826-CS has been embodied."
+    },
+    {
+      "kind": "modification_not_embodied",
+      "value": "SB-826-CS",
+      "quote": "Tecnam P2008 JC, all serial numbers (s/n), except those on which Tecnam modification MOD2008/233 or Service Bulletin (SB) SB-826-CS has been embodied."
+    }
+  ],
+  "compliance_time_text": "Group 1 (s/n up to 1363): within 25 flight hours after 15 August 2024 (effective date of the original issue), deactivate the Advanced Start System per SB-773-CS. Group 2 (s/n 1364 and up): no deactivation required.",
+  "unsafe_condition_summary": "Out-of-schedule activation of the engine soft start at high power reduces RPM and could cause further loss of power, with increased pilot workload and reduced control of the aeroplane.",
+  "out_of_scope_features": [
+    {
+      "feature": "AMOC",
+      "quote": "If requested and appropriately substantiated, EASA can approve Alternative Methods of Compliance for this AD."
+    }
+  ],
+  "field_quotes": {
+    "effective_date": [
+      "Effective Date: Revision 1: 05 February 2025"
+    ],
+    "supersedes": [],
+    "revises": [
+      "Revision: This AD revises EASA AD 2024-0152 dated 01 August 2024."
+    ],
+    "compliance_time_text": [
+      "Groups: Group 1 are aeroplanes having s/n up to 1363 inclusive. Group 2 are aeroplanes having s/n 1364 and up.",
+      "(1) For Group 1 aeroplanes: Within 25 flight hours after 15 August 2024 [the effective date of the original issue of this AD], modify the aeroplane by deactivating the Advanced Start System in accordance with the instructions of the SB-773-CS."
+    ],
+    "unsafe_condition_summary": [
+      "This condition, if not corrected, could lead to further occurrences of loss of power, with possible increased pilot workload and reduced control of the aeroplane."
+    ]
+  },
+  "labelled_by": "Niccolò: applicability, dates and relations checked against the text; summaries drafted by Claude Code, not checked",
+  "checked_by": "",
+  "notes": "EASA AD: no Federal Register number. serial_from/serial_to null = all serial numbers. The two conditions are both required (AND): the AD applies only if neither MOD2008/233 nor SB-826-CS is embodied. No Supersedure field in the text: supersedes is [] with no quote. effective_date is Revision 1 (05 February 2025); the original issue was effective 15 August 2024. data/raw/INDEX.md gives 27 Feb 2025 for R1, which the text does not support."
+}
