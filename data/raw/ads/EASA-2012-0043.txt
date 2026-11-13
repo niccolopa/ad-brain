@@ -1,0 +1,113 @@
+EASA AD No.: 2012-0043
+
+EASA Form 110 Page 1/2
+EASA AIRWORTHINESS DIRECTIVE
+
+
+AD No.: 2012-0043
+
+
+
+Date: 19 March 2012
+
+Note: This Airworthiness Directive (AD) is issued by EASA, acting in accordance with Regulation
+(EC) No 216/2008 on behalf of the European Community, its Member States and of the
+European third countries that participate in the activities of EASA under Article 66 of that
+Regulation.
+This AD is issued in accordance with EC 1702/2003, Part 21A.3B. In accordance with EC 2042/2003 Annex I, Part M.A.301, the
+continuing airworthiness of an aircraft shall be ensured by accomplishing any applicable ADs. Consequently, no person may operate
+an aircraft to which an AD applies, except in accordance with the requirements of that AD, unless otherwise specified by the Agency
+[EC 2042/2003 Annex I, Part M.A.303] or agreed with the Authority of the State of Registry [EC 216/2008, Article 14(4) exemption].
+Type Approval Holder’s Name :
+
+Costruzioni Aeronautiche TECNAM S.r.l.
+Type/Model designation(s):
+
+P2006T aeroplanes
+TCDS Number:  EASA.A.185
+Foreign AD:   Not applicable
+Supersedure:  This AD supersedes EASA AD 2011-0153R1 dated 09 September 2011.
+
+ATA 32 Landing Gear – Emergency Accumulator for Landing Gear (LG) Extension – Replacement
+
+Manufacturer(s): Costruzioni Aeronautiche TECNAM S.r.l.
+Applicability: P2006T aeroplanes, all serial numbers (s/n) up to s/n 88 (included), with the
+exclusion of  s/n 85.
+Reason: During a pre-flight inspection of a P2006T aeroplane, the lower skin  of the
+fuselage aft tail cone was found damaged. This damage was caused by the
+lower lid of the LG emergency accumulator, which had detached from the LG
+emergency accumulator, violently hitting the lower skin of the fuselage aft tail
+cone and damaging the accumulator cylinder.
+This condition, if not detected and corrected, could impair the aeroplane
+structural integrity and jeopardize the LG emergency extension in case of
+system failure in normal mode.
+For the reasons described above, EASA issued Emergency AD 2011-0063-E
+to require a one-time inspection of the LG emergency accumulator cylinder for
+cracks, deformation or oil leakage and, depending on findings, the
+accomplishment of the applicable corrective actions.
+After that AD was issued, Costruzioni Aeronautiche TECNAM developed a
+modification (MOD 2006-108) and published Service Bulletin (SB) SB-048-CS
+Revision 1, dated 06 July 2011, that contained the instructions for that
+modification. Prompted by this development, EASA issued PAD 11-070 for
+consultation until 16 August 2011, proposing to require incorporation of this
+modification on all affected aeroplanes, and to require certain post-modification
+repetitive inspections.
+
+EASA AD No.: 2012-0043
+
+EASA Form 110 Page 2/2
+During the consultation period of PAD 11-070, an operator who had applied
+Costruzioni Aeronautiche TECNAM SB-048-CS on his aeroplane, reported
+finding abnormal deformation of the emergency accumulator, to such an extent
+that it would jeopardize the LG emergency extension in case of system failure
+in normal mode. To address this additional safety concern, Costruzioni
+Aeronautiche TECNAM issued SB-068-CS which contains instructions to
+inspect post-modification aeroplanes.
+For the reasons described above, EASA AD 2011-0153-E retained the
+requirements of EASA AD 2011-0063-E, which was superseded, and required
+modification of the landing gear emergency accumulator by installation of
+safety rings and repetitive inspections after modification. In addition, prompted
+by the post-modification findings, EASA AD 2011-0153-E reduced the
+compliance time for the modification as originally proposed and required
+additional first-flight-of-the-day repetitive inspections of the LG emergency
+accumulator cylinder and replacement of the LG emergency accumulator if
+cracks, deformation, or oil leakage is detected.
+AD Revision  2011-0153R1 was issued in order to allow Pilot-Owners to
+accomplish the daily pre-flight inspection of the modified LG emergency
+accumulator.
+After that AD Revision, Costruzioni Aeronautiche TECNAM designed a new
+LG emergency accumulator part number 26-9-9500-000, identified as
+modification MOD 2006-121, and published SB-080-CS dated 02 January
+2012 , which contains  instructions for replacement and  installation of the
+newly designed LG emergency accumulator.
+This AD, which supersedes EASA AD 2011-0153R1, requires the installation
+of the new landing gear emergency accumulator part number 26-9-9500-000,
+as well as to inspect after the installation the LG emergency accumulator and
+the LG retraction/extension system.
+Effective Date: 02 April 2012
+Required Action(s)
+and Compliance
+Time(s):
+Required as indicated, unless accomplished previously:
+Within 90 days after the effective date of this AD, replace the LG emergency
+accumulator with a new one part number 26-9-9500-000, in accordance with
+the instructions of Costruzioni Aeronautiche TECNAM SB-080-CS and,
+thereafter, inspect the LG emergency accumulator and the LG
+retraction/extension system in accordance with the applicable instructions of
+P2006T Aircraft Maintenance Manual Chapter 5 “Inspection program” and do
+the applicable corrective actions within the specified compliance times.
+Ref. Publications: Costruzioni Aeronautiche TECNAM SB-080-CS dated 02 January 2012 .
+The use of later approved revisions of this document is acceptable for
+compliance with the requirements of this AD.
+Remarks:  1. If requested and appropriately substantiated, EASA can approve Alternative
+Methods of Compliance for this AD.
+2. This AD was posted on 23 January 2012 as PAD 12-004 for consultation
+until 21 February 2012. The Comment Response Document can be found at
+http://ad.easa.europa.eu .
+3. Enquiries regarding this AD should be referred to the Safety Information
+Section, Executive Directorate, EASA. E-mail: ADs@easa.europa.eu .
+4. For any question concerning the technical content of the requirements in this
+AD, please contact:
+Costruzioni Aeronautiche TECNAM S.r.l. - Airworthiness Office;
+Phone: +39 0823 620134 or fax +39 0823 622899;
+E-mail: m.oliva@tecnam.com  or p.violetti@tecnam.com .

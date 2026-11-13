@@ -1,0 +1,102 @@
+EASA AD No.: 2018-0072
+
+ TE.CAP.00110-006 © European Aviation Safety Agency. All rights reserved. ISO9001 Certified.
+ Proprietary document. Copies are not controlled. Confirm revision status through the EASA-Internet/Intranet.
+
+An agency of the European Union
+Page 1 of 2
+Airworthiness Directive
+AD No.:  2018-0072
+Issued: 28 March 2018
+Note: This Airworthiness Directive (AD) is issued by EASA, acting in accordance with Regulation
+(EC) 216/2008 on behalf of the European Union, its Member States and of the European third
+countries that participate in the activities of EASA under Article 66 of that Regulation.
+This AD is issued in accordance with Regulation (EU) 748/2012, Part 21.A.3B. In accordance with Regulation (EU) 1321/2014 Annex I, Part M.A.301, the
+continuing airworthiness of an aircraft shall be ensured by accomplishing any applicable ADs. Consequently, no person may operate an aircraft to which
+an AD applies, except in accordance with the requirements of that AD, unless otherwise specified by the Agency [Regulation (EU) 1321/2014 Annex I,
+Part M.A.303] or agreed with the Authority of the State of Registry [Regulation (EC) 216/2008, Article 14(4) exemption].
+Design Approval Holder’s Name:
+COSTRUZIONI AERONAUTICHE TECNAM S.r.l.
+Type/Model designation(s):
+P2008 JC aeroplanes
+
+Effective Date: 11 April 2018
+TCDS Number(s): EASA.A.583
+Foreign AD: Not applicable
+Supersedure: None
+
+ATA 28 – Fuel System – Firewall – Inspection / Modification
+
+
+Manufacturer(s):
+Costruzioni Aeronautiche TECNAM S.r.l.
+
+Applicability:
+P2008 JC aeroplanes, serial numbers 1002 to 1085 inclusive.
+
+Definition(s):
+For the purpose of this AD, the following definitions apply:
+
+The SB: TECNAM Service Bulletin (SB) 287 – CS – Ed. 1 Rev. 0.
+
+Reason:
+After an occurrence report of an engine fire, it was identified that, in some locations on the engine
+firewall, steel patches that had been attached with use of sealant material had, likely as a result of
+the fire, detached in the engine compartment. The related technical investigation concluded that
+more aeroplanes might be affected.
+
+This condition, if not detected and corrected, could lead to propagation of an engine fire to other
+critical areas, possibly resulting in loss of the aeroplane.
+
+
+EASA AD No.: 2018-0072
+
+ TE.CAP.00110-006 © European Aviation Safety Agency. All rights reserved. ISO9001 Certified.
+ Proprietary document. Copies are not controlled. Confirm revision status through the EASA-Internet/Intranet.
+
+An agency of the European Union
+Page 2 of 2
+To address this potential unsafe condition, TECNAM issued the SB, which provides instructions to
+detect the locations where such patches are installed, correct the attachment methods with the use
+of screws and prevent the detachment of the patches in case of a fire.
+
+For the reasons described above, this AD requires a one-time inspection of the firewall and,
+depending on findings, removal and re-installation of patches.
+
+Required Action(s) and Compliance Time(s):
+Required as indicated, unless accomplished previously:
+
+Inspection(s):
+(1) Within 25 flight hours, or 25 flight cycles, or within 6 months, whichever occurs first after the
+effective date of this AD, accomplish a visual inspection of the firewall in accordance with the
+instructions of the SB.
+
+Corrective Action(s):
+(2) If, during the inspection as required by paragraph (1) of this AD, any patch is found installed
+without screws at any location described in the SB, before next flight, remove and re-install the
+affected patch(es) in accordance with the instructions of the SB.
+
+Parts Installation:
+(3) After modification of an aeroplane as required by paragraph (2) of this AD, it is allowed to
+install, at any location described in the SB, patches with Part Number (P/N) 28-2-1337-1 or P/N
+28-2-1337-2, provided that this is accomplished in accordance with the instructions of the SB.
+
+Ref. Publications:
+TECNAM SB 287 – CS – Ed. 1 Rev. 0 dated 07 November 2017.
+
+The use of later approved revisions of the above-mentioned document is acceptable for compliance
+with the requirements of this AD.
+
+Remarks:
+1. If requested and appropriately substantiated, EASA can approve Alternative Methods of
+Compliance for this AD.
+
+2. This AD was posted on 21 February 2018 as PAD 18-029 for consultation until 21 March 2018.
+No comments were received during the consultation period.
+
+3. Enquiries regarding this AD should be referred to the EASA Safety Information Section,
+Certification Directorate. E-mail: ADs@easa.europa.eu.
+
+4. For any question concerning the technical content of the requirements in this AD, please
+contact: Costruzioni Aeronautiche TECNAM Airworthiness Office, Telephone: +39 0823 620134,
+Fax: +39 0823 622899, E-mail: airworthiness@tecnam.com.

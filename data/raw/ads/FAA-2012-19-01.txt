@@ -1,0 +1,307 @@
+1
+[Federal Register Volume 77, Number 182 (Wednesday, September 19, 2012)]
+[Rules and Regulations]
+[Pages 58003-58006]
+From the Federal Register Online via the Government Printing Office [www.gpo.gov]
+[FR Doc No: 2012-22924]
+
+––––––––––––––––––––––––––––––––––
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2006-24785; Directorate Identifier 2006-NE-20-AD; Amendment 39-17196;
+AD 2012-19-01]
+
+RIN 2120-AA64
+
+Airworthiness Directives; Lycoming Engines Reciprocating Engines
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Final rule.
+
+––––––––––––––––––––––––––––––––––
+
+SUMMARY: We are superseding an existing airworthiness directive (AD) for certain Lycoming
+Engines (L)O-360, (L)IO-360, AEIO-360, O-540, IO-540, AEIO-540, (L)TIO-540, IO-580, and IO-
+720 series reciprocating engines. That AD currently requires replacing certain crankshafts in the
+affected engines. This AD continues to require replacing certain crankshafts, corrects the start date of
+affected engine models in Lycoming Mandatory Service Bulletin (MSB) No. 569A to the start date in
+Supplement No. 1 to Lycoming MSB No. 569A, dated May 27, 2009, and includes additional
+(formerly experimental) IO-390, AEIO-390, and AEIO-580 series engine models having affected
+crankshafts. This AD was prompted by Lycoming Engines discovering that the start date of affected
+engine models in MSB No. 569A is incorrect and the need to include additional engine models
+having the affected crankshafts. We are issuing this AD to prevent failure of the crankshaft, which
+will result in total engine power loss, in-flight engine failure, and possible loss of the aircraft.
+
+DATES: This AD is effective October 24, 2012.
+ The Director of the Federal Register approved the incorporation by reference of certain
+publications listed in the AD as of October 24, 2012.
+ The Director of the Federal Register approved the incorporation by reference of a certain other
+publication listed in the AD as of November 3, 2006 (71 FR 57407, September 29, 2006).
+
+ADDRESSES: For service information identified in this AD, contact Lycoming, 652 Oliver Street,
+Williamsport, PA 17701; phone: 570 323-6181; fax: 570-327-7101, or on the internet at
+www.Lycoming.Textron.com. You may view this service information at the FAA, Engine &
+Propeller Directorate, 12 New England Executive Park, Burlington, MA. For information on the
+availability of this material at the FAA, call 781-238-7125.
+
+
+2
+Examining the AD Docket
+
+ You may examine the AD docket on the Internet at http://www.regulations.gov; or in person at
+the Docket Management Facility between 9 a.m. and 5 p.m., Monday through Friday, except Federal
+holidays. The AD docket contains this AD, the regulatory evaluation, any comments received, and
+other information. The address for the Docket Office (phone: 800-647-5527) is Document
+Management Facility, U.S. Department of Transportation, Docket Operations, M-30, West Building
+Ground Floor, Room W12-140, 1200 New Jersey Avenue SE., Washington, DC 20590.
+
+FOR FURTHER INFORMATION CONTACT: Norm Perenson, Aerospace Engineer, New York
+Aircraft Certification Office, FAA, Engine & Propeller Directorate, 1600 Stewart Avenue, Suite 410,
+Westbury, NY 11590; phone: 516-228-7337; fax: 516-794-5531; email: norman.perenson@faa.gov.
+
+SUPPLEMENTARY INFORMATION:
+
+Discussion
+
+ We issued a supplemental notice of proposed rulemaking (SNPRM) to amend 14 CFR part 39 to
+supersede AD 2006-20-09, amendment 39-14778 (71 FR 57407, September 29, 2006). That AD
+applies to the specified products. The SNPRM published in the Federal Register on April 6, 2012 (77
+FR 20743). The original NPRM (76 FR 50152, August 12, 2011) proposed to retain the requirements
+of AD 2006-20-09 to replace certain crankshafts and to correct the start date of MSB No. 569A from
+March 1, 1997 to January 1, 1997, which is the start date in Supplement No. 1 to Lycoming MSB No.
+569A, dated May 27, 2009. The SNPRM proposed to add IO-390, AEIO-390, and AEIO-580 series
+engine models that have the affected crankshafts to the applicability of the AD. The SNPRM also
+proposed to change Service Instruction No. 1009AS, dated May 25, 2006, to Service Instruction No.
+1009AU, dated November 18, 2009, because Lycoming updated this service instruction. The changes
+to Service Instruction 1009AS do not affect the engine overhaul time.
+
+Comments
+
+ We gave the public the opportunity to participate in developing this AD. The following presents
+the comment received on the proposal and the FAA's response to that comment.
+
+Request To Determine if AD Applies to IO-360 Engine
+
+ A commenter asked if the AD applies to the Lycoming Engine IO-360-A3B6D. We reply that
+this engine is listed in Lycoming MSB No. 569A, so if the crankshaft serial number of that engine is
+also listed in Table 5 of MSB No. 569A, then the AD applies.
+
+Changes to Previous Credit Paragraph
+
+ We reviewed our previous credit paragraph in the SNPRM (77 FR 20743, April 6, 2012) and
+found that not all the ADs and service bulletins (SBs) listed in paragraphs (f)(1) and (f)(2) of the
+SNPRM resolved the unsafe conditions. Accordingly, we changed the Credit for Previous Actions
+paragraphs, paragraphs (g)(1) and (g)(2) of this AD, retaining only Lycoming MSB No. 569A and
+AD 2006-20-09 (71 FR 57407, September 29, 2006) in the AD to resolve the unsafe condition and
+deleting all other ADs and SBs referenced in the SNPRM. Paragraphs (g)(1) and (g)(2) now read:
+''(1) If you previously complied with AD 2006-20-09 (71 FR 57407, September 29, 2006), no further
+action is required. (2) If you previously accomplished Lycoming MSB No. 569A, no further action is
+required.''
+
+
+3
+Costs of Compliance Paragraph
+
+ We reviewed the cost estimate made in AD 2006-20-09 (71 FR 57407, September 29, 2006)
+when we added the new affected engine models to the SNPRM (77 FR 20743, April 6, 2012). We
+found that the cost estimate in AD 2006-20-09 included the number of affected engines worldwide
+rather than those installed only on aircraft of U.S. registry. We also found that the cost estimate in
+AD 2006-20-09 already included the engine models that we have now added to the applicability of
+this AD. Accordingly, we changed the number of affected engine models from 3,774 to 2,831 and the
+overall cost estimate from $60,384,000 to $45,288,000.
+
+Conclusion
+
+ We reviewed the relevant data, considered the comments received, and determined that air safety
+and the public interest require adopting the AD as proposed.
+
+Costs of Compliance
+
+ We estimate that this AD affects 2,831 engines installed on airplanes of U.S. registry. Because
+the AD compliance interval coincides with engine overhaul or other engine maintenance, we estimate
+no additional labor hours will be needed to comply with this AD. Required parts will cost about
+$16,000 per engine. Based on these figures, we estimate the total cost of the AD to be $45,288,000.
+Our estimate is independent of any possible warranty coverage.
+
+Authority for This Rulemaking
+
+ Title 49 of the United States Code specifies the FAA's authority to issue rules on aviation safety.
+Subtitle I, Section 106, describes the authority of the FAA Administrator. Subtitle VII, Aviation
+Programs, describes in more detail the scope of the Agency's authority.
+ We are issuing this rulemaking under the authority described in Subtitle VII, Part A, Subpart III,
+Section 44701, ''General requirements.'' Under that section, Congress charges the FAA with
+promoting safe flight of civil aircraft in air commerce by prescribing regulations for practices,
+methods, and procedures the Administrator finds necessary for safety in air commerce. This
+regulation is within the scope of that authority because it addresses an unsafe condition that is likely
+to exist or develop on products identified in this rulemaking action.
+
+Regulatory Findings
+
+ We have determined that this AD will not have federalism implications under Executive Order
+13132. This AD will not have a substantial direct effect on the States, on the relationship between the
+national government and the States, or on the distribution of power and responsibilities among the
+various levels of government.
+ For the reasons discussed above, I certify that this AD:
+ (1) Is not a ''significant regulatory action'' under Executive Order 12866,
+ (2) Is not a ''significant rule'' under DOT Regulatory Policies and Procedures (44 FR 11034,
+February 26, 1979),
+ (3) Will not affect intrastate aviation in Alaska, and
+ (4) Will not have a significant economic impact, positive or negative, on a substantial number of
+small entities under the criteria of the Regulatory Flexibility Act.
+
+List of Subjects in 14 CFR Part 39
+
+ Air transportation, Aircraft, Aviation safety, Incorporation by reference, Safety.
+
+4
+Adoption of the Amendment
+
+ Accordingly, under the authority delegated to me by the Administrator, the FAA amends 14 CFR
+part 39 as follows:
+
+PART 39–AIRWORTHINESS DIRECTIVES
+
+1. The authority citation for part 39 continues to read as follows:
+
+ Authority:  49 U.S.C. 106(g), 40113, 44701.
+
+§ 39.13  [Amended]
+
+2. The FAA amends § 39.13 by removing airworthiness directive (AD) 2006-20-09, Amendment 39-
+14778 (71 FR 57407), and adding the following new AD:
+
+
+5
+
+FAA
+Aviation Safety
+AIRWORTHINESS DIRECTIVE
+www.faa.gov/aircraft/safety/alerts/
+www.gpoaccess.gov/fr/advanced.html
+
+2012-19-01 Lycoming Engines: Amendment 39-17196; Docket No. FAA-2006-24785; Directorate
+Identifier 2006-NE-20-AD.
+
+(a) Effective Date
+
+ This AD is effective October 24, 2012.
+
+(b) Affected ADs
+
+ This AD supersedes AD 2006-20-09 (71 FR 57407, September 29, 2006).
+
+(c) Applicability
+
+ This AD applies to Lycoming Engines (L)O-360, (L)IO-360, AEIO-360, IO-390, AEIO-390, O-
+540, IO-540, AEIO-540, (L)TIO-540, IO-580, AEIO-580, and IO-720 series reciprocating engines
+listed by engine model number and serial number in Table 1, Table 2, Table 3, or Table 4 of
+Lycoming Mandatory Service Bulletin (MSB) 569A, dated April 11, 2006, and those engines with
+crankshafts listed by crankshaft serial number in Table 5 of Lycoming MSB 569A, dated April 11,
+2006. These applicable engines are manufactured new, rebuilt, overhauled, or had a crankshaft
+installed after January 1, 1997, according to Supplement No. 1 to Lycoming MSB No. 569A, dated
+May 27, 2009.
+
+(d) Unsafe Condition
+
+ This AD results from Lycoming Engines discovering that the March 1, 1997 start date of
+affected engine models in Lycoming MSB No. 569A, is incorrect. This AD also results from the need
+to include the IO-390, AEIO-390, and AEIO-580 series engine models having affected crankshafts.
+We are issuing this AD to prevent failure of the crankshaft, which will result in total engine power
+loss, in-flight engine failure, and possible loss of the aircraft.
+
+(e) Compliance
+
+ You are responsible for having the actions required by this AD performed within the compliance
+times specified unless the actions have already been done.
+
+(f) Engines For Which Action Is Required
+
+ If you did not previously comply with AD 2006-20-09 or with MSB No. 569A, do the following:
+ (1) If Table 1, Table 2, Table 3, or Table 4 of Lycoming MSB No. 569A, dated April 11, 2006,
+lists your engine serial number (S/N), and Table 5 of MSB No. 569A, dated April 11, 2006, lists your
+crankshaft S/N, replace the affected crankshaft with a crankshaft that is not listed in Table 5 of MSB
+No. 569A at the earliest of the following:
+ (i) The time of the next engine overhaul as specified in Lycoming Service Instruction No.
+1009AU, dated November 18, 2009; or
+ (ii) The next separation of the crankcase, or
+
+6
+ (iii) No later than 12 years from the time the crankshaft first entered service or was last
+overhauled, whichever is later.
+ (2) If Table 1, Table 2, Table 3, or Table 4 of Lycoming MSB No. 569A, dated April 11, 2006,
+does not list your engine S/N, and Table 5 of MSB No. 569A does list your crankshaft S/N (an
+affected crankshaft was installed as a replacement), replace the affected crankshaft with a crankshaft
+that is not listed in Table 5 of MSB No. 569A at the earliest of the following:
+ (i) The time of the next engine overhaul as specified in Lycoming Service Instruction No.
+1009AU, dated November 18, 2009; or
+ (ii) The next separation of the crankcase, or
+ (iii) No later than 12 years from the time the crankshaft first entered service or was last
+overhauled, whichever is later.
+
+(g) Credit for Previous Actions
+
+ (1) If you previously complied with AD 2006-20-09 (71 FR 57407, September 29, 2006), no
+further action is required.
+ (2) If you previously accomplished Lycoming MSB No. 569A, no further action is required.
+ (3) If Lycoming Engines manufactured new, rebuilt, overhauled, or repaired your engine, or
+replaced the crankshaft in your engine before January 1, 1997, and you have not had the crankshaft
+replaced, no further action is required.
+ (4) If Table 1, Table 2, Table 3, or Table 4 of Lycoming MSB No. 569A, dated April 11, 2006,
+lists your engine S/N, and Table 5 of MSB No. 569A, dated April 11, 2006, does not list your
+crankshaft S/N, no further action is required.
+ (5) For engine model TIO-540-U2A, S/N L-4641-61A, no action is required.
+
+(h) Prohibition Against Installing Certain Crankshafts
+
+ After the effective date of this AD, do not install any crankshaft that has a S/N listed in Table 5
+of Lycoming MSB No. 569A, dated April 11, 2006, into any engine.
+
+(i) Alternative Methods of Compliance (AMOC)
+
+ The Manager, New York Aircraft Certification Office, may approve AMOCs to this AD. Use the
+procedures in 14 CFR 39.19 to make your request. AMOCs approved for AD 2002-19-03 (67 FR
+59139, September 20, 2002) and AD 2006-20-09 (71 FR 57407, September 29, 2006) are approved
+as AMOCs for this AD.
+
+(j) Related Information
+
+ For more information about this AD, contact Norm Perenson, Aerospace Engineer, New York
+Aircraft Certification Office, FAA, Engine & Propeller Directorate, 1600 Stewart Avenue, Suite 410,
+Westbury, NY 11590; phone: 516-228-7337; fax: 516-794-5531; email: norman.perenson@faa.gov.
+
+(k) Material Incorporated by Reference
+
+ (1) The Director of the Federal Register approved the incorporation by reference (IBR) of the
+following service information under 5 U.S.C. 552(a) and 1 CFR part 51.
+ (2) You must use the following service information to do the actions required by this AD, unless
+the AD specifies otherwise.
+ (3) The following service information was approved for IBR on October 24, 2012.
+ (i) Lycoming Service Instruction No. 1009AU, dated November 18, 2009.
+
+7
+ (ii) Lycoming Mandatory Service Bulletin, Supplement No. 1 to Service Bulletin No. 569A,
+dated May 27, 2009.
+ (4) The following service information was approved for IBR on November 3, 2006 (71 FR
+57407, September 29, 2006).
+ (i) Lycoming Mandatory Service Bulletin No. 569A, dated April 11, 2006.
+ (ii) Reserved.
+ (5) For service information identified in this AD, contact Lycoming, 652 Oliver Street,
+Williamsport, PA 17701; phone: 570 323-6181; fax: 570-327-7101, or on the Internet at
+www.Lycoming.Textron.com.
+ (6) You may view this service information at the FAA, Engine & Propeller Directorate, 12 New
+England Executive Park, Burlington, MA. For information on the availability of this material at the
+FAA, call 781-238-7125.
+ (7) You may view this service information at the National Archives and Records Administration
+(NARA). For information on the availability of this material at NARA, call 202-741-6030, or go to:
+http://www.archives.gov/federal-register/cfr/ibr-locations.html.
+
+ Issued in Burlington, Massachusetts, on August 27, 2012.
+Colleen M. D'Alessandro,
+Assistant Manager, Engine & Directorate,
+Aircraft Certification Service.

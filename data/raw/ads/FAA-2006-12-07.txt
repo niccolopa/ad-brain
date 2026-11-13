@@ -1,0 +1,725 @@
+1
+[Federal Register: June 6, 2006 (Volume 71, Number 108)]
+[Rules and Regulations]
+[Page 32427-32434]
+From the Federal Register Online via GPO Access [wais.access.gpo.gov]
+[DOCID:fr06jn06-2]
+–––––––––––––––––––––––––––––––––––
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2005-22358; Directorate Identifier 2005-NE-20-AD; Amendment 39-14632;
+AD 2006-12-07]
+
+RIN 2120-AA64
+
+Airworthiness Directives; Engine Components Inc. (ECi) Reciprocating Engine Cylinder
+Assemblies
+
+AGENCY: Federal Aviation Administration (FAA), Department of Transportation (DOT).
+
+ACTION: Final rule.
+
+–––––––––––––––––––––––––––––––––––
+
+SUMMARY: The FAA is superseding an existing airworthiness directive (AD) for Lycoming
+Engines (formerly Textron Lycoming) models 320, 360, and 540 series, ''Parallel Valve''
+reciprocating engines, with certain Engine Components Inc. (ECi) cylinder assemblies, part number
+(P/N) AEL65102 series ''Classic Cast'', installed. That AD currently requires replacing these ECi
+cylinder assemblies. This AD requires the same actions, but replaces the ''Engine Models'' Table 1
+and ''Engines Installed On, But Not Limited To'' Table 2 with corrected tables. Also, this AD corrects
+the casting part number. This AD results from reports of applicability errors found in AD 2005-26-
+10. We are issuing this AD to prevent loss of engine power due to cracks in the cylinder assemblies
+and possible engine failure caused by separation of a cylinder head.
+
+DATES: This AD becomes effective July 11, 2006.
+
+ADDRESSES: You may examine the AD docket on the Internet at http://dms.dot.gov or in Room
+PL-401 on the plaza level of the Nassif Building, 400 Seventh Street, SW., Washington, DC.
+
+FOR FURTHER INFORMATION CONTACT: Peter Hakala, Aerospace Engineer, Special
+Certification Office, FAA, Rotorcraft Directorate, 2601 Meacham Blvd., Fort Worth, TX 76193;
+telephone (817) 222-5145; fax (817) 222-5785.
+
+SUPPLEMENTARY INFORMATION: The FAA proposed to amend 14 CFR part 39 with a
+proposed AD. The proposed AD applies to Lycoming Engines models 320, 360, and 540 series,
+''Parallel Valve'' reciprocating engines, with certain ECi cylinder assemblies, P/N AEL65102 series
+''Classic Cast'', installed. We published the proposed AD in the Federal Register on February 24,
+2006 (71 FR 9480). That action proposed to require the same actions as AD 2005-26-10, but would
+
+2
+replace the ''Engine Models'' Table 1 and ''Engines Installed On, But Not Limited To'' Table 2 with
+corrected tables. Also, that action proposed to correct the casting part number.
+
+Examining the AD Docket
+
+ You may examine the docket that contains the AD, any comments received, and any final
+disposition in person at the Docket Management Facility Docket Office between 9 a.m. and 5 p.m.,
+Monday through Friday, except Federal holidays. The Docket Office (telephone (800) 647-5227) is
+located on the plaza level of the Department of Transportation Nassif Building at the street address
+stated in ADDRESSES. Comments will be available in the AD docket shortly after the DMS receives
+them.
+
+Comments
+
+ We provided the public the opportunity to participate in the development of this AD. We have
+considered the comments received.
+
+Request To Change All References to Casting P/N AEL65099
+
+ One commenter requests that we change all references to casting P/N AEL65099 to read ''casting
+head markings EC 65099-REV-1'' to more accurately describe the actual markings. We agree, and
+made the reference changes in the AD.
+
+Request To Explain Another Set of Numbers on the Cylinder
+
+ The same commenter requests that we explain that the set of numbers appearing on the cylinder
+below and to the left of the SN, in the form of ''12345-67'' is not used for determining applicability.
+We agree, and have added a statement to point this out in the AD.
+
+Update to Related Information
+
+ Under paragraph (k), Related Information, we updated the reference to ECi Service Bulletin No.
+05-08, Revision 1, dated December 29, 2005, to Revision 2, dated February 28, 2006.
+
+Conclusion
+
+ We have carefully reviewed the available data, including the comments received, and determined
+that air safety and the public interest require adopting the AD with the changes described previously.
+We have determined that these changes will neither increase the economic burden on any operator
+nor increase the scope of the AD.
+
+Costs of Compliance
+
+ We estimate that 7,557 ECi cylinder assemblies are installed on Lycoming engines in the United
+States. We estimate that it will take about two workhours per engine to perform the aircraft
+inspections of the cylinder assemblies for applicability, and that the average labor rate is $65 per
+workhour. From the Lycoming Engines ''Removal and Installation Labor Allowance Guidebook'',
+dated May 2000, the complete cylinder replacement for a four cylinder engine takes 12 hours, while
+the complete cylinder replacement for a six cylinder engine takes 16 hours. Required parts will cost
+about $1,000 per cylinder assembly. Based on these figures, we estimate that the total cost of the AD
+
+3
+to U.S. operators to be $9,152,140. ECi indicated that they might give operators and repair stations
+credit for returned cylinder assemblies toward the purchase of new ECi cylinder assemblies.
+
+Authority for This Rulemaking
+
+ Title 49 of the United States Code specifies the FAA's authority to issue rules on aviation safety.
+Subtitle I, section 106, describes the authority of the FAA Administrator. Subtitle VII, Aviation
+Programs, describes in more detail the scope of the Agency's authority.
+ We are issuing this rulemaking under the authority described in subtitle VII, part A, subpart III,
+section 44701, ''General requirements.'' Under that section, Congress charges the FAA with
+promoting safe flight of civil aircraft in air commerce by prescribing regulations for practices,
+methods, and procedures the Administrator finds necessary for safety in air commerce. This
+regulation is within the scope of that authority because it addresses an unsafe condition that is likely
+to exist or develop on products identified in this rulemaking action.
+
+Regulatory Findings
+
+ We have determined that this AD will not have federalism implications under Executive Order
+13132. This AD will not have a substantial direct effect on the States, on the relationship between the
+national government and the States, or on the distribution of power and responsibilities among the
+various levels of government.
+ For the reasons discussed above, I certify that this AD:
+ (1) Is not a ''significant regulatory action'' under Executive Order 12866;
+ (2) Is not a ''significant rule'' under DOT Regulatory Policies and Procedures (44 FR 11034,
+February 26, 1979); and
+ (3) Will not have a significant economic impact, positive or negative, on a substantial number of
+small entities under the criteria of the Regulatory Flexibility Act.
+ We prepared a summary of the costs to comply with this AD and placed it in the AD Docket.
+You may get a copy of this summary at the address listed under ADDRESSES.
+
+List of Subjects in 14 CFR Part 39
+
+ Air transportation, Aircraft, Aviation safety, Safety.
+
+Adoption of the Amendment
+
+Accordingly, under the authority delegated to me by the Administrator, the Federal Aviation
+Administration amends 14 CFR part 39 as follows:
+
+PART 39–AIRWORTHINESS DIRECTIVES
+
+1. The authority citation for part 39 continues to read as follows:
+
+ Authority: 49 U.S.C. 106(g), 40113, 44701.
+
+§ 39.13  [Amended]
+
+2. The FAA amends § 39.13 by removing Amendment 39-14431 (70 FR 76385, December 27, 2005),
+and by adding a new airworthiness directive, Amendment 39-14632, to read as follows:
+
+
+4
+
+AIRWORTHINESS DIRECTIVE
+
+
+Aircraft Certification Service
+Washington, DC
+
+
+
+
+
+U.S. Department
+of Transportation
+Federal Aviation
+Administration
+www.faa.gov/aircraft/safety/alerts/
+The following Airworthiness Directive issued by the Federal Aviation Administration in accordance with the provisions of Title 14 of the Code of Federal Regulations (14 CFR) part 39,
+applies to an aircraft model of which our records indicate you may be the registered owner. Airworthiness Directives affect aviation safety and are regulations which require immediate
+attention. You are cautioned that no person may operate an aircraft to which an Airworthiness Directive applies, except in accordance with the requirements of the Airworthiness
+Directive (reference 14 CFR part 39, subpart 39.3).
+
+2006-12-07 Engine Components Incorporated (ECi): Amendment 39-14632. Docket No. FAA-
+2005-22358; Directorate Identifier 2005-NE-20-AD.
+
+Effective Date
+
+ (a) This airworthiness directive (AD) becomes effective July 11, 2006.
+
+Affected ADs
+
+ (b) This AD supersedes 2005-26-10, Amendment 39-14431.
+
+Applicability
+
+ (c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and
+540 series, parallel valve, reciprocating engines:
+ (1) Specified in Table 1 of this AD; and
+ (2) With ECi cylinder assemblies, part number (P/N) AEL65102 series ''Classic Cast'', having
+casting head markings EC 65099-REV-1; and
+ (3) With serial numbers (SNs) 1 through 9879 (SN may have an ''L'' prefix for a long reach spark
+plug), (sold from January 1997 to September 2001) installed.
+ (4) The set of numbers appearing on the cylinder, below and to the left of the SN, in the form of
+''12345-67'' is not used for determining applicability.
+
+TABLE 1.—ENGINE MODELS
+Cylinder head part No. Installed on engine models
+O–320–A1B, A2B, A2C, A2D, A3A, A3B, B2B, B2C, B2D, B2E, B3B,
+B3C, C2B, C2C, C3B, C3C, D1A, D1AD, D1B, D1C, D1D, D1F, D2A,
+D2B, D2C, D2F, D2G, D2H, D2J, D3G, E1A, E1B, E1C, E1F, E1J, E2A,
+E2B, E2C, E2D, E2E, E2F, E2G, E2H, E3D, E3H.
+IO–320–A1A, A2A, B1A, B1B, B1C, B1D, B1E, B2A, D1A, D1AD, D1B,
+D1C, E1A, E1B, E2A, E2B.
+AEIO–320–D1B, D2B, E1A, E1B, E2A, E2B.
+AIO–320–A1A, A1B, A2A, A2B, B1B, C1B.
+AEL65102–NST04
+LIO–320–B1A.
+IO–320–C1A, C1B, C1F, F1A.  AEL65102–NST05
+LIO–320–C1A.
+AEL65102–NST06  O–320–A1A, A2A, A2B, A2C, A3A, A3B, A3C, E1A, E1B, E2A, E2C,
+(also, an O–320 model with no suffix). IO–320–A1A, A2A.
+
+5
+Cylinder head part No. Installed on engine models
+IO–320–B1A, B1B.  AEL65102–NST07
+LIO–320–B1A.
+AEL65102–NST08  O–320–B1A, B1B, B2A, B2B, B3A, B3B, B3C, C1A, C1B, C2A, C2B,
+C3A, C3B, C3C, D1A, D1B, D2A, D2B, D2C.
+O–360–A1A, A1C, A1D, A2A, A2E, A3A, A3D, A4A, B1A, B1B, B2A,
+B2B, C1A, C1C, C1G, C2A, C2B, C2C, C2D, D1A, D2A, D2B.
+IO–360–B1A, B1B, B1C.
+HO–360–A1A, B1A, B1B.
+HIO–360–B1A, B1B.
+AEIO–360–B1B.
+O–540–A1A, A1A5, A1B5, A1C5, A1D, A1D5, A2B, A3D5, A4A5,
+A4B5, A4C5, A4D5, B1A5, B1B5, B1D5, B2A5, B2B5, B2C5, B2C5D,
+B4A5, B4B5, B4B5D, D1A5, E1A, E4A5, E4B5, E4C5, F1A5, F1B5,
+G1A5, G2A5.
+AEL65102–NST10
+IO–540–C1B5, C1C5, C2C, C4B5, C4B5D, C4C5, D4A5, D4B5, N1A5,
+N1A5D.
+O–360–A1A, A1AD, A1D, A1F, A1F6, A1F6D, A1G, A1G6, A1G6D,
+A1H, A1H6, A1J, A1LD, A1P, A2A, A2D, A2F, A2G, A2H, A3A, A3AD,
+A3D, A4A, A4AD, A4D, A4G, A4J, A4JD, A4K, A4M, A4N, A4P,
+A5AD, B1A, B2C, C1A, C1C, C1E, C1F, C1G, C2A, C2B, C2C, C2D,
+C2E, C4F, C4P, D2A, F1A6, G1A6.
+HO–360–C1A.
+LO–360–A1G6D, A1H6.
+HIO–360–B1A, B1B, G1A.
+LTO–360–A1A6D.
+TO–360–A1A6D.
+IO–360–B1B, B1BD, B1D, B1E, B1F, B1F6, B1G6, B2E, B2F, B2F6,
+B4A, E1A, L2A, M1A, M1B.
+AEIO–360–B1B, B1D, B1E, B1F, B1F6, B1G6, B1H, B2F, B2F6, B4A,
+H1A, H1B.
+O–540–A4D5, B2B5, B2C5, B2C5D, B4B5, B4B5D, E4A5, E4B5,
+E4B5D, E4C5, G1A5, G1A5D, G2A5, H1A5, H1A5D, H1B5, H1B5D,
+H2A5, H2A5D, H2B5D.
+IO–540–C4B5, C4B5D, C4D5, C4D5D, D4A5, D4B5, D4C5, N1A5,
+N1A5D, T4A5D, T4B5, T4B5D, T4C5D, V4A5, V4A5D.
+AEL65102–NST12
+AEIO–540–D4A5, D4B5, D4C5, D4D5.
+IO–540–J4A5, R1A5.  AEL65102–NST26
+TIO–540–C1A, E1A, G1A, H1A.
+IO–360–F1A.
+TIO–540–AA1AD, AB1AD, AB1BD, AF1A, AG1A, AK1A, C1A, C1AD,
+K1AD.
+AEL65102–NST38
+LTIO–540–K1AD.
+O–360–J2A.
+O–540–F1B5, J1A5D, J1B5D, J1C5D, J1D5D, J2A5D, J2B5D, J2C5D,
+J2D5D, J3A5, J3A5D, J3C5D.
+AEL65102–NST43
+IO–540–AB1A5, W1A5, W1A5D, W3A5D.
+AEL65102–NST44  O–540–L3C5D.
+
+
+6
+ For information, the subject engines are installed on, but not limited to, the aircraft listed in the
+following Table 2:
+
+TABLE 2.—ENGINES INSTALLED ON, BUT NOT LIMITED TO
+Piper Aircraft: Tri-Pacer (PA–22 "150", PA–22S "150"), Apache (PA–23),
+Pawnee (PA–25).
+Doyn Aircraft: Doyn-Cessna (170, 170A, 170B).
+Mooney Aircraft: Mark (20A).
+Dinfia: Ranquel (1A–46).
+Simmering-Graz Pauker: Flamingo (SGP–M–222).
+Aviamilano: Scricciolo (P–19).
+O–320–A1A
+Vos Helicopter Co.: Spring Bok.
+Piper Aircraft: Tri-Pacer (PA–22 "150", PA–22S "150"), Apache (PA–23).
+Doyn Aircraft: Doyn-Cessna (170, 170A, 170B).
+O–320–A1B
+S.O.C.A.T.A.: Horizon (Gardan).
+Piper Aircraft: Tri-Pacer (PA–22 "150", PA–22S "150"), Agriculture (PA–18A
+"150") Super Cub (PA–18 "150"), Caribbean (PA–22 "150"), Pawnee (PA–25).
+Intermountain Mfg. Co.: Call Air Texas (A–5, A–5T).
+Lake Aircraft: Colonial (C–1).
+Rawdon Bros.: Rawdon (T–1, T–15, T–15D).
+Shinn Engineering: Shinn (2150–A).
+Dinfia: Ranquel (1A–46).
+Neiva: (1PD–5802).
+Sud: Gardan-Horizon (GY–80).
+LaVerda: Falco (F8L Series II, America).
+Malmo: Vipan (MF1–10).
+Kingsford Smith: Autocrat (SCRM–153).
+O–320–A2A
+Aero Commander: 100.
+Piper Aircraft: Tri-Pacer (PA–22 "150", PA–22S "150"), Cherokee (PA–28
+"150"), Super Cub (PA–18 "150").
+Champion Aircraft: Challenger (7GCA, 7GCB, 7KC), Citabria (7GCAA,
+7GCRC), Agriculture (7GCBA).
+Beagle: Pup (150).
+Artic: Interstate S1B2.
+Robinson: R–22.
+O–320–A2B
+Varga: Kachina 2150A.
+Robinson: R–22.
+Cicare: Cicare AG.
+O–320–A2C
+Bellanca Aircraft: Citabria 150 (7GCAA), Citabria 150S (7GCBC).
+O–320–A2D Piper Aircra ft: Apache (PA–23).
+Doyn Aircraft: Doyn-Cessna (170, 170A, 170B).  O–320–A3A
+Corben-Fettes: Globe Special (Globe GC–1B).
+Piper Aircraft: Apache (PA–23).
+Doyn Aircraft: Doyn-Cessna (170, 170A, 170B).
+O–320–A3B
+Teal II: TSC (1A2).
+Piper Aircraft: Apache (PA–23 "160").
+Doyn Aircraft: Doyn-Cessna (170, 170A, 170B).
+O–320–B1A
+Malmo: Vipan (MF1–10).
+Piper Aircraft: Apache (PA–23 "160").  O–320–B1B
+Doyn Aircraft: Doyn-Cessna (170, 170A, 170B)
+
+7
+O–320–B2A Piper Aircraf t: Tri-Pacer (PA–22 "160", PA–22S "160").
+Piper Aircraft: Tri-Pacer (PA–22 "160", PA–22S "160").
+Beagle: Airedale (D5–160).
+Fuji-Heavy Industries: Fuji (F–200).
+O–320–B2B
+Uirapuru: Aerotec 122.
+O–320–B2C Robinson: R–22.
+O–320–B2D Maule: MX–7–160.
+O–320–B2E Lycon.
+Piper Aircraft: Apache (PA–23 "160").  O–320–B3A
+Doyn Aircraft: Doyn-Cessna (170, 170A, 170B).
+Piper Aircraft: Apache (PA–23 "160").
+Doyn Aircraft: Doyn-Cessna (170, 170A, 170B).
+O–320–B3B
+Sud: Gardan (GY80–160).
+Piper Aircraft: Apache (PA–23 "160").  O–320–C1A
+Riley Aircraft: Rayjay (Apache).
+O–320–C1B Piper Aircraft: Apache (PA–23 "160").
+O–320–C3A Piper Aircraft: Apache (PA–23 "160").
+O–320–C3B Piper Aircraft: Apache (PA–23 "160").
+Sud: Gardan (GY–80).
+Gyroflug: Speed Cancard.
+O–320–D1A
+Grob: G115.
+O–320–D1F Slingsby: T67 Firefly.
+Piper Aircraft: Cherokee (PA–28S "160").
+Robin: Major (DR400–140B), Chevalier (DR–360), (R–3140).
+S.O.C.A.T.A.: Tampico TB9.
+Slingsby: T67C Firefly.
+Daetwyler: MD–3–160.
+Nash Aircraft Ltd.: Petrel.
+Aviolight: P66D Delta.
+O–320–D2A
+General Avia: Pinguino.
+Beech Aircraft: Musketeer (M–23).  O–320–D2B
+Piper Aircraft: Cherokee (PA–28 "160").
+O–320–D2J Cessna Aircraft: Skyhawk 172.
+O–320–D3G Piper Aircraft: Warrior II, Cadet (PA–28–161).
+O–320–E1A Grob: G115.
+O–320–E1C M.B.B. (Messerschmitt-Boe lkow-Blohm): Monsun (BO–209–B).
+O–320–E1F M.B.B.: Monsun (BO–209–B).
+Piper Aircraft: Cherokee (PA–28 "140", PA–28 "150").
+Robin: Major (DR–340), Sitar, Bagheera (GY–100–135).
+S.O.C.A.T.A.: Super Rallye (MS–886), Rallye Commodore (MS–892).
+Siai-Marchetti: (S–202).
+F.F.A.: Bravo (AS–202/15).
+Partenavia: Oscar (P66B), Bucker (131 APM).
+Aeromot: Paulistina P–56.
+O–320–E2A
+Pezetel: Koliber 150.
+Beech Aircraft: Musketeer III (M–23III).  O–320–E2C
+M.B.B.: Monsun (BO–209–B).
+O–320–E2D Cessna Aircraft: Cardinal (172–I, 177).
+O–320–E2F M.B.B.: Monsun (BO–209–B), Wassmer Pacific (WA–51).
+O–320–E2G American Aviation Corp.: Traveler.
+
+8
+Piper Aircraft: Cherokee (140).  O–320–E3D
+Beech Aircraft: Sport.
+IO–320–B2A Piper Aircraft: Twin Comanche (PA–30).
+IO–320–B1C Hi. Shear: Wing.
+IO–320–B1D Ted Smith Aircraft: Aerostar.
+IO–320–C1A Piper Aircraft: Twin Comanche (PA–30 Turbo).
+IO–320–D1A M.B.B.: Monsun (BO–209–C).
+IO–320–D1B M.B.B.: Monsun (BO–209–C).
+IO–320–E1A M.B.B.: Monsun (BO–209–C).
+IO–320–E1B Bellanca Aircraft.
+IO–320–E2A Champion Aircraft: Citabria.
+IO–320–E2B Bellanca Aircraft.
+IO–320–F1A CAAR Engineering: Carr Midget.
+LIO–320–B1A Piper Aircraft: Twin Comanche (PA–39).
+LIO–320–C1A Piper Aircraft: Twin Comanche (PA–39).
+AIO–320–B1B M.B.B.: Monsun (BO–209–C).
+AEIO–320–D1B Slingsby: T67M Firefly.
+AEIO–320–D2B Hundustan Aer onautics Ltd.: HT–2.
+Bellanca Aircraft.  AEIO–320–E1A
+Champion Aircraft.
+Bellanca Aircraft.  AEIO–320–E1B
+Champion Aircraft: Decathalon (8KCAB–CS).
+Bellanca Aircraft.  AEIO–320–E2B
+Champion Aircraft: Decathalon (8KCAB).
+O–320–A1A Riley Aircra ft: Riley Twin.
+Beech Aircraft: Travel Air (95, B–95).
+Piper Aircraft: Comanche (PA–24).
+Intermountain Mfg. Co.: Call Air (A–6).
+Lake Aircraft: Colonial (C–2, LA–4, 4A or 4P).
+Doyn Aircraft: Doyn-Cessna (170B, 172, 172A, 172B).
+Mooney Aircraft: Mark "20B"(M–20B).
+Earl Horton: Pawnee (Piper PA–25).
+Dinfia: Ranquel (1A–51).
+Neiva: (1PD–5901).
+Regente: (N–591).
+Wassmer: Super 4 (WA–50A), Sancy (WA–40), Baladou (WA–40), Pariou
+(WA–40).
+Sud: Gardan (GY–180).
+Bolkow: (207).
+Partenavia: Oscar (P–66).
+Siai-Marchetti: (S–205).
+Procaer: Picchio (F–15–A).
+S.A.A.B.: Safir (91–D).
+Malmo: Vipan (MF–10B).
+Aero Boero: AB–180.
+Beagle: Airedale (A–109).
+DeHavilland: Drover (DHA–3MK3).
+Kingsford-Smith: Bushmaster (J5–6).
+O–360–A1A
+Aero Engine Service Ltd.: Victa (R–2).
+O–360–A1AD S.O.C.A.T.A.: Tabago TB–10.
+
+9
+Piper Aircraft: Comanche (PA–24).
+Lake Aircraft: Colonial (LA–4, 4A or 4P).
+Doyn Aircraft: Doyn-Beech (Beech 95).
+Mooney Aircraft: Master "21"(M–20E), Mark "20B", "20D", (M20B, M20C),
+Mooney Statesman (M–20G).
+Dinfia: Querandi (1A–45).
+Wassmer: (WA–50).
+Malmo: Vipan (MF1–10).
+Cessna Aircraft: Skyhawk.
+O–360–A1D
+Doyn Aircraft: Doyn-Piper (PA–23 "160").
+O–360–A1F6 Cessna Aircraft: Cardinal.
+Cessna Aircraft: Cardinal 177.  O–360–A1F6D
+Teal III: TSC (1A3).
+O–360–A1G6 Aero Commander.
+O–360–A1G6D Beech Aircraft: Duchess 76.
+O–360–A1H6 Piper Aircraf t: Seminole (PA–44).
+O–360–A1LD Wassmer: Europa WA–52.
+O–360–A1P Aviat: Husky.
+Center Est Aeronautique: Regente (DR–253).
+S.O.C.A.T.A.: Rallye Commodore (MS–893).
+Societe Aeronautique Normande: Mousquetaire (D–140).
+Bolkow: Klemm (K1–107C).
+Partenavia: Oscar (P–66).
+O–360–A2A
+Beagle: Husky (D5–180) (J1–U).
+Piper Aircraft: Comanche (PA–24), Cherokee "C"(PA–28 "180").  O–360–A2D
+Mooney Aircraft: Master "21"(M–20D), Mark "21"(M–20E).
+O–360–A2E Std. Helicopter.
+Aero Commander: Lark (100).  O–360–A2F
+Cessna Aircraft: Cardinal.
+O–360–A2G Beech Aircraft: Sport.
+C.A.A.R.P.S.A.N.: (M–23III).
+Societe Aeronautique Normande: Jodel (D–140C).
+Robin: Regent (DR400/180), Remorqueur (DR400/180R). R–3170.
+S.O.C.A.T.A.: Rallye 180GT, Sportavia Sportsman (RS–180).
+Norman Aeroplace Co.: NAC–1 Freelance.
+O–360–A3A
+Nash Aircraft Ltd.: Petrel.
+S.O.C.A.T.A.: TB–10.  O–360–A3AD
+Robin: Aiglon (R–1180T).
+O–360–A4A Piper Aircraft: Cherokee "D"(PA–28 "180").
+O–360–A4D Varga: Kachina.
+O–360–A4G Beech Aircraft: Musketeer Custom III.
+Grumman American: Tiger.  O–360–A4K
+Beech Aircraft: Sundowner 180.
+Piper Aircraft: Archer II (PA–28 "18").  O–360–A4M
+Valmet: PIK–23.
+O–360–A4N Cessna Aircra ft: 172 (Optional).
+O–360–A4P Penn Yan: Super Cub Conversion.
+O–360–A5AD C. Itoh and Co.: Fuji FA–200.
+O–360–B2C Seabird Aviation: SB7L.
+O–360–C1A Intermountain Mfg. Co.: Call Air (A–6).
+
+10
+O–360–C1E Bellanca Aircraf t: Scout (8GCBC–CS).
+O–360–C1F Maule: Star Rocket MX–7–180.
+O–360–C1G Christen: Husky (A–1).
+O–360–C2B Hughes Tool Co.: (269A).
+O–360–C2D Hughes Tool Co.: (269A).
+Hughes Tool Co.: (YHO–2HU) Military.  O–360–C2E
+Bellanca Aircraft: Scout (8GCBC FP).
+O–360–C4F Maule: MX–7–180A.
+O–360–C4P Penn Yan: Super Cub Conversion.
+O–360–F1A6 Cessna Aircraft: Cutlass RG.
+O–360–J2A Robinson: R22.
+Beech Aircraft: Travel-Air (B–95A).  IO–360–B1A
+Doyn Aircraft: Doyn-Piper (PA–23 "200").
+Beech Aircraft: Travel-Air (B–95B).
+Doyn Aircraft: Doyn-Piper (PA–23 "200").
+IO–360–B1B
+Fuji: (FA–200).
+IO–360–B1D United Consultants: See-Bee.
+IO–360–B1E Piper Aircraft: Arrow (PA–28 "180R").
+IO–360–B1F Utva: 75.
+IO–360–B2E C.A.A.R.P. C.A.P. (10).
+IO–360–B1F6 Great Lakes: Trainer.
+IO–360–B1G6 American Blimp: Spector 42.
+IO–360–B2F6 Great Lakes: Trainer.
+LO–360–A1G6D Beech Aircraft: Duchess.
+LO–360–A1H6 Piper Aircraf t: Seminole (PA–44).
+IO–360–E1A T.R. Smith Aircraft: Aerostar.
+IO–360–L2A Cessna Aircra ft: Skyhawk C–172.
+IO–360–M1A Diamond Aircraft: DA–40.
+Vans Aircraft: RV6, RV7, RV8  IO–360–M1B
+Lancair: 360.
+F.F.A.: Bravo (200).  AEIO–360–B1F
+Grob: G115/Sport-Acro.
+AEIO–360–B1G6 Great Lakes.
+AEIO–360–B2F Mundry: CAP–10.
+AEIO–360–B4A Pitts: S–1S.
+AEIO–360–H1A Bellanca Aircraft: Super Decathalon (8KCAB–180).
+AEIO–360–H1B American Champion: Super Decathalon.
+VO–360–A1A Brantly Hynes Helicopter: (B–2).
+VO–360–A1B Brantly Hynes Helicopter: (B–2, B2–A). Military (YHO–3BR).
+VO–360–B1A Brantly Hynes Helicopter: (B–2, B2–A).
+IVO–360–A1A Brantly Hynes Helicopter: (B2–B).
+HO–360–B1A Hughes Tool Co.: (269A).
+HO–360–B1B Hughes Tool Co.: (269A).
+HO–360–C1A Schweizer: (300C).
+HIO–360–B1A Hughes Tool Co.: Military (269–A–1) (TH–55A).
+HIO–360–B1B Hughes Tool Co.: (269A).
+HIO–360–G1A Schweizer: (CB).
+O–540–A1A Rhein-Flugzeugbau: (RF–1).
+
+11
+Piper Aircraft: Comanche (PA–24 "180").
+Helio: Military (H–250).
+O–540–A1A5
+Yoeman Aviation: (YA–1).
+O–540–A1B5 Piper Aircraft: Aztec (PA–23 "250"), Comanche (PA–24 "250").
+O–540–A1C5 Piper Aircraft: Comanche (PA–24 "250").
+Found Bros.: (FBA–2C).  O–540–A1D
+Dornier: (DO–28–B1).
+Piper Aircraft: Aztec (PA–23 "250"), Comanche (PA–24 "250"), Military Aztec
+(U–11A).
+O–540–A1D5
+Dornier: (DO–28).
+Aero Commander: (500).  O–540–A2B
+Mid-States Mfg. Co.: Twin Courier (H–500), (U–5).
+O–540–A3D5 Piper Aircraft: Navy Aztec (PA–23 "250").
+O–540–B1A5 Piper Aircraft: Apache (PA–23 "235").
+Piper Aircraft: Comanche (PA–24 "250").  O–540–B1B5
+Doyn Aircraft: Doyn-Piper (PA–24 "250").
+O–540–B1D5 Wassmer: (WA–421).
+Piper Aircraft: Pawnee (PA–25 "235"), Cherokee (PA –28 "235"), Aztec (PA–23
+"235").
+Intermountain Mfg. Co.: Call Air (A–9).
+Rawdon Bros.: Rawdon (T–1).
+O–540–B2B5
+S.O.C.A.T.A.: Rallye 235CA.
+O–540–B2C5 Piper Aircraft: Pawnee (PA–25 "235").
+Piper Aircraft: Cherokee (PA–28 "235").
+Embraer: Corioca (EMB–710).
+S.O.C.A.T.A.: Rallye 235GT, Rallye 235C
+O–540–B4B5
+Maule: Star Rocket (MX–7–235), Super Rocket (M–6–235), Super Std. Rocket
+(M–7–235).
+Piper Aircraft: Comanche (PA–24 "260").
+Aviamilano: Flamingo (F–250).
+O–540–E4A5
+Siai-Marchetti: (SF–260), (SF–208).
+Britten-Norman: (BN–2).  O–540–E4B5
+Piper Aircraft: Cherokee Six (PA–32 "260").
+O–540–E4C5 Pilatus Britten-Norman: Islander (BN–2A–26), Islander (BN–2A–27), Islander II
+(BN–2B–26), Islander (BN–2A–21),Trislander (BN–2A–Mark III–2).
+Omega Aircraft: (BS–12D1).  O–540–F1B5
+Robinson: (R–44).
+O–540–G1A5 Piper Aircraft: Pawnee (PA–25 "260").
+O–540–H1B5D Aero Boero: 260.
+Embraer: Impanema "AG".  O–540–H2A5
+Gippsland: GA–200.
+O–540–H2B5D Aero Boero: 260.
+O–540–J1A5D Maule: Star Rocket (MX–7–235), Super Rocket (M–6–235), Super Std. Rocket
+(M–7–235).
+O–540–J3A5 Robin: R–3000/235.
+O–540–J3A5D Piper Aircraft: Dakota (PA–28–236).
+O–540–J3C5D Cessna Airc raft: Skylane RG.
+O–540–L3C5D Cessna Aircraft: TR–182, Turbo Skylane RG.
+O–540–C1B5 Piper Aircraft: Aztec B (PA–23 "250"), Comanche (PA–24 "250").
+IO–540–C1C5 Riley Aircra ft: Turbo-Rocket.
+
+12
+Piper Aircraft: Aztec C (PA–23 "250"), Aztec F.
+Wassmer: (WA–421).
+Avions Pierre Robin: (HR100/250).
+Bellanca Aircraft: Aries T–250.
+IO–540–C4B5
+Aerofab: Renegade 250.
+IO–540–C4D5 S.O.C.A.T.A.: TB–20.
+IO–540–C4D5D S.O.C.A.T.A.: Trinidad TB–20.
+Piper Aircraft: Comanche (PA–24 "260").  IO–540–D4A5
+Siai-Marchetti: (SF–260).
+IO–540–D4B5 Cerva: (CE–43 Guepard).
+IO–540–J4A5 Piper Aircraft: Aztec (PA–23 "250").
+IO–540–R1A5 Piper Aircraf t: Comanche (PA–24).
+IO–540–T4A5D General Aviation: Model 114.
+IO–540–T4B5 Commander: 114B.
+IO–540–T4B5D Rockwell: 114.
+IO–540–T4C5D Lake Aircraft: Seawolf.
+Maule: MT–7–260, M–7–260.  IO–540–V4A5
+Aircraft Manufacturing Factory.
+IO–540–V4A5D Brooklands: Scoutmaster.
+IO–540–W1A5 Maule: MX–7–235, MT–7–235, M7–235.
+IO–540–W1A5D Maule: Star Ro cket (MX–7–235), Super Rocket (M–6–235), Super Std. Rocket
+(M–7–235).
+IO–540–W3A5D Schweizer: Power Glider.
+Christen: Pitts (S–2S), (S–2B).
+Siai-Marchetti: SF–260.
+H.A.L.: HPT–32.
+AEIO–540–D4A5
+Slingsby: Firefly T3A.
+Moravan: Zlin-50L.  AEIO–540–D4B5
+H.A.L.: HPT–32.
+AEIO–540–D4D5 Burkhart Grob: Grob G, 115T Aero.
+TIO–540–C1A Piper Aircraft: Turbo Aztec (PA–23–250).
+TIO–540–K1AD Piper Aircraft.
+TIO–540–AA1AD Aerofab Inc.: Turbo Renegade (270).
+TIO–540–AB1AD S.O.C.A.T.A. : Trinidad TC TB–21.
+TIO–540–AB1BD Schweizer.
+TIO–540–AF1A Mooney Aircraft: "TLS"M20M.
+TIO–540–AG1A Commander Aircraft: 114TC.
+TIO–540–AK1A Cessna Aircraft: Turbo Skylane T182T.
+LTIO–540–K1AD Piper Aircraft.
+
+Unsafe Condition
+
+ (d) This AD results from reports of applicability errors found in AD 2005-26-10. We are issuing
+this AD to prevent loss of engine power due to cracks in the cylinder assemblies and possible engine
+failure caused by separation of a cylinder head.
+
+
+13
+Compliance
+
+ (e) You are responsible for having the actions required by this AD performed within the
+compliance times specified unless the actions have already been done.
+
+Engines Not Overhauled or Repaired Since New
+
+ (f) If your engine has not been overhauled or had any major repair since new, no further action is
+required.
+
+Engines Overhauled or Repaired Since New
+
+ (g) If your engine was overhauled or repaired since new, do the following:
+ (1) Determine if ECi cylinder assemblies, P/N AEL65102 series ''Classic Cast'', having casting
+head markings EC 65099-REV-1 and SNs 1 through 9879 (SN may have an ''L'' prefix for a long
+reach spark plug) are installed on your engine, as follows:
+ (i) Inspect the engine log books and maintenance records for reference to the subject ECi
+cylinder assemblies.
+ (ii) If the engine log books and maintenance records did not record the P/N and SN of the
+cylinder assemblies, visually inspect the cylinder assemblies and verify the P/N and SN of the
+cylinder assemblies.
+ (2) If the cylinder assemblies are not ECi, P/N AEL65102 series ''Classic Cast'', having casting
+head markings EC 65099-REV-1, no further action is required.
+ (3) If any cylinder assembly is an ECi P/N AEL65102 series ''Classic Cast'', having casting head
+markings EC 65099-REV-1 and a SN 1 through 9879 (SN may have an ''L'' prefix for a long reach
+spark plug), do the following:
+ (i) If the cylinder assembly has fewer than 800 operating hours-in-service (HIS) on the effective
+date of this AD, replace the cylinder assembly at no later than 800 operating HIS. No action is
+required until the operating HIS reaches 800 hours.
+ (ii) If the cylinder assembly has 800 operating HIS or more on the effective date of this AD,
+replace the cylinder assembly within 60 operating HIS after the effective date of this AD.
+
+Definition of a Replacement Cylinder Assembly
+
+ (h) For the purpose of this AD, a replacement cylinder assembly is defined as follows:
+ (1) A serviceable cylinder assembly made by Lycoming Engines.
+ (2) A serviceable FAA-approved, Parts Manufacturer Approval cylinder assembly from another
+manufacturer.
+ (3) A serviceable ECi cylinder assembly, P/N AEL65102 series, ''Titan'', having casting P/N
+AEL85099.
+ (4) A serviceable ECi cylinder assembly, P/N AEL65102 series ''Classic Cast'', having casting
+head markings EC 65099-REV-1, that has a SN 9880 or higher (SN may have an ''L'' prefix for a long
+reach spark plug).
+
+Prohibition of Cylinder Assemblies, P/N AEL65102 Series ''Classic Cast'', Having Casting
+Head Markings EC 65099-REV-1 and SNs 1 Through 9879
+
+ (i) After the effective date of this AD, do not install any ECi cylinder assembly, P/N AEL65102,
+having casting head markings EC 65099-REV-1 that has a SN 1 through 9879 (SN may have an ''L''
+prefix for a long reach spark plug), onto any engine.
+
+
+14
+Alternative Methods of Compliance
+
+ (j) The Manager, Special Certification Office, has the authority to approve alternative methods of
+compliance for this AD if requested using the procedures found in 14 CFR 39.19.
+
+Related Information
+
+ (k) ECi Service Bulletin No. 05-08, Revision 2, dated February 28, 2006, pertains to the subject
+of this AD.
+
+ Issued in Burlington, Massachusetts, on May 31, 2006.
+Thomas A. Boudreau,
+Acting Manager, Engine and Propeller Directorate, Aircraft Certification Service.
+[FR Doc. 06-5127 Filed 6-5-06; 8:45 am]
+BILLING CODE 4910-13-P

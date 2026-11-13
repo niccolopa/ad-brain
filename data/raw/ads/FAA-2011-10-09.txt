@@ -1,0 +1,645 @@
+[Federal Register Volume 76, Number 93 (Friday, May 13, 2011)]
+[Rules and Regulations]
+[Pages 27865-27872]
+From the Federal Register Online via the Government Publishing Office [www.gpo.gov]
+[FR Doc No: 2011-10988]
+
+
+-----------------------------------------------------------------------
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2010-1101; Directorate Identifier 2009-CE-013-AD; 
+Amendment 39-16690; AD 2011-10-09]
+RIN 2120-AA64
+
+
+Airworthiness Directives; Cessna Aircraft Company Models 150, 
+152, 170, 172, 175, 177, 180, 182, 185, 188, 190, 195, 206, 207, 210, 
+T303, 336, and 337 Airplanes
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Final rule.
+
+-----------------------------------------------------------------------
+
+SUMMARY: We are superseding an existing airworthiness directive (AD) 
+for Cessna Aircraft Company (Cessna) 150, 152, 170, 172, 175, 177, 180, 
+182, 185, 188, 190, 195, 206, 207, 210, T303, 336, and 337 series 
+airplanes. That AD currently requires repetitive inspections and 
+replacement of parts, if necessary,
+
+[[Page 27866]]
+
+of the seat rail and seat rail holes; seat pin engagement; seat 
+rollers, washers, and axle bolts or bushings; wall thickness of roller 
+housing and the tang; and lock pin springs. This new AD requires 
+retaining all of the actions from the previous AD and adding steps to 
+the inspection procedures in the previous AD. This AD was prompted by 
+added steps to the inspection procedures, added revised figures, and 
+clarification of some of the existing steps. We are issuing this AD to 
+prevent seat slippage or the seat roller housing from departing the 
+seat rail, which may consequently cause the pilot/copilot to be unable 
+to reach all the controls. This failure could lead to the pilot/copilot 
+losing control of the airplane.
+
+DATES: This AD is effective June 17, 2011.
+
+Examining the AD Docket
+
+    You may examine the AD docket on the Internet at http://www.regulations.gov; or in person at the Docket Management Facility 
+between 9 a.m. and 5 p.m., Monday through Friday, except Federal 
+holidays. The AD docket contains this AD, the regulatory evaluation, 
+any comments received, and other information. The address for the 
+Docket Office (phone: 800-647-5527) is Document Management Facility, 
+U.S. Department of Transportation, Docket Operations, M-30, West 
+Building Ground Floor, Room W12-140, 1200 New Jersey Avenue, SE., 
+Washington, DC 20590.
+
+FOR FURTHER INFORMATION CONTACT: Gary Park, Aerospace Engineer, ACE-
+118W, Wichita Aircraft Certification Office (ACO), 1801 Airport Road, 
+Room 100, Wichita, Kansas 67209; telephone: (316) 946-4123; fax: (316) 
+946-4107; e-mail: gary.park@faa.gov.
+
+SUPPLEMENTARY INFORMATION:
+
+Discussion
+
+    We issued a notice of proposed rulemaking (NPRM) to amend 14 CFR 
+part 39 to supersede airworthiness directive (AD) 87-20-03 R2, 
+Amendment 39-6669 (55 FR 36264, September 5, 1990; published as Docket 
+No. 86-CE-71-AD, Amdt. 39-6669). That AD applies to the specified 
+products. AD 87-20-03 R2 requires repetitive inspections and 
+replacement of parts, if necessary, of the seat rail and seat rail 
+holes; seat pin engagement; seat rollers, washers, and axle bolts or 
+bushings; wall thickness of roller housing and the tang; and lock pin 
+springs. The NPRM published in the Federal Register on November 8, 2010 
+(75 FR 68543). That NPRM proposed to retain all of the actions from the 
+previous AD and add steps to the inspection procedures in the previous 
+AD.
+    The additional steps involve inspections of the tang thickness and 
+length on the seat roller housing. We also provided improved graphics 
+for inspecting seat track hole wear and for inspecting proper seat lock 
+pin engagement depth. We itemized the steps, in sequence, to provide 
+clearer guidance for the inspector to do the inspections.
+
+Comments
+
+    We gave the public the opportunity to participate in developing 
+this AD. The following presents the comments received on the proposal 
+and the FAA's response to each comment.
+
+Request Change to Compliance Time
+
+    D.A., Ken Anderson, Don Barley, Timothy J. Berg, Joseph Carter, 
+Gary W. Cleveland, Clifford Coy, Al Dyer, John M. Efinger, Greg Felton, 
+Berry Gablin, Howard Greenberg, Steve James, Richard Koril, Michael 
+Minton, Dustin J. Radford, Marc Stancy, Charles L. Trunck, and Walter 
+Wasowski requested we change the inspection compliance time to annual 
+inspections. They think that 100-hour time-in-service inspections are 
+an excessive burden on manpower and an added expense with little 
+benefit in safety. They also think the frequent inspections would be 
+difficult to monitor.
+    We disagree with this comment. The unsafe condition of excessive 
+wear results from usage, not calendar time. The more an airplane is 
+used, the more likely wear will develop, causing an unsafe condition. 
+Parts cost will not be incurred unless the inspection results require 
+parts replacement. FAA regulations require posting compliance to ADs in 
+the aircraft logbook. The maintainer should record compliance with this 
+AD, which includes the 100-hour inspections, in the aircraft logbook.
+    We have not changed this final rule AD action based on this 
+comment.
+
+Request Change to Applicability Based on Secondary Seat Stops
+
+    Joseph Carter, Greg Felton, Donald L. Griffith, and Richard M. 
+Warner requested we change the applicability based on the installation 
+of inertial reel secondary seat stops. They think that if the primary 
+seat lock fails and the seat slips, the secondary seat stops provide 
+additional safety.
+    We partially agree with this comment. We agree that the secondary 
+seat stop provides additional safety for seat slippage. However, we 
+disagree that secondary seat stops provide adequate safety for the 
+unsafe condition associated with this AD action. The secondary seat 
+stops may be installed only on one side of the airplane, so the pilot 
+could occupy a seat without a secondary seat stop. Also, secondary seat 
+stops will not prevent the seat from lifting off the seat track.
+    We have not changed this final rule AD action based on this 
+comment.
+
+Request To Remove Models 150, 152, and 188 From Applicability
+
+    Mark Stancy requested we remove Cessna Models 150, 152, and 188 
+from the airplane Applicability. He thinks the seat travel for those 
+models is too limited to justify this AD even if the locking pin were 
+to slip.
+    We disagree with this comment. Even a limited seat travel could 
+affect short pilots' ability to reach the controls if the seat slips 
+backwards due to failure of the seat system. This AD action not only 
+requires inspections to prevent seat slippage but also requires 
+inspections to prevent the seat from lifting off the seat track.
+    We have not changed this final rule AD action based on this 
+comment.
+
+Request Withdrawal of Proposed AD Action
+
+    David Abler, Brian A. Andrus, James Barbee, Timothy J. Berg, Al 
+Dyer, John M. Efinger, Berry Gamblin, Donald L. Giffith, Michael 
+Minton, Robert J. Pasch, Dustin J. Radford, Charles L. Trunck, and 
+Walter Wasowski requested we withdraw the proposed AD action because 
+they think it adds no additional safety than AD 87-20-03 R2.
+    We disagree with this comment. This AD action provides additional 
+measurements in the inspections, more clarity in the descriptions of 
+the required inspections, and provides improved graphics. Inadvertent 
+seat movement continues to be reported. Also, we received a report of a 
+seat separating from the seat track due to wear of the seat roller 
+housing tangs.
+    We have not changed this final rule AD action based on this 
+comment.
+
+Request Additional Inspection With Diagrams
+
+    One commenter requested we add an inspection of the seat stop with 
+diagrams showing potential damage because if the integrity of the seat 
+stop is retained, seat slippage will not occur. The commenter also 
+requested we not allow repair to the seat roller housing.
+    We partially agree with this comment. We agree the seat stop should 
+prevent seat slippage; however, other failure modes can cause seat 
+slippage even with a functional seat stop. Providing
+
+[[Page 27867]]
+
+diagrams of possible damage to the seat stop area will not sufficiently 
+eliminate the safety issue. Service history has shown that wear and 
+damage to the seat installation components must be addressed. This AD 
+action provides clarification to the inspections for those components.
+    We have not changed this final rule AD action based on this 
+comment.
+
+Request an Additional Measurement to the Inspection
+
+    Dave McFarlane requested we add a maximum allowable incremental 
+0.07-inch radius dimension to figure 1 at the outside diameter 
+dimensions for clarification.
+    We disagree with this comment. The measurement dimensions in figure 
+1 adequately address the measurements necessary for this AD. Additional 
+measurements will not provide any additional benefit.
+    We have not changed this final rule AD action based on this 
+comment.
+
+Request Changing Compliance Based on Frequency of Seat Movement
+
+    Joseph Carter requested we change the compliance time for the 
+inspection for seats that are moved infrequently because they would not 
+experience the same amount of wear on the seat components.
+    We disagree with this comment. Inspectors would not be able to 
+determine the frequency seat movement.
+    We have not changed this final rule AD action based on this 
+comment.
+
+Request Change to the Measurement of the Tangs
+
+    Brian A. Andrus, Jim Currie, and Jerry Unruh requested we change 
+the tang measurement to the outside of the seat roller housing and 
+change the description of the tang measurement. This change would make 
+it easier for the inspector to take the measurement and to better 
+understand what is being measured.
+    We agree with this comment. We agree that measuring the tang length 
+inside of the roller housing is difficult because of the presence of 
+the rollers inside of the roller housing.
+    We have changed the callouts in figure 4 to measure the tang length 
+from outside of the roller housing instead of from inside of the roller 
+housing. We have also changed the description of the tang measurement 
+in figure 4 to more accurately describe the measurement.
+
+Request Detailed Description of Changes From AD 87-20-03 R2
+
+    Robert J. Pasch requested we better describe the changes or added 
+steps to the inspections from AD 87-20-03 R2 so the owner/operator can 
+better understand the requirements of this new AD action.
+    We agree with this comment. We retained all of the actions from the 
+previous AD and added steps to the inspection. This AD action must be 
+complied with in its entirety, not just the added steps. This AD action 
+includes better descriptions and graphics for the mechanic to follow 
+when complying with this AD. We have added language to the Discussion 
+section describing in more detail the changes we made in this 
+superseding AD action.
+
+Request Different Requirements for New Seat Rail Installations
+
+    Howard Greenberg requested different requirements for new seat rail 
+installations.
+    We disagree with this comment. Documentation positively identifying 
+that all seat assemblies and associated parts were replaced would be 
+difficult to obtain. If documentation positively identifying 
+replacement of the seat assemblies and associated parts can be found, 
+the FAA will consider any applications we receive for an alternative 
+method of compliance to extend the compliance time for the initial 
+inspection.
+    We have not changed this final rule AD action based on this 
+comments.
+
+Request Training on Proper Seat Operation Instead of AD
+
+    David Abler, Ken Anderson, and Timothy J. Berg requested we provide 
+a means to educate the pilots on proper operation of the seats rather 
+than take AD action.
+    We disagree with this comment. Wear and damage can occur, which may 
+not be visibly recognizable by the pilot, and may cause the seat to 
+slip even after proper engagement of the locking pin. In addition, many 
+sources exist to educate those involved about this unsafe condition, 
+including Advisory Circular 43-16A, Aviation Maintenance Alerts, found 
+on the Internet at http://rgl.faa.gov/Regulatory_and_Guidance_Library/rgAdvisoryCircular.nsf/Frameset?OpenPage; Special Aviation 
+Information Bulletin, SAIB CE-09-10, Availability of Secondary Seat 
+Stops for Pilot and Copilot Seats found on the Internet at http://rgl.faa.gov/Regulatory_and_Guidance_Library/rgSAIB.nsf/Frameset?OpenPage; Safety Alerts for Operators, SAFO 10016, Missing or 
+Improper Seat Stops in Cessna Models found on the Internet at http://www.faa.gov/other_visit/aviation_industry/airline_operators/airline_safety/safo/all_safos/; and other related articles in Cessna 
+Pilots Association Magazine. In spite of the sources of information 
+regarding the necessity for proper maintenance and proper operations of 
+the seats, inadvertent seat movement continues to be a safety issue.
+    We have not changed this final rule AD action based on this 
+comment.
+
+Request Requiring Reinspection After Repair or Replacement of Parts
+
+    An anonymous commenter requested we require verifying the seat stop 
+pin engagement still meets the 0.150 inch criteria after replacement of 
+parts as a result of any of the required inspections.
+    We disagree with this comment. The intent of this inspection is to 
+detect wear or deformation. Any part used as a replacement part must be 
+serviceable and not show signs of wear or deformation. Also, this 
+inspection is a repetitive inspection at intervals not to exceed every 
+100 hours time-in-service.
+    We have not changed the final rule AD action based on this comment.
+
+Agreement With AD Action
+
+    John M. Conti agrees with this AD action. He states the added 
+procedures and criteria are good and must be done during annual 
+inspections so the extra detail is a small price to pay that will 
+further reduce this risk.
+    We have not changed this final rule AD action based on this 
+comment.
+
+Conclusion
+
+    We reviewed the relevant data, considered the comments received, 
+and determined that air safety and the public interest require adopting 
+the AD with the change described previously to change the tang length 
+measurement location to outside of the seat roller housing and minor 
+editorial changes. We have determined that these minor changes:
+     Are consistent with the intent that was proposed in the 
+NPRM for correcting the unsafe condition; and
+     Do not add any additional burden upon the public than was 
+already proposed in the NPRM.
+    We also determined that these changes will not increase the 
+economic burden on any operator or increase the scope of the AD.
+
+Costs of Compliance
+
+    We estimate that this AD will affect 36,000 airplanes in the U.S. 
+registry.
+    The estimated total cost on U.S. operators includes the cumulative 
+costs associated with AD 87-20-03 R2. The required actions of this AD 
+are the same
+
+[[Page 27868]]
+
+as in AD 87-20-03 R2 with the exception of some added steps to the 
+inspection, which do not increase work-hours. The increased estimated 
+cost of this AD is due to increased labor cost and parts cost from 1987 
+when AD 87-20-03 R2 was issued.
+    We estimate the following costs to comply with this AD:
+
+                                                 Estimated Costs
+----------------------------------------------------------------------------------------------------------------
+                                                                                    Cost per       Cost on U.S.
+            Action                  Labor cost              Parts cost              product         operators
+----------------------------------------------------------------------------------------------------------------
+Inspections of the seat roller  1 work-hour x $85  Not applicable.............             $85       $3,060,000
+ housings and seat rail.         per hour = $85.
+----------------------------------------------------------------------------------------------------------------
+
+    We estimate the following costs to do any necessary replacements 
+that would be required based on the results of the inspections. We have 
+no way of determining the number of aircraft that might need these 
+replacements:
+
+                                               On-Condition Costs
+----------------------------------------------------------------------------------------------------------------
+                                                                                                     Cost per
+               Action                        Labor cost                    Parts cost                 product
+----------------------------------------------------------------------------------------------------------------
+Replace seat rail...................  2 work-hours x $85 per   $225 per rail....................            $395
+                                       hour = $170 per rail.
+Replace seat roller kit.............  2 work-hours per seat    $110.............................             280
+                                       (less per leg) x $85
+                                       per hour = $170.
+Replace miscellaneous parts, such as  1 work-hour per seat x   $15..............................             100
+ seat rollers, washers, bushings,      $85 per hour = $85.
+ bolts, lock pin springs, etc.
+----------------------------------------------------------------------------------------------------------------
+
+Authority for This Rulemaking
+
+    Title 49 of the United States Code specifies the FAA's authority to 
+issue rules on aviation safety. Subtitle I, section 106, describes the 
+authority of the FAA Administrator. Subtitle VII, Aviation Programs, 
+describes in more detail the scope of the Agency's authority.
+    We are issuing this rulemaking under the authority described in 
+subtitle VII, part A, subpart III, section 44701, ``General 
+requirements.'' Under that section, Congress charges the FAA with 
+promoting safe flight of civil aircraft in air commerce by prescribing 
+regulations for practices, methods, and procedures the Administrator 
+finds necessary for safety in air commerce. This regulation is within 
+the scope of that authority because it addresses an unsafe condition 
+that is likely to exist or develop on products identified in this 
+rulemaking action.
+
+Regulatory Findings
+
+    We have determined that this AD will not have federalism 
+implications under Executive Order 13132. This AD will not have a 
+substantial direct effect on the States, on the relationship between 
+the national government and the States, or on the distribution of power 
+and responsibilities among the various levels of government.
+    For the reasons discussed above, I certify that this AD:
+    (1) Is not a ``significant regulatory action'' under Executive 
+Order 12866,
+    (2) Is not a ``significant rule'' under DOT Regulatory Policies and 
+Procedures (44 FR 11034, February 26, 1979),
+    (3) Will not affect intrastate aviation in Alaska, and
+    (4) Will not have a significant economic impact, positive or 
+negative, on a substantial number of small entities under the criteria 
+of the Regulatory Flexibility Act.
+
+List of Subjects in 14 CFR Part 39
+
+    Air transportation, Aircraft, Aviation safety, Safety.
+
+Adoption of the Amendment
+
+    Accordingly, under the authority delegated to me by the 
+Administrator, the FAA amends 14 CFR part 39 as follows:
+
+PART 39--AIRWORTHINESS DIRECTIVES
+
+0
+1. The authority citation for part 39 continues to read as follows:
+
+    Authority: 49 U.S.C. 106(g), 40113, 44701.
+
+
+Sec.  39.13  [Amended]
+
+0
+2. The FAA amends Sec.  39.13 by removing airworthiness directive (AD) 
+87-20-03 R2, Amendment 39-39-6669 (55 FR 36264, September 5, 1990; 
+published as Docket No. 86-CE-71-AD, Amdt. 39-6669), and adding the 
+following new AD:
+
+2011-10-09 Cessna Aircraft Company: Amendment 39-16690; Docket No. 
+FAA-2010-1101; Directorate Identifier 2009-CE-013-AD.
+
+Effective Date
+
+    (a) This airworthiness directive (AD) is effective June 17, 
+2011.
+
+Affected ADs
+
+    (b) This AD supersedes AD 87-20-03 R2, Amendment 39-6669.
+
+Applicability
+
+    (c) This AD applies to all serial numbers of the following 
+Cessna Aircraft Company (Cessna) Models that are certificated in any 
+category:
+
+------------------------------------------------------------------------
+                                 Models
+-------------------------------------------------------------------------
+(1) 150A, 150B, 150C, 150D, 150E, 150F, 150G, 150H, 150J, 150K, 150L,
+ 150M, A150K, A150L, A150M, F150F, F150G, F150H, F150J, F150K, F150L,
+ F150M, FA150K, FA150L, FA150M, FRA150L, and FRA150M.
+(2) 152, A152, F152, and FA152.
+(3) 170, 170A, and 170B.
+
+[[Page 27869]]
+
+ 
+(4) 172, 172A, 172B, 172C, 172D, 172E, 172F (USAF T-41A), 172G, 172H
+ (USAF T-41A), 172I, 172K, 172L, 172M, 172N, 172P, 172Q, 172RG, F172D,
+ F172E, F172F, F172G, F172H, F172K, F172L, F172M, F172N, F172P, FR172E,
+ FR172F, FR172G, FR172H, FR172J, FR172K, P172D, R172E (USAF T[dash]41B)
+ (USAF T-41C and D), R172F (USAF T-41D), R172G (USAF T-41C or D), R172H
+ (USAF T-41D), R172J, and R172K.
+(5) 175, 175A, 175B, and 175C.
+(6) 177, 177A, 177B, 177RG, and F177RG.
+(7) 180, 180A, 180B, 180C, 180D, 180E, 180F, 180G, 180H, 180J, and 180K.
+(8) 182, 182A, 182B, 182C, 182D, 182E, 182F, 182G, 182H, 182J, 182K,
+ 182L, 182M, 182N, 182P, 182Q, 182R, F182P, F182Q, FR182, R182, T182,
+ and TR182.
+(9) 185, 185A, 185B, 185C, 185D, 185E, A185E, and A185F.
+(10) 188, 188A, A188, A188A, 188B, A188B, and T188C.
+(11) 190.
+(12) 195, 195A, and 195B.
+(13) 206, P206, P206A, P206B, P206C, P206D, P206E, TP206A, TP206B,
+ TP206C, TP206D, TP206E, TU206A, TU206B, TU206C, TU206D, TU206E, TU206F,
+ TU206G, U206, U206A, U206B, U206C, U206D, U206E, U206F, and U206G.
+(14) 207, 207A, T207, and T207A.
+(15) 210, 210-5 (205), 210-5A (205A), 210A, 210B, 210C, 210D, 210E,
+ 210F, 210G, 210H, 210J, 210K, 210L, 210M, 210N, 210R, P210N, P210R,
+ T210F, T210G, T210H, T210J, T210K, T210L, T210M, T210N, and T210R.
+(16) T303.
+(17) 336.
+(18) 337, 337A, 337B, 337C, 337D, 337E, 337F, 337G, 337H, F337E, F337F,
+ F337G, F337H, FT337E, FT337F, FT337GP, FT337HP, M337B, P337H, T337B,
+ T337C, T337D, T337E, T337F, T337G, T337H, and T337H-SP.
+------------------------------------------------------------------------
+
+Subject
+
+    (d) Joint Aircraft System Component (JASC)/Air Transport 
+Association (ATA) of America Code 51; Standard Practices Structures.
+
+Unsafe Condition
+
+    (e) This AD was prompted by reports of seats slipping on the 
+rails where the primary latch pin for the pilot/copilot seat is not 
+properly engaged in the seat rail/track and reports of the seat 
+roller housing departing the seat rail. We are issuing this AD to 
+prevent seat slippage or the seat roller housing from departing the 
+seat rail, which may consequently cause the pilot/copilot to be 
+unable to reach all the controls. This failure could lead to the 
+pilot/copilot losing control of the airplane.
+
+Compliance
+
+    (f) Comply with this AD within the compliance times specified, 
+unless already done.
+
+Actions
+
+    (g) For all airplanes, to address the unsafe condition described 
+in paragraph (e) of this AD, you must do the following actions on 
+the seat rails; seat rollers, washers, and axle bolts or bushings; 
+seat roller housings and the tangs; and lock pin springs, unless 
+already done, initially within the next 100 hours time-in-service 
+(TIS) after the last inspection done following AD 87-20-03 R2 or 
+within the next 12 calendar months after the effective date of this 
+AD, whichever occurs first. Repetitively thereafter do the actions 
+at intervals not to exceed every 100 hours TIS or every 12 months, 
+whichever occurs first:
+    (1) Visually inspect the pilot and copilot seat rails for dirt 
+and debris that may prevent engagement of the seat locking pins. 
+Before further flight, after any inspection where dirt or debris is 
+found, remove the dirt or debris found.
+    (2) Remove the seat from the seat rail.
+    (i) Remove the seat stops.
+    (ii) Disengage seat belt/shoulder harness from the seat, if 
+necessary.
+    (iii) Raise vertical adjusting seats to maximum height.
+    (iv) Hold seat latches disengaged and slide the seat forward and 
+aft to disengage rollers.
+    (v) Lift the seat out of the airplane.
+    (3) Inspect the diameter of each seat locking pin engagement 
+hole in the pilot and copilot seat rails for excessive wear. Due to 
+wear on the rail surface at the hole opening, we allow this 
+measurement 0.020 of an inch below the surface of the rail. You must 
+take this measurement somewhere between the surface of the rail or 
+no more than 0.020 of an inch below the surface of the rail.
+    (i) If the diameter of any of the holes is 0.42 of an inch or 
+more (see figure 1), before further flight, replace the rail.
+
+[[Page 27870]]
+
+[GRAPHIC] [TIFF OMITTED] TR13MY11.002
+
+BILLING CODE 4910-13-C
+    (ii) Rail replacement does not terminate the repetitive actions 
+required in paragraph (g) of this AD.
+    (4) Visually inspect the seat rollers for flat spots and inspect 
+the rollers and washers for binding. Assure all rollers and washers, 
+which are meant to rotate, turn freely on their axles (or bushings 
+if installed).
+    (i) Before further flight, replace any rollers with flat spots 
+and any worn washers.
+    (ii) Before further flight, remove and clean the parts if there 
+is any binding between the bores of the rollers, washers, or axles.
+    (iii) Do not lubricate the rollers, washers, or axles because 
+the lubricant will attract dust and other particles that may cause 
+binding.
+    (5) Inspect the thickness of the tang (see figure 2 and figure 
+3). Due to wear of the tang chafing against the seat rail, measure 
+the tang thickness where the tang inner edges contact the seat rail.
+    (i) If the tang thickness measures less than 0.05 of an inch, 
+before further flight replace the roller housing.
+    (ii) Replacement of the roller housing does not terminate the 
+repetitive actions required in paragraph (g) of this AD.
+
+[[Page 27871]]
+
+[GRAPHIC] [TIFF OMITTED] TR13MY11.003
+
+    (6) Due to wear or deformation of the tangs, inspect the tang 
+length from the inner edge of the tang to the outer edge (the bend 
+area) of the roller housing (see figure 4).
+[GRAPHIC] [TIFF OMITTED] TR13MY11.004
+
+    (i) The minimum measurement allowed for the remaining tang 
+length is 0.230 inches remaining on either of the tangs, from the 
+inner edge of the tang to the outer edge (the bend area) of the 
+roller housing. If the measurement is less than 0.230 inches on 
+either of the tangs, before further flight, replace the roller 
+housing.
+    (ii) Replacement of the roller housing does not terminate the 
+repetitive actions required in paragraph (g) of this AD.
+    (7) Inspect the springs that keep the lock pins in position in 
+the rail holes for positive engagement action. Before further 
+flight, replace any spring that does not provide positive 
+engagement.
+    (8) Visually inspect the seat rails for cracks.
+    (i) If there are seat rail cracks that exceed the crack criteria 
+in figure 5, before further flight, replace the seat rail.
+    (ii) Replacement of the seat rail does not terminate the 
+repetitive actions required in paragraph (g) of this AD.
+
+[[Page 27872]]
+
+[GRAPHIC] [TIFF OMITTED] TR13MY11.005
+
+    (9) Reinstall the seat on the seat rail.
+    (i) Lift the seat into the airplane and place on the seat rail.
+    (ii) Hold seat latches disengaged and slide the seat aft and 
+then forward to re-engage rollers.
+    (iii) Lower vertical adjusting seats to a comfortable height.
+    (iv) Reattach seat belt/shoulder harness to the seat, if 
+previously attached to the seat.
+    (v) Reinstall the seat stops.
+    (10) Lift up the forward edge of each seat to eliminate vertical 
+play of the seat locking pin in the engagement hole, and from this 
+position, inspect the depth of engagement of each seat locking pin 
+(see figure 2). If the rail is worn, this depth is measured from the 
+worn surface, not the manufactured surface.
+    (i) If engagement of any of the seat locking pins measures less 
+than 0.15 of an inch, before further flight, replace or repair any 
+seat components necessary to achieve a seat pin engagement of a 
+minimum of 0.15 of an inch.
+    (ii) Repair or replacement of necessary seat components does not 
+terminate the repetitive actions required in paragraph (g) of this 
+AD.
+
+Paperwork Reduction Act Burden Statement
+
+    (h) A federal agency may not conduct or sponsor, and a person is 
+not required to respond to, nor shall a person be subject to a 
+penalty for failure to comply with a collection of information 
+subject to the requirements of the Paperwork Reduction Act unless 
+that collection of information displays a current valid OMB Control 
+Number. The OMB Control Number for this information collection is 
+2120-0056. Public reporting for this collection of information is 
+estimated to be approximately 5 minutes per response, including the 
+time for reviewing instructions, completing and reviewing the 
+collection of information. All responses to this collection of 
+information are mandatory. Comments concerning the accuracy of this 
+burden and suggestions for reducing the burden should be directed to 
+the FAA at: 800 Independence Ave., SW., Washington, DC 20591, Attn: 
+Information Collection Clearance Officer, AES-200.
+
+Alternative Methods of Compliance (AMOCs)
+
+    (i)(1) The Manager, Wichita Aircraft Certification Office (ACO), 
+FAA, has the authority to approve AMOCs for this AD, if requested 
+using the procedures found in 14 CFR 39.19. In accordance with 14 
+CFR 39.19, send your request to your principal inspector or local 
+Flight Standards District Office, as appropriate. If sending 
+information directly to the manager of the ACO, send it to the 
+attention of the person identified in the Related Information 
+section of this AD.
+    (2) Before using any approved AMOC, notify your appropriate 
+principal inspector, or lacking a principal inspector, the manager 
+of the local flight standards district office/certificate holding 
+district office.
+    (3) AMOCs approved for AD 87-20-03 R2 are approved for this AD.
+
+Related Information
+
+    (j) For more information about this AD, contact Gary Park, 
+Aerospace Engineer, ACE-118W, Wichita Aircraft Certification Office 
+(ACO), 1801 Airport Road, Room 100, Wichita, Kansas 67209; 
+telephone: (316) 946-4123; fax: (316) 946-4107; e-mail: 
+gary.park@faa.gov.
+
+    Issued in Kansas City, Missouri, on April 27, 2011.
+John Colomy,
+Acting Manager, Small Airplane Directorate, Aircraft Certification 
+Service.
+[FR Doc. 2011-10988 Filed 5-12-11; 8:45 am]
+BILLING CODE 4910-13-P
+
+S

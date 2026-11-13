@@ -1,0 +1,313 @@
+1
+[Federal Register Volume 77, Number 25 (Tuesday, February 7, 2012)]
+[Rules and Regulations]
+[Pages 6003-6005]
+From the Federal Register Online via the Government Printing Office [www.gpo.gov]
+[FR Doc No: 2012-1451]
+
+––––––––––––––––––––––––––––––––––
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2011-1245; Directorate Identifier 2011-CE-033-AD; Amendment 39-16925;
+AD 2012-02-02]
+
+RIN 2120-AA64
+
+Airworthiness Directives; Cessna Aircraft Company Airplanes
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Final rule.
+
+––––––––––––––––––––––––––––––––––
+
+SUMMARY: We are superseding an existing airworthiness directive (AD) for certain Cessna
+Aircraft Company (Cessna) Models 172R and 172S airplanes. That AD currently requires you to
+inspect the fuel return line assembly for chafing; replace the fuel return line assembly if chafing is
+found; and inspect the clearance between the fuel return line assembly and both the right steering
+tube assembly and the airplane structure, adjusting as necessary. Since we issued that AD, we have
+received a field report of a fuel return line chafing incident on a Cessna Model 172 airplane with a
+serial number (S/N) that was not included in the AD. This AD retains the actions of the current AD
+and adds S/Ns to the Applicability section of the AD. Chafing of the fuel return line assembly could
+lead to fire. This new AD requires the actions of the current AD and adds S/Ns to the Applicability
+section of the AD. We are issuing this AD to correct the unsafe condition on these products.
+
+DATES: This AD is effective March 13, 2012.
+ The Director of the Federal Register approved the incorporation by reference of a certain
+publication listed in the AD as of March 13, 2012.
+ The Director of the Federal Register approved the incorporation by reference of a certain other
+publication listed in this AD as of March 6, 2008 (73 FR 5737, January 31, 2008).
+
+ADDRESSES: For service information identified in this AD, contact Cessna Aircraft Company,
+Product Support, P.O. Box 7706, Wichita, KS 67277; telephone: (316) 517-6000; fax: (316) 517-
+8500; email: Customercare@cessna.textron.com; Internet: http://www.cessna.com. You may review
+copies of the referenced service information at the FAA, Small Airplane Directorate, 901 Locust,
+Kansas City, Missouri 64106. For information on the availability of this material at the FAA, call
+(816) 329-4148.
+
+
+2
+Examining the AD Docket
+
+ You may examine the AD docket on the Internet at http://www.regulations.gov; or in person at
+the Docket Management Facility between 9 a.m. and 5 p.m., Monday through Friday, except Federal
+holidays. The AD docket contains this AD, the regulatory evaluation, any comments received, and
+other information. The address for the Docket Office (phone: (800) 647-5527) is Document
+Management Facility, U.S. Department of Transportation, Docket Operations, M-30, West Building
+Ground Floor, Room W12-140, 1200 New Jersey Avenue SE., Washington, DC 20590.
+
+FOR FURTHER INFORMATION CONTACT: Trenton Shepherd, Aerospace Engineer, Wichita
+Aircraft Certification Office, FAA, 1801 Airport Road Room 100, Wichita, Kansas 67209; phone:
+(316) 946-4143; fax: (316) 946-4107; email: trent.shepherd@faa.gov.
+
+SUPPLEMENTARY INFORMATION:
+
+Discussion
+
+ We issued a notice of proposed rulemaking (NPRM) to amend 14 CFR part 39 to supersede AD
+2008-03-02, Amendment 39-15351 (73 FR 5737, January 31, 2008). That AD applies to the specified
+products. The NPRM published in the Federal Register on November 14, 2011 (76 FR 70379). That
+NPRM proposed to continue to require actions of the current AD and add S/Ns to the Applicability
+section of the AD.
+
+Comments
+
+ We gave the public the opportunity to participate in developing this AD. We received no
+comments on the NPRM (76 FR 70379, November 14, 2011) or on the determination of the cost to
+the public.
+
+Conclusion
+
+ We reviewed the relevant data and determined that air safety and the public interest require
+adopting the AD as proposed except for minor editorial changes. We have determined that these
+minor changes:
+  Are consistent with the intent that was proposed in the NPRM (76 FR 70379, November 14,
+2011) for correcting the unsafe condition; and
+  Do not add any additional burden upon the public than was already proposed in the NPRM (76
+FR 70379, November 14, 2011).
+
+Costs of Compliance
+
+ We estimate that this AD affects 768 airplanes of U.S. registry.
+ We estimate the following costs to comply with this AD:
+
+
+3
+Estimated Costs
+Action Labor cost Parts cost Cost per
+product
+Cost on U.S.
+operators
+Inspection of
+the fuel return
+line assembly
+for chafing and
+clearance
+1 work-hour X
+$85 per hour =
+$85
+Not applicable $85 65,280
+
+ The difference in estimated costs of this AD and AD 2008-03-02 (73 FR 5737, January 31, 2008)
+is an increase in the estimated labor cost for those airplanes affected by AD 2008-03-02 and the costs
+of the additional airplanes added to the AD.
+ We estimate the following costs to do any necessary replacements that would be required based
+on the results of the inspection. We have no way of determining the number of aircraft that might
+need these replacements:
+
+On-Condition Costs
+Action Labor cost Parts cost Cost per
+product
+Replacement of the fuel return
+line assembly and adjustment of
+the clearance between the fuel
+return line assembly and both the
+right steering tube assembly and
+the airplane structure
+0.5 work-hour X $85
+per hour = $42.50
+$123 $165.50
+
+Authority for This Rulemaking
+
+ Title 49 of the United States Code specifies the FAA's authority to issue rules on aviation safety.
+Subtitle I, section 106, describes the authority of the FAA Administrator. Subtitle VII, Aviation
+Programs, describes in more detail the scope of the Agency's authority.
+ We are issuing this rulemaking under the authority described in subtitle VII, part A, subpart III,
+section 44701, ‘‘General requirements.'' Under that section, Congress charges the FAA with
+promoting safe flight of civil aircraft in air commerce by prescribing regulations for practices,
+methods, and procedures the Administrator finds necessary for safety in air commerce. This
+regulation is within the scope of that authority because it addresses an unsafe condition that is likely
+to exist or develop on products identified in this rulemaking action.
+
+Regulatory Findings
+
+ We have determined that this AD will not have federalism implications under Executive Order
+13132. This AD will not have a substantial direct effect on the States, on the relationship between the
+national government and the States, or on the distribution of power and responsibilities among the
+various levels of government.
+ For the reasons discussed above, I certify that this AD:
+ (1) Is not a ‘‘significant regulatory action'' under Executive Order 12866,
+ (2) Is not a ‘‘significant rule'' under DOT Regulatory Policies and Procedures (44 FR 11034,
+February 26, 1979),
+ (3) Will not affect intrastate aviation in Alaska, and
+
+4
+ (4) Will not have a significant economic impact, positive or negative, on a substantial number of
+small entities under the criteria of the Regulatory Flexibility Act.
+
+List of Subjects in 14 CFR Part 39
+
+ Air transportation, Aircraft, Aviation safety, Incorporation by reference, Safety.
+
+Adoption of the Amendment
+
+ Accordingly, under the authority delegated to me by the Administrator, the FAA amends 14 CFR
+part 39 as follows:
+
+PART 39–AIRWORTHINESS DIRECTIVES
+
+1. The authority citation for part 39 continues to read as follows:
+
+ Authority: 49 U.S.C. 106(g), 40113, 44701.
+
+§ 39.13  [Amended]
+
+2. The FAA amends § 39.13 by removing airworthiness directive (AD) 2008-03-02, Amendment 39-
+15351 (73 FR 5737, January 31, 2008), and adding the following new AD:
+
+
+5
+
+FAA
+Aviation Safety
+AIRWORTHINESS DIRECTIVE
+www.faa.gov/aircraft/safety/alerts/
+www.gpoaccess.gov/fr/advanced.html
+
+2012-02-02 Cessna Aircraft Company: Amendment 39-16925; Docket No. FAA-2011-1245;
+Directorate Identifier 2011-CE-033-AD.
+
+(a) Effective Date
+
+ This airworthiness directive (AD) is effective March 13, 2012.
+
+(b) Affected ADs
+
+ This AD supersedes AD 2008-03-02, Amendment 39-15351 (73 FR 5737, January 31, 2008).
+
+(c) Applicability
+
+ This AD applies to the following Cessna Aircraft Company airplanes, certificated in any
+category:
+ (1) Group 1: Model 172R, serial numbers (S/N) 17281188 through 17281390;
+ (2) Group 2: Model 172S, S/N 172S9491 through 172S10489;
+ (3) Group 3: Model 172R, S/N 17281391 through 17281572; and
+ (4) Group 4: Model 172S, S/N 172S10490 through 172S11073.
+
+(d) Subject
+
+ Joint Aircraft System Component (JASC)/Air Transport Association (ATA) of America Code
+Fuel, 28.
+
+(e) Unsafe Condition
+
+ This AD was prompted by a field report of a fuel return line chafing incident on a Cessna Model
+172 airplane with a serial number that was not in the Applicability statement of AD 2008-03-02 (73
+FR 5737, January 31, 2008). Chafing of the fuel return line assembly could result in fuel leaking and
+fuel vapors, which could lead to fire. We are issuing this AD to correct the unsafe condition on these
+products.
+
+(f) Compliance
+
+ Comply with this AD within the compliance times specified, unless already done.
+
+(g) Inspection Requirement Retained From AD 2008-03-02, Amendment 39-15351 (73 FR 5737,
+January 31, 2008)
+
+ (1) For Group 1 and Group 2 Airplanes: Within the next 100 hours time-in-service (TIS) after
+March 6, 2008 (the effective date retained from AD 2008-03-02) or within the next 12 months after
+March 6, 2008 (the effective date retained from AD 2008-03-02), whichever occurs first, inspect the
+fuel return line assembly (Cessna part number (P/N) 0500118-49) for chafing. Do the inspection
+
+6
+following Cessna Service Bulletin SB07-28-01, dated June 18, 2007; or Cessna Service Bulletin
+SB07-28-01, Revision 1, dated September 22, 2011.
+ (2) For Group 3 and Group 4 Airplanes: Within the next 100 hours TIS after March 13, 2012 (the
+effective date of this AD) or within the next 12 months after March 13, 2012 (the effective date of
+this AD), whichever occurs first, inspect the fuel return line assembly (Cessna P/N 0500118-49) for
+chafing. Do the inspection following Cessna Service Bulletin SB07-28-01, Revision 1, dated
+September 22, 2011.
+
+(h) Replacement Requirement Retained From AD 2008-03-02, Amendment 39-15351 (73 FR
+5737, January 31, 2008)
+
+ For All Airplanes: Before further flight after the inspection required in paragraph (g)(1) or (g)(2)
+of this AD where evidence of chafing was found, replace the fuel return line assembly (Cessna P/N
+0500118-49). Do the replacement following Cessna Service Bulletin SB07-28-01, dated June 18,
+2007; or Cessna Service Bulletin SB07-28-01, Revision 1, dated September 22, 2011.
+
+(i) Inspection and Adjustment Requirement Retained From AD 2008-03-02, Amendment 39-
+15351 (73 FR 5737, January 31, 2008)
+
+ For All Airplanes: Before further flight after the inspection required in paragraph (g)(1) or (g)(2)
+of this AD if no chafing is found or after the replacement required in paragraph (h) of this AD,
+whichever of the previous situations applies, inspect for a minimum clearance of 0.5 inch between the
+following parts throughout the entire range of copilot rudder pedal travel. If less than 0.5 inch
+clearance is found, before further flight, adjust the clearance. Follow paragraph 6 of the Instructions
+section of Cessna Service Bulletin SB07-28-01, dated June 18, 2007; or Cessna Service Bulletin
+SB07-28-01, Revision 1, dated September 22, 2011. This AD requires a minimum clearance of 0.5
+inch. The requirements of this AD take precedence over the actions required in the service
+information.
+ (1) The fuel return line assembly (Cessna P/N 0500118-49) and the steering tube assembly
+(Cessna P/N MC0543022-2C); and
+ (2) The fuel return line assembly (Cessna P/N 0500118-49) and the airplane structure.
+
+(j) Alternative Methods of Compliance (AMOCs)
+
+ (1) The Manager, Wichita Aircraft Certification Office (ACO), FAA, has the authority to
+approve AMOCs for this AD, if requested using the procedures found in 14 CFR 39.19. In
+accordance with 14 CFR 39.19, send your request to your principal inspector or local Flight
+Standards District Office, as appropriate. If sending information directly to the manager of the ACO,
+send it to the attention of the person identified in the Related Information section of this AD.
+ (2) Before using any approved AMOC, notify your appropriate principal inspector, or lacking a
+principal inspector, the manager of the local flight standards district office/certificate holding district
+office.
+
+(k) Related Information
+
+ For more information about this AD, contact Trenton Shepherd, Aerospace Engineer, Wichita
+ACO, FAA, 1801 Airport Road, Room 100, Wichita, Kansas 67209; phone: (316) 946-4143; fax:
+(316) 946-4107; email: trent.shepherd@faa.gov.
+
+
+7
+(l) Material Incorporated by Reference
+
+ (1) You must use the following service information to do the actions required by this AD, unless
+the AD specifies otherwise. The Director of the Federal Register approved the incorporation by
+reference (IBR) under 5 U.S.C. 552(a) and 1 CFR part 51 of the following service information:
+ (i) Cessna Service Bulletin SB07-28-01, Revision 1, dated September 22, 2011, approved for
+IBR March 13, 2012.
+ (ii) Cessna Service Bulletin SB07-28-01, dated June 18, 2007, approved for IBR March 6, 2008
+(73 FR 5737, January 31, 2008)
+ (2) For service information identified in this AD, contact Cessna Aircraft Company, Product
+Support, P.O. Box 7706, Wichita, KS 67277; telephone: (316) 517-6000; fax: (316) 517-8500; email:
+Customercare@cessna.textron.com; Internet: http://www.cessna.com.
+ (3) You may review copies of the service information at the FAA, Small Airplane Directorate,
+901 Locust, Kansas City, Missouri 64106. For information on the availability of this material at the
+FAA, call (816) 329-4148.
+ (4) You may also review copies of the service information that is incorporated by reference at the
+National Archives and Records Administration (NARA). For information on the availability of this
+material at NARA, call (202) 741-6030, or go to: http://www.archives.gov/federal-
+register/cfr/ibr_locations.html.
+
+ Issued in Kansas City, Missouri, on January 18, 2012.
+Earl Lawrence,
+Manager, Small Airplane Directorate,
+Aircraft Certification Service.

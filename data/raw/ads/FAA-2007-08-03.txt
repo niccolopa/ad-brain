@@ -1,0 +1,384 @@
+[Federal Register: April 12, 2007 (Volume 72, Number 70)]
+[Rules and Regulations]
+[Page 18380-18383]
+From the Federal Register Online via GPO Access [wais.access.gpo.gov]
+[DOCID:fr12ap07-8]
+––––––––––––––––––––––––––––––––––
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2007-27709; Directorate Identifier 2007-CE-028-AD; Amendment 39-15020;
+AD 2007-08-03]
+
+RIN 2120-AA64
+
+Airworthiness Directives; Cessna Aircraft Company Models 172R, 172S, 182T, T182T, 206H,
+and T206H Airplanes
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Final rule; request for comments.
+
+––––––––––––––––––––––––––––––––––
+
+SUMMARY: The FAA is adopting a new airworthiness directive (AD) to supersede AD 2006-17-
+04, which applies to certain Cessna Aircraft Company (Cessna) Models 172R, 172S, 182T, T182T,
+206H, and T206H airplanes. AD 2006-17-04 currently requires you to inspect the two end fittings on
+each of the flexible fuel hoses located in the engine compartment for the correct torque values, and, if
+any incorrect torque values are found during the inspection, tighten the hose end fittings to the correct
+torque values. This AD results from four reports of loose fuel lines connected to the fuel servo or fuel
+flow transducer. Two reports were of in-flight engine failure on a Model T182T airplane. A third
+report was of in-flight engine failure on a Model 206H airplane. A fourth report was of a Model 172S
+airplane losing engine power on final approach. Consequently, this AD would require you to
+establish the correct torque values of the end fittings on fuel hoses for certain Cessna Models 172R,
+172S, 182T, T182T, 206H, and T206H airplanes. This AD clarifies that the torque values need to be
+physically established and visual inspection only is not sufficient. We are issuing this AD to detect
+and correct potential loss of fuel flow, which may result in partial or complete loss of engine power
+and/or uncontrolled engine compartment fire due to fuel leakage forward of the firewall.
+
+DATES: This AD becomes effective on May 2, 2007.
+ On May 2, 2007 the Director of the Federal Register approved the incorporation by reference of
+certain publications listed in this AD.
+ We must receive any comments on this AD by June 11, 2007.
+
+ADDRESSES: Use one of the following addresses to comment on this AD.
+• DOT Docket Web site: Go to http://dms.dot.gov and follow the instructions for sending your
+comments electronically.
+1
+
+• Mail: Docket Management Facility; U.S. Department of Transportation, 400 Seventh Street,
+SW., Nassif Building, Room PL-401, Washington, DC 20590-0001.
+• Fax: (202) 493-2251.
+• Hand Delivery: Room PL-401 on the plaza level of the Nassif Building, 400 Seventh Street,
+SW., Washington, DC, between 9 a.m. and 5 p.m., Monday through Friday, except Federal holidays.
+• Federal eRulemaking Portal: Go to http://www.regulations.gov. Follow the instructions for
+submitting comments.
+
+ To get the service information identified in this AD, contact The Cessna Aircraft Company,
+Product Support, P.O. Box 7706, Wichita, Kansas 67277-7706; telephone: (316) 517-5800; facsimile:
+(316) 942-9006.
+ To view the comments to this AD, go to http://dms.dot.gov. The docket number is FAA-2007-
+27709; Directorate Identifier 2007-CE-028-AD.
+
+FOR FURTHER INFORMATION CONTACT: Trenton Shepherd, Aerospace Engineer, Wichita
+ACO, 1801 Airport Road, Room 100, Wichita, Kansas 67209; telephone: (316) 946-4143; fax: (316)
+946-4107.
+
+SUPPLEMENTARY INFORMATION:
+
+Discussion
+
+ One report of loose fuel hose connections to the fuel injector servo on a Cessna Model 172S
+airplane caused us to issue AD 2006-17-04, Amendment 39-14725 (71 FR 47711, August 18, 2006).
+AD 2006-17-04 on certain Cessna Models 172R, 172S, 182T, T182T, 206H, and T206H airplanes,
+currently requires you to:
+• Inspect the two end fittings on each of the flexible fuel hoses located in the engine compartment
+for the correct torque values; and
+• Tighten the hose end fittings to the correct torque values, if any incorrect torque values are found
+during the inspection.
+ Since issuing AD 2006-17-04, we have received four additional reports of loose fuel lines
+connected to the fuel servo or fuel flow transducer. Two reports were of in-flight engine failure on a
+Model T182T airplane. A third report was of in-flight engine failure on a Model 206H airplane. A
+fourth report was of a Model 172S airplane that lost engine power on final approach.
+ In issuing AD 2006-17-04, our intent was for the torque values provided in Table 4 of the AD to
+be verified. However, the actions we specified in AD 2006-17-04 resulted in visual-only inspections
+being accomplished in some cases. Visual inspection of torque paint or putty is not sufficient to
+address the unsafe condition. This AD clarifies that the torque values need to be physically
+established.
+ This condition, if not corrected, could result in loss of fuel flow resulting in partial or complete
+loss of engine power and/or uncontrolled engine compartment fire due to fuel leakage forward of the
+firewall.
+
+Relevant Service Information
+
+ We reviewed Cessna Service Bulletin No. SB07-71-01, original issue dated March 2, 2007,
+Revision 1, dated March 16, 2007. The service information describes procedures for a physical
+inspection of the fuel hose connections on each of the hoses by loosening each connection and then
+reapplying the correct torque value to make sure that they are correctly torqued.
+
+2
+
+FAA's Determination and Requirements of This AD
+
+ We are issuing this AD because we evaluated all the information and determined the unsafe
+condition described previously is likely to exist or develop on other products of the same type design.
+This AD requires you to establish the correct torque values of the end fittings on fuel hoses for
+certain Cessna Models 172R, 172S, 182T, T182T, 206H, and T206H airplanes. This AD clarifies that
+the torque values need to be physically established and visual inspection only is not sufficient.
+ In preparing this rule, we contacted type clubs and aircraft operators to get technical information
+and information on operational and economic impacts. We did not receive any information through
+these contacts. If received, we would have included a discussion of any information that may have
+influenced this action in the rulemaking docket.
+
+FAA's Determination of the Effective Date
+
+ Since an unsafe condition exists that requires the immediate adoption of this AD, we determined
+that notice and opportunity for public comment before issuing this AD are impracticable, and that
+good cause exists for making this amendment effective in fewer than 30 days.
+
+Comments Invited
+
+ This AD is a final rule that involves requirements affecting flight safety, and we did not precede
+it by notice and an opportunity for public comment. We invite you to send any written relevant data,
+views, or arguments regarding this AD. Send your comments to an address listed under the
+ADDRESSES section. Include the docket number ''Docket No. FAA-2007-27709; Directorate
+Identifier 2007-CE-028-AD'' at the beginning of your comments. We specifically invite comments on
+the overall regulatory, economic, environmental, and energy aspects of the AD. We will consider all
+comments received by the closing date and may amend the AD in light of those comments.
+ We will post all comments we receive, without change, to http://dms.dot.gov, including any
+personal information you provide. We will also post a report summarizing each substantive verbal
+contact we receive concerning this AD.
+
+Authority for This Rulemaking
+
+ Title 49 of the United States Code specifies the FAA's authority to issue rules on aviation safety.
+Subtitle I, Section 106, describes the authority of the FAA Administrator. Subtitle VII, Aviation
+Programs, describes in more detail the scope of the Agency's authority.
+ We are issuing this rulemaking under the authority described in Subtitle VII, Part A, Subpart III,
+Section 44701, ''General requirements.'' Under that section, Congress charges the FAA with
+promoting safe flight of civil aircraft in air commerce by prescribing regulations for practices,
+methods, and procedures the Administrator finds necessary for safety in air commerce. This
+regulation is within the scope of that authority because it addresses an unsafe condition that is likely
+to exist or develop on products identified in this rulemaking action.
+
+Regulatory Findings
+
+ We determined that this AD will not have federalism implications under Executive Order 13132.
+This AD will not have a substantial direct effect on the States, on the relationship between the
+national government and the States, or on the distribution of power and responsibilities among the
+various levels of government.
+ For the reasons discussed above, I certify that this AD:
+3
+
+ (1) Is not a ''significant regulatory action'' under Executive Order 12866;
+ (2) Is not a ''significant rule'' under DOT Regulatory Policies and Procedures (44 FR 11034,
+February 26, 1979); and
+ (3) Will not have a significant economic impact, positive or negative, on a substantial number of
+small entities under the criteria of the Regulatory Flexibility Act.
+ We prepared a regulatory evaluation of the estimated costs to comply with this AD and placed it
+in the AD docket.
+
+Examining the AD Docket
+
+ You may examine the AD docket that contains the AD, the regulatory evaluation, any comments
+received, and other information on the Internet at http://dms.dot.gov; or in person at the Docket
+Management Facility between 9 a.m. and 5 p.m., Monday through Friday, except Federal holidays.
+The Docket Office (telephone (800) 647-5227) is located at the street address stated in the
+ADDRESSES section. Comments will be available in the AD docket shortly after receipt.
+
+List of Subjects in 14 CFR Part 39
+
+ Air transportation, Aircraft, Aviation safety, Incorporation by reference, Safety.
+
+Adoption of the Amendment
+
+Accordingly, under the authority delegated to me by the Administrator, the FAA proposes to amend
+14 CFR part 39 as follows:
+
+PART 39–AIRWORTHINESS DIRECTIVES
+
+1. The authority citation for part 39 continues to read as follows:
+
+ Authority: 49 U.S.C. 106(g), 40113, 44701.
+
+§ 39.13  [Amended]
+
+2. The FAA amends § 39.13 by removing Airworthiness Directive (AD) 2006-17-04, Amendment
+39-14725 (71 FR 47711, August 18, 2006), and by adding a new AD to read as follows:
+
+4
+
+
+FAA
+Aircraft Certification Service
+AIRWORTHINESS DIRECTIVE
+www.faa.gov/aircraft/safety/alerts/
+www.gpoaccess.gov/fr/advanced.html
+
+2007-08-03 Cessna Aircraft Company: Amendment 39-15020; Docket No. FAA-2007-27709;
+Directorate Identifier 2007-CE-028-AD.
+
+Effective Date
+
+ (a) This AD becomes effective on May 2, 2007.
+
+Affected ADs
+
+ (b) This AD supersedes AD 2006-17-04; Amendment 39-14725.
+
+Applicability
+
+ (c) This AD applies to the following airplane models and serial numbers that are certificated in
+any category:
+
+Table 1.—Applicability
+Model Serial Numbers
+(i) 172R 17281244 through 17281364, 17281366 through 17281372, 17281374 through
+17281376, and 17281379
+(ii) 172S 172S9809 through 172S10349, 172S10351 through 172S10374, 172S10376 through
+172S10423, 172S10425 through 172S10426, 172S10428 through 172S10430,
+172S10432 through 172S10444, 172S10446 through 172S10450, and 172S10452
+through 172S10454
+(iii) 182T 18281527 through 18281889, 18281892, 18281895, 18281897, 18281899, 18281901,
+and 18281904
+(iv) T182T T18208381 through T18208659, T18208661, T18208663 through T18208678,
+T18208680 through T18208686, T18208689, and T18208690
+(v) 206H 20608231 through 20608285
+(vi) T206H T20608515 through T20608662, T20608664 through T20608697, T20608699
+through T20608714, and T20608717
+
+Unsafe Condition
+
+ (d) This AD is the result of four reports of loose fuel lines connected to the fuel servo or fuel
+flow transducer. Two reports were of in-flight engine failure on a Model T182T airplane. A third
+report was of in flight-engine failure on a Model 206H airplane. A fourth report was of a Model 172S
+airplane that lost engine power on final approach. We are issuing this AD to detect and correct
+potential loss of fuel flow, which may result in partial or complete loss of engine power and/or
+uncontrolled engine compartment fire due to fuel leakage forward of the firewall.
+
+5
+
+Compliance
+
+ (e) To address this problem, you must do the following, unless already done:
+
+Table 2.—Actions, Compliance, and Procedures
+Actions Compliance Procedures
+(1) For all airplanes not equipped with the Garmin G1000
+System: Establish the correct torque values of the end fittings
+on each of the following hoses in the engine compartment:
+   (i) Fuel strainer to engine fuel pump.
+   (ii) Engine fuel pump to fuel injector servo (except T206H).
+   (iii) T206H only: Engine fuel pump to the union at the aft
+vertical cooling baffle.
+   (iv) T206H only: Union at the aft vertical cooling baffle to
+the fuel injector servo.
+   (v) Fuel injector servo to fuel manifold valve (except turbo
+models).
+   (vi) Turbo models only: Fuel injector servo to fuel flow
+transducer.
+   (vii) Turbo models only: Fuel flow transducer to fuel
+manifold valve.
+   (viii) Fuel injector servo fuel return to firewall fitting.
+Within the
+next 5 hours
+time-in-
+service (TIS)
+after May 2,
+2007 (the
+effective date
+of this AD).
+Follow Cessna
+Service Bulletin No.
+SB07-71-01,
+Revision 1, dated
+March 16, 2007; the
+procedures of the
+appendix to this AD;
+and the torque
+values from the table
+Torque Values for
+Hose End Fittings in
+the appendix to this
+AD.
+(2) For all airplanes equipped with the Garmin G1000
+System: Establish the correct torque values of the end fittings
+on each of the following hoses in the engine compartment:
+   (i) Fuel strainer to engine fuel pump.
+   (ii) Engine fuel pump to fuel injector servo (except T206H).
+   (iii) T206H only: Engine fuel pump to the union at the aft
+vertical cooling baffle.
+   (iv) T206H only: Union at the aft vertical cooling baffle to
+the fuel injector servo.
+   (v) Fuel injector servo to fuel flow transducer.
+   (vi) Fuel flow transducer to fuel manifold valve.
+   (vii) Fuel injector servo fuel return to firewall fitting.
+Within the
+next 5 hours
+TIS after
+May 2, 2007
+(the effective
+date of this
+AD).
+Follow Cessna
+Service Bulletin No.
+SB07-71-01,
+Revision 1, dated
+March 16, 2007; the
+procedures of the
+appendix to this AD;
+and the torque
+values from the table
+Torque Values for
+Hose End Fittings in
+the appendix to this
+AD.
+
+Special Flight Permit
+
+ (f) Under 14 CFR 39.23, we are allowing special flight permits for the purpose of compliance
+with this AD under the following conditions: Only operate under day visual flight rules (VFR).
+
+Alternative Methods of Compliance (AMOCs)
+
+ (g) The Manager, Wichita Aircraft Certification Office (ACO), FAA, ATTN: Trenton Shepherd,
+Aerospace Engineer, Wichita ACO, 1801 Airport Road, Room 100, Wichita, Kansas 67209;
+telephone: (316) 946-4143; fax: (316) 946-4107, has the authority to approve AMOCs for this AD, if
+requested using the procedures found in 14 CFR 39.19. Before using any approved AMOC on any
+airplane to which the AMOC applies, notify your appropriate principal inspector (PI) in the FAA
+Flight Standards District Office (FSDO), or lacking a PI, your local FSDO.
+
+6
+
+ (h) AMOCs approved for AD 2006-17-04 are not approved for this AD.
+
+Material Incorporated by Reference
+
+ (i) You must use Cessna Service Bulletin No. SB07-71-01, Revision 1, dated March 16, 2007, to
+do the actions required by this AD, unless the AD specifies otherwise.
+ (1) The Director of the Federal Register approved the incorporation by reference of this service
+information under 5 U.S.C. 552(a) and 1 CFR part 51.
+ (2) For service information identified in this AD, contact The Cessna Aircraft Company, Product
+Support, P.O. Box 7706, Wichita, Kansas 67277-7706; telephone: (316) 517-5800; facsimile: (316)
+942-9006.
+ (3) You may review copies at the FAA, Central Region, Office of the Regional Counsel, 901
+Locust, Kansas City, Missouri 64106; or at the National Archives and Records Administration
+(NARA). For information on the availability of this material at NARA, call 202-741-6030, or go to:
+http://www.archives.gov/federal_register/code_of_federal_regulations/ibr_locations.html.
+
+Appendix to AD 2007-08-03–Inspection Instructions–Cessna Aircraft Company Models 172R,
+172S, 182T, T182T, 206H, and T206H Airplanes
+
+ 1. Remove upper and side cowlings to perform torque procedure.
+ 2. Remove all signs of old torque putty or paint.
+ 3. Using a suitable tool loosen the hose end fitting of each joint, while using a suitable tool to
+restrain the other end fitting of the joint to preclude rotation.
+ 4. Using the applicable fitting torque from the table Torque Values for Hose End Fittings of this
+appendix to AD 2007-08-03, torque the hose end fitting to the proper torque, while using a suitable
+tool to restrain the other end fitting of the joint to preclude rotation.
+ 5. After proper torque has been applied to the hose end fitting, apply the applicable torque paint
+or putty to the hose end fitting joint.
+ 6. If during any torque procedure any of the non-hose end fittings rotate, stop the torque
+procedure. Totally disconnect the hose end joint and remove any fitting that has rotated. After the
+cleaning, visual examination, and/or replacement of the fitting and/or any seals or sealant, reinstall
+the fitting and torque it to the applicable requirement. Then reconnect the hose end fitting and repeat
+Step 4. of this appendix to AD 2007-08-03.
+ 7. Use the table below Torque Values for Hose End Fittings for the correct torque values to
+tighten the hose end fittings as required in paragraphs (e)(1) and (e)(2) of this AD:
+
+Torque Values for Hose End Fittings
+Correct Torque in Inch-pounds Flare Hex Sizes in
+Fractions of an Inch Hose Size Minimum Maximum
+9/16 -4 135 150
+11/16 -6 270 300
+7/8 -8 450 500
+
+ Issued in Kansas City, Missouri, on April 5, 2007.
+Kim Smith,
+Manager, Small Airplane Directorate, Aircraft Certification Service.
+[FR Doc. E7-6826 Filed 4-11-07; 8:45 am]
+7

@@ -1,0 +1,163 @@
+EASA AD No.: 2011-0153R1
+EASA Form 110  Page 1/3
+EASA AIRWORTHINESS DIRECTIVE
+
+AD No.: 2011-0153R1
+
+
+
+Date: 09 September 2011
+
+Note: This Emergency Airworthiness Directive (AD) is issued by EASA, acting in accordance
+with Regulation (EC) No 216/2008 on behalf of the European Community, its Member States
+and of the European third countries that partici pate in the activities of EASA under Article 66
+of that Regulation
+This AD is issued in accordance with EC 1702/2003, Part 21A.3B. In accordance with EC 2042/2003 Annex I, Part M.A.301, the
+continuing airworthiness of an aircraft shall be ensured by accomplishing any applicable ADs. Consequently, no person may operate an
+aircraft to which an AD applies, except in accordance with the requirements of that AD, unless otherwise specified by the Agenc y [EC
+2042/2003 Annex I, Part M.A.303] or agreed with the Authority of the State of Registry [EC 216/2008, Article 14(4) exemption].
+Type Approval Holder’s Name :
+
+Costruzioni Aeronautiche TECNAM S.r.l.
+Type/Model designation(s) :
+
+P2006T aeroplanes
+TCDS Number:  EASA.A.185
+Foreign AD:  Not Applicable
+Revision:  This AD revises EASA AD 2011-0153-E dated 25 August 2011.
+
+ATA 32 Landing Gear – Emergency Accumulator for Landing Gear (LG) Extension – Inspection / Modification / Replacement
+
+Manufacturer(s): Costruzioni Aero nautiche TECNAM S.r.l. (TECNAM)
+Applicability: P2006T aeroplanes, all serial numbers.
+Reason: During a pre-flight inspection of a P2006T aeroplane, damaged was found on
+the lower skin of the fuselage aft tail cone. This damage was caused by the
+lower lid of the LG emergency accumulator, which had detached from the LG
+emergency accumulator, violently hitting the lower skin of the fuselage aft tail
+cone and damaging the accumulator cylinder.
+This condition, if not detected and corrected, could impair the aeroplane
+structural integrity and jeopardize the LG emergency extension in case of
+system failure in normal mode.
+To address this unsafe condition, EASA issued Emergency AD 2011-0063-E
+to require a one-time inspection of the LG emergency accumulator cylinder
+for cracks, deformation or oil leakage and, depending on findings, the
+accomplishment of the applicable corrective actions.
+After that AD was issued, TECNAM developed a modification (MOD 2006-
+108) and published Service Bulletin (SB) SB-048–CS Revision 1, dated 06
+July 2011, that contained the instructions for that modification. Prompted by
+this development, EASA issued Proposed AD (PAD) 11-070 for consultation
+until 16 August 2011, proposing to require incorporation of this modification
+on all affected aeroplanes, and to require certain post-modification repetitive
+inspections.
+During the consultation period of PAD 11-070, an operator who had applied
+TECNAM SB-048–CS on his aeroplane, reported finding abnormal
+Superseded
+
+EASA AD No.: 2011-0153R1
+EASA Form 110  Page 2/3
+deformation of the emergency accumulator, to such an extent that it would
+jeopardize the LG emergency extension in case of system failure in normal
+mode. To address this additional safety concern, TECNAM issued SB-068–
+CS which contains instructions to inspect post-modification aeroplanes.
+For the reasons described above, this AD retains the requirements of EASA
+AD 2011-0063-E, which is superseded, and requires modification of the
+landing gear emergency accumulator by installation of safety rings and
+repetitive inspections after modification. In addition, prompted by the recent
+post-modification findings, this AD reduces the compliance time for the
+modification as originally proposed and requires additional first-flight-of-the-
+day repetitive inspections of the LG emergency accumulator cylinder and
+replacement of the LG emergency accumulator if cracks, deformation, or oil
+leakage is detected.
+Because of the recent findings, it has been decided that further consultation,
+prior to Final AD issuance, on the changed requirements compared to those
+specified in PAD 11-070, is not conducive to safety and not in the public
+interest.
+This AD is considered to be an interim measure and further AD action may
+follow.
+This AD Revision is issued in order to allow Pilot-Owner to accomplish the
+daily pre-flight inspection of the modified LG emergency accumulator.
+Effective Date:
+Revision 1: 12 September 2011
+Original issue: 29 August 2011
+Required Action(s)
+and Compliance
+Time(s):
+Required as indicated, unless previously accomplished:
+Restatement of EASA AD 2011-0063-E requirements:
+(1) Before next flight after 08 April 2011 (the effective date of EASA AD
+2011-0063-E), inspect the landing gear (LG) emergency accumulator
+Part Number (P/N) 22-9-610-000 for crack, deformation or oil leakage,
+in accordance with the instructions of TECNAM SB 047–CS Rev. 1.
+(2) If a crack, deformation or oil leakage is found during the inspection as
+required by paragraph (1) of this AD, before next flight, replace the LG
+emergency accumulator with a serviceable part, in accordance with the
+relevant instructions of the P2006T Aircraft Maintenance Manual
+(AMM).
+New requirements of this AD:
+(3) Within 10 flight hours (FH) or 15 days, whichever occurs first after the
+effective date of this AD, modify the LG emergency accumulator in
+accordance with the instructions of TECNAM SB–048 CS Rev.1.
+(4) Within 2 FH or 5 days, whichever occurs later after modification of an
+aeroplane as required by paragraph (3) of this AD, before each first
+flight of the day, inspect the LG emergency accumulator P/N 22-9-610-
+000, in accordance with the instructions of TECNAM SB 068–CS.
+(5) If, during any inspection as required by paragraph (4) of this AD, a
+crack, deformation, or oil leakage is found, before next flight, replace
+the emergency accumulator with a serviceable part, in accordance with
+the relevant instructions of the AMM.
+(6) in addition to the repetitive inspections as required by paragraph (4) of
+this AD, within 100 FH or 12 months, whichever occurs first after
+modification of an aeroplane as required by paragraph (3) of this AD,
+and thereafter at intervals not to exceed 100 FH or 12 months,
+whichever occurs first, inspect the LG emergency accumulator for
+damage or leakage, in accordance with instructions of the P2006T
+AMM Chapter 5 “Inspection program”.
+Superseded
+
+EASA AD No.: 2011-0153R1
+EASA Form 110  Page 3/3
+
+(7) In addition to the repetitive inspections as required by paragraphs (4)
+and (6) of this AD, within 300 FH after modification of an aeroplane as
+required by paragraph (3) of this AD, and thereafter at intervals not to
+exceed 300 FH, inspect the safety rings in accordance with instructions
+of the P2006T AMM Chapter 5 “Inspection program”.
+(8) If, during any inspection as required by paragraph (6) or (7) of this AD,
+discrepancies (as defined in the P2006T AMM Chapter 5 “Inspection
+program”) are detected, before next flight, replace the affected LG
+emergency accumulator or safety rings, as applicable, with serviceable
+parts.
+(9) Replacement of parts as required by paragraphs (5) or (8) of this AD
+does not constitute terminating action for the repetitive inspections
+required by paragraphs (4), (6) and (7) this AD.
+(10) After modification of an aeroplane as required by paragraph (3) of this
+AD, do not install a P/N 22-9-610-000 emergency accumulator on that
+aeroplane, unless it has been modified in service in accordance with
+the instructions of TECNAM SB–048 CS Rev.1, or modified in
+production in accordance with TECNAM MOD 2006-108.
+ (11) The inspection before each first flight of the day required by paragraph
+(4) of this may also be performed by the Pilot-Owner in accordance with
+the instructions of TECNAM SB 068–CS - Rev1.
+Ref. Publications: TECNAM SB-047–CS Rev.1 dated 04 April 2011.
+TECNAM SB-048–CS Rev.1 dated 06 July 2011.
+TECNAM SB-068–CS original issue dated 19 August 2011 or SB-068–CS -
+Rev1 dated 31 August 2011.
+The use of later approved revisions of these documents is acceptable for
+compliance with the requirements of this AD.
+Remarks: 1. If requested and appropriately substantiated, EASA can approve
+Alternative Methods of Compliance for this AD.
+2. The original issue of this AD was originally posted on 19 July 2011 as
+PAD 11-070 for consultation until 16 August 2011. No comments were
+received during the consultation period. However, the required actions
+and the safety assessment have requested not to implement an
+additional full consultation process and an immediate publication and
+notification.
+3. Enquiries regarding this AD should be referred to the Safety Information
+Section, Executive Directorate, EASA. E-mail: ADs@easa.europa.eu.
+4. For any question concerning the technical content of the requirements in
+this AD, please contact:
+Costruzioni Aeronautiche TECNAM Airworthiness Office,
+Telephone: +39 0823 620134; fax: +39 0823 622899,
+E-mail: m.oliva@tecnam.com or p.violetti@tecnam.com.
+
+Superseded

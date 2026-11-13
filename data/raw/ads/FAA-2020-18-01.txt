@@ -1,0 +1,468 @@
+1
+[Federal Register Volume 85, Number 195 (Wednesday, October 7, 2020)]
+[Rules and Regulations]
+[Pages 63195-63200]
+From the Federal Register Online via the Government Publishing Office [www.gpo.gov]
+[FR Doc No: 2020-22039]
+
+––––––––––––––––––––––––––––––––––
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2018-0049; Product Identifier 2017-CE-031-AD; Amendment 39-21222; AD
+2020-18-01]
+
+RIN 2120-AA64
+
+Airworthiness Directives; Textron Aviation Inc. Airplanes
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Final rule.
+
+––––––––––––––––––––––––––––––––––
+
+SUMMARY: The FAA is adopting a new airworthiness directive (AD) for certain Textron Aviation
+Inc. (Textron) Model 172N, 172P, 172Q, 172RG, F172N, F172P, FR172K, R172K, 182E, 182F,
+182G, 182H, 182J, 182K, 182L, 182M, 182N, 182P, 182Q, 182R, T182, F182P, F182Q, FR182,
+R182, TR182, 206, P206, P206A, P206B, P206C, P206D, P206E, TP206A, TP206B, TP206C,
+TP206D, TP206E, U206, U206A, U206B, U206C, U206D, U206E, U206F, U206G, TU206A,
+TU206B, TU206C, TU206D, TU206E, TU206F, TU206G, 207, 207A, T207, T207A, 210-5 (205),
+210-5A (205A), 210B, 210C, 210D, 210E, 210F, and T210F airplanes. This AD was prompted by
+cracks found in the lower area of the forward cabin doorpost bulkhead. This AD requires repetitively
+inspecting the lower area of the forward cabin doorposts at the strut attach fitting for cracks and
+repairing any cracks. The FAA is issuing this AD to address the unsafe condition on these products.
+
+DATES: This AD is effective November 12, 2020.
+ The Director of the Federal Register approved the incorporation by reference of certain
+publications listed in this AD as of November 12, 2020.
+
+ADDRESSES: For service information identified in this final rule, contact Textron Aviation Inc.,
+Textron Aviation Customer Service, One Cessna Blvd., Wichita, Kansas 67215; telephone: (316)
+517-5800; email: customercare@txtav.com; internet: https://support.cessna.com. You may review
+this referenced service information at the FAA, Policy and Innovation Division, 901 Locust, Kansas
+City, Missouri 64106. For information on the availability of this material at the FAA, call (816) 329-
+4148. It is also available on the internet at https://www.regulations.gov by searching for and locating
+Docket No. FAA-2018-0049.
+
+
+2
+Examining the AD Docket
+
+ You may examine the AD docket on the internet at https://www.regulations.gov by searching for
+and locating Docket No. FAA-2018-0049; or in person at Docket Operations between 9 a.m. and 5
+p.m., Monday through Friday, except Federal holidays. The AD docket contains this final rule, any
+comments received, and other information. The address for Docket Operations (phone: 800-647-
+5527) is U.S. Department of Transportation, Docket Operations, M-30, West Building Ground Floor,
+Room W12-140, 1200 New Jersey Avenue SE, Washington, DC 20590.
+
+FOR FURTHER INFORMATION CONTACT: Bobbie Kroetch, Aerospace Engineer, Wichita
+ACO Branch, 1801 Airport Road, Room 100, Wichita, Kansas 67209; telephone: (316) 946-4155;
+fax: (316) 946-4107; email: bobbie.kroetch@faa.gov or Wichita-COS@faa.gov.
+
+SUPPLEMENTARY INFORMATION:
+
+Discussion
+
+ The FAA issued a supplemental notice of proposed rulemaking (SNPRM) to amend 14 CFR part
+39 by adding an AD that would apply to certain serial-numbered Textron Aviation Inc. (Textron)
+(type certificate previously held by Cessna Aircraft Company) Model 172N, 172P, 172Q, 172RG,
+F172N, F172P, FR172K, R172K, 182E, 182F, 182G, 182H, 182J, 182K, 182L, 182M, 182N, 182P,
+182Q, 182R, T182, F182P, F182Q, FR182, R182, TR182, 206, P206, P206A, P206B, P206C,
+P206D, P206E, TP206A, TP206B, TP206C, TP206D, TP206E, U206, U206A, U206B, U206C,
+U206D, U206E, U206F, U206G, TU206A, TU206B, TU206C, TU206D, TU206E, TU206F,
+TU206G, 207, 207A, T207, T207A, 210-5 (205), 210-5A (205A), 210B, 210C, 210D, 210E, 210F,
+and T210F airplanes. The SNPRM published in the Federal Register on May 29, 2020 (85 FR
+32308).
+ The FAA preceded the SNPRM with a notice of proposed rulemaking (NPRM) that published in
+the Federal Register on February 1, 2018 (83 FR 4605). The NPRM was prompted by reports of
+cracks in the lower area of the forward cabin doorpost bulkhead on more than four dozen Textron 100
+and 200 airplanes. The NPRM proposed to require repetitively inspecting the lower area of the
+forward cabin doorposts at the strut attach fitting for cracks and repairing any cracks found by
+modifying the area with the applicable service kit. The SNPRM proposed to modify the estimated
+costs of the proposed AD, the repetitive inspection intervals, and the credit allowed for previous
+actions; clarify the inspection instructions for airplanes with the service kit installed; correct the
+contact information for obtaining the service information; and add a reporting requirement to collect
+the inspection results. The SNPRM also changed some of the model designations listed in the
+applicability in order to match the models as they are listed in the type certificate data sheet.
+ The FAA is issuing this AD to detect and address cracking of the wing strut attach point. The
+unsafe condition, if not addressed, could result in failure of the wing in operation, which could result
+in loss of control of the airplane.
+
+Comments
+
+ The FAA gave the public the opportunity to participate in developing this final rule. The
+following presents the comments received on the SNPRM and the FAA's response to each comment.
+
+Support for the SNPRM
+
+ Patrick Imperatrice expressed support for the proposed AD.
+
+
+3
+Request To Extend or Remove Calendar Compliance Time
+
+ Kermit Bunde expressed support for the 1,000-hour time-in-service (TIS) inspection interval but
+requested the FAA remove the 36-month calendar time inspection interval. The commenter stated
+that the 36-month interval is too often and that cracking is a function of usage and not only elapsed
+time. The commenter provided examples of Cessna maintenance actions that have no calendar time
+limit.
+ The FAA disagrees. Both the manufacturer's guidance, which is published in the supplemental
+inspection documents (SIDs) for certain airplanes, and fleet history support the 36-month interval for
+inspecting this location. Loading conditions outside of flight, such as ground loads, handling loads,
+and tie down loads, may also cause cracking at this location. Therefore, the FAA determined the
+inspection interval of 36 calendar months or 1,000 hours TIS, whichever occurs first, is necessary to
+address the unsafe condition. The FAA did not change this AD based on this comment.
+
+Conclusion
+
+ The FAA reviewed the relevant data, considered the comments received, and determined that air
+safety and the public interest require adopting this final rule as proposed.
+
+Related Service Information Under 1 CFR Part 51
+
+ The FAA reviewed Cessna Single Engine Service Bulletin SEB93-5, Revision 2, dated May 29,
+2019 (SEB93-5R2) and Cessna Single Engine Service Bulletin SEB95-19, dated December 29, 1995
+(SEB95-19). For the applicable model airplanes, the service information contains procedures for
+repetitively inspecting the lower area of the forward cabin doorposts for cracks and repairing any
+cracks found by modifying the area with the applicable Cessna service kit.
+ This service information is reasonably available because the interested parties have access to it
+through their normal course of business or by the means identified in the ADDRESSES section.
+
+Other Related Service Information
+
+ The FAA reviewed Cessna Single Engine Service Kit SK172-147, dated December 29, 1995.
+This service kit provides instructions to add a channel to each forward cabin doorpost bulkhead. The
+FAA also reviewed Cessna Single Engine Service Kit SK182-115, dated December 29, 1995; Cessna
+Single Engine Service Kit SK206-42D, dated May 29, 2019; and Cessna Single Engine Service Kit
+SK210-156, dated December 29, 1995. For the applicable model airplanes, these service kits provide
+instructions to add a doubler and a channel to each forward cabin doorpost bulkhead. In addition, the
+FAA reviewed Cessna Single Engine Service Kit SK207-19A, dated May 29, 2019. The service
+information contains procedures to reinforce the lower forward doorpost bulkhead and wing strut
+fitting by adding a doubler and a channel to each forward cabin doorpost bulkhead.
+
+Costs of Compliance
+
+ The FAA estimates that this AD affects 14,653 airplanes of U.S. registry.
+ The FAA estimates the following costs to comply with this AD:
+
+
+4
+Estimated Costs
+Action Labor cost Parts cost Cost per
+product
+Cost on U.S.
+operators
+Inspect the lower area of the
+forward cabin doorposts for
+cracks
+1.5 work-hours ×
+$85 per hour =
+$127.50
+Not
+applicable
+$127.50 $1,868,257.50
+Reporting requirement 1 work-hour × $85
+per hour = $85
+Not
+applicable
+$85 $1,245,505
+
+ The FAA estimates the following costs to do any necessary repairs that would be required based
+on the results of the inspection. Reference the applicable Cessna single engine service bulletin for kit
+applicability. The FAA has no way of determining the number of airplanes that might need this
+repair.
+
+On-Condition Costs
+Action Labor cost Parts
+cost
+Cost per
+product
+Install Cessna Single-Engine Service Kit
+SK172-147
+36 work-hours × $85 per hour
+= $3,060
+$3,415 $6,475
+Install Cessna Single-Engine Service Kit
+SK182-115
+36 work-hours × $85 per hour
+= $3,060
+$7,490 $10,550
+Install Cessna Single-Engine Service Kit
+SK206-42D
+36 work-hours × $85 per hour
+= $3,060
+$3,115 $6,175
+Install Cessna Single-Engine Service Kit
+SK207-19A
+36 work-hours × $85 per hour
+= $3,060
+$4,957 $8,017
+Install Cessna Single-Engine Service Kit
+SK210-156
+36 work-hours × $85 per hour
+= $3,060
+$7,020 $10,080
+
+Paperwork Reduction Act
+
+ A federal agency may not conduct or sponsor, and a person is not required to respond to, nor
+shall a person be subject to penalty for failure to comply with a collection of information subject to
+the requirements of the Paperwork Reduction Act unless that collection of information displays a
+current valid OMB control number. The control number for the collection of information required by
+this AD is 2120-0056. Public reporting for this collection of information is estimated to be
+approximately 1 hour per response, including the time for reviewing instructions, searching existing
+data sources, gathering and maintaining the data needed, completing and reviewing the collection of
+information. All responses to this collection of information are mandatory. Send comments regarding
+this burden estimate or any other aspect of this collection of information, including suggestions for
+reducing this burden to: Information Collection Clearance Officer, Federal Aviation Administration,
+10101 Hillwood Parkway, Fort Worth, TX 76177-1524.
+
+
+5
+Authority for This Rulemaking
+
+ Title 49 of the United States Code specifies the FAA's authority to issue rules on aviation safety.
+Subtitle I, section 106, describes the authority of the FAA Administrator. Subtitle VII: Aviation
+Programs, describes in more detail the scope of the Agency's authority.
+ The FAA is issuing this rulemaking under the authority described in Subtitle VII, Part A, Subpart
+III, Section 44701: General requirements. Under that section, Congress charges the FAA with
+promoting safe flight of civil aircraft in air commerce by prescribing regulations for practices,
+methods, and procedures the Administrator finds necessary for safety in air commerce. This
+regulation is within the scope of that authority because it addresses an unsafe condition that is likely
+to exist or develop on products identified in this rulemaking action.
+
+Regulatory Findings
+
+ This AD will not have federalism implications under Executive Order 13132. This AD will not
+have a substantial direct effect on the States, on the relationship between the national government and
+the States, or on the distribution of power and responsibilities among the various levels of
+government.
+ For the reasons discussed above, I certify that this AD:
+ (1) Is not a “significant regulatory action” under Executive Order 12866,
+ (2) Will not affect intrastate aviation in Alaska, and
+ (3) Will not have a significant economic impact, positive or negative, on a substantial number of
+small entities under the criteria of the Regulatory Flexibility Act.
+
+List of Subjects in 14 CFR Part 39
+
+ Air transportation, Aircraft, Aviation safety, Incorporation by reference, Safety.
+
+Adoption of the Amendment
+
+ Accordingly, under the authority delegated to me by the Administrator, the FAA amends 14 CFR
+part 39 as follows:
+
+PART 39–AIRWORTHINESS DIRECTIVES
+
+1. The authority citation for part 39 continues to read as follows:
+
+ Authority:  49 U.S.C. 106(g), 40113, 44701.
+
+§ 39.13  [Amended]
+
+2. The FAA amends § 39.13 by adding the following new airworthiness directive (AD):
+
+
+6
+
+FAA
+Aviation Safety
+AIRWORTHINESS
+DIRECTIVE
+www.faa.gov/aircraft/safety/alerts/
+www.gpoaccess.gov/fr/advanced.html
+
+2020-18-01 Textron Aviation Inc.: Amendment 39-21222; Docket No. FAA 2018-0049; Product
+Identifier 2017-CE-031-AD.
+
+(a) Effective Date
+
+ This AD is effective November 12, 2020.
+
+(b) Affected ADs
+
+ None.
+
+(c) Applicability
+
+ This AD applies to the following Textron Aviation Inc. (type certificate previously held by
+Cessna Aircraft Company) model airplanes, certificated in any category:
+
+
+7
+
+
+
+8
+
+
+(d) Subject
+
+ Joint Aircraft System Component (JASC)/Air Transport Association (ATA) of America Code
+53, Fuselage.
+
+(e) Unsafe Condition
+
+ This AD was prompted by a report of cracks found in the lower area of the forward cabin
+doorpost bulkhead. The FAA is issuing this AD to detect and address cracking of the wing strut
+attach point. The unsafe condition, if not addressed, could result in failure of the wing in operation,
+which could result in loss of control of the airplane.
+
+(f) Compliance
+
+ Comply with this AD within the compliance times specified, unless already done.
+
+(g) Initial Inspections
+
+ (1) For airplanes without a lower forward doorpost bulkhead and wing strut fitting reinforcement
+service kit (service kit) installed in accordance with Cessna Single Engine Service Bulletin SEB95-
+19, dated December 29, 1995 (SEB95-19), or Cessna Single Engine Service Bulletin SEB93-5,
+Revision 2, dated May 29, 2019 (SEB93-5R2): At the applicable compliance time specified in
+paragraph (g)(1)(i) or (ii) of this AD, do a visual inspection of the lower forward doorpost at the strut
+attach fitting for cracks in accordance with steps 1.A., 1.B., 1.C., and 1.B. (the step following step
+1.C.) of the Accomplishment Instructions in SEB95-19; or steps 1.A. and 1.B. of the
+Accomplishment Instructions in SEB93-5R2; as applicable to your model airplane.
+ (i) For airplanes that have accumulated less than 4,000 hours time-in-service (TIS) as of the
+effective date of this AD: Initially inspect prior to the accumulation of 4,000 hours TIS or within the
+next 200 hours TIS after the effective date of this AD, whichever occurs later.
+ (ii) For airplanes that have accumulated 4,000 or more hours TIS as of the effective date of this
+AD: Initially inspect within 200 hours TIS after the effective date of this AD or within 12 calendar
+months after the effective date of this AD, whichever occurs first.
+
+9
+ (2) For airplanes with a service kit installed in accordance with SEB95-19 or SEB93-5R2: At the
+later of the times specified in paragraphs (g)(2)(i) and (ii) of this AD, do a visual inspection of the
+lower forward doorpost at the strut attach fitting for cracks in accordance with steps 1.A., 1.B., 1.C.,
+and 1.B. (the step following step 1.C.) of the Accomplishment Instructions in SEB95-19; or steps
+1.A. and 1.B. of the Accomplishment Instructions in SEB93-5R2; as applicable to your model
+airplane. Do not remove the installed service kit; instead, inspect for cracking that extends beyond the
+modified parts.
+ (i) At the applicable time specified in paragraph (g)(1)(i) or (ii) of this AD.
+ (ii) Within 1,000 hours TIS or 36 calendar months, whichever occurs first, since installing the
+service kit.
+
+(h) Repetitive Inspections
+
+ (1) If no cracks are found during the initial inspection required by paragraph (g)(1) or (2) of this
+AD, thereafter repeat the inspection at intervals not to exceed 36 calendar months or 1,000 hours TIS,
+whichever occurs first from the last inspection, as long as no cracks are found.
+ (2) If cracks are found during any inspection required by paragraph (g)(1) or (h)(1) of this AD,
+do the inspection specified in paragraph (g)(2) of this AD within 36 calendar months or 1,000 hours
+TIS, whichever occurs first after installing the service kit required by paragraph (i)(1) of this AD.
+Thereafter, repeat the inspection at intervals not to exceed 36 calendar months or 1,000 hours TIS,
+whichever occurs first from the last inspection, as long as no additional cracks are found.
+
+(i) Corrective Actions
+
+ (1) If cracks are found during any inspection required by paragraph (g)(1) or paragraph (h)(1) of
+this AD, before further flight, install a service kit in accordance with step 1.D. of the
+Accomplishment Instructions in SEB95-19; or step 1.C. of the Accomplishment Instructions in
+SEB93-5R2; as applicable to your model airplane.
+ (2) If cracks are found during any inspection required by paragraph (g)(2) or (h)(2) of this AD,
+before further flight, repair the area using a method approved by the Manager, Wichita ACO Branch,
+FAA. For a repair method to be approved by the Manager, Wichita ACO Branch as required by this
+paragraph, the Manager's approval letter must specifically refer to this AD. You may use the contact
+information in paragraph (n)(1) of this AD to obtain FAA approval of your repair method.
+
+(j) Reporting Requirement
+
+ Within 30 days after the effective date of this AD, or within 30 days after completing the initial
+inspection required by paragraph (g) of this AD, whichever occurs later, report the findings of the
+initial inspection (regardless if cracks were found or not) to the FAA at Wichita-COS@faa.gov.
+Thereafter, within 30 days after completing each repetitive inspection required by paragraph (h) of
+this AD, if any crack was found, report the crack findings to the FAA at Wichita-COS@faa.gov.
+Include in your reports the following information:
+ (1) Name and address of the owner;
+ (2) Date of the inspection;
+ (3) Name, address, telephone number, and email address of the person submitting the report;
+ (4) Airplane serial number and total hours TIS on the airplane at the time of the inspection; and
+ (5) If any crack was found during the inspection, provide detailed crack information as specified
+below:
+ (i) A sketch or picture detailing the crack location;
+ (ii) Measured length of the crack(s) found;
+ (iii) Installation of a Cessna service kit or any other kit or repair before the inspection; and
+
+10
+ (iv) Installation of any supplemental type certificates (STCs), alterations, repairs, or field
+approvals affecting the area of concern or affecting gross weight.
+
+(k) Credit for Previous Actions
+
+ (1) You may take credit for the initial inspection required by paragraph (g) of this AD if you
+performed the inspection before the effective date of this AD using Cessna Single Engine Service
+Bulletin SEB93-5, dated March 26, 1993; or Cessna Single Engine Service Bulletin SEB93-5,
+Revision 1, dated September 8, 1995.
+ (2) You may take credit for the installation required by paragraph (i)(1) of this AD as follows.
+ (i) For Model 207, T207, 207A, and T207A airplanes with a service kit installed using SK206-
+42, SK206-42A, SK206-42B, or SK206-42C: You may take credit for the installation if done before
+the effective date of this AD using Cessna Single Engine Service Bulletin SEB93-5, dated March 26,
+1993, or Cessna Single Engine Service Bulletin SEB93-5, Revision 1, dated September 8, 1995; if the
+reinforcement of the lower forward doorpost bulkhead and wing strut fitting specified in Cessna
+Single Engine Service Kit SK207-19A, dated May 29, 2019, is also accomplished within 200 hours
+TIS after the effective date of this AD.
+ (ii) For all other models: You may take credit for the installation if done before the effective date
+of this AD using Cessna Single Engine Service Bulletin SEB93-5, dated March 26, 1993; or Cessna
+Single Engine Service Bulletin SEB93-5, Revision 1, dated September 8, 1995.
+
+(l) Paperwork Reduction Act Burden Statement
+
+ A federal agency may not conduct or sponsor, and a person is not required to respond to, nor
+shall a person be subject to a penalty for failure to comply with a collection of information subject to
+the requirements of the Paperwork Reduction Act unless that collection of information displays a
+current valid OMB Control Number. The OMB Control Number for this information collection is
+2120-0056. Public reporting for this collection of information is estimated to be approximately 1 hour
+per response, including the time for reviewing instructions, completing and reviewing the collection
+of information. All responses to this collection of information are mandatory. Comments concerning
+the accuracy of this burden and suggestions for reducing the burden should be directed to the FAA at:
+800 Independence Ave. SW, Washington, DC 20591, Attn: Information Collection Clearance
+Officer, AES-200.
+
+(m) Alternative Methods of Compliance (AMOCs)
+
+ (1) The Manager, Wichita ACO Branch, FAA, has the authority to approve AMOCs for this AD,
+if requested using the procedures found in 14 CFR 39.19. In accordance with 14 CFR 39.19, send
+your request to your principal inspector or local Flight Standards District Office, as appropriate. If
+sending information directly to the manager of the certification office, send it to the attention of the
+person identified in paragraph (n)(1) of this AD.
+ (2) Before using any approved AMOC, notify your appropriate principal inspector, or lacking a
+principal inspector, the manager of the local flight standards district office/certificate holding district
+office.
+
+(n) Related Information
+
+ (1) For more information about this AD, contact Bobbie Kroetch, Aerospace Engineer, Wichita
+ACO Branch, 1801 Airport Road, Room 100, Wichita, Kansas 67209; telephone: (316) 946-4155;
+fax: (316) 946-4107; email: bobbie.kroetch@faa.gov or Wichita-COS@faa.gov.
+ (2) Service information identified in this AD that is not incorporated by reference is available at
+the addresses specified in paragraphs (o)(3) and (4) of this AD.
+
+11
+
+(o) Material Incorporated by Reference
+
+ (1) The Director of the Federal Register approved the incorporation by reference (IBR) of the
+service information listed in this paragraph under 5 U.S.C. 552(a) and 1 CFR part 51.
+ (2) You must use this service information as applicable to do the actions required by this AD,
+unless the AD specifies otherwise.
+ (i) Cessna Single Engine Service Bulletin SEB93-5, Revision 2, dated May 29, 2019.
+ (ii) Cessna Single Engine Service Bulletin SEB95-19, dated December 29, 1995.
+ (3) For service information identified in this AD, contact Textron Aviation Inc., Textron
+Aviation Customer Service, One Cessna Blvd., Wichita, Kansas 67215; telephone: (316) 517-5800;
+email: customercare@txtav.com; internet: https://support.cessna.com.
+ (4) You may view this service information at the FAA, Airworthiness Products Section,
+Operational Safety Branch, 901 Locust, Kansas City, Missouri 64106. For information on the
+availability of this material at the FAA, call (816) 329-4148.
+ (5) You may view this service information that is incorporated by reference at the National
+Archives and Records Administration (NARA). For information on the availability of this material at
+NARA, email fedreg.legal@nara.gov, or go to: https://www.archives.gov/federal-register/cfr/ibr-
+locations.html.
+
+ Issued on August 24, 2020.
+Lance T. Gant,
+Director, Compliance & Airworthiness Division, Aircraft Certification Service.
+[FR Doc. 2020-22039 Filed 10-6-20; 8:45 am]

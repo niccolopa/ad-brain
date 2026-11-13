@@ -1,0 +1,632 @@
+[Federal Register: November 16, 2010 (Volum
+e 75, Number 220)]
+[Rules and Regulations]
+[Page 69861-69862]
+From the Federal Register Online via GPO Access [wais.access.gpo.gov]
+[DOCID:fr16no10-5]
+
+––––––––––––––––––––––––––––––––––
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2008-1328; Directorate Identifier 2008-CE-066-AD; Amendment 39-15776;
+AD 2008-26-10]
+
+RIN 2120-AA64
+
+Airworthiness Directives; Cessna Aircraft Company (Cessna) 172, 175, 177, 180, 182, 185, 206,
+207, 208, 210, 303, 336, and 337 Series Airplanes
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Final rule; correction.
+
+––––––––––––––––––––––––––––––––––
+
+SUMMARY: The FAA is correcting an airworthiness directive (AD) that was published in the
+Federal Register. That AD applies to the products listed above. In the Information Heading and in the
+SUMMARY section of the published AD, we incorrectly included Cessna 188 series airplanes. In the
+Unsafe Condition section, we incorrectly designated that paragraph as (e) instead of (d). Also in the
+Compliance section, paragraph (f)(2), and in Figure 1, we incorrectly stated the mailing address for
+the report. We are issuing this document to help eliminate any confusion that this AD may have
+created in the Information Heading and in the SUMMARY and Unsafe Condition sections. This
+document corrects those errors. In all other respects, the original document remains the same.
+
+DATES: This final rule is effective November 16, 2010. The effective date for AD 2008-26-10
+remains January 5, 2009.
+
+ADDRESSES: You may examine the AD docket on the Internet at http://www.regulations.gov; or in
+person at the Docket Management Facility between 9 a.m. and 5 p.m., Monday through Friday,
+except Federal holidays. The AD docket contains this AD, the regulatory evaluation, any comments
+received, and other information. The address for the Docket Office (phone: 800-647-5527) is
+Document Management Facility, U.S. Department of Transportation, Docket Operations, M-30, West
+Building Ground Floor, Room W12-140, 1200 New Jersey Avenue, SE., Washington, DC 20590.
+
+FOR FURTHER INFORMATION CONTACT: Ann Johnson, Aerospace Engineer, FAA, Wichita
+Aircraft Certification Office, 1801 Airport Road, Room 100, Wichita, Kansas 67209; telephone: 316-
+946-4105; fax: 316-946-4107; e-mail address: ann.johnson@faa.gov.
+
+1
+
+2
+SUPPLEMENTARY INFORMATION: Airworthiness Directive 2008-26-10, Amendment 39-
+15776 (73 FR 78939, December 24, 2008), currently requires inspecting the alternate static air source
+selector valve to assure that the part number identification placard does not obstruct the alternate
+static air source selector valve port. If the part number identification placard obstructs the port, this
+AD also requires removing the placard, assuring that the port is unobstructed, and reporting to the
+FAA if obstruction is found for certain Cessna 172, 175, 177, 180, 182, 185, 206, 207, 208, 210, 303,
+336, and 337 series airplanes.
+ As published, the Information Heading and the Summary sections of the AD incorrectly included
+Cessna 188 series airplanes. The Unsafe Condition section is incorrectly designated as paragraph (e)
+instead of paragraph (d). Also, the mailing address for the report specified in the Compliance section,
+paragraph (f)(2), and in Figure 1 is incorrectly stated as 1804 instead of 1801.
+ No other part of the preamble or regulatory information has been changed; therefore, only the
+changed portion of the final rule is being published in the Federal Register.
+ The effective date of AD 2008-26-10 remains January 5, 2009.
+
+Correction of Non-Regulatory Text
+
+ In the Federal Register of December 24, 2008, AD 2008-26-10; Amendment 39-15776 is
+corrected as follows:
+ On page 78939, in the second column, on line 10, under the heading DEPARTMENT OF
+TRANSPORTATION, remove 188 from affected series airplanes.
+ On page 78939, in the second column, on line 19, under the heading DEPARTMENT OF
+TRANSPORTATION, in the SUMMARY section, remove 188 from affected series airplanes.
+
+Correction of Regulatory Text
+
+§ 39.13  [Corrected]
+
+ In the Federal Register of December 24, 2008, AD 2008-26-10; Amendment 39-15776 is
+corrected as follows:
+ On page 78942, in the first column, under the Unsafe Condition section, change paragraph (e) to
+(d).
+ On page 78943, in the second column, in paragraph (f)(2), on line 3, change 1804 to 1801.
+ On page 78943, in Figure 1, in the address for the Wichita Manufacturing Inspection District
+Office, change 1804 to 1801.
+
+ Issued in Kansas City, Missouri, on November 4, 2010.
+James E. Jackson,
+Acting Manager, Small Airplane Directorate,
+Aircraft Certification Service.
+
+[Federal Register: December 24, 2008 (Volum
+e 73, Number 248)]
+[Rules and Regulations]
+[Page 78939-78944]
+From the Federal Register Online via GPO Access [wais.access.gpo.gov]
+[DOCID:fr24de08-8]
+
+––––––––––––––––––––––––––––––––––
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2008-1328; Directorate Identifier 2008-CE-066-AD; Amendment 39-15776;
+AD 2008-26-10]
+
+RIN 2120-AA64
+
+Airworthiness Directives; Cessna Aircraft Company 172, 175, 177, 180, 182, 185, 206, 207, 208,
+210, 303, 336, and 337 Series Airplanes
+
+AGENCY: Federal Aviation Administration (FAA), DOT.
+
+ACTION: Final rule; request for comments.
+
+––––––––––––––––––––––––––––––––––
+
+SUMMARY: The FAA is adopting a new airworthiness directive (AD) for certain Cessna Aircraft
+Company (Cessna) 172, 175, 177, 180, 182, 185, 206, 207, 208, 210, 303, 336, and 337 series
+airplanes. This AD requires you to inspect the alternate static air source selector valve to assure that
+the part number identification placard does not obstruct the alternate static air source selector valve
+port. If the part number identification placard obstructs the port, this AD also requires you to remove
+the placard, assure that the port is unobstructed, and report to the FAA if obstruction is found. This
+AD results from reports of airplanes found with alternate static air source selector valve port
+obstruction caused by improper installation of the part number identification placard. The actions
+specified by this AD are intended to prevent erroneous indications from the altimeter, airspeed, and
+vertical speed indicators, which could cause the pilot to react to incorrect flight information and
+possibly result in loss of control.
+
+DATES: This AD becomes effective on January 5, 2009.
+ On January 5, 2009, the Director of the Federal Register approved the incorporation by reference
+of certain publications listed in this AD.
+ We must receive any comments on this AD by February 23, 2009.
+
+ADDRESSES: Use one of the following addresses to comment on this AD.
+• Federal eRulemaking Portal: Go to http://www.regulations.gov. Follow the instructions for
+submitting comments.
+• Fax: (202) 493-2251.
+• Mail: U.S. Department of Transportation, Docket Operations, M-30, West Building Ground
+Floor, Room W12-140, 1200 New Jersey Avenue, SE., Washington, DC 20590.
+3
+
+• Hand Delivery: U.S. Departm
+ent of Transportation, Docket Operations, M-30, West Building
+Ground Floor, Room W12-140, 1200 New Jersey Avenue, SE., Washington, DC 20590, between 9
+a.m. and 5 p.m., Monday through Friday, except Federal holidays.
+ To get the service information identified in this AD, contact Cessna Aircraft Company, P.O. Box
+7704, Wichita, Kansas 67277; telephone: (800) 423-7762 or (316) 517-6056; Internet:
+http://www.cessna.com.
+ To view the comments to this AD, go to http://www.regulations.gov. The docket number is
+FAA-2008-1328; Directorate Identifier 2008-CE-066-AD.
+
+FOR FURTHER INFORMATION CONTACT: Ann Johnson, Aerospace Engineer, FAA, Wichita
+Aircraft Certification Office, 1801 Airport Road, Room 100, Wichita, Kansas 67209; telephone: 316-
+946-4105; fax: 316-946-4107; e-mail address: ann.johnson@faa.gov.
+
+SUPPLEMENTARY INFORMATION:
+
+Discussion
+
+ Reports of improper installation of the part number (P/N) identification placard on P/N 2013142-
+18 alternate static air source selector valves prompted us to issue AD 98-01-01, Amendment 39-
+10286 (63 FR 3455, January 23, 1998), which applies to certain Cessna Aircraft Company (Cessna)
+Models 172R and 182S airplanes, and AD 2008-10-02, Amendment 39-155508 (73 FR 24168, May
+2, 2008), which applies to certain Cessna 172, 175, 180, 182, 185, 206, 207, 208, 210, and 303 series
+airplanes.
+ These ADs require inspecting the alternate static air source selector valve to determine if the P/N
+identification placard obstructs the alternate static air source selector valve port and removing the
+placard if obstruction is found. These ADs also require reporting to the FAA if obstruction is found.
+ These assemblies are required for flight into instrument flight rules (IFR) conditions as defined
+in §91.411 of the Federal Aviation Regulations (14 CFR 91.411). Use of these assemblies is optional
+in visual flight rules (VFR) conditions.
+ After issuing AD 98-01-01 and AD 2008-10-02, we received reports of 15 airplanes not
+previously affected by either AD with a P/N 2013142-18 installed and the alternate static air source
+selector valve port was found obstructed by the P/N identification placard.
+ We have been informed that all P/N 2013142-18 alternate static air source selector valves
+shipped from Cessna Parts Distribution between January 1, 1993, and March 31, 2008, may have port
+obstruction caused by the P/N identification placard.
+ This condition, if not corrected, could result in the altimeter, airspeed, and vertical speed
+indicators displaying erroneous indications. This could cause the pilot to react to incorrect flight
+information and possibly result in loss of control.
+
+Relevant Service Information
+
+ We reviewed Cessna Single Engine Service Bulletin, SB08-34-02, Revision 1, and Cessna
+Caravan Service Bulletin CAB08-4, Revision 1, both dated October 6, 2008; Cessna Single Engine
+Service Bulletin SEB08-5 and Cessna Multi-engine Service Bulletin MEB08-6, both dated October
+13, 2008.
+ The service information describes procedures for inspecting the alternate static air source
+selector valve to assure that the P/N identification placard does not obstruct the alternate static air
+source selector valve port.
+
+4
+
+FAA's Determination and Requirements of This AD
+
+
+We are issuing this AD because we evaluated all the information and determined the unsafe
+condition described previously is likely to exist or develop on other products of the same type design.
+This AD requires inspecting the alternate static air source selector valve to assure that the P/N
+identification placard does not obstruct the alternate static air source selector valve port. If the P/N
+identification placard obstructs the port, this AD requires you to remove the placard, assure that the
+port is unobstructed, and report to the FAA if obstruction is found.
+
+FAA's Determination of the Effective Date
+
+ Since an unsafe condition exists that requires the immediate adoption of this AD, we determined
+that notice and opportunity for public comment before issuing this AD are impracticable, and that
+good cause exists for making this amendment effective in fewer than 30 days.
+
+Comments Invited
+
+ This AD is a final rule that involves requirements affecting flight safety, and we did not precede
+it by notice and an opportunity for public comment. We invite you to send any written relevant data,
+views, or arguments regarding this AD. Send your comments to an address listed under the
+ADDRESSES section. Include the docket number ''FAA-2008-1328; Directorate Identifier 2008-CE-
+066-AD'' at the beginning of your comments. We specifically invite comments on the overall
+regulatory, economic, environmental, and energy aspects of the AD. We will consider all comments
+received by the closing date and may amend the AD in light of those comments.
+ We will post all comments we receive, without change, to http://www.regulations.gov, including
+any personal information you provide. We will also post a report summarizing each substantive
+verbal contact we receive concerning this AD.
+
+Authority for This Rulemaking
+
+ Title 49 of the United States Code specifies the FAA's authority to issue rules on aviation safety.
+Subtitle I, Section 106, describes the authority of the FAA Administrator. Subtitle VII, Aviation
+Programs, describes in more detail the scope of the Agency's authority.
+ We are issuing this rulemaking under the authority described in Subtitle VII, Part A, Subpart III,
+Section 44701, ''General requirements.'' Under that section, Congress charges the FAA with
+promoting safe flight of civil aircraft in air commerce by prescribing regulations for practices,
+methods, and procedures the Administrator finds necessary for safety in air commerce. This
+regulation is within the scope of that authority because it addresses an unsafe condition that is likely
+to exist or develop on products identified in this rulemaking action.
+
+Regulatory Findings
+
+ We determined that this AD will not have federalism implications under Executive Order 13132.
+This AD will not have a substantial direct effect on the States, on the relationship between the
+national government and the States, or on the distribution of power and responsibilities among the
+various levels of government.
+ For the reasons discussed above, I certify that this AD:
+ (1) Is not a ''significant regulatory action'' under Executive Order 12866;
+ (2) Is not a ''significant rule'' under DOT Regulatory Policies and Procedures (44 FR 11034,
+February 26, 1979); and
+ (3) Will not have a significant economic impact, positive or negative, on a substantial number of
+small entities under the criteria of the Regulatory Flexibility Act.
+5
+
+
+We prepared a regulatory evaluation of the estimated costs to comply with this AD and placed it
+in the AD docket.
+
+Examining the AD Docket
+
+ You may examine the AD docket that contains the AD, the regulatory evaluation, any comments
+received, and other information on the Internet at http://www.regulations.gov; or in person at the
+Docket Management Facility between 9 a.m. and 5 p.m., Monday through Friday, except Federal
+holidays. The Docket Office (telephone (800) 647-5527) is located at the street address stated in the
+ADDRESSES section. Comments will be available in the AD docket shortly after receipt.
+
+List of Subjects in 14 CFR Part 39
+
+ Air transportation, Aircraft, Aviation safety, Incorporation by reference, Safety.
+
+Adoption of the Amendment
+
+Accordingly, under the authority delegated to me by the Administrator, the FAA amends 14 CFR part
+39 as follows:
+
+PART 39–AIRWORTHINESS DIRECTIVES
+
+1. The authority citation for part 39 continues to read as follows:
+
+ Authority: 49 U.S.C. 106(g), 40113, 44701.
+
+§ 39.13  [Amended]
+
+2. The FAA amends § 39.13 by adding a new AD to read as follows:
+
+6
+
+
+FAA
+Aircraft Certification Service
+AIRWORTHINESS DIRECTIVE
+www.faa.gov/aircraft/safety/alerts/
+www.gpoaccess.gov/fr/advanced.html
+
+CORRECTION: [Federal Register: November 16, 2010 (Volume 75, Number 220); Page 69861-
+69862; www.access.gpo.gov/su_docs/aces/aces140.html]
+
+2008-26-10 Cessna Aircraft Company: Amendment 39-15776; Docket No. FAA-2008-1328;
+Directorate Identifier 2008-CE-066-AD.
+
+Effective Date
+
+ (a) This AD becomes effective on January 5, 2009.
+
+Affected ADs
+
+ (b) This AD relates to AD 98-01-01, Amendment 39-10287 and AD 2008-10-02, Amendment
+39-15508. These ADs can be found on the Internet at the following Web site: http://rgl.faa.gov/.
+
+Applicability
+
+ (c) This AD applies to all serial numbers (S/Ns) of the airplanes listed in Table 1 of this AD,
+certificated in any category, that:
+ (1) Were initially delivered from the manufacturer between January 1, 1993, and March 31,
+2008, unless the modification/rework required in AD 2008-10-02 has been done and you remain in
+compliance with that AD; or
+ (2) Have a part number (P/N) 2013142-18 installed as a replacement part anytime after January
+1, 1993, unless the modification/rework required in AD 2008-10-02 has been done and you remain in
+compliance with that AD.
+
+ Note 1: The affected part was shipped from Cessna Parts Distribution (CPD) between January 1,
+1993, and March 31, 2008.
+
+ Note 2: P/N 2013142-18 replaced P/Ns 2013142-9, -13, and -17.
+
+Table 1. – Applicable Airplane Models
+Models
+172 F172K 177
+172A F172L 177A
+172B F172M 177B
+172C F172N 177RG
+172D F172P F177RG
+172E FR172E 180
+172F (USAF T-41A) FR172F 180A
+172G FR172G 180B
+172H (USAF T-41A) FR172H 180C
+172I FR172J 180D
+172K FR172K 180E
+172L P172D 180F
+7
+
+172M
+R172E (USAF T-41B),
+(USAF T-41C and D)
+180G
+172N R172F (USAF T-41) 180H
+172P R172G (USAF T-41C or D) 180J
+172Q R172H (USAF T-41D) 180K
+172R R172J 182
+172S R172K 182A
+F172D 172RG 182B
+F172E 175 182C
+F172F 175A 182D
+F172G 175B 182E
+F172H 175C 182F
+182G A185F U206D
+182H 206 U206E
+182J 206H U206F
+182K P206 U206G
+182L P206A 207
+182M P206B 207A
+182N P206C T207
+182P P206D T207A
+182Q P206E 208
+182R T206H 208B
+182S TP206A 210
+182T TP206B 210A
+F182P TP206C 210B
+F182Q TP206D 210C
+FR182 TP206E 210D
+R182 TU206A 210E
+T182 TU206B 210F
+T182T TU206C 210G
+TR182 TU206D 210H
+185 TU206E 210J
+185A TU206F 210K
+185B TU206G 210L
+185C U206 210M
+185D U206A 210N
+185E U206B 210R
+A185E U206C 210-5 (205)
+210-5A (205A) FT337F
+T210F M337B (USAF 02A)
+T210G T337B
+T210H T337C
+T210J T337D
+T210K T337E
+T210L T337F
+T210M T337H
+T210N T337H-SP
+T210R
+T303
+8
+
+336
+
+337
+337A (USAF 02B)
+337B
+337C
+337D
+337E
+337F
+337G
+337H
+F337E
+F337F
+F337G
+F337H
+FT337E
+
+Unsafe Condition
+
+ (d) This AD is the result of reports of improper installation of the part number identification
+placard on the alternate static air source selector valve. We are issuing this AD to prevent erroneous
+indications from the altimeter, airspeed, and vertical speed indicators, which could cause the pilot to
+react to incorrect flight information and possibly result in loss of control.
+
+Compliance
+
+ (e) To address this problem, you must do the following, unless already done. A person
+authorized to perform maintenance as specified in 14 CFR section 43.3 of the Federal Aviation
+Administration Regulations (14 CFR 43.3) is required to do all the actions required in this AD.
+
+Actions Compliance Procedures
+(1) For all affected airplanes
+that are not equipped for flight
+under instrument flight rules
+(IFR): Inspect the alternate
+static air source selector valve
+to assure that the part number
+identification placard is not
+obstructing the port.
+Within the next 100 hours
+time-in-service (TIS) after
+January 5, 2009 (the
+effective date of this AD)
+or within the next 4
+months after January 5,
+2009 (the effective date of
+this AD), whichever
+occurs first.
+Following the procedures in Cessna
+Single Engine Service Bulletin
+SB08-34-02, Revision 1, dated
+October 6, 2008; Cessna Caravan
+Service Bulletin CAB08-4, Revision
+1, dated October 6, 2008; Cessna
+Single Engine Service Bulletin
+SEB08-5, dated October 13, 2008; or
+Cessna Multi-engine Service Bulletin
+MEB08-6, dated October 13, 2008,
+as applicable.
+9
+
+(2) For all af
+fected airplanes
+that are equipped for flight
+under instrument flight rules
+(IFR):
+(i) Inspect the alternate static
+air source selector valve to
+assure that the part number
+identification placard is not
+obstructing the port; or
+(ii) Fabricate a placard that
+incorporates the following
+words (using at least 1/8-inch
+letters) and install this placard
+on the instrument panel within
+the pilot’s clear view: “IFR
+OPERATION IS
+PROHIBITED” and “USE OF
+THE ALTERNATE STATIC
+AIR SOURCE IS
+PROHIBITED.”
+(A) Inspect within the
+next 10 days after January
+5, 2009 (the effective date
+of this AD); or
+(B) Install placards before
+further flight after January
+5, 2009 (the effective date
+of this AD).
+Following the procedures in Cessna
+Single Engine Service Bulletin
+SB08-34-02, Revision 1, dated
+October 6, 2008; Cessna Caravan
+Service Bulletin CAB08-4, Revision
+1, dated October 6, 2008; Cessna
+Single Engine Service Bulletin
+SEB08-5, dated October 13, 2008; or
+Cessna Multi-engine Service Bulletin
+MEB08-6, dated October 13, 2008,
+as applicable.
+(3) For all affected airplanes
+that are equipped for flight
+under instrument flight rules
+(IFR): If placards were
+installed in accordance with
+paragraph (e)(2)(ii) of this AD,
+inspect the alternate static air
+source selector valve to assure
+that the part number
+identification placard is not
+obstructing the port.
+Within the next 100 hours
+TIS after January 5, 2009
+(the effective date of this
+AD) or within the next 4
+months after January 5,
+2009 (the effective date of
+this AD), whichever
+occurs first. After doing
+the inspection, remove the
+placards installed in
+accordance with
+paragraph (e)(2)(ii) of this
+AD before further flight.
+Following the procedures in Cessna
+Single Engine Service Bulletin
+SB08-34-02, Revision 1, dated
+October 6, 2008; Cessna Caravan
+Service Bulletin CAB08-4, Revision
+1, dated October 6, 2008; Cessna
+Single Engine Service Bulletin
+SEB08-5, dated October 13, 2008; or
+Cessna Multi-engine Service Bulletin
+MEB08-6, dated October 13, 2008,
+as applicable.
+(4) For all affected airplanes:
+If the alternate static air source
+selector valve port is found
+obstructed by the part number
+identification placard during
+the inspection required in
+paragraphs (e)(1), (e)(2)(i),
+and (e)(3) of this AD, remove
+the placard from the valve
+body, discard the placard, and
+assure that the port is open and
+unobstructed.
+Before further flight after
+the inspection required in
+paragraphs (e)(1),
+(e)(2)(i), and (e)(3) of this
+AD.
+Following the procedures in Cessna
+Single Engine Service Bulletin
+SB08-34-02, Revision 1, dated
+October 6, 2008; Cessna Caravan
+Service Bulletin CAB08-04,
+Revision 1, dated October 6, 2008;
+Cessna Single Engine Service
+Bulletin SEB08-5, dated October 13,
+2008; or Cessna Multi-engine
+Service Bulletin MEB08-6, dated
+October 13, 2008, as applicable.
+10
+
+(5) For all af
+fected airplanes:
+When a replacement valve is
+needed, only install a P/N
+2013142-18 alternate static air
+source selector valve that has
+been inspected and the port is
+found free from obstruction.
+ As of 10 days after
+January 5, 2009 (the
+effective date of this AD).
+A person authorized to perform
+maintenance as specified in 14 CFR
+section 43.3 of the Federal Aviation
+Administration Regulations (14 CFR
+43.3) is required to do the inspection.
+
+ (f) Report to the FAA the results of the inspection required by this AD where an obstruction was
+found.
+ (1) Submit this report within 10 days after the inspection or 10 days after the effective date of
+this AD, whichever occurs later.
+ (2) Use the form in Figure 1 of this AD and submit it to FAA, Manufacturing Inspection District
+Office, Mid-Continent Airport, 1801 Airport Road, Room 101, Wichita, Kansas 67209; or fax to
+(316) 946-4189.
+ (3) The Office of Management and Budget (OMB) approved the information collection
+requirements contained in this regulation under the provisions of the Paperwork Reduction Act of
+1980 (44 U.S.C. 3501 et seq.) and assigned OMB Control Number 2120-0056.
+
+ 1801
+
+Figure 1
+
+11
+
+Alternativ
+e Methods of Compliance (AMOCs)
+
+ (g) The Manager, Wichita Aircraft Certification Office (ACO), FAA, has the authority to
+approve AMOCs for this AD, if requested using the procedures found in 14 CFR 39.19. Send
+information to ATTN: Ann Johnson, Aerospace Engineer, FAA, Wichita ACO, 1801 Airport Road,
+Room 100, Wichita, Kansas 67209; telephone: 316-946-4105; fax: 316-946-4107; e-mail address:
+ann.johnson@faa.gov. Before using any approved AMOC on any airplane to which the AMOC
+applies, notify your appropriate principal inspector (PI) in the FAA Flight Standards District Office
+(FSDO), or lacking a PI, your local FSDO.
+
+ (h) AMOCs approved for AD 2008-10-02 are approved for this AD.
+
+Material Incorporated by Reference
+
+ (i) You must use Cessna Single Engine Service Bulletin, SB08-34-02, Revision 1, dated October
+6, 2008; Cessna Caravan Service Bulletin CAB08-4, Revision 1, dated October 6, 2008; Cessna
+Single Engine Service Bulletin SEB08-5, dated October 13, 2008; and Cessna Multi-engine Service
+Bulletin MEB08-6, dated October 13, 2008, to do the actions required by this AD, unless the AD
+specifies otherwise.
+ (1) The Director of the Federal Register approved the incorporation by reference of this service
+information under 5 U.S.C. 552(a) and 1 CFR part 51.
+ (2) For service information identified in this AD, contact Cessna Aircraft Company, P.O. Box
+7704, Wichita, Kansas 67277; telephone: (800) 423-7762 or (316) 517-6056; Internet:
+http://www.cessna.com.
+ (3) You may review copies at the FAA, Central Region, Office of the Regional Counsel, 901
+Locust, Kansas City, Missouri 64106; or at the National Archives and Records Administration
+(NARA). For information on the availability of this material at NARA, call 202-741-6030, or go to:
+http://www.archives.gov/federal_register/code_of_federal_regulations/ibr_locations.html.
+
+ Issued in Kansas City, Missouri, on December 15, 2008.
+Kim Smith,
+Manager, Small Airplane Directorate,
+Aircraft Certification Service.
+12

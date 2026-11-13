@@ -1,0 +1,426 @@
+1
+[Federal Register: September 16, 2005 (Volume 70, Number 179)]
+[Rules and Regulations]
+[Page 54618-54622]
+From the Federal Register Online via GPO Access [wais.access.gpo.gov]
+[DOCID:fr16se05-4]
+–––––––––––––––––––––––––––––––––––
+
+DEPARTMENT OF TRANSPORTATION
+
+Federal Aviation Administration
+
+14 CFR Part 39
+
+[Docket No. FAA-2005-21864; Directorate Identifier 2005-NE-29-AD; Amendment 39-14276;
+AD 2005-19-11]
+
+RIN 2120-AA64
+
+Airworthiness Directives; Lycoming Engines (Formerly TextronLycoming) AEIO-360, IO-360,
+O-360, LIO-360, LO-360, AEIO-540, IO-540, O-540, and TIO-540 Series Reciprocating Engines
+
+AGENCY: Federal Aviation Administration (FAA), Department of Transportation (DOT).
+
+ACTION: Final rule.
+
+–––––––––––––––––––––––––––––––––––
+
+SUMMARY: The FAA is adopting a new airworthiness directive (AD) for certain Lycoming
+Engines (formerly Textron Lycoming) AEIO-360, IO-360, O-360, LIO-360, LO-360, AEIO-540, IO-
+540, O-540, and TIO-540 series reciprocating engines rated at 300 horsepower (HP) or lower. This
+AD requires replacing certain crankshafts. This AD results from reports of 12 crankshaft failures in
+Lycoming 360 and 540 series engines rated at 300 HP or lower. We are issuing this AD to prevent
+failure of the crankshaft, which could result in total engine power loss, in-flight engine failure, and
+possible loss of the aircraft.
+
+DATES: This AD becomes effective October 21, 2005. The Director of the Federal Register
+approved the incorporation by reference of certain publications listed in the regulations as of October
+21, 2005.
+
+ADDRESSES: You can get the service information identified in this AD from Lycoming, 652 Oliver
+Street, Williamsport, PA 17701; telephone (570) 323-6181; fax (570) 327-7101, or on the Internet at
+http://www.Lycoming.Textron.com.
+
+ You may examine the AD docket on the Internet at http://dms.dot.gov or in Room PL-401 on the
+plaza level of the Nassif Building, 400 Seventh Street, SW., Washington, DC.
+
+FOR FURTHER INFORMATION CONTACT: Norm Perenson, Aerospace Engineer, New York
+Aircraft Certification Office, FAA, Engine & Propeller Directorate, 1600 Stewart Avenue, Suite 410,
+Westbury, NY 11590; telephone (516) 228-7337; fax (516) 794-5531.
+
+
+2
+SUPPLEMENTARY INFORMATION: The FAA proposed to amend 14 CFR part 39 with a
+proposed airworthiness directive (AD). The proposed AD applies to Lycoming Engines (formerly
+Textron Lycoming) AEIO-360, IO-360, O-360, LIO-360, LO-360, AEIO-540, IO-540, O-540, and
+TIO-540 series reciprocating engines rated at 300 horsepower (HP) or lower. We published the
+proposed AD in the Federal Register on July 22, 2005 (70 FR 42282). That action proposed to
+require replacing certain crankshafts within 50 hours time-in-service or 6 months after the effective
+date of the proposed AD, whichever is earlier.
+
+Examining the AD Docket
+
+ You may examine the docket that contains the AD, any comments received, and any final
+disposition in person at the Docket Management Facility Docket Offices between 9 a.m. and 5 p.m.,
+Monday through Friday, except Federal holidays. The Docket Office (telephone (800) 647-5227) is
+located on the plaza level of the Department of Transportation Nassif Building at the street address
+stated in ADDRESSES. Comments will be available in the AD docket shortly after the DMS receives
+them.
+
+Comments
+
+ We provided the public the opportunity to participate in the development of this AD. We have
+considered the comments received.
+
+Will Additional Engines and Crankshafts Be Affected in the Future
+
+ One commenter asks if additional serial numbered engines and crankshafts will be affected in the
+future.
+ At this time we do not anticipate that the affected population will increase, but Lycoming and the
+FAA are monitoring crankshaft performance.
+
+Affected Engines and Crankshafts
+
+ The same commenter asks why these engines and crankshafts are the only ones affected by the
+SB and AD.
+ Both the previous AD (2002-19-03) and this AD advise that the affected population of engines
+and crankshafts were manufactured in a specific time period. We are addressing that time period.
+
+Suspect Crankshafts Should Be Either Tested or Replaced
+
+ One commenter states that suspect crankshafts should be either tested or replaced before further
+flight, because the problem with these crankshafts is similar to the problem that caused the crankshaft
+failures on the 540 engines.
+ We disagree. The compliance interval in this AD is based on an assessment of operating stresses,
+service experience, and duty cycle of the affected engine population. The compliance interval differs
+from that imposed in AD 2002-19-03 due to differences in these parameters.
+
+Request To Include Lycoming TIO-540-AE2A and Other Unspecified Engine Models
+
+ One commenter requests that we include the Lycoming TIO-540-AE2A and other unspecified
+engine models in this AD. The commenter states that many of the TIO-540-AE2A engines have
+never been recalled or replaced yet should be, because recent litigation has shown that Lycoming's
+crankshaft end core sample test is insufficient.
+
+3
+ We disagree. We have seen no evidence that refutes the validity of the test. Further, AD 2002-
+19-03 (the previous AD) effective on September 20, 2002, described two groups of crankshafts. We
+required one crankshaft group to be removed before further flight, and we required the other
+crankshaft group to have a sample of the crankshaft material tested. The crankshafts in each group
+were selected based on our evaluation of the risk both groups presented. Crankshafts from either
+group may be installed in the TIO-540-AE2A engine model. No failures of crankshafts listed in either
+group have occurred since.
+
+Conclusion
+
+ We have carefully reviewed the available data, including the comments received, and determined
+that air safety and the public interest require adopting the AD as proposed.
+
+Costs of Compliance
+
+ We estimate that this AD will affect 1,128 engines installed on aircraft of U.S. registry. We
+estimate that it will take the following work hours to perform the inspection:
+
+Type of application Work-hours per engine Number of engines affected
+Helicopter  12  200
+Constant-Speed Propeller  3  557
+Fixed-Pitch Propeller  1.5  371
+
+ We also estimate that it will take about 33 work hours to replace the crankshaft. We estimate the
+average labor rate is $65 per work hour and that required parts for each engine will cost about
+$16,218. Based on these figures, we estimate the total cost of the AD to U.S. operators to be
+$18,594,724. Lycoming Engines informed us that they intend to supply the new parts at no charge,
+which may substantially reduce the estimated cost of this AD.
+
+Authority for This Rulemaking
+
+ Title 49 of the United States Code specifies the FAA's authority to issue rules on aviation safety.
+Subtitle I, section 106, describes the authority of the FAA Administrator. Subtitle VII, Aviation
+Programs, describes in more detail the scope of the Agency's authority.
+ We are issuing this rulemaking under the authority described in subtitle VII, part A, subpart III,
+section 44701, ''General requirements.'' Under that section, Congress charges the FAA with
+promoting safe flight of civil aircraft in air commerce by prescribing regulations for practices,
+methods, and procedures the Administrator finds necessary for safety in air commerce. This
+regulation is within the scope of that authority because it addresses an unsafe condition that is likely
+to exist or develop on products identified in this rulemaking action.
+
+Regulatory Findings
+
+ We have determined that this AD will not have federalism implications under Executive Order
+13132. This AD will not have a substantial direct effect on the States, on the relationship between the
+national government and the States, or on the distribution of power and responsibilities among the
+various levels of government.
+ For the reasons discussed above, I certify that this AD:
+ (1) Is not a ''significant regulatory action'' under Executive Order 12866;
+ (2) Is not a ''significant rule'' under DOT Regulatory Policies and Procedures (44 FR 11034,
+February 26, 1979); and
+
+4
+ (3) Will not have a significant economic impact, positive or negative, on a substantial number of
+small entities under the criteria of the Regulatory Flexibility Act.
+ We prepared a summary of the costs to comply with this AD and placed it in the AD Docket.
+You may get a copy of this summary at the address listed under ADDRESSES.
+
+List of Subjects in 14 CFR Part 39
+
+ Air transportation, Aircraft, Aviation safety, Incorporation by reference, Safety.
+
+Adoption of the Amendment
+
+Accordingly, under the authority delegated to me by the Administrator, the Federal Aviation
+Administration amends 14 CFR part 39 as follows:
+
+PART 39–AIRWORTHINESS DIRECTIVES
+
+1. The authority citation for part 39 continues to read as follows:
+
+ Authority: 49 U.S.C. 106(g), 40113, 44701.
+
+§ 39.13  [Amended]
+
+2. The FAA amends § 39.13 by adding the following new airworthiness directive:
+
+
+5
+
+AIRWORTHINESS DIRECTIVE
+
+
+Aircraft Certification Service
+Washington, DC
+
+
+
+
+
+U.S. Department
+of Transportation
+Federal Aviation
+Administration
+We post ADs on the internet at www.faa.gov/aircraft/safety/alerts/
+The following Airworthiness Directive issued by the Federal Aviation Administration in accordance with the provisions of Title 14 of the Code of Federal Regulations (14 CFR) part 39,
+applies to an aircraft model of which our records indicate you may be the registered owner. Airworthiness Directives affect aviation safety and are regulations which require immediate
+attention. You are cautioned that no person may operate an aircraft to which an Airworthiness Directive applies, except in accordance with the requirements of the Airworthiness
+Directive (reference 14 CFR part 39, subpart 39.3).
+
+2005-19-11 Lycoming Engines: Amendment 39-14276. Docket No. FAA-2005-21864; Directorate
+Identifier 2005-NE-29-AD.
+
+Effective Date
+
+ (a) This airworthiness directive (AD) becomes effective October 21, 2005.
+
+Affected ADs
+
+ (b) None.
+
+Applicability
+
+ (c) This AD applies to Lycoming Engines (Formerly Textron Lycoming) AEIO-360, IO-360, O-
+360, LIO-360, LO-360, AEIO-540, IO-540, O-540, and TIO-540 series reciprocating engines, rated
+at 300 horsepower (HP) or lower, manufactured new, rebuilt, overhauled after March 1, 1999, or that
+had a crankshaft installed after March 1, 1999. These engines are installed on, but not limited to, the
+following aircraft:
+
+Engine model Manufacturer Aircraft model
+A.M.F  17–D Mushshak  IO–540–V4A5
+Aero Commander  500 B, S, U/Merlyn Products Conv.
+Aero Commander  500–E
+Aerofab  LA 250 Renegade
+IO–540–E1A5
+Aeronautica  Agricola Mexicana Quail
+Aerostar  600  IO–540–K1F5
+Aircraft Manufacturing Factory  Mushshak
+O–540–E4A5  Aviamilano  F–250 Flamingo
+IO–540–C4B5  Avions  Pierre Robin HR–100/250
+LO–360–A1G6D  Beech  76 Duchess
+76 Duchess  Beech
+C–24R Sierra or 200 Sierra
+O–360–A1G6D
+Bellanca  Aircraft Aries T–250
+O–540–E4B5  Britten Norman  BN–2 Islander
+O–540–E4C5  Britten Norman BN–2A & BN–2B Islander
+
+6
+Engine model Manufacturer Aircraft model
+Britten Norman  BN–2A Islander  IO–540–K1B5
+Celair  Eagle
+O–360–A1F6  Cessna  177 Cardinal
+O–360–A1F6D  Cessna 177 Cardinal
+O–540–J3C5D  Cessna 182–RG Skylane
+IO–540–AB1A5  Cessna 182–S
+O–360–F1A6  Cessna C–172RG Cutlass RG
+C–206 Stationair  IO–540–AC1A5  Cessna
+R–G Cardinal
+IO–360–A1B6D  Cessna R–G Cardinal
+TIO–540–AK1A  Cessna T182T Skylane
+O–540–L3C5D  Cessna TR–182 Turbo Skylane
+AEIO–540–D4A5  Christen Pitts  S–2S, S–2B
+IO–540–T4B5D  Commander  114
+IO–540–T4B5  Commander 114B
+Commander 114TC  TIO–540–AG1A
+Dornier  DO–28
+IO–540–K1J5D  Embraer  EMB–201 Ipanema
+EMB–710 Corioca
+EMB–720 Minuano
+O–540–B4B5  Embraer
+EMB–720 Minuano & EMB–721 Sertanejo
+EMB–721 Sertanejo
+Extra-Flugzeugbau  Extra 300
+F.F.A  FFA–2000 Eurotrainer
+AEIO–540–L1B5
+H.A.L  HPT–32
+O–540–A1A5  Helio Military  H–250
+AEIO–360–A1E6  Integrated Systems  Omega
+King Engineering  Angel
+Korean Air  Chang Gong–91
+IO–540–M1C5
+Lake  LA–4–200 Buccaneer
+MT–7–260 & M–7–260 O–540–J3A5  Maule.
+MX–7–235 Star Rocket
+Maule. MX–7–235, MT–7–235 & M7–235  IO–540–W1A5
+Mod Works  Trophy 212 Conversion
+201 IO–360–A3B6  Mooney
+M–201
+IO–360–A1B6  Mooney M–20–J
+IO–360–A3B6D  Mooney M20J–201
+Mooney M20M TLS Bravo
+Z143L Zlin  Moravan
+Z242L Zlin
+TIO–540–AF1B
+Partenavia  P–68 Series Observer
+IO–540–K1J5  Piper  600–A Aerostar
+IO–540–S1A5  Piper 601–A, 601B & 601P Aerostar
+IO–540–AA1A5  Piper 602P Sequoia
+PA–23–235 Aztec & PA–24–250 Comanche  O–540–A1B5  Piper
+PA–23–250 Aztec
+
+7
+Engine model Manufacturer Aircraft model
+IO–540–J4A5  Piper PA–23–250 Aztec
+IO–540–C1B5  Piper PA–23–250 Aztec & PA–24–250 Comanche
+PA–23–250T Turbo Aztec  TIO–540–C1A  Piper
+PA–24–150 Comanche
+O–540–A1C5  Piper PA–24–250 Comanche
+O–540–A1D5  Piper PA–24–250 Comanche
+PA–24–260 Comanche  IO–540–D4A5  Piper
+PA–24–260 Comanche
+O–540–B2C5  Piper PA–25–235 Pawnee
+PA–28–235 Cherokee  O–540–B2B5  Piper
+PA–28–235 Cherokee
+IO–360–C1C6  Piper PA–28R–201 Arrow
+PA–31–300 Navajo IO–540–M1A5  Piper
+PA–32–260 Cherokee 6
+IO–540–K1G5  Piper PA–32–300 & PA–32–301 Saratoga
+IO–540–K1A5  Piper PA–32–300 Cherokee 6
+IO–540–K1A5D  Piper PA–32–300 Cherokee 6
+PA–32–300R Lance  IO–540–K1G5D  Piper
+PA–32–301R Saratoga
+IO–360–C1E6  Piper PA–34–200 Seneca I
+IO–540–K1G5  Piper PA–36–300 Brave
+O–360–A1H6  Piper PA–44–180
+LO–360–A1H6  Piper PA–44–180 Seminole
+Piper T–35 Pillan  IO–540–K1K5
+Robin  R–3000/235
+Robinson  R–44
+Rockwell  114
+Ruschmeyer  MF–85
+Saab  MFI–15 Safari or MFI–17 Supporter
+Scottish Avia  Bulldog
+Siai Marchetti  S–205
+Siai Marchetti  S–208 & SF–260
+Siai Marchetti  SF–260
+Siai Marchetti  SF–260
+Slingsby  Firefly T3A
+R–235 Rallye Cuerrier
+O–540–F1B5
+Socata
+Rallye 235CA
+TB–20 Trinidad  IO–540–C4D5D  Socata
+TB–200
+TIO–540–AB1AD  Socata TB–21 & TB–21–TC Trinidad TC
+IO–540–AB1A5  Stoddard Hamilton  Glasair
+IO–540–K1H5  Stoddard Hamilton  Glasair III
+Swearingen Aircraft  SX–300  IO–540–L1C5
+Transava  T–300 Skyfarmer
+Valmet  L–70 Vinka
+Wassmer  WA4–21
+AEIO–360–A1B6
+Yoeman  Aviation YA–1
+
+
+8
+Unsafe Condition
+
+ (d) This AD results from 12 crankshaft failures in Lycoming model 360 and 540 series engines
+rated at 300 HP or lower. We are issuing this AD to prevent failure of the crankshaft, which could
+result in total engine power loss, in-flight engine failure, and possible loss of the airplane.
+
+Compliance
+
+ (e) You are responsible for having the actions required by this AD performed within 50 hours
+time-in-service or 6 months after the effective date of this AD, whichever is earlier, unless the actions
+have already been done.
+
+Engines Manufactured Before March 1, 1999
+
+ (f) If Lycoming Engines manufactured new, rebuilt, or overhauled your engine before March 1,
+1999, and you haven't had the crankshaft replaced, no further action is required.
+
+AEIO-540, IO-540, O-540, and TIO-540 Series Engines Manufactured New or Rebuilt,
+Overhauled, or That Had a Crankshaft Installed After March 1, 1999
+
+ (g) For AEIO-540, IO-540, O-540, and TIO-540 series engines manufactured new or rebuilt,
+overhauled, or that had a crankshaft installed after March 1, 1999, do the following:
+ (1) If Table 1 or Table 2 of Lycoming Mandatory Service Bulletin (MSB) No. 566, dated July
+11, 2005, lists your engine serial number (SN), use Table 4 to verify the crankshaft SN.
+ (2) If Table 4 of Lycoming MSB No. 566, dated July 11, 2005, lists your crankshaft SN, replace
+the crankshaft with a crankshaft that is not listed in Table 4 of Lycoming MSB No. 566, dated July
+11, 2005.
+
+AEIO-360, IO-360, O-360, LIO-360, and LO-360 Series Engines Manufactured New or Rebuilt,
+Overhauled, or That Had a Crankshaft Installed After March 1, 1999
+
+ (h) For AEIO-360, IO-360, O-360, LIO-360, and LO-360 series engines manufactured new or
+rebuilt, overhauled, or that had a crankshaft installed after March 1, 1999, do the following:
+ (1) If Table 3 of Lycoming MSB No. 566, dated July 11, 2005, lists your engine SN, use Table 4
+to verify the crankshaft SN.
+ (2) If Table 4 of Lycoming MSB No. 566, dated July 11, 2005, lists your crankshaft SN, replace
+the crankshaft with a crankshaft that is not listed in Table 4 of Lycoming MSB No. 566, dated July
+11, 2005.
+
+Prohibition Against Installing Certain Crankshafts
+
+ (i) After the effective date of this AD, do not install any crankshaft that has a SN listed in Table
+4 of Lycoming MSB No. 566, dated July 11, 2005, into any engine.
+
+
+9
+Alternative Methods of Compliance (AMOCs)
+
+ (j) The Manager, New York Aircraft Certification Office, has the authority to approve AMOCs
+for this AD if requested using the procedures found in 14 CFR 39.19.
+
+Related Information
+
+ (k) None.
+
+Material Incorporated by Reference
+
+ (l) You must use Lycoming Mandatory Service Bulletin No. 566, dated July 11, 2005, to perform
+the actions required by this AD. The Director of the Federal Register approved the incorporation by
+reference of this service bulletin in accordance with 5 U.S.C. 552(a) and 1 CFR part 51. Contact
+Lycoming, 652 Oliver Street, Williamsport, PA 17701; telephone (570) 323-6181; fax (570) 327-
+7101, or on the Internet at http://www.Lycoming.Textron.com for a copy of this service information.
+You may review copies at the Docket Management Facility; U.S. Department of Transportation, 400
+Seventh Street, SW., Nassif Building, Room PL-401, Washington, DC 20590-0001, on the Internet at
+http://dms.dot.gov, or at the National Archives and Records Administration (NARA). For information
+on the availability of this material at NARA, call 202-741-6030, or go to:
+http://www.archives.gov/federal-register/cfr/ibr-locations.html.
+
+ Issued in Burlington, Massachusetts, on September 9, 2005.
+Jay J. Pardee,
+Manager, Engine and Propeller Directorate, Aircraft Certification Service.
+[FR Doc. 05-18323 Filed 9-15-05; 8:45 am]
+BILLING CODE 4910-13-P
