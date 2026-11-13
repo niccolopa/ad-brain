@@ -1,6 +1,4 @@
 registration,serial,model,engine_model,source,why
-,,,,IAA Ireland monthly register (snapshot),inside FAA 2012-02-02
-,,,,IAA Ireland monthly register (snapshot),inside FAA 2013-03-15
-,,,,IAA Ireland monthly register (snapshot),outside every range -> negative case
-,,,,IAA Ireland monthly register (snapshot),Tecnam P2008 JC inside EASA 2018-0072 (S/N 1002-1085)
-,,,,IAA Ireland monthly register (snapshot),any other aircraft from the ranges table in docs/DATI.md
+EI-GKN,172S10480,CESSNA 172S,LYCOMING IO-360-L2A,"IAA Ireland register snapshot, 30 September 2025",inside FAA 2012-02-02
+EI-HAS,172S12476,CESSNA 172S,LYCOMING IO-360-L2A,"IAA Ireland register snapshot, 30 September 2025","outside every serial range; the register year (2000) conflicts with the serial order, so the delivery date is unknown -> AD 2008-26-10 is an open QUESTION; 2020-18-01 and 2011-10-09 do not apply"
+EI-GWY,17280162,CESSNA 172R,LYCOMING IO-360-L2A,"IAA Ireland register snapshot, 30 September 2025","172R in the KAP 140 range (2003-24-13/2004-15-18), the kit range (2012-22-01) and the 2008-10-02 Table 2 range: each depends on equipment -> QUESTION"
