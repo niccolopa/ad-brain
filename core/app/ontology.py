@@ -41,6 +41,177 @@ class Error(BaseModel):
     details: dict = {}
 
 
+# ---------- Inputs, validated at load (data/golden/*.json, data/registry/*.csv) ----------
+
+FactValue = Literal["yes", "no", "embodied", "not_embodied"]
+OPPOSITE: dict[str, str] = {"yes": "no", "no": "yes", "embodied": "not_embodied", "not_embodied": "embodied"}
+
+
+class GoldenApplicability(BaseModel):
+    """One applicability row: model + serial range. serial_from/to None = all serial numbers."""
+    model: str = Field(min_length=1)
+    serial_from: str | None
+    serial_to: str | None
+    quote: str = Field(min_length=1)
+
+
+class GoldenCondition(BaseModel):
+    """The AD applies only if logbook fact `fact` has value `applies_when` (all conditions AND)."""
+    kind: Literal["equipment_installed", "modification_not_embodied", "part_installed"]
+    fact: str = Field(min_length=1)
+    applies_when: FactValue
+    value: str = Field(min_length=1)
+    quote: str = Field(min_length=1)
+
+
+class GoldenAD(BaseModel):
+    """Human-checked AD record (data/golden/<file>.json)."""
+    ad_number: str = Field(pattern=r"^(FAA|EASA):\S+$")
+    effective_date: str = Field(pattern=r"^\d{4}-\d{2}-\d{2}$")
+    supersedes: list[str] = []
+    revises: list[str] = []
+    applicability: list[GoldenApplicability] = Field(min_length=1)
+    conditions: list[GoldenCondition] = []
+    compliance_time_text: str
+    field_quotes: dict[str, list[str]] = {}
+
+
+class LogbookRow(BaseModel):
+    """A synthetic logbook entry: a compliance record or an observation of one fact."""
+    id: str = Field(min_length=1)
+    aircraft_id: str = Field(min_length=1)
+    subject_id: str = Field(min_length=1)
+    ad_id: str
+    date: str = Field(pattern=r"^\d{4}-\d{2}-\d{2}$")
+    kind: Literal["compliance", "observation"]
+    text: str
+    fact: str | None = None
+    value: FactValue | None = None
+
+
+class LoadedAD(BaseModel):
+    """A golden AD plus what the store adds: title (INDEX.md), file, source_url (SOURCES.csv)."""
+    golden: GoldenAD
+    title: str
+    file: str  # repo-relative, as in Citation.file
+    source_url: str
+
+    @property
+    def ad_id(self) -> str:
+        return self.golden.ad_number
+
+    def cite(self, quote: str) -> Citation:
+        # ponytail: occurrence 1 — the store checks every golden quote is found; golden quotes are unique.
+        return Citation(ad_id=self.ad_id, quote=quote, file=self.file, occurrence=1, source_url=self.source_url)
+
+
+# ---------- Contract objects (contract/README.md, "Object types") ----------
+
+class Aircraft(BaseModel):
+    id: str
+    registration: str
+    model: str
+    serial: str
+    engine_model: str
+    synthetic: bool
+    base: str | None
+    arc_review_due: str | None
+
+
+class AirworthinessDirective(BaseModel):
+    ad_id: str
+    authority: Literal["FAA", "EASA"]
+    title: str
+    effective_date: str
+    status: Status
+    supersedes: list[str]
+    superseded_by: str | None
+    revises: str | None
+    source_url: str
+    file: str
+
+
+class Question(BaseModel):
+    """An unknown that blocks a sign-off. deadline/days_left/urgency are None for real aircraft
+    (no ARC review date in this system)."""
+    id: str
+    text: str
+    aircraft_id: str
+    ad_id: str
+    blocks: str
+    deadline: str | None
+    deadline_driver: str | None
+    days_left: int | None
+    urgency: Urgency | None
+    epistemic_class: Literal["QUESTION"] = "QUESTION"
+    status: Status = "active"
+    synthetic: bool
+    answer_with: str = "AnswerQuestion"
+    citations: list[Citation]
+
+
+class ComplianceState(BaseModel):
+    state: Literal["no_record", "complied"]
+    record_id: str | None
+
+
+class Due(BaseModel):
+    text: str
+    citation: Citation | None
+    overdue: bool | None  # None for real aircraft: no records, so no judgement
+
+
+class ApplicableAD(BaseModel):
+    ad_id: str
+    title: str
+    epistemic_class: EpistemicClass = "REGULATION"
+    status: Status
+    applies_because: str
+    compliance: ComplianceState
+    due: Due
+    citations: list[Citation]
+
+
+class AircraftStatusResponse(BaseModel):
+    """Q1 — GET /aircraft/{id}/status."""
+    aircraft: Aircraft
+    status: AircraftStatus
+    summary: str
+    summary_source: Literal["template", "llm"]
+    applicable_ads: list[ApplicableAD]
+    superseded_ads: list[str]
+    open_questions: list[Question]
+    hypotheses: list[dict]
+    citations: list[Citation]
+    reasoning_path: list[ReasoningStep]
+    computed_at: str
+
+
+class AffectedAircraft(BaseModel):
+    aircraft_id: str
+    model: str
+    serial: str
+    via: Literal["serial_range", "all_serials"]
+    why: str
+    status_now: AircraftStatus
+
+
+class NotAffected(BaseModel):
+    aircraft_id: str
+    why: str
+
+
+class AffectedAircraftResponse(BaseModel):
+    """Q2 — GET /ads/{ad_id}/affected-aircraft."""
+    ad: AirworthinessDirective
+    checked_aircraft: int
+    affected: list[AffectedAircraft]
+    not_affected: list[NotAffected]
+    open_questions: list[Question]
+    citations: list[Citation]
+    reasoning_path: list[ReasoningStep]
+
+
 def shape_errors(expected: dict, actual: object) -> list[str]:
     """Contract check used by tests and scripts/smoke.py: same top-level keys as the example,
     and every citation / reasoning step / error validates against the shared shapes."""
