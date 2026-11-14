@@ -1,5 +1,5 @@
 """One endpoint per business question (contract/README.md, "Endpoints").
-Real: fleet, Q1 status, Q2 affected-aircraft and ingest, Q3 supersession, Q5 questions, demo reset. The rest still serve contract/examples/ (fakes)."""
+Real: fleet, Q1 status, Q2 affected-aircraft and ingest, Q3 supersession, Q5 questions, AD detail, demo reset. The rest still serve contract/examples/ (fakes)."""
 import json
 import logging
 from datetime import UTC, date, datetime
@@ -10,27 +10,34 @@ from fastapi.responses import JSONResponse
 
 from app import evaluations, extract, llm, rules, store
 from app.ontology import (
+    AdDetailResponse,
+    AdExtraction,
     AffectedAircraft,
     AffectedAircraftResponse,
     Aircraft,
     AircraftStatusResponse,
     AirworthinessDirective,
+    ApplicabilityGroup,
     ApplicableAD,
     ChainLink,
     ComplianceRecord,
     ComplianceState,
+    ConditionOut,
+    CreditOut,
     DecisionSnapshot,
     DemoResetResponse,
     Due,
     Error,
     Evaluation,
     ExtractionInfo,
+    ExtractionMiss,
     FleetAircraft,
     FleetResponse,
     IngestChanges,
     IngestResponse,
     LoadedAD,
     NotAffected,
+    NotEvaluatedOut,
     QuestionsResponse,
     ReasoningStep,
     ReplayChanges,
@@ -252,8 +259,7 @@ def choose_source(golden_ad: LoadedAD) -> tuple[LoadedAD, str, ExtractionInfo, l
     # Values from the extraction, citations (and every free text) from golden: the agent's quotes are verified but
     # may stop mid-sentence, so answers cite the human-checked sentence. The decided record hashes the cache file.
     extracted = extract.with_golden_quotes(extract.parse(record["raw"], golden_ad.ad_id), golden_ad.golden)
-    cache = extract.cache_path(golden_ad.ad_id)
-    ad = golden_ad.model_copy(update={"golden": extracted, "golden_file": cache.relative_to(store.REPO).as_posix()})
+    ad = golden_ad.model_copy(update={"golden": extracted, "golden_file": extract.cache_ref(golden_ad.ad_id)})
     return ad, used_source, ExtractionInfo(
         used=True, agreement=r["agreement"], misses=[],
         reason="values from the extraction; citations from golden (human-checked)", **base), []
@@ -410,9 +416,55 @@ def questions(aircraft_id: str | None = None) -> QuestionsResponse:
     return QuestionsResponse(questions=rules.sort_questions(found), urgency_rule=rules.URGENCY_RULE)
 
 
-@app.get("/ads/{ad_id}")
-def ad_detail(ad_id: str) -> JSONResponse:
-    return example("ad-detail")
+def ad_extraction(golden_ad: LoadedAD) -> AdExtraction:
+    """The agent's cached extraction for this AD, compared with golden. Read-only: never calls the LLM."""
+    active = STATE.ads.get(golden_ad.ad_id)
+    decided_by = ("not_loaded" if active is None
+                  else "extraction" if active.golden_file == extract.cache_ref(golden_ad.ad_id) else "golden")
+    try:
+        record = extract.run(golden_ad, [], live=False)
+    except llm.LLMUnavailable as e:
+        return AdExtraction(source=None, model=None, prompt_version=None, agreement=None, quotes_found=None,
+                            quotes_checked=None, usable=False, decided_by=decided_by, reason=str(e), misses=[])
+    r = extract.evaluate_record(record, golden_ad)
+    base = {"source": "cache", "model": record.get("model"), "prompt_version": record.get("prompt_version"),
+            "decided_by": decided_by}
+    if not r["ok"]:
+        return AdExtraction(agreement=None, quotes_found=None, quotes_checked=None, usable=False, reason=r["error"],
+                            misses=[], **base)
+    misses = [ExtractionMiss(field=name, agent_proposed=f["extra"], golden=f["missing"])
+              for name, f in r["fields"].items() if not f["agree"]]
+    misses += [ExtractionMiss(field="quote", agent_proposed=[q], golden=[]) for q in r["rejected"]]
+    return AdExtraction(agreement=r["agreement"], quotes_found=r["quotes_checked"] - r["quotes_rejected"],
+                        quotes_checked=r["quotes_checked"], usable=r["usable"], misses=misses,
+                        reason=None if r["usable"] else "extraction disagrees with golden: golden decides", **base)
+
+
+@app.get("/ads/{ad_id}", response_model=AdDetailResponse)
+def ad_detail(ad_id: str) -> AdDetailResponse:
+    """Metadata, relations, full text and every golden field with its citation, plus the agent's extraction.
+    Works for every golden AD, loaded or not yet ingested (`loaded`)."""
+    if ad_id not in STATE.available:
+        raise NotFound("AD_NOT_FOUND", f"No AD with id {ad_id} in this system.", {"ad_id": ad_id})
+    ad = STATE.available[ad_id]
+    g = ad.golden
+    applicability = [ApplicabilityGroup(model=r.model, series=r.series, serial_from=r.serial_from,
+                                        serial_to=r.serial_to, group=rules.group_label(r), citation=ad.cite(r.quote))
+                     for r in g.applicability]
+    conditions = [ConditionOut(kind=c.kind, fact=c.fact, applies_when=c.applies_when, value=c.value,
+                               citation=ad.cite(c.quote)) for c in g.conditions]
+    not_evaluated = [NotEvaluatedOut(clause=n.clause, note=rules.NOT_EVALUATED_NOTE.format(clause=n.clause),
+                                     citation=ad.cite(n.quote)) for n in g.not_evaluated]
+    credits = [CreditOut(ad_id=c.ad_id, paragraph=c.paragraph, citation=ad.cite(c.quote, c.occurrence))
+               for c in g.credited_compliance]
+    citations = [x.citation for x in [*applicability, *conditions, *not_evaluated, *credits]]
+    citations += [ad.cite(q) for key in ("effective_date", "supersedes", "revises", "compliance_time_text")
+                  for q in g.field_quotes.get(key, [])]
+    return AdDetailResponse(
+        ad=ad_object(ad), text=store.ad_text(ad),
+        citations=list({(c.quote, c.occurrence): c for c in citations}.values()), loaded=ad_id in STATE.ads,
+        applicability=applicability, conditions=conditions, not_evaluated=not_evaluated,
+        credited_compliance=credits, extraction=ad_extraction(ad))
 
 
 @app.post("/compare")

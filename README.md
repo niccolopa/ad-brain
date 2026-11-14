@@ -17,9 +17,9 @@ flowchart LR
   subgraph STACK[" "]
     direction TB
     subgraph APP["Applications"]
-      API["API routes · core/app/api.py<br/>Q1 /aircraft/{id}/status · Q2 /ads/{id}/affected-aircraft<br/>Q3 /aircraft/{id}/ads/{ad}/supersession · ingest /ads/{id}/ingest<br/>/fleet · /questions · /evaluations"]
+      API["API routes · core/app/api.py<br/>Q1 /aircraft/{id}/status · Q2 /ads/{id}/affected-aircraft<br/>Q3 /aircraft/{id}/ads/{ad}/supersession · ingest /ads/{id}/ingest<br/>/fleet · /questions · /evaluations · AD detail /ads/{id}"]
       UI["UI · ui/<br/>runs on mocks today: ui/src/mocks/"]
-      STUB["/decisions · /actions · /proposals · /ads/{id} · /compare<br/>return contract examples: not built yet"]
+      STUB["/decisions · /actions · /proposals · /compare<br/>return contract examples: not built yet"]
     end
     subgraph ACT["Actions and people"]
       QS["QUESTIONs for a certifying engineer<br/>raised by core/app/rules.py, listed by /questions"]
@@ -186,7 +186,7 @@ curl http://127.0.0.1:8000/questions
 
 ## Results
 
-- **Tests:** 279 passed (`python -m pytest core`, 14 Nov 2026), including a test that the decision table and the
+- **Tests:** 298 passed (`python -m pytest core`, 14 Nov 2026), including a test that the decision table and the
   code list the same rule ids and that every rule fires in some scenario, and one that every path and route in the
   diagrams above exists.
 - **Extraction agreement** (LLM vs the 8 hand-checked ADs): 5 of 8 ADs agree on every compared field; 81 of 100
@@ -206,8 +206,7 @@ curl http://127.0.0.1:8000/questions
   non-compliant**: their status is always `no_records`. No owner names or addresses are stored.
 - **No interviews:** no maintenance organisation or certifying engineer was interviewed.
 - **Not built yet:** human DECISION records, actions and approval of agent proposals (`/decisions`, `/actions`
-  and `/proposals` are placeholders that return contract examples or an empty list); answering a QUESTION; `/ads/{id}` detail and `/compare` (contract
-  examples); LLM-written summaries (all summaries are templates); deadline arithmetic (a missing record counts as
+  and `/proposals` are placeholders that return contract examples or an empty list); answering a QUESTION; `/compare` (contract example); LLM-written summaries (all summaries are templates); deadline arithmetic (a missing record counts as
   overdue, true for the 8 ADs); part numbers, AMOCs, repetitive inspections. The UI in `ui/` runs on mocks.
 - **Prepared before the event:** [docs/PREPARED.md](docs/PREPARED.md).
 

@@ -142,6 +142,12 @@ def cache_path(ad_id: str) -> Path:
     return CACHE_DIR / f"{ad_id.replace(':', '-')}.json"
 
 
+def cache_ref(ad_id: str) -> str:
+    """The cache file as stored in LoadedAD.golden_file: repo-relative, or absolute if outside the repo (tests)."""
+    path = cache_path(ad_id).resolve()
+    return path.relative_to(store.REPO).as_posix() if path.is_relative_to(store.REPO) else str(path)
+
+
 def sha256(text: str) -> str:
     return hashlib.sha256(store.collapse(text).encode("utf-8")).hexdigest()
 

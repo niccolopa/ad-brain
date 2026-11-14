@@ -48,3 +48,16 @@ An *evaluation* is a computed result. It is **not** a `Decision` (a Decision sta
 - `Citation.origin?: "golden" | "extraction"` — today always `"golden"` on every citation Core returns.
 - `rejected_fields[].check` gains `"disagrees with golden"` (value = `{missing, extra}`).
 - An extraction for an AD with no golden file never decides a status (today: ingest of such an AD → 404).
+
+## 5. AD detail — `GET /ads/{ad_id}` (real)
+Same three fields as `ad-detail.json` (`ad`, `text` = the full AD text, `citations` with `file` and `occurrence`),
+plus optional:
+- `loaded?: bool` — served for every golden AD; `false` = not ingested yet (FAA:2012-02-02 at reset).
+- `applicability?: [{model, series, serial_from, serial_to, group: "Group 4"|null, citation}]` (golden).
+- `conditions?: [{kind, fact, applies_when, value, citation}]` (golden).
+- `not_evaluated?: [{clause, note: "not evaluated: <clause> (see notes)", citation}]`.
+- `credited_compliance?: [{ad_id, paragraph: "(g)(1)", citation}]` (citation may have `occurrence: 2`).
+- `extraction?: {source: "cache"|null, model, prompt_version, agreement, quotes_found, quotes_checked, usable,
+  decided_by: "extraction"|"golden"|"not_loaded", reason, misses: [{field, agent_proposed: [..], golden: [..],
+  decided: "golden"}]}`.
+- 404 `AD_NOT_FOUND` for an AD with no golden record, including ADs only named by another AD (e.g. FAA:2008-03-02).

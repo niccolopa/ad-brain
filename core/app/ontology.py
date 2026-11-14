@@ -346,6 +346,69 @@ class ReplayResponse(BaseModel):
     replayed_at: str
 
 
+class ApplicabilityGroup(BaseModel):
+    """One golden applicability row. serial_from/to None = all serials; series = engine series row."""
+    model: str
+    series: bool
+    serial_from: str | None
+    serial_to: str | None
+    group: str | None  # "Group 4" when the AD names it
+    citation: Citation
+
+
+class ConditionOut(BaseModel):
+    kind: str
+    fact: str
+    applies_when: str
+    value: str
+    citation: Citation
+
+
+class NotEvaluatedOut(BaseModel):
+    clause: str
+    note: str  # as it appears in every answer where the AD applies
+    citation: Citation
+
+
+class CreditOut(BaseModel):
+    ad_id: str
+    paragraph: str | None
+    citation: Citation
+
+
+class ExtractionMiss(BaseModel):
+    field: str
+    agent_proposed: list[str]  # items the agent proposed that golden does not have
+    golden: list[str]  # items golden has that the agent did not propose
+    decided: Literal["golden"] = "golden"  # a miss always leaves the decision to golden
+
+
+class AdExtraction(BaseModel):
+    source: Literal["cache"] | None
+    model: str | None
+    prompt_version: str | None
+    agreement: float | None
+    quotes_found: int | None
+    quotes_checked: int | None
+    usable: bool  # every quote found and every compared field equal to golden
+    decided_by: Literal["extraction", "golden", "not_loaded"]  # what the active record of this AD came from
+    reason: str | None
+    misses: list[ExtractionMiss]
+
+
+class AdDetailResponse(BaseModel):
+    """GET /ads/{ad_id}: metadata, relations, full text, and everything golden says, each with its citation."""
+    ad: AirworthinessDirective
+    text: str
+    citations: list[Citation]
+    loaded: bool | None = None  # optional for the contract
+    applicability: list[ApplicabilityGroup] | None = None
+    conditions: list[ConditionOut] | None = None
+    not_evaluated: list[NotEvaluatedOut] | None = None
+    credited_compliance: list[CreditOut] | None = None
+    extraction: AdExtraction | None = None
+
+
 class ValidatedField(BaseModel):
     """One extracted field and the check of its quote against the AD text."""
     field: str
@@ -413,7 +476,8 @@ class DemoResetResponse(BaseModel):
 
 
 # Optional top-level fields proposed in docs/handoff/contract-proposal.md (not yet in contract/examples/).
-PROPOSED_OPTIONAL_FIELDS = frozenset({"evaluation_id", "rules_version", "inputs_hash", "extraction"})
+PROPOSED_OPTIONAL_FIELDS = frozenset({"evaluation_id", "rules_version", "inputs_hash", "extraction", "loaded",
+                                      "applicability", "conditions", "not_evaluated", "credited_compliance"})
 
 
 def shape_errors(expected: dict, actual: object) -> list[str]:
