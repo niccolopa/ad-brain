@@ -9,7 +9,7 @@ Updated: 2026-11-14 · Branch: main · Last commit: see `git log` (v2c: real /fl
 - v2c: GET /fleet (8 aircraft, one-line reason) and GET /questions (sorted urgency → days_left; unknown aircraft_id → 404) from the store.
 
 ## Next 3 steps
-1. Niccolò checks the drafts against golden-check-2.md, fills checked_by, moves them to data/golden/ → DEMO-03 amber (ECi question), Q3 data ready.
+1. DONE: engine ADs checked by Niccolò and loaded (8 golden ADs). DEMO-03 amber (ECi question, 67 days); real EI-* get ECi/MSB 569A questions, still no_records.
 2. Real Q3 /aircraft/{id}/ads/{ad_id}/supersession (chain + credited compliance), then /ads/{id} detail.
 3. Actions + action log (RecordCompliance, ProposeAction 202, role check 403) — demo moment 4.
 
@@ -17,7 +17,7 @@ Updated: 2026-11-14 · Branch: main · Last commit: see `git log` (v2c: real /fl
 change proposed: AffectedAircraft.via adds "installed_engine"; ingest `source` = "golden" in demo mode; Question deadline/days_left/urgency nullable (real aircraft); /fleet lists the 3 real EI-* aircraft too; /questions unknown aircraft_id → 404.
 
 ## Tests
-146 → 185 passed (`python -m pytest core`) · smoke test: pass
+185 → 185 passed (12 expectations updated for the 3 loaded engine ADs) (`python -m pytest core`) · smoke test: pass
 
 ## How to run what I built
 ```
