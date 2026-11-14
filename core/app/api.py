@@ -94,13 +94,15 @@ def assess(aircraft_id: str) -> rules.Assessment:
 def applies_path(aircraft: Aircraft, ad_id: str, res: rules.Applicability, suffix: str = "") -> list[ReasoningStep]:
     """AD appliesTo aircraft; via the engine: aircraft hasInstalled engine + AD appliesTo engine ⇒ derived link."""
     if res.via == "airframe":
-        return [ReasoningStep(from_=ad_id, link="appliesTo", to=aircraft.id, derived=False, note=res.why + suffix)]
+        return [ReasoningStep(from_=ad_id, link="appliesTo", to=aircraft.id, derived=False, note=res.why + suffix,
+                              rule_id=res.decided_by)]
     eng = rules.engine_id(aircraft)
     return [
-        ReasoningStep(from_=aircraft.id, link="hasInstalled", to=eng, derived=False, note=aircraft.engine_model),
-        ReasoningStep(from_=ad_id, link="appliesTo", to=eng, derived=False, note=res.why),
+        ReasoningStep(from_=aircraft.id, link="hasInstalled", to=eng, derived=False, note=aircraft.engine_model,
+                      rule_id=rules.R_ENGINE_DERIVED),
+        ReasoningStep(from_=ad_id, link="appliesTo", to=eng, derived=False, note=res.why, rule_id=res.decided_by),
         ReasoningStep(from_=ad_id, link="appliesTo", to=aircraft.id, derived=True,
-                      note=f"inferred from the two links above: {res.why}{suffix}"),
+                      note=f"inferred from the two links above: {res.why}{suffix}", rule_id=rules.R_ENGINE_DERIVED),
     ]
 
 
@@ -136,7 +138,8 @@ def aircraft_status(aircraft_id: str) -> AircraftStatusResponse:
         path += applies_path(a.aircraft, ad_id, res, f"; complied {rec.id}" if rec else "; no compliance record")
         if rec:
             note = f"credited: compliance with {rec.ad_id}: {credit.quote}" if credit else rec.text
-            path.append(ReasoningStep(from_=rec.id, link="satisfies", to=ad_id, derived=False, note=note))
+            path.append(ReasoningStep(from_=rec.id, link="satisfies", to=ad_id, derived=False, note=note,
+                                      rule_id=rules.R_CREDIT if credit else rules.R_COMPLIANCE_RECORD))
     citations = [c for x in applicable for c in x.citations + ([x.due.citation] if x.due.citation else [])]
     citations += [c for q in a.questions for c in q.citations]
     return AircraftStatusResponse(
@@ -222,9 +225,9 @@ def ingest(ad_id: str) -> IngestResponse:
     after = statuses()
 
     g = ad.golden
-    path = [ReasoningStep(from_=ad_id, link="supersedes", to=old, derived=False,
+    path = [ReasoningStep(from_=ad_id, link="supersedes", to=old, derived=False, rule_id=rules.R_CHAIN,
                           note=(g.field_quotes.get("supersedes") or ["supersedes"])[0]) for old in g.supersedes]
-    path += [ReasoningStep(from_=ad_id, link="revises", to=old, derived=False,
+    path += [ReasoningStep(from_=ad_id, link="revises", to=old, derived=False, rule_id=rules.R_CHAIN,
                            note=(g.field_quotes.get("revises") or ["revises"])[0]) for old in g.revises]
     if ad_id in STATE.ads:
         for ac_id in STATE.aircraft:
@@ -295,12 +298,13 @@ def supersession(aircraft_id: str, ad_id: str) -> SupersessionResponse:
             new = STATE.ads[step.successor]
             quotes = new.golden.field_quotes.get(step.link or "", [])
             path.append(ReasoningStep(from_=new.ad_id, link=step.link or "supersedes", to=step.ad_id, derived=False,
-                                      note=quotes[0] if quotes else step.link or ""))
+                                      note=quotes[0] if quotes else step.link or "", rule_id=rules.R_CHAIN))
             citations += [new.cite(q) for q in quotes[:1]]
     rec = v.record
     if rec is not None:
         path.append(ReasoningStep(from_=rec.id, link="satisfies", to=rec.ad_id, derived=False,
-                                  note=f"kept valid: {v.reason}" if v.credits else rec.text))
+                                  note=f"kept valid: {v.reason}" if v.credits else rec.text,
+                                  rule_id=rules.R_CREDIT if v.credits else rules.R_COMPLIANCE_RECORD))
     citations += v.credits
     compliance = None if rec is None else ComplianceRecord(
         id=rec.id, ad_id=rec.ad_id, subject_id=rec.subject_id, date=rec.date, method=rec.text,

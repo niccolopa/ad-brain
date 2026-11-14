@@ -54,12 +54,12 @@ def build_messages(ad_id: str, text: str, facts: list[str]) -> list[dict[str, st
 
 
 def parse(raw: str, ad_id: str) -> GoldenAD:
-    """LLM text → validated GoldenAD. Raises ValueError (bad JSON) or ValidationError (bad shape).
+    """LLM text → validated GoldenAD. Raises ValueError (bad JSON), TypeError (not an object) or ValidationError (bad shape).
     The AD id is ours, not the LLM's: it is set from the request (the LLM may drop the authority prefix)."""
     m = FENCE_RE.match(raw)
     data = json.loads(m[1] if m else raw)
     if not isinstance(data, dict):
-        raise ValueError(f"expected a JSON object, got {type(data).__name__}")
+        raise TypeError(f"expected a JSON object, got {type(data).__name__}")
     if data.get("ad_number") != ad_id:
         log.info("extraction %s: LLM ad_number %r replaced by the requested id", ad_id, data.get("ad_number"))
     authority = ad_id.split(":")[0]
@@ -137,7 +137,7 @@ def run(ad: LoadedAD, facts: list[str], live: bool) -> dict:
         record["parsed"] = parse(record["raw"], ad.ad_id).model_dump()
     except llm.LLMUnavailable as e:
         record["error"] = f"llm: {e}"
-    except (ValueError, ValidationError) as e:
+    except (ValueError, TypeError, ValidationError) as e:
         record["error"] = f"invalid output: {str(e)[:500]}"
     if record["error"]:
         log.warning("extraction %s failed: %s", ad.ad_id, record["error"])
@@ -152,7 +152,7 @@ def evaluate_record(record: dict, ad: LoadedAD) -> dict:
         return {"ad_id": ad.ad_id, "ok": False, "error": record.get("error") or "no LLM output"}
     try:  # re-parse the raw output every time: parsing is deterministic and may have been fixed since
         extracted = parse(record["raw"], ad.ad_id)
-    except (ValueError, ValidationError) as e:
+    except (ValueError, TypeError, ValidationError) as e:
         return {"ad_id": ad.ad_id, "ok": False, "error": f"invalid output: {str(e)[:500]}"}
     checks = store.field_checks(ad.model_copy(update={"golden": extracted}), store.ad_text(ad))
     rejected = [c for c in checks if c.check != store.QUOTE_FOUND]

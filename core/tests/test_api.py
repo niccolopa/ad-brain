@@ -52,7 +52,7 @@ def test_q1_demo01_red_group4():
     assert ad["due"]["citation"]["quote"].startswith("(2) For Group 3 and Group 4 Airplanes:")
     assert ad["due"]["overdue"] is True
     assert {"from": "FAA:2012-02-02", "link": "appliesTo", "to": "DEMO-01", "derived": False,
-            "note": ad["applies_because"] + "; no compliance record"} in b["reasoning_path"]
+            "note": ad["applies_because"] + "; no compliance record", "rule_id": "R-SERIAL-RANGE"} in b["reasoning_path"]
 
 
 def test_q1_demo04_amber_with_question():
@@ -114,7 +114,7 @@ def test_ingest_turns_demo01_green_to_red():
     g4 = {"model": "172S", "serial_from": "172S10490", "serial_to": "172S11073"}
     assert any(f["field"] == "applicability" and f["value"] == g4 for f in b["validated_fields"])
     assert {"from": "FAA:2012-02-02", "link": "appliesTo", "to": "DEMO-01", "derived": False,
-            "note": "S/N 172S10600 is within 172S10490–172S11073 (Group 4)"} in b["reasoning_path"]
+            "note": "S/N 172S10600 is within 172S10490–172S11073 (Group 4)", "rule_id": "R-SERIAL-RANGE"}         in b["reasoning_path"]
     assert b["reasoning_path"][0]["link"] == "supersedes" and b["reasoning_path"][0]["to"] == "FAA:2008-03-02"
     assert client.get("/aircraft/DEMO-01/status").json()["status"] == "red"
 

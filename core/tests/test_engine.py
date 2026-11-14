@@ -124,7 +124,7 @@ def test_q1_engine_path_is_drawn_with_derived_link(with_drafts):
     assert b["status"] == "green" and b["superseded_ads"] == ["FAA:2006-20-09"]
     steps = [s for s in b["reasoning_path"] if "FAA:2012-19-01" in (s["from"], s["to"]) or s["link"] == "hasInstalled"]
     assert steps[0] == {"from": "DEMO-01", "link": "hasInstalled", "to": "DEMO-01/engine", "derived": False,
-                        "note": "Lycoming IO-360-L2A"}
+                        "note": "Lycoming IO-360-L2A", "rule_id": "R-ENGINE-DERIVED"}
     assert (steps[1]["from"], steps[1]["to"], steps[1]["derived"]) == ("FAA:2012-19-01", "DEMO-01/engine", False)
     assert (steps[2]["from"], steps[2]["to"], steps[2]["derived"]) == ("FAA:2012-19-01", "DEMO-01", True)
     assert DATE_CLAUSE in steps[1]["note"] and DATE_CLAUSE in steps[2]["note"]

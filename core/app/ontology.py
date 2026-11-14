@@ -31,6 +31,7 @@ class ReasoningStep(BaseModel):
     to: str
     derived: bool
     note: str
+    rule_id: str | None = None  # the rule that fired (docs/DECISION-MODEL.md); optional for the contract
 
 
 class Error(BaseModel):
