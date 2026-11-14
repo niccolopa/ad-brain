@@ -14,14 +14,12 @@ Updated: 2026-11-14 13:40 · Branch: main · Last commit: 9b75eb4 — README arc
 2. Real GET /ads/{id}: metadata, relations, applicability, conditions, citations, not-evaluated notes, extraction block per AD.
 3. List the UI screens that still call placeholder routes (from ui/src/api.ts) for Matteo.
 
-## Contract
-change proposed: docs/handoff/contract-proposal.md (§1 rule_id, §2 evaluations, §3 earlier changes, §4 extraction + Citation.origin).
+## Contract: change proposed in docs/handoff/contract-proposal.md (§1 rule_id, §2 evaluations, §3 earlier changes, §4 extraction + Citation.origin).
 
 ## For the other role (written as GitHub issue text)
 - UI runs on mocks by default (VITE_USE_MOCKS); Core is live for /fleet, Q1, Q2, ingest, Q3, /questions, /evaluations, /demo/reset. Placeholder (contract examples): /decisions, /ads/{id}, /compare, /actions, /proposals.
 
-## Tests
-273 → 277 passed (`python -m pytest core`) · smoke test: pass
+## Tests: 273 → 277 passed (`python -m pytest core`) · smoke test: pass
 
 ## How to run what I built
 Server `.venv\Scripts\python -m uvicorn app.api:app --app-dir core --port 8000` · tests `.venv\Scripts\python -m pytest core` · smoke `.venv\Scripts\python scripts\smoke.py` · report `.venv\Scripts\python scripts\extraction_report.py`
