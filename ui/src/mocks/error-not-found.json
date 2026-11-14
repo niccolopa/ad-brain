@@ -1,0 +1,7 @@
+{
+  "error_code": "AIRCRAFT_NOT_FOUND",
+  "message": "No aircraft with id EI-XXX in this system.",
+  "details": {
+    "id": "EI-XXX"
+  }
+}

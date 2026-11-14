@@ -1,0 +1,53 @@
+{
+  "question": "Is AD 2008-03-02 still the rule for DEMO-01's fuel return line?",
+  "rag": {
+    "answer": "Illustrative: generated live by plain retrieval over the AD texts, with no supersession links.",
+    "sources": [
+      {
+        "file": "data/raw/ads/FAA-2008-03-02.txt"
+      }
+    ]
+  },
+  "brain": {
+    "answer": "No. AD FAA:2008-03-02 never covered DEMO-01 (S/N 172S10600) and is superseded by AD FAA:2012-02-02, whose Group 4 adds it: inspect within 100 h TIS or 12 months after 2012-03-13, whichever occurs first.",
+    "citations": [
+      {
+        "ad_id": "FAA:2012-02-02",
+        "quote": "This AD supersedes AD 2008-03-02, Amendment 39-15351 (73 FR 5737, January 31, 2008).",
+        "file": "data/raw/ads/FAA-2012-02-02.txt",
+        "occurrence": 1,
+        "source_url": "https://ad.easa.europa.eu/ad/US-2012-02-02"
+      },
+      {
+        "ad_id": "FAA:2012-02-02",
+        "quote": "Group 4: Model 172S, S/N 172S10490 through 172S11073",
+        "file": "data/raw/ads/FAA-2012-02-02.txt",
+        "occurrence": 1,
+        "source_url": "https://ad.easa.europa.eu/ad/US-2012-02-02"
+      },
+      {
+        "ad_id": "FAA:2012-02-02",
+        "quote": "(2) For Group 3 and Group 4 Airplanes: Within the next 100 hours TIS after March 13, 2012 (the effective date of this AD) or within the next 12 months after March 13, 2012 (the effective date of this AD), whichever occurs first, inspect the fuel return line assembly (Cessna P/N 0500118-49) for chafing.",
+        "file": "data/raw/ads/FAA-2012-02-02.txt",
+        "occurrence": 1,
+        "source_url": "https://ad.easa.europa.eu/ad/US-2012-02-02"
+      }
+    ],
+    "reasoning_path": [
+      {
+        "from": "FAA:2012-02-02",
+        "link": "supersedes",
+        "to": "FAA:2008-03-02",
+        "derived": false,
+        "note": "paragraph (b) Affected ADs"
+      },
+      {
+        "from": "FAA:2012-02-02",
+        "link": "appliesTo",
+        "to": "DEMO-01",
+        "derived": false,
+        "note": "S/N 172S10600 in Group 4"
+      }
+    ]
+  }
+}

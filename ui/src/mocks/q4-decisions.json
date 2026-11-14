@@ -1,73 +1,64 @@
 {
-  "request": {
-    "method": "GET",
-    "path": "/decisions?aircraft_id=DEMO-05"
-  },
-  "response": {
-    "http_status": 200,
-    "body": {
-      "decisions": [
+  "decisions": [
+    {
+      "id": "D-DEMO05-1",
+      "what": "not_applicable",
+      "aircraft_id": "DEMO-05",
+      "ad_id": "EASA:2024-0152R1",
+      "rationale": "Tecnam modification MOD2008/233 is embodied, so the aircraft is outside the revised applicability.",
+      "evidence": [
+        "aircraft logbook 2025-03-10: MOD2008/233 embodied (synthetic)"
+      ],
+      "made_by": {
+        "id": "P-CE-1",
+        "name": "Certifying Engineer 1 (synthetic)",
+        "role": "certifying_engineer",
+        "synthetic": true
+      },
+      "made_at": "2026-11-10T09:12:00Z",
+      "epistemic_class": "DECISION",
+      "status": "active",
+      "action_log_id": "AL-0007",
+      "synthetic": true,
+      "citations": [
         {
-          "id": "D-DEMO05-1",
-          "what": "not_applicable",
-          "aircraft_id": "DEMO-05",
           "ad_id": "EASA:2024-0152R1",
-          "rationale": "Tecnam modification MOD2008/233 is embodied, so the aircraft is outside the revised applicability.",
-          "evidence": [
-            "aircraft logbook 2025-03-10: MOD2008/233 embodied (synthetic)"
-          ],
-          "made_by": {
-            "id": "P-CE-1",
-            "name": "Certifying Engineer 1 (synthetic)",
-            "role": "certifying_engineer",
-            "synthetic": true
-          },
-          "made_at": "2026-11-10T09:12:00Z",
-          "epistemic_class": "DECISION",
-          "status": "active",
-          "action_log_id": "AL-0007",
-          "synthetic": true,
-          "citations": [
-            {
-              "ad_id": "EASA:2024-0152R1",
-              "quote": "For the reason described above, this AD is revised to reduce its Applicability, and to allow reactivation of the Advanced Start System feature.",
-              "file": "data/raw/ads/EASA-2024-0152R1.txt",
-              "occurrence": 1,
-              "source_url": "https://ad.easa.europa.eu/ad/2024-0152R1"
-            },
-            {
-              "ad_id": "EASA:2024-0152R1",
-              "quote": "Tecnam P2008 JC, all serial numbers (s/n), except those on which Tecnam modification MOD2008/233 or Service Bulletin (SB) SB-826-CS has been embodied.",
-              "file": "data/raw/ads/EASA-2024-0152R1.txt",
-              "occurrence": 1,
-              "source_url": "https://ad.easa.europa.eu/ad/2024-0152R1"
-            }
-          ],
-          "reasoning_path": [
-            {
-              "from": "D-DEMO05-1",
-              "link": "madeBy",
-              "to": "P-CE-1",
-              "derived": false,
-              "note": "role certifying_engineer"
-            },
-            {
-              "from": "D-DEMO05-1",
-              "link": "justifiedBy",
-              "to": "EASA:2024-0152R1",
-              "derived": false,
-              "note": "revised applicability excludes MOD2008/233"
-            },
-            {
-              "from": "EASA:2024-0152R1",
-              "link": "revises",
-              "to": "EASA:2024-0152",
-              "derived": false,
-              "note": "Revision field"
-            }
-          ]
+          "quote": "For the reason described above, this AD is revised to reduce its Applicability, and to allow reactivation of the Advanced Start System feature.",
+          "file": "data/raw/ads/EASA-2024-0152R1.txt",
+          "occurrence": 1,
+          "source_url": "https://ad.easa.europa.eu/ad/2024-0152R1"
+        },
+        {
+          "ad_id": "EASA:2024-0152R1",
+          "quote": "Tecnam P2008 JC, all serial numbers (s/n), except those on which Tecnam modification MOD2008/233 or Service Bulletin (SB) SB-826-CS has been embodied.",
+          "file": "data/raw/ads/EASA-2024-0152R1.txt",
+          "occurrence": 1,
+          "source_url": "https://ad.easa.europa.eu/ad/2024-0152R1"
+        }
+      ],
+      "reasoning_path": [
+        {
+          "from": "D-DEMO05-1",
+          "link": "madeBy",
+          "to": "P-CE-1",
+          "derived": false,
+          "note": "role certifying_engineer"
+        },
+        {
+          "from": "D-DEMO05-1",
+          "link": "justifiedBy",
+          "to": "EASA:2024-0152R1",
+          "derived": false,
+          "note": "revised applicability excludes MOD2008/233"
+        },
+        {
+          "from": "EASA:2024-0152R1",
+          "link": "revises",
+          "to": "EASA:2024-0152",
+          "derived": false,
+          "note": "Revision field"
         }
       ]
     }
-  }
+  ]
 }

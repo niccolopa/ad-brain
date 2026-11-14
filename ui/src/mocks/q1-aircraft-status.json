@@ -1,60 +1,39 @@
 {
-  "request": {
-    "method": "GET",
-    "path": "/aircraft/DEMO-01/status"
+  "aircraft": {
+    "id": "DEMO-01",
+    "registration": "DEMO-01",
+    "model": "Cessna 172S",
+    "serial": "172S10600",
+    "engine_model": "Lycoming IO-360-L2A",
+    "synthetic": true,
+    "base": "Torino Aeritalia (LIMA)",
+    "arc_review_due": "2027-03-15"
   },
-  "response": {
-    "http_status": 200,
-    "body": {
-      "aircraft": {
-        "id": "DEMO-01",
-        "registration": "DEMO-01",
-        "model": "Cessna 172S",
-        "serial": "172S10600",
-        "engine_model": "Lycoming IO-360-L2A",
-        "synthetic": true,
-        "base": "Torino Aeritalia (LIMA)",
-        "arc_review_due": "2027-03-15"
+  "status": "red",
+  "summary": "DEMO-01 is not airworthy in this system: AD FAA:2012-02-02 applies (S/N 172S10600, Group 4) and has no compliance record.",
+  "summary_source": "template",
+  "applicable_ads": [
+    {
+      "ad_id": "FAA:2012-02-02",
+      "title": "Fuel return line assembly — inspection / replacement",
+      "epistemic_class": "REGULATION",
+      "status": "active",
+      "applies_because": "S/N 172S10600 is within 172S10490–172S11073 (Group 4)",
+      "compliance": {
+        "state": "no_record",
+        "record_id": null
       },
-      "status": "red",
-      "summary": "DEMO-01 is not airworthy in this system: AD FAA:2012-02-02 applies (S/N 172S10600, Group 4) and has no compliance record.",
-      "summary_source": "template",
-      "applicable_ads": [
-        {
+      "due": {
+        "text": "(2) For Group 3 and Group 4 Airplanes: Within the next 100 hours TIS after March 13, 2012 (the effective date of this AD) or within the next 12 months after March 13, 2012 (the effective date of this AD), whichever occurs first, inspect the fuel return line assembly (Cessna P/N 0500118-49) for chafing.",
+        "citation": {
           "ad_id": "FAA:2012-02-02",
-          "title": "Fuel return line assembly — inspection / replacement",
-          "epistemic_class": "REGULATION",
-          "status": "active",
-          "applies_because": "S/N 172S10600 is within 172S10490–172S11073 (Group 4)",
-          "compliance": {
-            "state": "no_record",
-            "record_id": null
-          },
-          "due": {
-            "text": "(2) For Group 3 and Group 4 Airplanes: Within the next 100 hours TIS after March 13, 2012 (the effective date of this AD) or within the next 12 months after March 13, 2012 (the effective date of this AD), whichever occurs first, inspect the fuel return line assembly (Cessna P/N 0500118-49) for chafing.",
-            "citation": {
-              "ad_id": "FAA:2012-02-02",
-              "quote": "(2) For Group 3 and Group 4 Airplanes: Within the next 100 hours TIS after March 13, 2012 (the effective date of this AD) or within the next 12 months after March 13, 2012 (the effective date of this AD), whichever occurs first, inspect the fuel return line assembly (Cessna P/N 0500118-49) for chafing.",
-              "file": "data/raw/ads/FAA-2012-02-02.txt",
-              "occurrence": 1,
-              "source_url": "https://ad.easa.europa.eu/ad/US-2012-02-02"
-            },
-            "overdue": true
-          },
-          "citations": [
-            {
-              "ad_id": "FAA:2012-02-02",
-              "quote": "Group 4: Model 172S, S/N 172S10490 through 172S11073",
-              "file": "data/raw/ads/FAA-2012-02-02.txt",
-              "occurrence": 1,
-              "source_url": "https://ad.easa.europa.eu/ad/US-2012-02-02"
-            }
-          ]
-        }
-      ],
-      "superseded_ads": [],
-      "open_questions": [],
-      "hypotheses": [],
+          "quote": "(2) For Group 3 and Group 4 Airplanes: Within the next 100 hours TIS after March 13, 2012 (the effective date of this AD) or within the next 12 months after March 13, 2012 (the effective date of this AD), whichever occurs first, inspect the fuel return line assembly (Cessna P/N 0500118-49) for chafing.",
+          "file": "data/raw/ads/FAA-2012-02-02.txt",
+          "occurrence": 1,
+          "source_url": "https://ad.easa.europa.eu/ad/US-2012-02-02"
+        },
+        "overdue": true
+      },
       "citations": [
         {
           "ad_id": "FAA:2012-02-02",
@@ -62,25 +41,37 @@
           "file": "data/raw/ads/FAA-2012-02-02.txt",
           "occurrence": 1,
           "source_url": "https://ad.easa.europa.eu/ad/US-2012-02-02"
-        },
-        {
-          "ad_id": "FAA:2012-02-02",
-          "quote": "(2) For Group 3 and Group 4 Airplanes: Within the next 100 hours TIS after March 13, 2012 (the effective date of this AD) or within the next 12 months after March 13, 2012 (the effective date of this AD), whichever occurs first, inspect the fuel return line assembly (Cessna P/N 0500118-49) for chafing.",
-          "file": "data/raw/ads/FAA-2012-02-02.txt",
-          "occurrence": 1,
-          "source_url": "https://ad.easa.europa.eu/ad/US-2012-02-02"
         }
-      ],
-      "reasoning_path": [
-        {
-          "from": "FAA:2012-02-02",
-          "link": "appliesTo",
-          "to": "DEMO-01",
-          "derived": false,
-          "note": "172S, S/N 172S10600 in Group 4 (172S10490–172S11073), added by this AD; no compliance record"
-        }
-      ],
-      "computed_at": "2026-11-14T10:31:00Z"
+      ]
     }
-  }
+  ],
+  "superseded_ads": [],
+  "open_questions": [],
+  "hypotheses": [],
+  "citations": [
+    {
+      "ad_id": "FAA:2012-02-02",
+      "quote": "Group 4: Model 172S, S/N 172S10490 through 172S11073",
+      "file": "data/raw/ads/FAA-2012-02-02.txt",
+      "occurrence": 1,
+      "source_url": "https://ad.easa.europa.eu/ad/US-2012-02-02"
+    },
+    {
+      "ad_id": "FAA:2012-02-02",
+      "quote": "(2) For Group 3 and Group 4 Airplanes: Within the next 100 hours TIS after March 13, 2012 (the effective date of this AD) or within the next 12 months after March 13, 2012 (the effective date of this AD), whichever occurs first, inspect the fuel return line assembly (Cessna P/N 0500118-49) for chafing.",
+      "file": "data/raw/ads/FAA-2012-02-02.txt",
+      "occurrence": 1,
+      "source_url": "https://ad.easa.europa.eu/ad/US-2012-02-02"
+    }
+  ],
+  "reasoning_path": [
+    {
+      "from": "FAA:2012-02-02",
+      "link": "appliesTo",
+      "to": "DEMO-01",
+      "derived": false,
+      "note": "172S, S/N 172S10600 in Group 4 (172S10490–172S11073), added by this AD; no compliance record"
+    }
+  ],
+  "computed_at": "2026-11-14T10:31:00Z"
 }

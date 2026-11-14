@@ -1,0 +1,31 @@
+{
+  "action_log": {
+    "id": "AL-0013",
+    "action": "RecordCompliance",
+    "actor": {
+      "id": "P-CE-1",
+      "role": "certifying_engineer"
+    },
+    "at": "2026-11-14T16:58:00Z",
+    "params": {
+      "aircraft_id": "DEMO-01",
+      "ad_id": "FAA:2012-02-02",
+      "date": "2026-11-14",
+      "method": "fuel return line replaced",
+      "evidence": "logbook page (synthetic)"
+    },
+    "objects_edited": [
+      "CR-DEMO01-1",
+      "DEMO-01"
+    ],
+    "result": "ok",
+    "from_proposal": "PR-0004"
+  },
+  "result": {
+    "compliance_record_id": "CR-DEMO01-1",
+    "aircraft_status": {
+      "from": "red",
+      "to": "green"
+    }
+  }
+}

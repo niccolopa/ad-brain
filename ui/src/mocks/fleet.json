@@ -1,79 +1,70 @@
 {
-  "request": {
-    "method": "GET",
-    "path": "/fleet"
-  },
-  "response": {
-    "http_status": 200,
-    "body": {
-      "aircraft": [
-        {
-          "id": "DEMO-01",
-          "registration": "DEMO-01",
-          "model": "Cessna 172S",
-          "serial": "172S10600",
-          "engine_model": "Lycoming IO-360-L2A",
-          "synthetic": true,
-          "base": "Torino Aeritalia (LIMA)",
-          "arc_review_due": "2027-03-15",
-          "status": "red",
-          "reason": "AD FAA:2012-02-02 applies (Group 4) and has no compliance record",
-          "open_questions": 0
-        },
-        {
-          "id": "DEMO-02",
-          "registration": "DEMO-02",
-          "model": "Cessna 172S",
-          "serial": "172S11100",
-          "engine_model": "Lycoming IO-360-L2A",
-          "synthetic": true,
-          "base": "Torino Aeritalia (LIMA)",
-          "arc_review_due": "2026-12-01",
-          "status": "green",
-          "reason": "All applicable ADs complied with or not applicable",
-          "open_questions": 0
-        },
-        {
-          "id": "DEMO-03",
-          "registration": "DEMO-03",
-          "model": "Cessna 172S",
-          "serial": "172S11500",
-          "engine_model": "Lycoming IO-360-L2A",
-          "synthetic": true,
-          "base": "Torino Aeritalia (LIMA)",
-          "arc_review_due": "2027-01-20",
-          "status": "amber",
-          "reason": "Open question: are ECi cylinder assemblies installed? (AD FAA:2006-12-07)",
-          "open_questions": 1
-        },
-        {
-          "id": "DEMO-04",
-          "registration": "DEMO-04",
-          "model": "Tecnam P2008 JC",
-          "serial": "1050",
-          "engine_model": "Rotax 912 S2",
-          "synthetic": true,
-          "base": "Torino Aeritalia (LIMA)",
-          "arc_review_due": "2026-11-28",
-          "status": "amber",
-          "reason": "Open question: is MOD2008/233 embodied? (AD EASA:2024-0152R1) — ARC review in 14 days",
-          "open_questions": 1
-        },
-        {
-          "id": "DEMO-05",
-          "registration": "DEMO-05",
-          "model": "Tecnam P2008 JC",
-          "serial": "1150",
-          "engine_model": "Rotax 912 S2",
-          "synthetic": true,
-          "base": "Torino Aeritalia (LIMA)",
-          "arc_review_due": "2027-05-10",
-          "status": "green",
-          "reason": "All applicable ADs complied with or decided not applicable",
-          "open_questions": 0
-        }
-      ],
-      "computed_at": "2026-11-14T10:31:00Z"
+  "aircraft": [
+    {
+      "id": "DEMO-01",
+      "registration": "DEMO-01",
+      "model": "Cessna 172S",
+      "serial": "172S10600",
+      "engine_model": "Lycoming IO-360-L2A",
+      "synthetic": true,
+      "base": "Torino Aeritalia (LIMA)",
+      "arc_review_due": "2027-03-15",
+      "status": "red",
+      "reason": "AD FAA:2012-02-02 applies (Group 4) and has no compliance record",
+      "open_questions": 0
+    },
+    {
+      "id": "DEMO-02",
+      "registration": "DEMO-02",
+      "model": "Cessna 172S",
+      "serial": "172S11100",
+      "engine_model": "Lycoming IO-360-L2A",
+      "synthetic": true,
+      "base": "Torino Aeritalia (LIMA)",
+      "arc_review_due": "2026-12-01",
+      "status": "green",
+      "reason": "All applicable ADs complied with or not applicable",
+      "open_questions": 0
+    },
+    {
+      "id": "DEMO-03",
+      "registration": "DEMO-03",
+      "model": "Cessna 172S",
+      "serial": "172S11500",
+      "engine_model": "Lycoming IO-360-L2A",
+      "synthetic": true,
+      "base": "Torino Aeritalia (LIMA)",
+      "arc_review_due": "2027-01-20",
+      "status": "amber",
+      "reason": "Open question: are ECi cylinder assemblies installed? (AD FAA:2006-12-07)",
+      "open_questions": 1
+    },
+    {
+      "id": "DEMO-04",
+      "registration": "DEMO-04",
+      "model": "Tecnam P2008 JC",
+      "serial": "1050",
+      "engine_model": "Rotax 912 S2",
+      "synthetic": true,
+      "base": "Torino Aeritalia (LIMA)",
+      "arc_review_due": "2026-11-28",
+      "status": "amber",
+      "reason": "Open question: is MOD2008/233 embodied? (AD EASA:2024-0152R1) — ARC review in 14 days",
+      "open_questions": 1
+    },
+    {
+      "id": "DEMO-05",
+      "registration": "DEMO-05",
+      "model": "Tecnam P2008 JC",
+      "serial": "1150",
+      "engine_model": "Rotax 912 S2",
+      "synthetic": true,
+      "base": "Torino Aeritalia (LIMA)",
+      "arc_review_due": "2027-05-10",
+      "status": "green",
+      "reason": "All applicable ADs complied with or decided not applicable",
+      "open_questions": 0
     }
-  }
+  ],
+  "computed_at": "2026-11-14T10:31:00Z"
 }

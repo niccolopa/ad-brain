@@ -1,62 +1,53 @@
 {
-  "request": {
-    "method": "GET",
-    "path": "/questions"
-  },
-  "response": {
-    "http_status": 200,
-    "body": {
-      "questions": [
+  "questions": [
+    {
+      "id": "Q-DEMO04-MOD",
+      "text": "Is Tecnam modification MOD2008/233 (or SB-826-CS) embodied on DEMO-04?",
+      "aircraft_id": "DEMO-04",
+      "ad_id": "EASA:2024-0152R1",
+      "blocks": "ARC review sign-off",
+      "deadline": "2026-11-28",
+      "deadline_driver": "ARC review due (synthetic)",
+      "days_left": 14,
+      "urgency": "high",
+      "epistemic_class": "QUESTION",
+      "status": "active",
+      "synthetic": true,
+      "answer_with": "AnswerQuestion",
+      "citations": [
         {
-          "id": "Q-DEMO04-MOD",
-          "text": "Is Tecnam modification MOD2008/233 (or SB-826-CS) embodied on DEMO-04?",
-          "aircraft_id": "DEMO-04",
           "ad_id": "EASA:2024-0152R1",
-          "blocks": "ARC review sign-off",
-          "deadline": "2026-11-28",
-          "deadline_driver": "ARC review due (synthetic)",
-          "days_left": 14,
-          "urgency": "high",
-          "epistemic_class": "QUESTION",
-          "status": "active",
-          "synthetic": true,
-          "answer_with": "AnswerQuestion",
-          "citations": [
-            {
-              "ad_id": "EASA:2024-0152R1",
-              "quote": "Tecnam P2008 JC, all serial numbers (s/n), except those on which Tecnam modification MOD2008/233 or Service Bulletin (SB) SB-826-CS has been embodied.",
-              "file": "data/raw/ads/EASA-2024-0152R1.txt",
-              "occurrence": 1,
-              "source_url": "https://ad.easa.europa.eu/ad/2024-0152R1"
-            }
-          ]
-        },
-        {
-          "id": "Q-DEMO03-ECI",
-          "text": "Are ECi cylinder assemblies (P/N AEL65102 series) installed on DEMO-03's engine?",
-          "aircraft_id": "DEMO-03",
-          "ad_id": "FAA:2006-12-07",
-          "blocks": "ARC review sign-off",
-          "deadline": "2027-01-20",
-          "deadline_driver": "ARC review due (synthetic)",
-          "days_left": 67,
-          "urgency": "medium",
-          "epistemic_class": "QUESTION",
-          "status": "active",
-          "synthetic": true,
-          "answer_with": "AnswerQuestion",
-          "citations": [
-            {
-              "ad_id": "FAA:2006-12-07",
-              "quote": "(2) With ECi cylinder assemblies, part number (P/N) AEL65102 series ''Classic Cast'', having casting head markings EC 65099-REV-1; and",
-              "file": "data/raw/ads/FAA-2006-12-07.txt",
-              "occurrence": 1,
-              "source_url": "https://ad.easa.europa.eu/ad/US-2006-12-07"
-            }
-          ]
+          "quote": "Tecnam P2008 JC, all serial numbers (s/n), except those on which Tecnam modification MOD2008/233 or Service Bulletin (SB) SB-826-CS has been embodied.",
+          "file": "data/raw/ads/EASA-2024-0152R1.txt",
+          "occurrence": 1,
+          "source_url": "https://ad.easa.europa.eu/ad/2024-0152R1"
         }
-      ],
-      "urgency_rule": "overdue < 0 days · high ≤ 30 · medium ≤ 90 · low > 90 (days until the deadline)"
+      ]
+    },
+    {
+      "id": "Q-DEMO03-ECI",
+      "text": "Are ECi cylinder assemblies (P/N AEL65102 series) installed on DEMO-03's engine?",
+      "aircraft_id": "DEMO-03",
+      "ad_id": "FAA:2006-12-07",
+      "blocks": "ARC review sign-off",
+      "deadline": "2027-01-20",
+      "deadline_driver": "ARC review due (synthetic)",
+      "days_left": 67,
+      "urgency": "medium",
+      "epistemic_class": "QUESTION",
+      "status": "active",
+      "synthetic": true,
+      "answer_with": "AnswerQuestion",
+      "citations": [
+        {
+          "ad_id": "FAA:2006-12-07",
+          "quote": "(2) With ECi cylinder assemblies, part number (P/N) AEL65102 series ''Classic Cast'', having casting head markings EC 65099-REV-1; and",
+          "file": "data/raw/ads/FAA-2006-12-07.txt",
+          "occurrence": 1,
+          "source_url": "https://ad.easa.europa.eu/ad/US-2006-12-07"
+        }
+      ]
     }
-  }
+  ],
+  "urgency_rule": "overdue < 0 days · high ≤ 30 · medium ≤ 90 · low > 90 (days until the deadline)"
 }

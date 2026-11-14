@@ -1,0 +1,12 @@
+{
+  "error_code": "SUBMISSION_CRITERIA_FAILED",
+  "message": "An agent cannot record compliance. Propose it instead: a mechanic or a certifying engineer must approve.",
+  "details": {
+    "action": "RecordCompliance",
+    "actor_role": "agent",
+    "failed_criteria": [
+      "role ∈ {mechanic, certifying_engineer}"
+    ],
+    "attempt_logged_as": "AL-0012"
+  }
+}

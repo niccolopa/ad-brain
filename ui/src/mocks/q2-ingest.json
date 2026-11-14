@@ -1,0 +1,98 @@
+{
+  "run_id": "ING-2026-11-14-001",
+  "ad_id": "FAA:2012-02-02",
+  "source": "cache",
+  "validated_fields": [
+    {
+      "field": "applicability",
+      "value": {
+        "model": "172S",
+        "serial_from": "172S10490",
+        "serial_to": "172S11073"
+      },
+      "quote": "Group 4: Model 172S, S/N 172S10490 through 172S11073",
+      "file": "data/raw/ads/FAA-2012-02-02.txt",
+      "occurrence": 1,
+      "check": "quote found in text"
+    },
+    {
+      "field": "supersedes",
+      "value": [
+        "FAA:2008-03-02"
+      ],
+      "quote": "This AD supersedes AD 2008-03-02, Amendment 39-15351 (73 FR 5737, January 31, 2008).",
+      "file": "data/raw/ads/FAA-2012-02-02.txt",
+      "occurrence": 1,
+      "check": "quote found in text"
+    },
+    {
+      "field": "compliance_time",
+      "value": {
+        "groups": [
+          3,
+          4
+        ],
+        "hours_tis": 100,
+        "months": 12,
+        "from": "2012-03-13",
+        "rule": "whichever occurs first"
+      },
+      "quote": "(2) For Group 3 and Group 4 Airplanes: Within the next 100 hours TIS after March 13, 2012 (the effective date of this AD) or within the next 12 months after March 13, 2012 (the effective date of this AD), whichever occurs first, inspect the fuel return line assembly (Cessna P/N 0500118-49) for chafing.",
+      "file": "data/raw/ads/FAA-2012-02-02.txt",
+      "occurrence": 1,
+      "check": "quote found in text"
+    }
+  ],
+  "rejected_fields": [],
+  "changes": {
+    "superseded": [
+      "FAA:2008-03-02"
+    ],
+    "aircraft_status_changed": [
+      {
+        "aircraft_id": "DEMO-01",
+        "from": "green",
+        "to": "red"
+      }
+    ]
+  },
+  "citations": [
+    {
+      "ad_id": "FAA:2012-02-02",
+      "quote": "Group 4: Model 172S, S/N 172S10490 through 172S11073",
+      "file": "data/raw/ads/FAA-2012-02-02.txt",
+      "occurrence": 1,
+      "source_url": "https://ad.easa.europa.eu/ad/US-2012-02-02"
+    },
+    {
+      "ad_id": "FAA:2012-02-02",
+      "quote": "This AD supersedes AD 2008-03-02, Amendment 39-15351 (73 FR 5737, January 31, 2008).",
+      "file": "data/raw/ads/FAA-2012-02-02.txt",
+      "occurrence": 1,
+      "source_url": "https://ad.easa.europa.eu/ad/US-2012-02-02"
+    },
+    {
+      "ad_id": "FAA:2012-02-02",
+      "quote": "(2) For Group 3 and Group 4 Airplanes: Within the next 100 hours TIS after March 13, 2012 (the effective date of this AD) or within the next 12 months after March 13, 2012 (the effective date of this AD), whichever occurs first, inspect the fuel return line assembly (Cessna P/N 0500118-49) for chafing.",
+      "file": "data/raw/ads/FAA-2012-02-02.txt",
+      "occurrence": 1,
+      "source_url": "https://ad.easa.europa.eu/ad/US-2012-02-02"
+    }
+  ],
+  "reasoning_path": [
+    {
+      "from": "FAA:2012-02-02",
+      "link": "supersedes",
+      "to": "FAA:2008-03-02",
+      "derived": false,
+      "note": "paragraph (b) Affected ADs"
+    },
+    {
+      "from": "FAA:2012-02-02",
+      "link": "appliesTo",
+      "to": "DEMO-01",
+      "derived": false,
+      "note": "S/N 172S10600 in Group 4 (new in this AD; not covered by 2008-03-02)"
+    }
+  ]
+}
