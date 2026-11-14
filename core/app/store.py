@@ -8,7 +8,7 @@ from pathlib import Path
 
 from pydantic import ValidationError
 
-from app.ontology import Aircraft, GoldenAD, LoadedAD, LogbookRow
+from app.ontology import Aircraft, GoldenAD, LoadedAD, LogbookRow, ValidatedField
 
 log = logging.getLogger("adbrain.store")
 
@@ -24,6 +24,9 @@ REAL_CSV = DATA / "registry" / "demo-aircraft.csv"
 LOGBOOK_CSV = DATA / "registry" / "demo-logbooks.csv"
 AD_ID_PREFIXES = ("FAA:", "EASA:")
 CSV_TRUE, CSV_FALSE = "true", "false"
+# Demo moment 2: this AD is ingested live, so the demo state starts without it.
+NOT_LOADED_AT_RESET = frozenset({"FAA:2012-02-02"})
+QUOTE_FOUND, QUOTE_NOT_FOUND = "quote found in text", "quote not found in text"
 
 
 class DataError(Exception):
@@ -32,9 +35,38 @@ class DataError(Exception):
 
 @dataclass
 class State:
-    ads: dict[str, LoadedAD]
+    available: dict[str, LoadedAD]  # every golden AD (the demo-mode "cache")
+    ads: dict[str, LoadedAD]  # active: loaded at reset or ingested since
     aircraft: dict[str, Aircraft]
     logbook: list[LogbookRow]
+    ingest_runs: int = 0
+
+
+def ad_text(ad: LoadedAD) -> str:
+    return (REPO / ad.file).read_text(encoding="utf-8")
+
+
+def field_checks(ad: LoadedAD, text: str) -> list[ValidatedField]:
+    """Every field of a golden AD with its quote, each checked against the AD text."""
+    g, fq = ad.golden, ad.golden.field_quotes
+    items: list[tuple[str, object, list[str]]] = [
+        ("applicability", {"model": r.model, "serial_from": r.serial_from, "serial_to": r.serial_to}, [r.quote])
+        for r in g.applicability]
+    items += [("conditions", {"kind": c.kind, "fact": c.fact, "applies_when": c.applies_when, "value": c.value},
+               [c.quote]) for c in g.conditions]
+    items.append(("effective_date", g.effective_date, fq.get("effective_date", [])))
+    if g.supersedes:
+        items.append(("supersedes", g.supersedes, fq.get("supersedes", [])))
+    if g.revises:
+        items.append(("revises", g.revises, fq.get("revises", [])))
+    items.append(("compliance_time", g.compliance_time_text, fq.get("compliance_time_text", [])))
+    out = []
+    for name, value, quotes in items:
+        for q in quotes or [""]:  # a value with no quote is rejected, never silently accepted
+            found = bool(q) and quote_count(q, text) > 0
+            out.append(ValidatedField(field=name, value=value, quote=q, file=ad.file, occurrence=1,
+                                      check=QUOTE_FOUND if found else QUOTE_NOT_FOUND))
+    return out
 
 
 def collapse(text: str) -> str:
@@ -142,4 +174,9 @@ def load_logbook(aircraft: dict[str, Aircraft]) -> list[LogbookRow]:
 
 def load() -> State:
     aircraft = load_aircraft()
-    return State(ads=load_ads(), aircraft=aircraft, logbook=load_logbook(aircraft))
+    available = load_ads()
+    missing = NOT_LOADED_AT_RESET - set(available)
+    if missing:
+        raise DataError(f"NOT_LOADED_AT_RESET names ADs with no golden file: {sorted(missing)}")
+    ads = {k: v for k, v in available.items() if k not in NOT_LOADED_AT_RESET}
+    return State(available=available, ads=ads, aircraft=aircraft, logbook=load_logbook(aircraft))

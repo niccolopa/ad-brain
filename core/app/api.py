@@ -1,5 +1,5 @@
 """One endpoint per business question (contract/README.md, "Endpoints").
-Real: Q1 status, Q2 affected-aircraft. The rest still serve contract/examples/ (fakes)."""
+Real: Q1 status, Q2 affected-aircraft and ingest, demo reset. The rest still serve contract/examples/ (fakes)."""
 import json
 import logging
 from datetime import UTC, date, datetime
@@ -17,11 +17,16 @@ from app.ontology import (
     AirworthinessDirective,
     ApplicableAD,
     ComplianceState,
+    DemoResetResponse,
     Due,
     Error,
+    IngestChanges,
+    IngestResponse,
     LoadedAD,
     NotAffected,
     ReasoningStep,
+    ResetCounts,
+    StatusChange,
 )
 
 log = logging.getLogger("adbrain.api")
@@ -158,21 +163,67 @@ def health() -> dict:
     return {"ok": True, "demo_mode": DEMO_MODE}
 
 
-@app.post("/demo/reset")
-def demo_reset() -> JSONResponse:
+def statuses() -> dict[str, str]:
+    return {ac_id: assess(ac_id).status for ac_id in STATE.aircraft}
+
+
+@app.post("/demo/reset", response_model=DemoResetResponse)
+def demo_reset() -> DemoResetResponse:
     global STATE
     STATE = store.load()
-    return example("demo-reset")  # body still the example; real counts in v2
+    assessments = [assess(ac_id) for ac_id in STATE.aircraft]
+    return DemoResetResponse(
+        ok=True, state=f"demo-{date.today().isoformat()}", reset_at=now_utc(),
+        counts=ResetCounts(ads=len(STATE.ads), aircraft=len(STATE.aircraft),
+                           questions=sum(len(a.questions) for a in assessments),
+                           decisions=0, proposals=0,  # ponytail: no decisions/proposals store yet
+                           logbook_records=len(STATE.logbook)),
+        not_loaded=sorted(set(STATE.available) - set(STATE.ads)),
+        aircraft_status={a.aircraft.id: a.status for a in assessments})
+
+
+@app.post("/ads/{ad_id}/ingest", response_model=IngestResponse)
+def ingest(ad_id: str) -> IngestResponse:
+    """Pipeline run (not an action). Demo mode: reads data/golden, no LLM. Idempotent: the AD id is the key."""
+    if ad_id not in STATE.available:
+        raise NotFound("AD_NOT_FOUND", f"No AD with id {ad_id} to ingest.", {"ad_id": ad_id})
+    ad = STATE.available[ad_id]
+    checks = store.field_checks(ad, store.ad_text(ad))
+    validated = [c for c in checks if c.check == store.QUOTE_FOUND]
+    rejected = [c for c in checks if c.check != store.QUOTE_FOUND]
+    if rejected:
+        log.warning("ingest %s: %d field(s) rejected, AD not loaded", ad_id, len(rejected))
+    STATE.ingest_runs += 1
+    before = statuses()
+    newly = ad_id not in STATE.ads and not rejected
+    if newly:
+        STATE.ads[ad_id] = ad
+    after = statuses()
+
+    g = ad.golden
+    path = [ReasoningStep(from_=ad_id, link="supersedes", to=old, derived=False,
+                          note=(g.field_quotes.get("supersedes") or ["supersedes"])[0]) for old in g.supersedes]
+    path += [ReasoningStep(from_=ad_id, link="revises", to=old, derived=False,
+                           note=(g.field_quotes.get("revises") or ["revises"])[0]) for old in g.revises]
+    if ad_id in STATE.ads:
+        for ac_id in STATE.aircraft:
+            res = assess(ac_id).results[ad_id]
+            if res.verdict == "applies":
+                path.append(ReasoningStep(from_=ad_id, link="appliesTo", to=ac_id, derived=False, note=res.why))
+    return IngestResponse(
+        run_id=f"ING-{date.today().isoformat()}-{STATE.ingest_runs:03d}", ad_id=ad_id, source="golden",
+        validated_fields=validated, rejected_fields=rejected,
+        changes=IngestChanges(
+            superseded=g.supersedes + g.revises if newly else [],
+            aircraft_status_changed=[StatusChange(aircraft_id=k, from_=before[k], to=after[k])
+                                     for k in before if before[k] != after[k]]),
+        citations=list({c.quote: ad.cite(c.quote) for c in validated}.values()),
+        reasoning_path=path)
 
 
 @app.get("/fleet")
 def fleet() -> JSONResponse:
     return example("fleet")
-
-
-@app.post("/ads/{ad_id}/ingest")
-def ingest(ad_id: str) -> JSONResponse:
-    return example("q2-ingest")
 
 
 @app.get("/aircraft/{aircraft_id}/ads/{ad_id}/supersession")

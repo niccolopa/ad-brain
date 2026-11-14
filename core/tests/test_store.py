@@ -10,16 +10,19 @@ from app.ontology import Aircraft
 
 def test_real_data_loads():
     s = store.load()
-    assert set(s.ads) == {"FAA:2004-15-18", "FAA:2012-02-02", "FAA:2013-03-15", "EASA:2018-0072", "EASA:2024-0152R1"}
+    assert set(s.available) == {"FAA:2004-15-18", "FAA:2012-02-02", "FAA:2013-03-15", "EASA:2018-0072",
+                                "EASA:2024-0152R1"}
+    assert set(s.ads) == set(s.available) - store.NOT_LOADED_AT_RESET
+    assert "FAA:2012-02-02" not in s.ads
     assert len(s.aircraft) == 8 and len(s.logbook) == 21
-    assert s.ads["FAA:2012-02-02"].title == "Fuel return line chafing (adds serials)"
-    assert s.ads["FAA:2012-02-02"].file == "data/raw/ads/FAA-2012-02-02.txt"
-    assert s.ads["FAA:2012-02-02"].source_url == "https://ad.easa.europa.eu/blob/20120202.pdf/AD_US-2012-02-02_1"
+    assert s.available["FAA:2012-02-02"].title == "Fuel return line chafing (adds serials)"
+    assert s.available["FAA:2012-02-02"].file == "data/raw/ads/FAA-2012-02-02.txt"
+    assert s.available["FAA:2012-02-02"].source_url == "https://ad.easa.europa.eu/blob/20120202.pdf/AD_US-2012-02-02_1"
     assert {a.id for a in s.aircraft.values() if not a.synthetic} == {"EI-GKN", "EI-HAS", "EI-GWY"}
 
 
 def test_every_citation_quote_is_in_its_file():
-    for ad in store.load().ads.values():
+    for ad in store.load().available.values():
         text = (store.REPO / ad.file).read_text(encoding="utf-8")
         for row in ad.golden.applicability:
             assert store.quote_count(ad.cite(row.quote).quote, text) >= 1
@@ -132,3 +135,38 @@ def test_bad_synthetic_flag_fails(tmp_path, monkeypatch):
     monkeypatch.setattr(store, "FLEET_CSV", p)
     with pytest.raises(store.DataError, match="expected true/false"):
         store.load_aircraft()
+
+
+# ---------- field checks (ingest) ----------
+def test_field_checks_all_found_on_real_text():
+    ad = store.load().available["FAA:2012-02-02"]
+    checks = store.field_checks(ad, store.ad_text(ad))
+    assert checks and all(c.check == store.QUOTE_FOUND for c in checks)
+    assert [c.field for c in checks].count("applicability") == 4
+    assert {"effective_date", "supersedes", "compliance_time"} <= {c.field for c in checks}
+
+
+def test_field_checks_reject_on_changed_text():
+    ad = store.load().available["FAA:2012-02-02"]
+    text = store.ad_text(ad).replace("172S11073", "172S11999")
+    bad = [c for c in store.field_checks(ad, text) if c.check == store.QUOTE_NOT_FOUND]
+    assert [c.field for c in bad] == ["applicability"] and "172S11073" in bad[0].quote
+
+
+def test_field_checks_reject_value_without_quote():
+    ad = store.load().available["FAA:2012-02-02"]
+    ad = ad.model_copy(update={"golden": ad.golden.model_copy(update={"field_quotes": {}})})
+    bad = [c for c in store.field_checks(ad, store.ad_text(ad)) if c.check == store.QUOTE_NOT_FOUND]
+    assert {c.field for c in bad} == {"effective_date", "supersedes", "compliance_time"}
+    assert all(c.quote == "" for c in bad)
+
+
+def test_field_checks_empty_text_rejects_everything():
+    ad = store.load().available["EASA:2018-0072"]
+    assert all(c.check == store.QUOTE_NOT_FOUND for c in store.field_checks(ad, ""))
+
+
+def test_not_loaded_must_name_a_golden_ad(monkeypatch):
+    monkeypatch.setattr(store, "NOT_LOADED_AT_RESET", frozenset({"FAA:0000-00-00"}))
+    with pytest.raises(store.DataError, match="NOT_LOADED_AT_RESET"):
+        store.load()

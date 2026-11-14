@@ -7,12 +7,12 @@ from app import rules, store
 from app.ontology import Aircraft, LogbookRow
 
 STATE = store.load()
-ADS = list(STATE.ads.values())
+ADS = list(STATE.available.values())  # rules run over the full golden set
 TODAY = date(2026, 11, 14)
-AD_2012_02_02 = STATE.ads["FAA:2012-02-02"]
-AD_2004_15_18 = STATE.ads["FAA:2004-15-18"]
-AD_2018_0072 = STATE.ads["EASA:2018-0072"]
-AD_2024_0152R1 = STATE.ads["EASA:2024-0152R1"]
+AD_2012_02_02 = STATE.available["FAA:2012-02-02"]
+AD_2004_15_18 = STATE.available["FAA:2004-15-18"]
+AD_2018_0072 = STATE.available["EASA:2018-0072"]
+AD_2024_0152R1 = STATE.available["EASA:2024-0152R1"]
 
 
 def plane(model: str, serial, synthetic: bool = True, id_: str = "T-1") -> Aircraft:
@@ -192,9 +192,16 @@ def test_synthetic_status_order():
 
 
 def test_fleet_statuses_from_real_data():
+    # full golden set = the state after FAA:2012-02-02 is ingested
     got = {a.id: rules.assess(a, ADS, STATE.logbook, TODAY).status for a in STATE.aircraft.values()}
     assert got == {"DEMO-01": "red", "DEMO-02": "green", "DEMO-03": "green", "DEMO-04": "amber",
                    "DEMO-05": "green", "EI-GKN": "no_records", "EI-HAS": "no_records", "EI-GWY": "no_records"}
+
+
+def test_demo_state_before_ingest():
+    demo_ads = list(STATE.ads.values())  # without store.NOT_LOADED_AT_RESET
+    got = {a.id: rules.assess(a, demo_ads, STATE.logbook, TODAY).status for a in STATE.aircraft.values()}
+    assert got["DEMO-01"] == "green" and got["DEMO-04"] == "amber"
 
 
 def test_demo04_question_deadline_from_arc_review():

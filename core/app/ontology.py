@@ -1,5 +1,5 @@
 """Shared shapes from contract/README.md ("Shared shapes"). The UI generates its types from these."""
-from typing import Literal
+from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -210,6 +210,58 @@ class AffectedAircraftResponse(BaseModel):
     open_questions: list[Question]
     citations: list[Citation]
     reasoning_path: list[ReasoningStep]
+
+
+class ValidatedField(BaseModel):
+    """One extracted field and the check of its quote against the AD text."""
+    field: str
+    value: Any
+    quote: str
+    file: str
+    occurrence: int
+    check: Literal["quote found in text", "quote not found in text"]
+
+
+class StatusChange(BaseModel):
+    model_config = ConfigDict(populate_by_name=True)
+    aircraft_id: str
+    from_: AircraftStatus = Field(alias="from")
+    to: AircraftStatus
+
+
+class IngestChanges(BaseModel):
+    superseded: list[str]
+    aircraft_status_changed: list[StatusChange]
+
+
+class IngestResponse(BaseModel):
+    """Q2 — POST /ads/{ad_id}/ingest. A pipeline run, not an action. Demo mode: source = golden, no LLM."""
+    run_id: str
+    ad_id: str
+    source: Literal["golden", "cache", "llm"]
+    validated_fields: list[ValidatedField]
+    rejected_fields: list[ValidatedField]
+    changes: IngestChanges
+    citations: list[Citation]
+    reasoning_path: list[ReasoningStep]
+
+
+class ResetCounts(BaseModel):
+    ads: int
+    aircraft: int
+    questions: int
+    decisions: int
+    proposals: int
+    logbook_records: int
+
+
+class DemoResetResponse(BaseModel):
+    ok: bool
+    state: str
+    reset_at: str
+    counts: ResetCounts
+    not_loaded: list[str]
+    aircraft_status: dict[str, AircraftStatus]
 
 
 def shape_errors(expected: dict, actual: object) -> list[str]:
