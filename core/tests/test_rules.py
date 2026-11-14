@@ -194,7 +194,7 @@ def test_synthetic_status_order():
 def test_fleet_statuses_from_real_data():
     # full golden set = the state after FAA:2012-02-02 is ingested
     got = {a.id: rules.assess(a, ADS, STATE.logbook, TODAY).status for a in STATE.aircraft.values()}
-    assert got == {"DEMO-01": "red", "DEMO-02": "green", "DEMO-03": "green", "DEMO-04": "amber",
+    assert got == {"DEMO-01": "red", "DEMO-02": "green", "DEMO-03": "amber", "DEMO-04": "amber",
                    "DEMO-05": "green", "EI-GKN": "no_records", "EI-HAS": "no_records", "EI-GWY": "no_records"}
 
 
@@ -223,7 +223,8 @@ def test_removing_an_observation_raises_its_question():
 
 def test_real_aircraft_question_has_no_deadline():
     q = rules.assess(STATE.aircraft["EI-GWY"], ADS, STATE.logbook, TODAY).questions
-    assert [x.ad_id for x in q] == ["FAA:2004-15-18"] and q[0].deadline is None and not q[0].synthetic
+    assert [x.ad_id for x in q] == ["FAA:2004-15-18", "FAA:2006-12-07", "FAA:2012-19-01"]
+    assert all(x.deadline is None and x.urgency is None and not x.synthetic for x in q)
 
 
 # ---------- due citation ----------

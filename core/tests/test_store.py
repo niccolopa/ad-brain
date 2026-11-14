@@ -10,8 +10,8 @@ from app.ontology import Aircraft
 
 def test_real_data_loads():
     s = store.load()
-    assert set(s.available) == {"FAA:2004-15-18", "FAA:2012-02-02", "FAA:2013-03-15", "EASA:2018-0072",
-                                "EASA:2024-0152R1"}
+    assert set(s.available) == {"FAA:2004-15-18", "FAA:2006-12-07", "FAA:2006-20-09", "FAA:2012-02-02",
+                                "FAA:2012-19-01", "FAA:2013-03-15", "EASA:2018-0072", "EASA:2024-0152R1"}
     assert set(s.ads) == set(s.available) - store.NOT_LOADED_AT_RESET
     assert "FAA:2012-02-02" not in s.ads
     assert len(s.aircraft) == 8 and len(s.logbook) == 21
@@ -188,6 +188,6 @@ def test_bad_new_golden_keys_fail(golden_copy, extra):
 
 
 def test_field_checks_cover_new_keys():
-    ad = store.load_ads(store.GOLDEN_DRAFTS_DIR)["FAA:2012-19-01"]
+    ad = store.load_ads()["FAA:2012-19-01"]
     fields = {c.field for c in store.field_checks(ad, store.ad_text(ad))}
     assert {"not_evaluated", "credited_compliance"} <= fields

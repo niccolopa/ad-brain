@@ -1,5 +1,4 @@
-"""Aircraft → installed engine → AD inference. Fixtures: the UNCHECKED drafts in data/golden/drafts/
-(real AD text, quotes verified by the loader). They are never loaded by store.load()."""
+"""Aircraft → installed engine → AD inference, on the checked engine ADs in data/golden/."""
 from datetime import date
 
 import pytest
@@ -11,7 +10,8 @@ from app.ontology import GoldenApplicability
 
 TODAY = date(2026, 11, 14)
 STATE = store.load()
-DRAFTS = store.load_ads(store.GOLDEN_DRAFTS_DIR)
+ENGINE_IDS = ("FAA:2006-12-07", "FAA:2006-20-09", "FAA:2012-19-01")
+DRAFTS = {k: STATE.available[k] for k in ENGINE_IDS}  # name kept from the draft stage: the 3 engine ADs
 ECI, CRANK_2006, CRANK_2012 = DRAFTS["FAA:2006-12-07"], DRAFTS["FAA:2006-20-09"], DRAFTS["FAA:2012-19-01"]
 DATE_CLAUSE = "not evaluated: manufacture/overhaul date clause (see notes)"
 client = TestClient(app)
@@ -25,9 +25,8 @@ def facts_of(aircraft_id: str) -> dict:
     return out
 
 
-def test_drafts_load_and_are_not_in_the_default_store():
-    assert set(DRAFTS) == {"FAA:2006-12-07", "FAA:2006-20-09", "FAA:2012-19-01"}
-    assert not set(DRAFTS) & set(STATE.available)
+def test_engine_ads_are_loaded_by_default():
+    assert set(ENGINE_IDS) <= set(STATE.ads)
 
 
 @pytest.mark.parametrize("engine,expected", [
@@ -109,14 +108,12 @@ def test_ranged_engine_row_is_a_question():
     assert r.verdict == "unknown" and r.question == "engine serial unclear: DEMO-01/engine"
 
 
-# ---------- over HTTP, with the drafts added to the active set for the test only ----------
+# ---------- over HTTP, demo state (engine ADs loaded) ----------
 @pytest.fixture
 def with_drafts():
     client.post("/demo/reset")
-    api.STATE.available.update(DRAFTS)
-    api.STATE.ads.update(DRAFTS)
+    assert set(ENGINE_IDS) <= set(api.STATE.ads)
     yield
-    client.post("/demo/reset")
 
 
 def test_q1_engine_path_is_drawn_with_derived_link(with_drafts):
