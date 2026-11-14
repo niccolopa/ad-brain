@@ -17,23 +17,24 @@ flowchart LR
   subgraph STACK[" "]
     direction TB
     subgraph APP["Applications"]
-      API["API routes · core/app/api.py<br/>Q1 /aircraft/{id}/status · Q2 /ads/{id}/affected-aircraft<br/>Q3 /aircraft/{id}/ads/{ad}/supersession · ingest /ads/{id}/ingest<br/>/fleet · /questions · /evaluations · AD detail /ads/{id}"]
+      API["API routes · core/app/api.py<br/>Q1 /aircraft/{id}/status · Q2 /ads/{id}/affected-aircraft<br/>Q3 /aircraft/{id}/ads/{ad}/supersession · ingest /ads/{id}/ingest<br/>/fleet · /questions · /evaluations · AD detail /ads/{id}<br/>/questions/{id}/answer · /decisions"]
       UI["UI · ui/<br/>runs on mocks today: ui/src/mocks/"]
-      STUB["/decisions · /actions · /proposals · /compare<br/>return contract examples: not built yet"]
+      STUB["/actions · /proposals · /compare<br/>return contract examples: not built yet"]
     end
     subgraph ACT["Actions and people"]
       QS["QUESTIONs for a certifying engineer<br/>raised by core/app/rules.py, listed by /questions"]
-      ANS["Answering a QUESTION: not built yet"]
-      DEC["Human DECISION records: not built yet"]
+      ANS["Answering a QUESTION · /questions/{id}/answer<br/>certifying engineer only, synthetic aircraft only<br/>refused attempts logged and listed"]
+      DEC["Human DECISION records · /decisions<br/>synthetic engineer P-CE-1, in memory, cleared by /demo/reset"]
+      MEC["Mechanic answer as OBSERVATION · multi-fact and serial questions: not built yet"]
       APR["Approval of agent proposals: not built yet"]
     end
     subgraph LOGIC["Logic"]
-      DM["Decision model · core/app/rules.py<br/>25 rule ids · docs/DECISION-MODEL.md"]
+      DM["Decision model · core/app/rules.py<br/>26 rule ids · docs/DECISION-MODEL.md"]
       EV["Evaluations and replay · core/app/evaluations.py"]
       AG["Extraction agent · core/app/llm.py · core/app/extract.py<br/>only proposes inputs, each with a quote"]
     end
     subgraph ONT["Objects and links · core/app/ontology.py"]
-      OBJ["Aircraft · AirworthinessDirective · ComplianceRecord · Question · Evaluation"]
+      OBJ["Aircraft · AirworthinessDirective · ComplianceRecord · Question · DecisionRecord · Evaluation"]
       LNK["hasInstalled · appliesTo (derived when via the engine) · supersedes · revises · satisfies"]
       ENG["Engine object: not built yet<br/>today Aircraft.engine_model, id &lt;aircraft&gt;/engine"]
     end
@@ -48,8 +49,8 @@ flowchart LR
   subgraph TRUST["Provenance and trust, across all layers"]
     direction TB
     T1["Every answer cites the exact source sentence<br/>data/raw/ads/ · citations from data/golden/"]
-    T2["Epistemic classes produced: REGULATION · OBSERVATION · QUESTION"]
-    T3["DECISION · HYPOTHESIS: in the schema, not produced yet"]
+    T2["Epistemic classes produced: REGULATION · OBSERVATION · QUESTION · DECISION"]
+    T3["HYPOTHESIS: in the schema, not produced yet"]
     T4["rules_version · inputs_hash · replay<br/>core/app/evaluations.py"]
   end
   STACK ~~~ TRUST
@@ -62,12 +63,12 @@ flowchart LR
   classDef trust fill:#ffe4e6,stroke:#9f1239,color:#0f172a
   classDef todo fill:#ffffff,stroke:#64748b,stroke-dasharray:5 5,color:#0f172a
   class API,UI app
-  class QS act
+  class QS,ANS,DEC act
   class DM,EV,AG logic
   class OBJ,LNK ont
   class D1,D2,D3,D4 data
   class T1,T2,T4 trust
-  class STUB,ANS,DEC,APR,ENG,T3 todo
+  class STUB,MEC,APR,ENG,T3 todo
 ```
 
 ## How it decides
@@ -83,12 +84,16 @@ flowchart LR
     M --> E["Evaluation EV-…<br/>core/app/evaluations.py<br/>rules_version · inputs_hash · replay"]
     E --> A["Answer with the cited sentence"]
     E --> Q["QUESTION to a certifying engineer<br/>(unknown serial, modification, contradiction)"]
+    Q --> D["Certifying engineer answers<br/>/questions/{id}/answer → DECISION D-…"]
+    D -- "the fact, rule R-DECISION-ANSWER" --> M
 ```
 
 The LLM only proposes inputs (applicability, conditions, supersession, credit), each with a verbatim quote.
 Whether an AD applies, which AD is in force and the aircraft status are computed by `core/app/rules.py`:
-25 rules, each with an id, listed as a decision table in [docs/DECISION-MODEL.md](docs/DECISION-MODEL.md).
-A case the rules do not cover becomes a QUESTION, never a guess.
+26 rules, each with an id, listed as a decision table in [docs/DECISION-MODEL.md](docs/DECISION-MODEL.md).
+A case the rules do not cover becomes a QUESTION, never a guess. A certifying engineer answers it with a DECISION;
+the next evaluation uses that fact, and replay names the decision that changed the result. A synthetic engineer
+can never decide about a real registered aircraft (403, logged).
 
 ## Quickstart (no API key needed)
 
@@ -186,7 +191,7 @@ curl http://127.0.0.1:8000/questions
 
 ## Results
 
-- **Tests:** 298 passed (`python -m pytest core`, 14 Nov 2026), including a test that the decision table and the
+- **Tests:** 318 passed (`python -m pytest core`, 14 Nov 2026), including a test that the decision table and the
   code list the same rule ids and that every rule fires in some scenario, and one that every path and route in the
   diagrams above exists.
 - **Extraction agreement** (LLM vs the 8 hand-checked ADs): 5 of 8 ADs agree on every compared field; 81 of 100
@@ -205,8 +210,13 @@ curl http://127.0.0.1:8000/questions
   aircraft come from the Irish IAA register (September 2025 snapshot); **real aircraft are never shown as
   non-compliant**: their status is always `no_records`. No owner names or addresses are stored.
 - **No interviews:** no maintenance organisation or certifying engineer was interviewed.
-- **Not built yet:** human DECISION records, actions and approval of agent proposals (`/decisions`, `/actions`
-  and `/proposals` are placeholders that return contract examples or an empty list); answering a QUESTION; `/compare` (contract example); LLM-written summaries (all summaries are templates); deadline arithmetic (a missing record counts as
+- **Human decisions in the demo:** a QUESTION can be answered only as a certifying engineer, only on a synthetic
+  aircraft, by the synthetic engineer `P-CE-1`; decisions and the action log live in memory and are cleared by
+  `/demo/reset`.
+- **Not built yet:** a mechanic's answer as an OBSERVATION; answering questions about more than one fact (e.g.
+  DEMO-04's "MOD2008/233 or SB-826-CS") or about an unclear serial; actions and approval of agent proposals
+  (`/actions` and `/proposals` are placeholders that return contract examples or an empty list); `/compare`
+  (contract example); LLM-written summaries (all summaries are templates); deadline arithmetic (a missing record counts as
   overdue, true for the 8 ADs); part numbers, AMOCs, repetitive inspections. The UI in `ui/` runs on mocks.
 - **Prepared before the event:** [docs/PREPARED.md](docs/PREPARED.md).
 
