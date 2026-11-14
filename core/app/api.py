@@ -45,7 +45,7 @@ log = logging.getLogger("adbrain.api")
 
 REPO = Path(__file__).resolve().parents[2]
 EXAMPLES_DIR = REPO / "contract" / "examples"
-DEMO_MODE = True
+DEMO_MODE = llm.demo_mode()  # /health reports the real setting
 
 app = FastAPI(title="AD Brain core")
 STATE = store.load()
