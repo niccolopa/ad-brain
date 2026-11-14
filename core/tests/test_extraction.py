@@ -200,6 +200,33 @@ def test_failed_live_call_never_overwrites_the_cache(tmp_path, monkeypatch):
     assert extract.cache_path("FAA:2012-02-02").read_bytes() == src.read_bytes()
 
 
+# ---------- values from the extraction, quotes from golden ----------
+def test_with_golden_quotes_takes_values_from_extraction_and_quotes_from_golden():
+    golden = STATE.available["FAA:2012-02-02"].golden
+    record = extract.run(STATE.available["FAA:2012-02-02"], [], live=False)
+    extracted = extract.parse(record["raw"], "FAA:2012-02-02")
+    assert extracted.applicability[3].quote != golden.applicability[3].quote  # "(4) Group 4: …" vs "Group 4: …"
+    merged = extract.with_golden_quotes(extracted, golden)
+    assert [r.serial_to for r in merged.applicability] == [r.serial_to for r in extracted.applicability]
+    assert [r.quote for r in merged.applicability] == [r.quote for r in golden.applicability]
+    assert merged.field_quotes == golden.field_quotes
+
+
+def test_with_golden_quotes_refuses_an_item_golden_does_not_have():
+    golden = STATE.available["FAA:2012-02-02"].golden
+    odd = golden.applicability[0].model_copy(update={"serial_to": "17289999"})
+    with pytest.raises(ValueError, match="no golden counterpart"):
+        extract.with_golden_quotes(golden.model_copy(update={"applicability": [odd]}), golden)
+
+
+def test_credit_quote_and_occurrence_come_from_golden():
+    golden = STATE.available["FAA:2012-19-01"].golden
+    llm_credit = golden.credited_compliance[0].model_copy(update={"quote": "no further action is required.",
+                                                                  "occurrence": 1, "paragraph": None})
+    merged = extract.with_golden_quotes(golden.model_copy(update={"credited_compliance": [llm_credit]}), golden)
+    assert merged.credited_compliance[0] == golden.credited_compliance[0]
+
+
 # ---------- ingest: extraction decides only when it is fully validated and agrees ----------
 @pytest.fixture
 def demo():
@@ -211,6 +238,19 @@ def demo():
 def test_ingest_uses_the_agreeing_extraction(demo):
     b = client.post(INGEST_2012_02_02).json()
     assert b["source"] == "cache" and b["extraction"]["used"] is True and b["extraction"]["misses"] == []
+    assert b["extraction"]["citations_from"] == "golden"
+    assert b["extraction"]["reason"] == "values from the extraction; citations from golden (human-checked)"
+    golden = STATE.available["FAA:2012-02-02"].golden
+    assert all(c["origin"] == "golden" for c in b["citations"])
+    assert {c["quote"] for c in b["citations"]} <= {r.quote for r in golden.applicability} | {
+        q for qs in golden.field_quotes.values() for q in qs}
+    used = api.STATE.ads["FAA:2012-02-02"].golden
+    assert [r.quote for r in used.applicability] == [r.quote for r in golden.applicability]
+    assert used.compliance_time_text == golden.compliance_time_text  # no LLM-written text in answers
+    due = client.get("/aircraft/DEMO-01/status").json()["applicable_ads"]
+    [g4] = [x for x in due if x["ad_id"] == "FAA:2012-02-02"]
+    assert g4["due"]["citation"]["quote"].endswith("inspect the fuel return line assembly (Cessna P/N 0500118-49) "
+                                                   "for chafing.")  # the full sentence, not a cut quote
     assert b["changes"]["aircraft_status_changed"] == [{"aircraft_id": "DEMO-01", "from": "green", "to": "red"}]
     assert api.STATE.ads["FAA:2012-02-02"].golden_file == "data/cache/extractions/FAA-2012-02-02.json"
 

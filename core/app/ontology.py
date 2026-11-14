@@ -21,6 +21,7 @@ class Citation(BaseModel):
     file: str
     occurrence: int = Field(ge=1)
     source_url: str
+    origin: Literal["golden", "extraction"] | None = None  # "golden" = human-checked quote; optional for the contract
 
 
 class ReasoningStep(BaseModel):
@@ -124,7 +125,7 @@ class LoadedAD(BaseModel):
     def cite(self, quote: str, occurrence: int = 1) -> Citation:
         # Golden quotes are unique (occurrence 1) unless the golden record gives an occurrence; the store checks both.
         return Citation(ad_id=self.ad_id, quote=quote, file=self.file, occurrence=occurrence,
-                        source_url=self.source_url)
+                        source_url=self.source_url, origin="golden")  # every quote we cite is a golden one
 
 
 # ---------- Contract objects (contract/README.md, "Object types") ----------
@@ -377,6 +378,7 @@ class ExtractionInfo(BaseModel):
     agreement: float | None
     reason: str | None
     misses: list[str]
+    citations_from: Literal["golden"] = "golden"  # values may come from the extraction; quotes never do
 
 
 class IngestResponse(BaseModel):

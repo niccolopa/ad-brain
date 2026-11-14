@@ -249,10 +249,14 @@ def choose_source(golden_ad: LoadedAD) -> tuple[LoadedAD, str, ExtractionInfo, l
         return golden_ad, "golden", ExtractionInfo(used=False, agreement=r["agreement"], misses=misses,
                                                    reason="extraction disagrees with golden or a quote is not "
                                                           "in the text: golden decides", **base), rejected
-    extracted = extract.parse(record["raw"], golden_ad.ad_id)
+    # Values from the extraction, citations (and every free text) from golden: the agent's quotes are verified but
+    # may stop mid-sentence, so answers cite the human-checked sentence. The decided record hashes the cache file.
+    extracted = extract.with_golden_quotes(extract.parse(record["raw"], golden_ad.ad_id), golden_ad.golden)
     cache = extract.cache_path(golden_ad.ad_id)
     ad = golden_ad.model_copy(update={"golden": extracted, "golden_file": cache.relative_to(store.REPO).as_posix()})
-    return ad, used_source, ExtractionInfo(used=True, agreement=r["agreement"], reason=None, misses=[], **base), []
+    return ad, used_source, ExtractionInfo(
+        used=True, agreement=r["agreement"], misses=[],
+        reason="values from the extraction; citations from golden (human-checked)", **base), []
 
 
 @app.post("/ads/{ad_id}/ingest", response_model=IngestResponse)

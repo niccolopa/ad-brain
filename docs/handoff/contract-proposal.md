@@ -42,5 +42,9 @@ An *evaluation* is a computed result. It is **not** a `Decision` (a Decision sta
 - New optional `extraction?: { used: bool, source: "cache"|"llm"|null, model, prompt_version, agreement: 0..1,
   reason: string|null, misses: [string] }`. The extraction decides only if every quote is found in the text
   **and** every compared field agrees with golden; otherwise golden decides and every miss is listed.
+- When the extraction is used, **values come from the extraction and every citation from golden**
+  (human-checked): `extraction.citations_from: "golden"`, reason "values from the extraction; citations from
+  golden (human-checked)". `source` stays `"cache"`.
+- `Citation.origin?: "golden" | "extraction"` — today always `"golden"` on every citation Core returns.
 - `rejected_fields[].check` gains `"disagrees with golden"` (value = `{missing, extra}`).
 - An extraction for an AD with no golden file never decides a status (today: ingest of such an AD → 404).

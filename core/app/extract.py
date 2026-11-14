@@ -110,6 +110,34 @@ def agreement(cmp: dict[str, dict]) -> float:
     return matched / (golden + extra) if golden + extra else 1.0
 
 
+def with_golden_quotes(extracted: GoldenAD, golden: GoldenAD) -> GoldenAD:
+    """The record that decides when the extraction is used: the compared values come from the extraction, every
+    quote and every free text from the human-checked golden record. Raises ValueError if an extracted item has no
+    golden counterpart (cannot happen when the extraction agrees with golden; checked anyway)."""
+    def pick(items, golden_items, key, name):
+        by_key = {key(g): g for g in golden_items}
+        out = []
+        for item in items:
+            if key(item) not in by_key:
+                raise ValueError(f"{name}: extracted item {key(item)} has no golden counterpart")
+            out.append(item.model_copy(update={k: getattr(by_key[key(item)], k)
+                                               for k in ("quote", "occurrence", "paragraph") if hasattr(item, k)}))
+        return out
+
+    return golden.model_copy(update={
+        "effective_date": extracted.effective_date, "supersedes": extracted.supersedes,
+        "revises": extracted.revises,
+        "applicability": pick(extracted.applicability, golden.applicability,
+                              lambda r: (r.model.upper(), r.series, r.serial_from, r.serial_to), "applicability"),
+        "conditions": pick(extracted.conditions, golden.conditions,
+                           lambda c: (c.kind, c.fact, c.applies_when), "conditions"),
+        "credited_compliance": pick(extracted.credited_compliance, golden.credited_compliance,
+                                    lambda c: c.ad_id, "credited_compliance"),
+        "not_evaluated": pick(extracted.not_evaluated, golden.not_evaluated,
+                              lambda n: store.collapse(n.quote), "not_evaluated"),
+    })
+
+
 def cache_path(ad_id: str) -> Path:
     return CACHE_DIR / f"{ad_id.replace(':', '-')}.json"
 
