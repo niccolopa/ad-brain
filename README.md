@@ -186,14 +186,15 @@ curl http://127.0.0.1:8000/questions
 
 ## Results
 
-- **Tests:** 277 passed (`python -m pytest core`, 14 Nov 2026), including a test that the decision table and the
+- **Tests:** 279 passed (`python -m pytest core`, 14 Nov 2026), including a test that the decision table and the
   code list the same rule ids and that every rule fires in some scenario, and one that every path and route in the
   diagrams above exists.
 - **Extraction agreement** (LLM vs the 8 hand-checked ADs): 5 of 8 ADs agree on every compared field; 81 of 100
   golden items matched plus 25 extra items (64.8%); 121 of 121 extracted quotes found in the AD text. Every miss
   is listed in [docs/EXTRACTION-REPORT.md](docs/EXTRACTION-REPORT.md). Where an extraction disagrees, golden decides.
-- **Cost:** 105,788 tokens for all extraction calls, about $0.43 at Anthropic's list price for Claude Sonnet 5.5
-  (the gateway price was not checked); per AD in the report.
+- **Cost:** 105,788 tokens for all extraction calls. These calls were logged before the gateway's own cost
+  (`usage.cost`) was recorded, so the cost is an estimate: about $0.43 at Anthropic's list price for Claude
+  Sonnet 5.5. New calls log the gateway's cost; per AD in the report.
 - **Decision model:** [docs/DECISION-MODEL.md](docs/DECISION-MODEL.md).
 
 ## Honesty

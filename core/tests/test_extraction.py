@@ -122,6 +122,24 @@ def test_usage_row_names_the_ad(env, monkeypatch):
     assert json.loads(env.read_text(encoding="utf-8").splitlines()[-1])["ref"] == "FAA:2012-02-02"
 
 
+def test_gateway_cost_is_logged_when_returned(env, monkeypatch):
+    with_cost = reply("x")
+    with_cost.usage.cost, with_cost.usage.gateway_cost, with_cost.usage.market_cost = 0.0123, 0.0123, True
+    _, call = run_with(monkeypatch, with_cost)
+    call()
+    row = json.loads(env.read_text(encoding="utf-8").splitlines()[-1])
+    assert row["cost_usd"] == 0.0123 and row["gateway_cost_usd"] == 0.0123
+    assert row["market_cost_usd"] is None  # not a number: never logged as a cost
+    _, call = run_with(monkeypatch, reply("y"))  # no cost in usage
+    call()
+    assert json.loads(env.read_text(encoding="utf-8").splitlines()[-1])["cost_usd"] is None
+
+
+def test_gateway_cost_read_from_sdk_extra_fields():
+    usage = SimpleNamespace(model_extra={"cost": 2.4e-05})
+    assert llm._usage_number(usage, "cost") == 2.4e-05 and llm._usage_number(usage, "gateway_cost") is None
+
+
 def test_phrasing_uses_its_own_limits(env, monkeypatch):
     fake, call = run_with(monkeypatch, reply("hi"), purpose="phrasing")
     call()

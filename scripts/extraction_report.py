@@ -15,10 +15,10 @@ CACHE = REPO / "data" / "cache"
 REPORT_JSON = CACHE / "extractions" / "REPORT.json"
 USAGE = CACHE / "llm_usage.jsonl"
 OUT = REPO / "docs" / "EXTRACTION-REPORT.md"
-# Anthropic first-party list price for Claude Sonnet 5.5 (claude-api skill model table, cached 2026-11-03).
-# The price charged through the KVA Vercel AI Gateway was not checked.
-PRICE_SOURCE = "Anthropic list price for Claude Sonnet 5.5 ($2 / $10 per million input / output tokens); " \
-               "the KVA Vercel AI Gateway price was not checked"
+# Cost: the USD the gateway returned in usage.cost, logged as `cost_usd` since 14 Nov ~13:45. Rows logged before
+# that have no cost; for those only, an estimate at Anthropic's list price for Claude Sonnet 5.5 (claude-api skill
+# model table, cached 2026-11-03), labelled as an estimate.
+ESTIMATE_SOURCE = "Anthropic list price for Claude Sonnet 5.5, $2 / $10 per million input / output tokens"
 USD_PER_M_INPUT, USD_PER_M_OUTPUT = 2.00, 10.00
 MILLION = 1_000_000
 
@@ -43,6 +43,18 @@ def parse_time(s: str) -> datetime:
 
 def usd(prompt: int, completion: int) -> float:
     return prompt / MILLION * USD_PER_M_INPUT + completion / MILLION * USD_PER_M_OUTPUT
+
+
+def cost(u: dict) -> tuple[float, bool]:
+    """(USD, reported by the gateway?) for one usage row."""
+    if isinstance(u.get("cost_usd"), (int, float)):
+        return float(u["cost_usd"]), True
+    return usd(u.get("prompt_tokens") or 0, u.get("completion_tokens") or 0), False
+
+
+def money(u: dict) -> str:
+    value, reported = cost(u)
+    return f"${value:.4f} (gateway)" if reported else f"≈ ${value:.3f} (estimate)"
 
 
 def main() -> int:
@@ -81,6 +93,9 @@ def main() -> int:
     c_tok = sum(u["completion_tokens"] for u in by_ad.values())
     p_all = p_tok + sum(u["prompt_tokens"] or 0 for u in other)
     c_all = c_tok + sum(u["completion_tokens"] or 0 for u in other)
+    rows = [*by_ad.values(), *other]
+    reported = [cost(u)[0] for u in rows if cost(u)[1]]
+    estimated = [cost(u)[0] for u in rows if not cost(u)[1]]
     models = sorted({m for _, m, _ in starts.values()})
     prompts = sorted({pv for _, _, pv in starts.values()})
 
@@ -103,14 +118,19 @@ def main() -> int:
         (f"- Items matched: **{matched} / {golden}** golden items, plus **{extra}** extra items not in golden → "
         f"agreement {matched / (golden + extra):.1%} (matched / (golden + extra))"),
         f"- Quotes found in the AD text: **{found} / {quotes}**",
-        (f"- Tokens: {p_tok:,} input + {c_tok:,} output for the {len(report)} cached extractions "
-        f"(≈ ${usd(p_tok, c_tok):.2f}); all extraction calls logged, including the earlier one-AD check: "
-        f"{p_all:,} + {c_all:,} (≈ ${usd(p_all, c_all):.2f})."),
-        f"- Price used: {PRICE_SOURCE}.",
+        (f"- Tokens: {p_tok:,} input + {c_tok:,} output for the {len(report)} cached extractions; all "
+         f"{len(rows)} extraction calls logged, including the earlier one-AD check: {p_all:,} + {c_all:,}."),
+        (f"- Cost reported by the gateway (`usage.cost`): **{len(reported)} of {len(rows)} calls**"
+         + (f", ${sum(reported):.4f}." if reported else ".")),
+        (f"- Calls logged before cost was recorded: {len(estimated)}; estimate for those only: "
+         f"≈ ${sum(estimated):.2f} ({ESTIMATE_SOURCE})." if estimated else "- Every call has a gateway-reported cost."),
+        ("- The gateway returns `usage.cost` (checked on 14 Nov with one minimal call: $0.000024); `core/app/llm.py` "
+         "logs it as `cost_usd` from then on. The extraction was not re-run to get real costs, because that would "
+         "replace the cached extraction the demo uses."),
         "",
         "## Per AD",
         "",
-        "| AD | Agreement | Quotes found | Used by ingest | Input tokens | Output tokens | Latency | ≈ USD |",
+        "| AD | Agreement | Quotes found | Used by ingest | Input tokens | Output tokens | Latency | USD |",
         "|---|---|---|---|---|---|---|---|",
     ]
     for r in report:
@@ -118,7 +138,7 @@ def main() -> int:
         lines.append(f"| {r['ad_id']} | {r['agreement']:.0%} | {r['quotes_checked'] - r['quotes_rejected']} / "
                      f"{r['quotes_checked']} | {'yes' if r['usable'] else 'no (golden decides)'} | "
                      f"{u['prompt_tokens']:,} | {u['completion_tokens']:,} | {u['latency_ms'] / 1000:.1f} s | "
-                     f"${usd(u['prompt_tokens'], u['completion_tokens']):.3f} |")
+                     f"{money(u)} |")
     lines += ["", "## Every miss", ""]
     for r in report:
         for name, f in r["fields"].items():
@@ -132,7 +152,8 @@ def main() -> int:
               "call completed after the cached extraction started); new rows carry the AD id."), ""]
     OUT.write_text("\n".join(lines), encoding="utf-8")
     print(f"wrote {OUT.relative_to(REPO)}: {sum(r['usable'] for r in report)}/{len(report)} usable, "
-          f"{matched}/{golden} matched + {extra} extra, ${usd(p_all, c_all):.2f} total")
+          f"{matched}/{golden} matched + {extra} extra; cost reported {len(reported)}/{len(rows)}, "
+          f"estimated ${sum(estimated):.2f}")
     return 0
 
 

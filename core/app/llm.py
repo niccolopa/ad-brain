@@ -21,6 +21,7 @@ ENV_FILE = REPO / ".env"
 USAGE_LOG = REPO / "data" / "cache" / "llm_usage.jsonl"
 HTTP_PAYMENT_REQUIRED = 402
 MAX_RETRIES = 1
+GATEWAY_COST_FIELDS = ("cost", "gateway_cost", "market_cost")
 Purpose = Literal["extraction", "phrasing"]
 
 _budget_logged = False
@@ -90,12 +91,21 @@ def demo_mode() -> bool:
     return os.environ.get("DEMO_MODE", "true").strip().lower() == "true"
 
 
+def _usage_number(usage: object, key: str) -> float | None:
+    """A numeric field the gateway adds to `usage` (an SDK extra field), or None."""
+    extra = getattr(usage, "model_extra", None)
+    value = extra.get(key) if isinstance(extra, dict) else getattr(usage, key, None)
+    return float(value) if isinstance(value, (int, float)) and not isinstance(value, bool) else None
+
+
 def _log_usage(purpose: Purpose, model: str, usage: object, latency_ms: int, outcome: str,
                ref: str | None = None) -> None:
     row = {"at": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"), "purpose": purpose, "model": model, "ref": ref,
            "prompt_tokens": getattr(usage, "prompt_tokens", None),
            "completion_tokens": getattr(usage, "completion_tokens", None),
-           "total_tokens": getattr(usage, "total_tokens", None), "latency_ms": latency_ms, "outcome": outcome}
+           "total_tokens": getattr(usage, "total_tokens", None), "latency_ms": latency_ms, "outcome": outcome,
+           # USD the gateway reports in usage (Vercel AI Gateway: cost, gateway_cost, market_cost); None if absent
+           **{f"{k}_usd": _usage_number(usage, k) for k in GATEWAY_COST_FIELDS}}
     try:
         USAGE_LOG.parent.mkdir(parents=True, exist_ok=True)
         with USAGE_LOG.open("a", encoding="utf-8") as f:
