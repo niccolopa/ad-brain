@@ -115,6 +115,13 @@ def test_ok_call_uses_purpose_settings_and_logs_usage_safely(env, monkeypatch):
     assert "SECRET PROMPT" not in text and ENV["AI_GATEWAY_API_KEY"] not in text
 
 
+def test_usage_row_names_the_ad(env, monkeypatch):
+    fake = FakeClient(reply("x"))
+    monkeypatch.setattr(llm.openai, "OpenAI", lambda **_k: fake)
+    llm.complete("extraction", [{"role": "user", "content": "p"}], ref="FAA:2012-02-02")
+    assert json.loads(env.read_text(encoding="utf-8").splitlines()[-1])["ref"] == "FAA:2012-02-02"
+
+
 def test_phrasing_uses_its_own_limits(env, monkeypatch):
     fake, call = run_with(monkeypatch, reply("hi"), purpose="phrasing")
     call()

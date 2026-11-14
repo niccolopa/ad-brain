@@ -90,8 +90,9 @@ def demo_mode() -> bool:
     return os.environ.get("DEMO_MODE", "true").strip().lower() == "true"
 
 
-def _log_usage(purpose: Purpose, model: str, usage: object, latency_ms: int, outcome: str) -> None:
-    row = {"at": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"), "purpose": purpose, "model": model,
+def _log_usage(purpose: Purpose, model: str, usage: object, latency_ms: int, outcome: str,
+               ref: str | None = None) -> None:
+    row = {"at": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"), "purpose": purpose, "model": model, "ref": ref,
            "prompt_tokens": getattr(usage, "prompt_tokens", None),
            "completion_tokens": getattr(usage, "completion_tokens", None),
            "total_tokens": getattr(usage, "total_tokens", None), "latency_ms": latency_ms, "outcome": outcome}
@@ -103,8 +104,9 @@ def _log_usage(purpose: Purpose, model: str, usage: object, latency_ms: int, out
         log.exception("could not write %s", USAGE_LOG.name)
 
 
-def complete(purpose: Purpose, messages: list[dict[str, str]], s: Settings | None = None) -> str:
-    """One chat completion. Returns non-empty text or raises LLMUnavailable."""
+def complete(purpose: Purpose, messages: list[dict[str, str]], s: Settings | None = None,
+             ref: str | None = None) -> str:
+    """One chat completion. Returns non-empty text or raises LLMUnavailable. `ref` (e.g. the AD id) is logged."""
     global _budget_logged
     s = s or settings()
     model = s.model[purpose]
@@ -117,7 +119,7 @@ def complete(purpose: Purpose, messages: list[dict[str, str]], s: Settings | Non
                                            max_tokens=s.max_tokens[purpose], temperature=0)
     except openai.APIStatusError as e:
         ms = int((time.monotonic() - started) * 1000)
-        _log_usage(purpose, model, None, ms, f"http_{e.status_code}")
+        _log_usage(purpose, model, None, ms, f"http_{e.status_code}", ref)
         if e.status_code == HTTP_PAYMENT_REQUIRED:
             if not _budget_logged:
                 log.error("LLM budget used up (HTTP 402): falling back to cache/template")
@@ -125,16 +127,16 @@ def complete(purpose: Purpose, messages: list[dict[str, str]], s: Settings | Non
             raise LLMUnavailable("budget used up (HTTP 402)") from e
         raise LLMUnavailable(f"HTTP {e.status_code} from the LLM endpoint") from e
     except (openai.APITimeoutError, openai.APIConnectionError) as e:
-        _log_usage(purpose, model, None, int((time.monotonic() - started) * 1000), type(e).__name__)
+        _log_usage(purpose, model, None, int((time.monotonic() - started) * 1000), type(e).__name__, ref)
         raise LLMUnavailable(f"{type(e).__name__} (connect {s.connect_timeout}s, total {s.total_timeout[purpose]}s)") from e
     ms = int((time.monotonic() - started) * 1000)
     choice = r.choices[0] if r.choices else None
     text = (choice.message.content or "") if choice else ""
     if choice is not None and choice.finish_reason == "length":
-        _log_usage(purpose, model, r.usage, ms, "truncated")
+        _log_usage(purpose, model, r.usage, ms, "truncated", ref)
         raise LLMUnavailable(f"response truncated at max_tokens={s.max_tokens[purpose]}")
     if not text.strip():
-        _log_usage(purpose, model, r.usage, ms, "empty")
+        _log_usage(purpose, model, r.usage, ms, "empty", ref)
         raise LLMUnavailable("empty response")
-    _log_usage(purpose, model, r.usage, ms, "ok")
+    _log_usage(purpose, model, r.usage, ms, "ok", ref)
     return text

@@ -161,7 +161,7 @@ def run(ad: LoadedAD, facts: list[str], live: bool) -> dict:
               "text_sha256": sha256(text), "extracted_at": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
               "raw": None, "parsed": None, "error": None}
     try:
-        record["raw"] = llm.complete("extraction", messages, s)
+        record["raw"] = llm.complete("extraction", messages, s, ref=ad.ad_id)
         record["parsed"] = parse(record["raw"], ad.ad_id).model_dump()
     except llm.LLMUnavailable as e:
         record["error"] = f"llm: {e}"
