@@ -144,7 +144,9 @@ def load_ads(golden_dir: Path | None = None) -> dict[str, LoadedAD]:
         for c in golden.credited_compliance:
             if quote_count(c.quote, text) < c.occurrence:
                 raise DataError(f"{ad_id}: credit quote not found {c.occurrence} time(s) in {txt.name}: {c.quote[:80]!r}")
+        golden_file = path.relative_to(REPO).as_posix() if path.is_relative_to(REPO) else str(path)
         ads[ad_id] = LoadedAD(golden=golden, title=titles[ad_id], file=txt.relative_to(REPO).as_posix(),
+                              golden_file=golden_file,
                               source_url=sources[ad_id]["source_url"])
     return ads
 

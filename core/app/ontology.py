@@ -115,6 +115,7 @@ class LoadedAD(BaseModel):
     title: str
     file: str  # repo-relative, as in Citation.file
     source_url: str
+    golden_file: str  # the golden JSON it was loaded from (repo-relative, or absolute in tests); hashed in rules_version
 
     @property
     def ad_id(self) -> str:
@@ -206,6 +207,9 @@ class AircraftStatusResponse(BaseModel):
     citations: list[Citation]
     reasoning_path: list[ReasoningStep]
     computed_at: str
+    evaluation_id: str | None = None  # GET /evaluations/{id}; optional for the contract
+    rules_version: str | None = None
+    inputs_hash: str | None = None
 
 
 class AffectedAircraft(BaseModel):
@@ -284,6 +288,61 @@ class SupersessionResponse(BaseModel):
     reason: str
     citations: list[Citation]
     reasoning_path: list[ReasoningStep]
+    rules_version: str | None = None  # optional for the contract
+    inputs_hash: str | None = None
+
+
+class AdVersion(BaseModel):
+    ad_id: str
+    sha256: str
+
+
+class RulesVersion(BaseModel):
+    """Which rules decided: rules.py hash + every active AD's golden-file hash; `id` hashes both."""
+    id: str
+    rules_py: str
+    ads: list[AdVersion]
+
+
+class Evaluation(BaseModel):
+    """GET /evaluations/{id}. A computed result (not a DECISION: that is a person with a role)."""
+    id: str
+    kind: Literal["computed"] = "computed"
+    aircraft_id: str
+    as_of_date: str
+    status: AircraftStatus
+    verdicts: dict[str, Literal["applies", "not_applicable", "unknown"]]
+    rule_ids_fired: list[str]
+    rules_version: RulesVersion
+    inputs_hash: str
+    inputs: dict
+    decided_at: str
+    replay_of: str | None
+
+
+class DecisionSnapshot(BaseModel):
+    status: AircraftStatus
+    verdicts: dict[str, Literal["applies", "not_applicable", "unknown"]]
+
+
+class ReplayChanges(BaseModel):
+    rules_version: bool
+    rules_py: bool
+    ads_added: list[str]
+    ads_removed: list[str]
+    ads_changed: list[str]
+
+
+class ReplayResponse(BaseModel):
+    """POST /evaluations/{id}/replay: same recorded inputs, current rules."""
+    evaluation_id: str
+    same: bool
+    before: DecisionSnapshot
+    after: DecisionSnapshot
+    changed: ReplayChanges
+    replay_evaluation_id: str
+    inputs_hash: str
+    replayed_at: str
 
 
 class ValidatedField(BaseModel):
@@ -338,13 +397,17 @@ class DemoResetResponse(BaseModel):
     aircraft_status: dict[str, AircraftStatus]
 
 
+# Optional top-level fields proposed in docs/handoff/contract-proposal.md (not yet in contract/examples/).
+PROPOSED_OPTIONAL_FIELDS = frozenset({"evaluation_id", "rules_version", "inputs_hash", "extraction"})
+
+
 def shape_errors(expected: dict, actual: object) -> list[str]:
     """Contract check used by tests and scripts/smoke.py: same top-level keys as the example,
     and every citation / reasoning step / error validates against the shared shapes."""
     if not isinstance(actual, dict):
         return [f"body is {type(actual).__name__}, not an object"]
     errors = [f"missing key {k!r}" for k in expected if k not in actual]
-    errors += [f"unexpected key {k!r}" for k in actual if k not in expected]
+    errors += [f"unexpected key {k!r}" for k in actual if k not in expected and k not in PROPOSED_OPTIONAL_FIELDS]
     if "error_code" in expected:
         errors += _validate(Error, actual, "body")
 

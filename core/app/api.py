@@ -8,7 +8,7 @@ from pathlib import Path
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
-from app import rules, store
+from app import evaluations, rules, store
 from app.ontology import (
     AffectedAircraft,
     AffectedAircraftResponse,
@@ -19,9 +19,11 @@ from app.ontology import (
     ChainLink,
     ComplianceRecord,
     ComplianceState,
+    DecisionSnapshot,
     DemoResetResponse,
     Due,
     Error,
+    Evaluation,
     FleetAircraft,
     FleetResponse,
     IngestChanges,
@@ -30,6 +32,8 @@ from app.ontology import (
     NotAffected,
     QuestionsResponse,
     ReasoningStep,
+    ReplayChanges,
+    ReplayResponse,
     ResetCounts,
     StatusChange,
     SupersessionResponse,
@@ -43,16 +47,22 @@ DEMO_MODE = True
 
 app = FastAPI(title="AD Brain core")
 STATE = store.load()
+EVAL_LOG = evaluations.EvaluationLog(evaluations.LOG_FILE)
 
 
 class NotFound(Exception):
-    def __init__(self, error_code: str, message: str, details: dict) -> None:
+    """An error with a stable code. 404 unless told otherwise."""
+    def __init__(self, error_code: str, message: str, details: dict, status_code: int = 404) -> None:
         self.error = Error(error_code=error_code, message=message, details=details)
+        self.status_code = status_code
+
+
+HTTP_CONFLICT = 409
 
 
 @app.exception_handler(NotFound)
 def not_found(_: Request, exc: NotFound) -> JSONResponse:
-    return JSONResponse(exc.error.model_dump(), status_code=404)
+    return JSONResponse(exc.error.model_dump(), status_code=exc.status_code)
 
 
 @app.exception_handler(Exception)
@@ -123,7 +133,10 @@ def summary(a: rules.Assessment, applicable: list[ApplicableAD]) -> str:
 
 @app.get("/aircraft/{aircraft_id}/status", response_model=AircraftStatusResponse)
 def aircraft_status(aircraft_id: str) -> AircraftStatusResponse:
-    a = assess(aircraft_id)
+    aircraft, ads, today = get_aircraft(aircraft_id), list(STATE.ads.values()), date.today()
+    inputs = evaluations.snapshot_inputs(aircraft, STATE.logbook, today)
+    a = evaluations.decide(inputs, ads)
+    ev = EVAL_LOG.record(a, inputs, ads)
     applicable, path = [], []
     for ad_id, res in a.results.items():
         if res.verdict != "applies":
@@ -146,7 +159,8 @@ def aircraft_status(aircraft_id: str) -> AircraftStatusResponse:
         aircraft=a.aircraft, status=a.status, summary=summary(a, applicable), summary_source="template",
         applicable_ads=applicable, superseded_ads=a.superseded, open_questions=a.questions, hypotheses=[],
         citations=list({c.model_dump_json(): c for c in citations}.values()),  # dedupe, keep order
-        reasoning_path=path, computed_at=now_utc())
+        reasoning_path=path, computed_at=now_utc(),
+        evaluation_id=ev["id"], rules_version=ev["rules_version"]["id"], inputs_hash=ev["inputs_hash"])
 
 
 @app.get("/ads/{ad_id}/affected-aircraft", response_model=AffectedAircraftResponse)
@@ -195,6 +209,7 @@ def statuses() -> dict[str, str]:
 def demo_reset() -> DemoResetResponse:
     global STATE
     STATE = store.load()
+    EVAL_LOG.mark_reset()  # the evaluation log is append-only: reset adds a marker, never truncates
     assessments = [assess(ac_id) for ac_id in STATE.aircraft]
     return DemoResetResponse(
         ok=True, state=f"demo-{date.today().isoformat()}", reset_at=now_utc(),
@@ -310,9 +325,37 @@ def supersession(aircraft_id: str, ad_id: str) -> SupersessionResponse:
         id=rec.id, ad_id=rec.ad_id, subject_id=rec.subject_id, date=rec.date, method=rec.text,
         evidence=f"logbook {rec.id} (synthetic)" if rec.synthetic else f"logbook {rec.id}",
         recorded_by=None, synthetic=rec.synthetic)
+    inputs = evaluations.snapshot_inputs(aircraft, STATE.logbook, date.today())
     return SupersessionResponse(
         aircraft_id=aircraft_id, asked_ad_id=ad_id, chain=links, compliance=compliance, still_valid=v.value,
-        reason=v.reason, citations=list({c.model_dump_json(): c for c in citations}.values()), reasoning_path=path)
+        reason=v.reason, citations=list({c.model_dump_json(): c for c in citations}.values()), reasoning_path=path,
+        rules_version=evaluations.rules_version(list(STATE.ads.values()))["id"],
+        inputs_hash=evaluations.canonical_sha256(inputs))
+
+
+def get_evaluation(evaluation_id: str) -> dict:
+    if evaluation_id not in EVAL_LOG.records:
+        raise NotFound("EVALUATION_NOT_FOUND", f"No evaluation with id {evaluation_id}.", {"id": evaluation_id})
+    return EVAL_LOG.records[evaluation_id]
+
+
+@app.get("/evaluations/{evaluation_id}", response_model=Evaluation)
+def evaluation(evaluation_id: str) -> Evaluation:
+    return Evaluation.model_validate(get_evaluation(evaluation_id))
+
+
+@app.post("/evaluations/{evaluation_id}/replay", response_model=ReplayResponse)
+def replay(evaluation_id: str) -> ReplayResponse:
+    """Recompute from the recorded inputs with the current rules and active ADs."""
+    record = get_evaluation(evaluation_id)
+    try:
+        r = EVAL_LOG.replay(record, list(STATE.ads.values()))
+    except ValueError as e:  # recorded inputs no longer match their hash
+        raise NotFound("INPUTS_HASH_MISMATCH", str(e), {"id": evaluation_id}, HTTP_CONFLICT) from e
+    return ReplayResponse(
+        evaluation_id=evaluation_id, same=r.same, before=DecisionSnapshot(**evaluations.decision_of_record(record)),
+        after=DecisionSnapshot(**r.after), changed=ReplayChanges(**r.changed()),
+        replay_evaluation_id=r.new_record["id"], inputs_hash=record["inputs_hash"], replayed_at=now_utc())
 
 
 @app.get("/decisions")
