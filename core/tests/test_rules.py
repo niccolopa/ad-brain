@@ -236,6 +236,16 @@ def test_due_citation_picks_the_group_paragraph():
     assert rules.due_citation(AD_2012_02_02, r2.row).quote.startswith("(1) For Group 1 and Group 2 Airplanes:")
 
 
+@pytest.mark.parametrize("quote,label", [
+    ("Group 4: Model 172S, S/N 172S10490 through 172S11073", "Group 4"),
+    ("(4) Group 4: Model 172S, S/N 172S10490 through 172S11073.", "Group 4"),
+    ("Model 172S, S/N 172S10490 through 172S11073", None), ("(4) Model 172S", None), ("Groups: Group 1 are", None),
+])
+def test_group_label(quote, label):
+    row = AD_2012_02_02.golden.applicability[0].model_copy(update={"quote": quote})
+    assert rules.group_label(row) == label
+
+
 def test_due_citation_none_without_group():
     r = rules.evaluate(AD_2018_0072, plane("Tecnam P2008 JC", "1050"), {})
     assert rules.due_citation(AD_2018_0072, r.row) is None

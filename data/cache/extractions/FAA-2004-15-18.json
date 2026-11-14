@@ -1,0 +1,225 @@
+{
+  "ad_id": "FAA:2004-15-18",
+  "model": "anthropic/claude-sonnet-5.5",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "14dff87324ba382046bbdc707b9600b5e7acfc054d5b3816e3bb6ecc9b419f07",
+  "text_sha256": "6b890c6450c2e77e82f9929b637ff98182528986b4e222c0e059c9b93c823647",
+  "extracted_at": "2026-11-14T11:10:10Z",
+  "raw": "{\n  \"ad_number\": \"FAA:2004-15-18\",\n  \"federal_register_document_number\": \"04-17217\",\n  \"effective_date\": \"2004-09-12\",\n  \"supersedes\": [\"FAA:2003-24-13\"],\n  \"revises\": [],\n  \"applicability\": [\n    { \"model\": \"172R\", \"series\": false, \"serial_from\": \"17280001\", \"serial_to\": \"17281073\", \"quote\": \"17280001 through 17281073\" },\n    { \"model\": \"172R\", \"series\": false, \"serial_from\": \"17281075\", \"serial_to\": \"17281127\", \"quote\": \"17281075 through 17281127\" },\n    { \"model\": \"172R\", \"series\": false, \"serial_from\": \"17281130\", \"serial_to\": \"17281130\", \"quote\": \"17281130\" },\n    { \"model\": \"172S\", \"series\": false, \"serial_from\": \"172S8001\", \"serial_to\": \"172S9195\", \"quote\": \"172S8001 through 172S9195\" },\n    { \"model\": \"172S\", \"series\": false, \"serial_from\": \"172S9197\", \"serial_to\": \"172S9197\", \"quote\": \"172S9197\" },\n    { \"model\": \"172S\", \"series\": false, \"serial_from\": \"172S9198\", \"serial_to\": \"172S9198\", \"quote\": \"172S9198\" },\n    { \"model\": \"172S\", \"series\": false, \"serial_from\": \"172S9200\", \"serial_to\": \"172S9203\", \"quote\": \"172S9200 through 172S9203\" },\n    { \"model\": \"182S\", \"series\": false, \"serial_from\": \"18280001\", \"serial_to\": \"18280944\", \"quote\": \"18280001 through 18280944\" },\n    { \"model\": \"182T\", \"series\": false, \"serial_from\": \"18280945\", \"serial_to\": \"18281065\", \"quote\": \"18280945 through 18281065\" },\n    { \"model\": \"182T\", \"series\": false, \"serial_from\": \"18281067\", \"serial_to\": \"18281145\", \"quote\": \"18281067 through 18281145\" },\n    { \"model\": \"182T\", \"series\": false, \"serial_from\": \"18281147\", \"serial_to\": \"18281163\", \"quote\": \"18281147 through 18281163\" },\n    { \"model\": \"182T\", \"series\": false, \"serial_from\": \"18281165\", \"serial_to\": \"18281167\", \"quote\": \"18281165 through 18281167\" },\n    { \"model\": \"182T\", \"series\": false, \"serial_from\": \"18281172\", \"serial_to\": \"18281172\", \"quote\": \"18281172\" },\n    { \"model\": \"T182T\", \"series\": false, \"serial_from\": \"T18208001\", \"serial_to\": \"T18208109\", \"quote\": \"T18208001 through T18208109\" },\n    { \"model\": \"T182T\", \"series\": false, \"serial_from\": \"T18208111\", \"serial_to\": \"T18208177\", \"quote\": \"T18208111 through T18208177\" },\n    { \"model\": \"206H\", \"series\": false, \"serial_from\": \"20608001\", \"serial_to\": \"20608183\", \"quote\": \"20608001 through 20608183\" },\n    { \"model\": \"206H\", \"series\": false, \"serial_from\": \"20608185\", \"serial_to\": \"20608185\", \"quote\": \"20608185\" },\n    { \"model\": \"206H\", \"series\": false, \"serial_from\": \"20608187\", \"serial_to\": \"20608187\", \"quote\": \"20608187\" },\n    { \"model\": \"206H\", \"series\": false, \"serial_from\": \"20608188\", \"serial_to\": \"20608188\", \"quote\": \"20608188\" },\n    { \"model\": \"T206H\", \"series\": false, \"serial_from\": \"T20608001\", \"serial_to\": \"T20608039\", \"quote\": \"T20608001 through T20608039\" },\n    { \"model\": \"T206H\", \"series\": false, \"serial_from\": \"T20608041\", \"serial_to\": \"T20608367\", \"quote\": \"T20608041 through T20608367\" },\n    { \"model\": \"T206H\", \"series\": false, \"serial_from\": \"T20608369\", \"serial_to\": \"T20608379\", \"quote\": \"T20608369 through T20608379\" },\n    { \"model\": \"T206H\", \"series\": false, \"serial_from\": \"T20608381\", \"serial_to\": \"T20608381\", \"quote\": \"T20608381\" },\n    { \"model\": \"T206H\", \"series\": false, \"serial_from\": \"T20608382\", \"serial_to\": \"T20608382\", \"quote\": \"T20608382\" },\n    { \"model\": \"T206H\", \"series\": false, \"serial_from\": \"T20608385\", \"serial_to\": \"T20608385\", \"quote\": \"T20608385\" }\n  ],\n  \"conditions\": [\n    {\n      \"kind\": \"equipment_installed\",\n      \"fact\": \"KAP140_installed\",\n      \"applies_when\": \"yes\",\n      \"value\": \"yes\",\n      \"quote\": \"equipped with a KAP 140 autopilot computer system, part number (P/N)\"\n    }\n  ],\n  \"not_evaluated\": [],\n  \"credited_compliance\": [],\n  \"compliance_time_text\": \"Within the next 100 hours time-in-service (TIS) after September 12, 2004 (the effective date of this AD) for airplanes not affected by AD 2003-24-13; airplanes previously affected by AD 2003-24-13 within the next 100 hours TIS after January 20, 2004, unless already done.\",\n  \"unsafe_condition_summary\": \"Inadvertent and undetected engagement of the KAP 140 autopilot system, which could cause the pilot to take inappropriate actions.\",\n  \"out_of_scope_features\": [\n    {\n      \"feature\": \"Part number restriction on installed KC 140 autopilot computer systems\",\n      \"quote\": \"For all affected airplanes: install only KC 140 autopilot computer systems\"\n    },\n    {\n      \"feature\": \"Alternative method of compliance\",\n      \"quote\": \"You may request a different method of compliance or a different compliance time for this AD\"\n    }\n  ],\n  \"field_quotes\": {\n    \"federal_register_document_number\": [\"[FR Doc. 04-17217 Filed 7-29-04; 8:45 am]\"],\n    \"effective_date\": [\"(a) This AD becomes effective on September 12, 2004.\"],\n    \"supersedes\": [\"(b) This AD supersedes AD 2003-24-13.\"],\n    \"revises\": [],\n    \"compliance_time_text\": [\"Within the next 100 hours time-in-service (TIS) after September 12, 2004\"],\n    \"unsafe_condition_summary\": [\"This AD is the result of reports of inadvertent and undetected engagement of the autopilot system.\"]\n  },\n  \"labelled_by\": \"\",\n  \"checked_by\": \"\",\n  \"notes\": \"revises is empty: this is an FAA AD with no Revision field, so its field_quotes list is empty. The KAP 140 condition applies to the listed part numbers (P/N 065-00176-2501, -2602, -5001, -5101, -5201, -5402, -7702), and the AD applies to all serial numbers of that equipment. No manufacture/overhaul date clauses and no credited compliance paragraphs. Paragraph (g)(2) approves AMOCs issued under AD 2003-24-13; this is not compliance credit.\"\n}",
+  "parsed": {
+    "ad_number": "FAA:2004-15-18",
+    "effective_date": "2004-09-12",
+    "supersedes": [
+      "FAA:2003-24-13"
+    ],
+    "revises": [],
+    "applicability": [
+      {
+        "model": "172R",
+        "serial_from": "17280001",
+        "serial_to": "17281073",
+        "series": false,
+        "quote": "17280001 through 17281073"
+      },
+      {
+        "model": "172R",
+        "serial_from": "17281075",
+        "serial_to": "17281127",
+        "series": false,
+        "quote": "17281075 through 17281127"
+      },
+      {
+        "model": "172R",
+        "serial_from": "17281130",
+        "serial_to": "17281130",
+        "series": false,
+        "quote": "17281130"
+      },
+      {
+        "model": "172S",
+        "serial_from": "172S8001",
+        "serial_to": "172S9195",
+        "series": false,
+        "quote": "172S8001 through 172S9195"
+      },
+      {
+        "model": "172S",
+        "serial_from": "172S9197",
+        "serial_to": "172S9197",
+        "series": false,
+        "quote": "172S9197"
+      },
+      {
+        "model": "172S",
+        "serial_from": "172S9198",
+        "serial_to": "172S9198",
+        "series": false,
+        "quote": "172S9198"
+      },
+      {
+        "model": "172S",
+        "serial_from": "172S9200",
+        "serial_to": "172S9203",
+        "series": false,
+        "quote": "172S9200 through 172S9203"
+      },
+      {
+        "model": "182S",
+        "serial_from": "18280001",
+        "serial_to": "18280944",
+        "series": false,
+        "quote": "18280001 through 18280944"
+      },
+      {
+        "model": "182T",
+        "serial_from": "18280945",
+        "serial_to": "18281065",
+        "series": false,
+        "quote": "18280945 through 18281065"
+      },
+      {
+        "model": "182T",
+        "serial_from": "18281067",
+        "serial_to": "18281145",
+        "series": false,
+        "quote": "18281067 through 18281145"
+      },
+      {
+        "model": "182T",
+        "serial_from": "18281147",
+        "serial_to": "18281163",
+        "series": false,
+        "quote": "18281147 through 18281163"
+      },
+      {
+        "model": "182T",
+        "serial_from": "18281165",
+        "serial_to": "18281167",
+        "series": false,
+        "quote": "18281165 through 18281167"
+      },
+      {
+        "model": "182T",
+        "serial_from": "18281172",
+        "serial_to": "18281172",
+        "series": false,
+        "quote": "18281172"
+      },
+      {
+        "model": "T182T",
+        "serial_from": "T18208001",
+        "serial_to": "T18208109",
+        "series": false,
+        "quote": "T18208001 through T18208109"
+      },
+      {
+        "model": "T182T",
+        "serial_from": "T18208111",
+        "serial_to": "T18208177",
+        "series": false,
+        "quote": "T18208111 through T18208177"
+      },
+      {
+        "model": "206H",
+        "serial_from": "20608001",
+        "serial_to": "20608183",
+        "series": false,
+        "quote": "20608001 through 20608183"
+      },
+      {
+        "model": "206H",
+        "serial_from": "20608185",
+        "serial_to": "20608185",
+        "series": false,
+        "quote": "20608185"
+      },
+      {
+        "model": "206H",
+        "serial_from": "20608187",
+        "serial_to": "20608187",
+        "series": false,
+        "quote": "20608187"
+      },
+      {
+        "model": "206H",
+        "serial_from": "20608188",
+        "serial_to": "20608188",
+        "series": false,
+        "quote": "20608188"
+      },
+      {
+        "model": "T206H",
+        "serial_from": "T20608001",
+        "serial_to": "T20608039",
+        "series": false,
+        "quote": "T20608001 through T20608039"
+      },
+      {
+        "model": "T206H",
+        "serial_from": "T20608041",
+        "serial_to": "T20608367",
+        "series": false,
+        "quote": "T20608041 through T20608367"
+      },
+      {
+        "model": "T206H",
+        "serial_from": "T20608369",
+        "serial_to": "T20608379",
+        "series": false,
+        "quote": "T20608369 through T20608379"
+      },
+      {
+        "model": "T206H",
+        "serial_from": "T20608381",
+        "serial_to": "T20608381",
+        "series": false,
+        "quote": "T20608381"
+      },
+      {
+        "model": "T206H",
+        "serial_from": "T20608382",
+        "serial_to": "T20608382",
+        "series": false,
+        "quote": "T20608382"
+      },
+      {
+        "model": "T206H",
+        "serial_from": "T20608385",
+        "serial_to": "T20608385",
+        "series": false,
+        "quote": "T20608385"
+      }
+    ],
+    "conditions": [
+      {
+        "kind": "equipment_installed",
+        "fact": "KAP140_installed",
+        "applies_when": "yes",
+        "value": "yes",
+        "quote": "equipped with a KAP 140 autopilot computer system, part number (P/N)"
+      }
+    ],
+    "not_evaluated": [],
+    "credited_compliance": [],
+    "compliance_time_text": "Within the next 100 hours time-in-service (TIS) after September 12, 2004 (the effective date of this AD) for airplanes not affected by AD 2003-24-13; airplanes previously affected by AD 2003-24-13 within the next 100 hours TIS after January 20, 2004, unless already done.",
+    "field_quotes": {
+      "federal_register_document_number": [
+        "[FR Doc. 04-17217 Filed 7-29-04; 8:45 am]"
+      ],
+      "effective_date": [
+        "(a) This AD becomes effective on September 12, 2004."
+      ],
+      "supersedes": [
+        "(b) This AD supersedes AD 2003-24-13."
+      ],
+      "revises": [],
+      "compliance_time_text": [
+        "Within the next 100 hours time-in-service (TIS) after September 12, 2004"
+      ],
+      "unsafe_condition_summary": [
+        "This AD is the result of reports of inadvertent and undetected engagement of the autopilot system."
+      ]
+    }
+  },
+  "error": null
+}

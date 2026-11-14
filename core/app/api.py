@@ -8,7 +8,7 @@ from pathlib import Path
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
-from app import evaluations, rules, store
+from app import evaluations, extract, llm, rules, store
 from app.ontology import (
     AffectedAircraft,
     AffectedAircraftResponse,
@@ -24,6 +24,7 @@ from app.ontology import (
     Due,
     Error,
     Evaluation,
+    ExtractionInfo,
     FleetAircraft,
     FleetResponse,
     IngestChanges,
@@ -37,6 +38,7 @@ from app.ontology import (
     ResetCounts,
     StatusChange,
     SupersessionResponse,
+    ValidatedField,
 )
 
 log = logging.getLogger("adbrain.api")
@@ -221,12 +223,45 @@ def demo_reset() -> DemoResetResponse:
         aircraft_status={a.aircraft.id: a.status for a in assessments})
 
 
+def choose_source(golden_ad: LoadedAD) -> tuple[LoadedAD, str, ExtractionInfo, list[ValidatedField]]:
+    """The extraction decides only when every quote is found and every compared field agrees with golden.
+    Otherwise golden decides, and every miss is returned as a rejected field."""
+    live = not llm.demo_mode()
+    facts = extract.fact_vocabulary(STATE.available, STATE.logbook)
+    try:
+        record = extract.run(golden_ad, facts, live=live)
+    except llm.LLMUnavailable as e:
+        return golden_ad, "golden", ExtractionInfo(used=False, source=None, model=None, prompt_version=None,
+                                                   agreement=None, reason=str(e), misses=[]), []
+    used_source = "llm" if live and not record.get("fallback_reason") else "cache"
+    r = extract.evaluate_record(record, golden_ad)
+    base = {"source": used_source, "model": record.get("model"), "prompt_version": record.get("prompt_version")}
+    if not r["ok"]:
+        return golden_ad, "golden", ExtractionInfo(used=False, agreement=None, reason=r["error"], misses=[],
+                                                   **base), []
+    misses = [f"{name}: missing {f['missing']}; extra {f['extra']}" for name, f in r["fields"].items()
+              if not f["agree"]] + [f"quote not found: {q}" for q in r["rejected"]]
+    if not r["usable"]:
+        rejected = [ValidatedField(field=name, value={"missing": f["missing"], "extra": f["extra"]}, quote="",
+                                   file=golden_ad.file, occurrence=1, check="disagrees with golden")
+                    for name, f in r["fields"].items() if not f["agree"]]
+        log.warning("ingest %s: extraction not used (%d miss(es)); golden decides", golden_ad.ad_id, len(misses))
+        return golden_ad, "golden", ExtractionInfo(used=False, agreement=r["agreement"], misses=misses,
+                                                   reason="extraction disagrees with golden or a quote is not "
+                                                          "in the text: golden decides", **base), rejected
+    extracted = extract.parse(record["raw"], golden_ad.ad_id)
+    cache = extract.cache_path(golden_ad.ad_id)
+    ad = golden_ad.model_copy(update={"golden": extracted, "golden_file": cache.relative_to(store.REPO).as_posix()})
+    return ad, used_source, ExtractionInfo(used=True, agreement=r["agreement"], reason=None, misses=[], **base), []
+
+
 @app.post("/ads/{ad_id}/ingest", response_model=IngestResponse)
 def ingest(ad_id: str) -> IngestResponse:
-    """Pipeline run (not an action). Demo mode: reads data/golden, no LLM. Idempotent: the AD id is the key."""
+    """Pipeline run (not an action). The LLM extraction (demo mode: its cache) fills the AD's inputs when it is
+    fully validated and agrees with golden; otherwise golden does. Idempotent: the AD id is the key."""
     if ad_id not in STATE.available:
         raise NotFound("AD_NOT_FOUND", f"No AD with id {ad_id} to ingest.", {"ad_id": ad_id})
-    ad = STATE.available[ad_id]
+    ad, source, extraction, misses = choose_source(STATE.available[ad_id])
     checks = store.field_checks(ad, store.ad_text(ad))
     validated = [c for c in checks if c.check == store.QUOTE_FOUND]
     rejected = [c for c in checks if c.check != store.QUOTE_FOUND]
@@ -250,8 +285,8 @@ def ingest(ad_id: str) -> IngestResponse:
             if res is not None and res.verdict == "applies":
                 path += applies_path(STATE.aircraft[ac_id], ad_id, res)
     return IngestResponse(
-        run_id=f"ING-{date.today().isoformat()}-{STATE.ingest_runs:03d}", ad_id=ad_id, source="golden",
-        validated_fields=validated, rejected_fields=rejected,
+        run_id=f"ING-{date.today().isoformat()}-{STATE.ingest_runs:03d}", ad_id=ad_id, source=source,
+        validated_fields=validated, rejected_fields=rejected + misses, extraction=extraction,
         changes=IngestChanges(
             superseded=g.supersedes + g.revises if newly else [],
             aircraft_status_changed=[StatusChange(aircraft_id=k, from_=before[k], to=after[k])

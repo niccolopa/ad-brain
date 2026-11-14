@@ -1,1 +1,9 @@
 {"at": "2026-11-14T11:01:45Z", "purpose": "extraction", "model": "anthropic/claude-sonnet-5.5", "prompt_tokens": 7395, "completion_tokens": 1267, "total_tokens": 8662, "latency_ms": 7999, "outcome": "ok"}
+{"at": "2026-11-14T11:10:02Z", "purpose": "extraction", "model": "anthropic/claude-sonnet-5.5", "prompt_tokens": 3615, "completion_tokens": 974, "total_tokens": 4589, "latency_ms": 6312, "outcome": "ok"}
+{"at": "2026-11-14T11:10:10Z", "purpose": "extraction", "model": "anthropic/claude-sonnet-5.5", "prompt_tokens": 4368, "completion_tokens": 1273, "total_tokens": 5641, "latency_ms": 7957, "outcome": "ok"}
+{"at": "2026-11-14T11:10:33Z", "purpose": "extraction", "model": "anthropic/claude-sonnet-5.5", "prompt_tokens": 9198, "completion_tokens": 4155, "total_tokens": 13353, "latency_ms": 23360, "outcome": "ok"}
+{"at": "2026-11-14T11:11:03Z", "purpose": "extraction", "model": "anthropic/claude-sonnet-5.5", "prompt_tokens": 17275, "completion_tokens": 5470, "total_tokens": 22745, "latency_ms": 29672, "outcome": "ok"}
+{"at": "2026-11-14T11:11:40Z", "purpose": "extraction", "model": "anthropic/claude-sonnet-5.5", "prompt_tokens": 14460, "completion_tokens": 5935, "total_tokens": 20395, "latency_ms": 37389, "outcome": "ok"}
+{"at": "2026-11-14T11:11:49Z", "purpose": "extraction", "model": "anthropic/claude-sonnet-5.5", "prompt_tokens": 7458, "completion_tokens": 1268, "total_tokens": 8726, "latency_ms": 8379, "outcome": "ok"}
+{"at": "2026-11-14T11:12:21Z", "purpose": "extraction", "model": "anthropic/claude-sonnet-5.5", "prompt_tokens": 8066, "completion_tokens": 5405, "total_tokens": 13471, "latency_ms": 32085, "outcome": "ok"}
+{"at": "2026-11-14T11:12:28Z", "purpose": "extraction", "model": "anthropic/claude-sonnet-5.5", "prompt_tokens": 7077, "completion_tokens": 1129, "total_tokens": 8206, "latency_ms": 6943, "outcome": "ok"}

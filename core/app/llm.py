@@ -84,6 +84,12 @@ def settings() -> Settings:
         demo_mode=os.environ.get("DEMO_MODE", "true").strip().lower() == "true")
 
 
+def demo_mode() -> bool:
+    """DEMO_MODE=true (default): never call the LLM on the demo path. Needs no key."""
+    load_dotenv(ENV_FILE)
+    return os.environ.get("DEMO_MODE", "true").strip().lower() == "true"
+
+
 def _log_usage(purpose: Purpose, model: str, usage: object, latency_ms: int, outcome: str) -> None:
     row = {"at": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"), "purpose": purpose, "model": model,
            "prompt_tokens": getattr(usage, "prompt_tokens", None),

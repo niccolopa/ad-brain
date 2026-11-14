@@ -48,7 +48,8 @@ def test_q1_demo01_red_group4():
     [ad] = [x for x in b["applicable_ads"] if x["ad_id"] == "FAA:2012-02-02"]
     assert ad["ad_id"] == "FAA:2012-02-02" and ad["compliance"] == {"state": "no_record", "record_id": None}
     assert ad["applies_because"] == "S/N 172S10600 is within 172S10490–172S11073 (Group 4)"
-    assert ad["citations"][0]["quote"] == "Group 4: Model 172S, S/N 172S10490 through 172S11073"
+    # the citation is the extraction's own verified quote (golden: "Group 4: …"; extraction: "(4) Group 4: …")
+    assert "Group 4: Model 172S, S/N 172S10490 through 172S11073" in ad["citations"][0]["quote"]
     assert ad["due"]["citation"]["quote"].startswith("(2) For Group 3 and Group 4 Airplanes:")
     assert ad["due"]["overdue"] is True
     assert {"from": "FAA:2012-02-02", "link": "appliesTo", "to": "DEMO-01", "derived": False,
@@ -107,7 +108,8 @@ def test_ingest_turns_demo01_green_to_red():
     r = client.post(INGEST_2012_02_02)
     assert r.status_code == 200
     b = r.json()
-    assert b["ad_id"] == "FAA:2012-02-02" and b["source"] == "golden" and b["rejected_fields"] == []
+    assert b["ad_id"] == "FAA:2012-02-02" and b["source"] == "cache" and b["rejected_fields"] == []
+    assert b["extraction"]["used"] is True and b["extraction"]["agreement"] == 1.0  # the agent filled the inputs
     assert b["changes"]["aircraft_status_changed"] == [{"aircraft_id": "DEMO-01", "from": "green", "to": "red"}]
     assert b["changes"]["superseded"] == ["FAA:2008-03-02"]
     assert all(f["check"] == "quote found in text" for f in b["validated_fields"])

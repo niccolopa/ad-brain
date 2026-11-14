@@ -1,0 +1,590 @@
+[
+  {
+    "ad_id": "EASA:2018-0072",
+    "ok": true,
+    "quotes_checked": 4,
+    "quotes_rejected": 0,
+    "rejected": [],
+    "fields": {
+      "effective_date": {
+        "agree": true,
+        "golden": 1,
+        "extracted": 1,
+        "matched": 1,
+        "missing": [],
+        "extra": []
+      },
+      "supersedes": {
+        "agree": true,
+        "golden": 0,
+        "extracted": 0,
+        "matched": 0,
+        "missing": [],
+        "extra": []
+      },
+      "revises": {
+        "agree": true,
+        "golden": 0,
+        "extracted": 0,
+        "matched": 0,
+        "missing": [],
+        "extra": []
+      },
+      "applicability": {
+        "agree": true,
+        "golden": 1,
+        "extracted": 1,
+        "matched": 1,
+        "missing": [],
+        "extra": []
+      },
+      "conditions": {
+        "agree": true,
+        "golden": 0,
+        "extracted": 0,
+        "matched": 0,
+        "missing": [],
+        "extra": []
+      },
+      "credited_compliance": {
+        "agree": true,
+        "golden": 0,
+        "extracted": 0,
+        "matched": 0,
+        "missing": [],
+        "extra": []
+      },
+      "not_evaluated": {
+        "agree": true,
+        "golden": 0,
+        "extracted": 0,
+        "matched": 0,
+        "missing": [],
+        "extra": []
+      }
+    },
+    "agreement": 1.0,
+    "usable": true
+  },
+  {
+    "ad_id": "EASA:2024-0152R1",
+    "ok": true,
+    "quotes_checked": 6,
+    "quotes_rejected": 0,
+    "rejected": [],
+    "fields": {
+      "effective_date": {
+        "agree": true,
+        "golden": 1,
+        "extracted": 1,
+        "matched": 1,
+        "missing": [],
+        "extra": []
+      },
+      "supersedes": {
+        "agree": true,
+        "golden": 0,
+        "extracted": 0,
+        "matched": 0,
+        "missing": [],
+        "extra": []
+      },
+      "revises": {
+        "agree": true,
+        "golden": 1,
+        "extracted": 1,
+        "matched": 1,
+        "missing": [],
+        "extra": []
+      },
+      "applicability": {
+        "agree": true,
+        "golden": 1,
+        "extracted": 1,
+        "matched": 1,
+        "missing": [],
+        "extra": []
+      },
+      "conditions": {
+        "agree": true,
+        "golden": 2,
+        "extracted": 2,
+        "matched": 2,
+        "missing": [],
+        "extra": []
+      },
+      "credited_compliance": {
+        "agree": true,
+        "golden": 0,
+        "extracted": 0,
+        "matched": 0,
+        "missing": [],
+        "extra": []
+      },
+      "not_evaluated": {
+        "agree": true,
+        "golden": 0,
+        "extracted": 0,
+        "matched": 0,
+        "missing": [],
+        "extra": []
+      }
+    },
+    "agreement": 1.0,
+    "usable": true
+  },
+  {
+    "ad_id": "FAA:2004-15-18",
+    "ok": true,
+    "quotes_checked": 29,
+    "quotes_rejected": 0,
+    "rejected": [],
+    "fields": {
+      "effective_date": {
+        "agree": true,
+        "golden": 1,
+        "extracted": 1,
+        "matched": 1,
+        "missing": [],
+        "extra": []
+      },
+      "supersedes": {
+        "agree": true,
+        "golden": 1,
+        "extracted": 1,
+        "matched": 1,
+        "missing": [],
+        "extra": []
+      },
+      "revises": {
+        "agree": true,
+        "golden": 0,
+        "extracted": 0,
+        "matched": 0,
+        "missing": [],
+        "extra": []
+      },
+      "applicability": {
+        "agree": true,
+        "golden": 25,
+        "extracted": 25,
+        "matched": 25,
+        "missing": [],
+        "extra": []
+      },
+      "conditions": {
+        "agree": true,
+        "golden": 1,
+        "extracted": 1,
+        "matched": 1,
+        "missing": [],
+        "extra": []
+      },
+      "credited_compliance": {
+        "agree": true,
+        "golden": 0,
+        "extracted": 0,
+        "matched": 0,
+        "missing": [],
+        "extra": []
+      },
+      "not_evaluated": {
+        "agree": true,
+        "golden": 0,
+        "extracted": 0,
+        "matched": 0,
+        "missing": [],
+        "extra": []
+      }
+    },
+    "agreement": 1.0,
+    "usable": true
+  },
+  {
+    "ad_id": "FAA:2006-12-07",
+    "ok": true,
+    "quotes_checked": 26,
+    "quotes_rejected": 0,
+    "rejected": [],
+    "fields": {
+      "effective_date": {
+        "agree": true,
+        "golden": 1,
+        "extracted": 1,
+        "matched": 1,
+        "missing": [],
+        "extra": []
+      },
+      "supersedes": {
+        "agree": true,
+        "golden": 1,
+        "extracted": 1,
+        "matched": 1,
+        "missing": [],
+        "extra": []
+      },
+      "revises": {
+        "agree": true,
+        "golden": 0,
+        "extracted": 0,
+        "matched": 0,
+        "missing": [],
+        "extra": []
+      },
+      "applicability": {
+        "agree": false,
+        "golden": 15,
+        "extracted": 18,
+        "matched": 0,
+        "missing": [
+          "('IO-360-B1B', False, None, None)",
+          "('IO-360-B1BD', False, None, None)",
+          "('IO-360-B1D', False, None, None)",
+          "('IO-360-B1E', False, None, None)",
+          "('IO-360-B1F', False, None, None)",
+          "('IO-360-B1F6', False, None, None)",
+          "('IO-360-B1G6', False, None, None)",
+          "('IO-360-B2E', False, None, None)",
+          "('IO-360-B2F', False, None, None)",
+          "('IO-360-B2F6', False, None, None)",
+          "('IO-360-B4A', False, None, None)",
+          "('IO-360-E1A', False, None, None)",
+          "('IO-360-L2A', False, None, None)",
+          "('IO-360-M1A', False, None, None)",
+          "('IO-360-M1B', False, None, None)"
+        ],
+        "extra": [
+          "('AEIO-320', True, None, None)",
+          "('AEIO-360', True, None, None)",
+          "('AEIO-540', True, None, None)",
+          "('AIO-320', True, None, None)",
+          "('HIO-360', True, None, None)",
+          "('HO-360', True, None, None)",
+          "('IO-320', True, None, None)",
+          "('IO-360', True, None, None)",
+          "('IO-540', True, None, None)",
+          "('LIO-320', True, None, None)",
+          "('LO-360', True, None, None)",
+          "('LTIO-540', True, None, None)",
+          "('LTO-360', True, None, None)",
+          "('O-320', True, None, None)",
+          "('O-360', True, None, None)",
+          "('O-540', True, None, None)",
+          "('TIO-540', True, None, None)",
+          "('TO-360', True, None, None)"
+        ]
+      },
+      "conditions": {
+        "agree": true,
+        "golden": 1,
+        "extracted": 1,
+        "matched": 1,
+        "missing": [],
+        "extra": []
+      },
+      "credited_compliance": {
+        "agree": true,
+        "golden": 0,
+        "extracted": 0,
+        "matched": 0,
+        "missing": [],
+        "extra": []
+      },
+      "not_evaluated": {
+        "agree": false,
+        "golden": 1,
+        "extracted": 3,
+        "matched": 0,
+        "missing": [
+          "(f) If your engine has not been overhauled or had any major repair since new, no further action is required."
+        ],
+        "extra": [
+          "(3) With serial numbers (SNs) 1 through 9879 (SN may have an ''L'' prefix for a long reach spark plug), (sold from January 1997 to September 2001) installed.",
+          "(sold from January 1997 to September 2001)",
+          "If your engine has not been overhauled or had any major repair since new, no further action is required."
+        ]
+      }
+    },
+    "agreement": 0.075,
+    "usable": false
+  },
+  {
+    "ad_id": "FAA:2006-20-09",
+    "ok": true,
+    "quotes_checked": 18,
+    "quotes_rejected": 0,
+    "rejected": [],
+    "fields": {
+      "effective_date": {
+        "agree": true,
+        "golden": 1,
+        "extracted": 1,
+        "matched": 1,
+        "missing": [],
+        "extra": []
+      },
+      "supersedes": {
+        "agree": true,
+        "golden": 0,
+        "extracted": 0,
+        "matched": 0,
+        "missing": [],
+        "extra": []
+      },
+      "revises": {
+        "agree": true,
+        "golden": 0,
+        "extracted": 0,
+        "matched": 0,
+        "missing": [],
+        "extra": []
+      },
+      "applicability": {
+        "agree": true,
+        "golden": 12,
+        "extracted": 12,
+        "matched": 12,
+        "missing": [],
+        "extra": []
+      },
+      "conditions": {
+        "agree": true,
+        "golden": 1,
+        "extracted": 1,
+        "matched": 1,
+        "missing": [],
+        "extra": []
+      },
+      "credited_compliance": {
+        "agree": true,
+        "golden": 0,
+        "extracted": 0,
+        "matched": 0,
+        "missing": [],
+        "extra": []
+      },
+      "not_evaluated": {
+        "agree": false,
+        "golden": 2,
+        "extracted": 3,
+        "matched": 1,
+        "missing": [
+          "(h) If Table 1, Table 2, Table 3, or Table 4 of Lycoming MSB No. 569A, dated April 11, 2006, lists your engine serial number (SN), and Table 5 of MSB No. 569A, dated April 11, 2006, does not list your crankshaft SN, no further action is required."
+        ],
+        "extra": [
+          "If Lycoming Engines manufactured new, rebuilt, overhauled, or repaired your engine, or replaced the crankshaft in your engine before March 1, 1997, and you have not had the crankshaft replaced, no further action is required.",
+          "If your engine meets any of the following conditions, and you have not had the crankshaft replaced since meeting the condition, no further action is required:"
+        ]
+      }
+    },
+    "agreement": 0.8333333333333334,
+    "usable": false
+  },
+  {
+    "ad_id": "FAA:2012-02-02",
+    "ok": true,
+    "quotes_checked": 9,
+    "quotes_rejected": 0,
+    "rejected": [],
+    "fields": {
+      "effective_date": {
+        "agree": true,
+        "golden": 1,
+        "extracted": 1,
+        "matched": 1,
+        "missing": [],
+        "extra": []
+      },
+      "supersedes": {
+        "agree": true,
+        "golden": 1,
+        "extracted": 1,
+        "matched": 1,
+        "missing": [],
+        "extra": []
+      },
+      "revises": {
+        "agree": true,
+        "golden": 0,
+        "extracted": 0,
+        "matched": 0,
+        "missing": [],
+        "extra": []
+      },
+      "applicability": {
+        "agree": true,
+        "golden": 4,
+        "extracted": 4,
+        "matched": 4,
+        "missing": [],
+        "extra": []
+      },
+      "conditions": {
+        "agree": true,
+        "golden": 0,
+        "extracted": 0,
+        "matched": 0,
+        "missing": [],
+        "extra": []
+      },
+      "credited_compliance": {
+        "agree": true,
+        "golden": 0,
+        "extracted": 0,
+        "matched": 0,
+        "missing": [],
+        "extra": []
+      },
+      "not_evaluated": {
+        "agree": true,
+        "golden": 0,
+        "extracted": 0,
+        "matched": 0,
+        "missing": [],
+        "extra": []
+      }
+    },
+    "agreement": 1.0,
+    "usable": true
+  },
+  {
+    "ad_id": "FAA:2012-19-01",
+    "ok": true,
+    "quotes_checked": 22,
+    "quotes_rejected": 0,
+    "rejected": [],
+    "fields": {
+      "effective_date": {
+        "agree": true,
+        "golden": 1,
+        "extracted": 1,
+        "matched": 1,
+        "missing": [],
+        "extra": []
+      },
+      "supersedes": {
+        "agree": true,
+        "golden": 1,
+        "extracted": 1,
+        "matched": 1,
+        "missing": [],
+        "extra": []
+      },
+      "revises": {
+        "agree": true,
+        "golden": 0,
+        "extracted": 0,
+        "matched": 0,
+        "missing": [],
+        "extra": []
+      },
+      "applicability": {
+        "agree": true,
+        "golden": 15,
+        "extracted": 15,
+        "matched": 15,
+        "missing": [],
+        "extra": []
+      },
+      "conditions": {
+        "agree": true,
+        "golden": 1,
+        "extracted": 1,
+        "matched": 1,
+        "missing": [],
+        "extra": []
+      },
+      "credited_compliance": {
+        "agree": true,
+        "golden": 1,
+        "extracted": 1,
+        "matched": 1,
+        "missing": [],
+        "extra": []
+      },
+      "not_evaluated": {
+        "agree": false,
+        "golden": 2,
+        "extracted": 2,
+        "matched": 0,
+        "missing": [
+          "(4) If Table 1, Table 2, Table 3, or Table 4 of Lycoming MSB No. 569A, dated April 11, 2006, lists your engine S/N, and Table 5 of MSB No. 569A, dated April 11, 2006, does not list your crankshaft S/N, no further action is required.",
+          "These applicable engines are manufactured new, rebuilt, overhauled, or had a crankshaft installed after January 1, 1997, according to Supplement No. 1 to Lycoming MSB No. 569A, dated May 27, 2009."
+        ],
+        "extra": [
+          "If Lycoming Engines manufactured new, rebuilt, overhauled, or repaired your engine, or replaced the crankshaft in your engine before January 1, 1997, and you have not had the crankshaft replaced, no further action is required.",
+          "These applicable engines are manufactured new, rebuilt, overhauled, or had a crankshaft installed after January 1, 1997"
+        ]
+      }
+    },
+    "agreement": 0.8260869565217391,
+    "usable": false
+  },
+  {
+    "ad_id": "FAA:2013-03-15",
+    "ok": true,
+    "quotes_checked": 7,
+    "quotes_rejected": 0,
+    "rejected": [],
+    "fields": {
+      "effective_date": {
+        "agree": true,
+        "golden": 1,
+        "extracted": 1,
+        "matched": 1,
+        "missing": [],
+        "extra": []
+      },
+      "supersedes": {
+        "agree": true,
+        "golden": 0,
+        "extracted": 0,
+        "matched": 0,
+        "missing": [],
+        "extra": []
+      },
+      "revises": {
+        "agree": true,
+        "golden": 0,
+        "extracted": 0,
+        "matched": 0,
+        "missing": [],
+        "extra": []
+      },
+      "applicability": {
+        "agree": true,
+        "golden": 2,
+        "extracted": 2,
+        "matched": 2,
+        "missing": [],
+        "extra": []
+      },
+      "conditions": {
+        "agree": true,
+        "golden": 0,
+        "extracted": 0,
+        "matched": 0,
+        "missing": [],
+        "extra": []
+      },
+      "credited_compliance": {
+        "agree": true,
+        "golden": 0,
+        "extracted": 0,
+        "matched": 0,
+        "missing": [],
+        "extra": []
+      },
+      "not_evaluated": {
+        "agree": true,
+        "golden": 0,
+        "extracted": 0,
+        "matched": 0,
+        "missing": [],
+        "extra": []
+      }
+    },
+    "agreement": 1.0,
+    "usable": true
+  }
+]

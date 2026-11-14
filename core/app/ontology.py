@@ -352,7 +352,7 @@ class ValidatedField(BaseModel):
     quote: str
     file: str
     occurrence: int
-    check: Literal["quote found in text", "quote not found in text"]
+    check: Literal["quote found in text", "quote not found in text", "disagrees with golden"]
 
 
 class StatusChange(BaseModel):
@@ -367,6 +367,18 @@ class IngestChanges(BaseModel):
     aircraft_status_changed: list[StatusChange]
 
 
+class ExtractionInfo(BaseModel):
+    """How the LLM extraction was used by an ingest. It decides only if every quote is found and every compared
+    field agrees with the human-checked golden file; otherwise golden decides and every miss is listed."""
+    used: bool
+    source: Literal["cache", "llm"] | None
+    model: str | None
+    prompt_version: str | None
+    agreement: float | None
+    reason: str | None
+    misses: list[str]
+
+
 class IngestResponse(BaseModel):
     """Q2 — POST /ads/{ad_id}/ingest. A pipeline run, not an action. Demo mode: source = golden, no LLM."""
     run_id: str
@@ -377,6 +389,7 @@ class IngestResponse(BaseModel):
     changes: IngestChanges
     citations: list[Citation]
     reasoning_path: list[ReasoningStep]
+    extraction: ExtractionInfo | None = None  # optional for the contract
 
 
 class ResetCounts(BaseModel):

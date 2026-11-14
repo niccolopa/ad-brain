@@ -130,8 +130,8 @@ def range_text(row: GoldenApplicability) -> str:
 
 
 def group_label(row: GoldenApplicability) -> str | None:
-    """'Group 4: Model 172S, …' → 'Group 4'. Only when the quote itself names the group."""
-    m = re.match(r"^(Group \d+):", row.quote)
+    """'Group 4: Model 172S, …' or '(4) Group 4: Model 172S, …' → 'Group 4'. Only when the quote names the group."""
+    m = re.match(r"^(?:\(\d+\)\s*)?(Group \d+):", row.quote)
     return m[1] if m else None
 
 

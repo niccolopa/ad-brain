@@ -141,6 +141,9 @@ def run(ad: LoadedAD, facts: list[str], live: bool) -> dict:
         record["error"] = f"invalid output: {str(e)[:500]}"
     if record["error"]:
         log.warning("extraction %s failed: %s", ad.ad_id, record["error"])
+        if path.is_file():  # never overwrite a cached extraction with a failure: fall back to it
+            cached = json.loads(path.read_text(encoding="utf-8"))
+            return {**cached, "fallback_reason": record["error"]}
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(record, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return record

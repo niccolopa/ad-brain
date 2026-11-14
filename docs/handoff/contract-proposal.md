@@ -34,4 +34,13 @@ An *evaluation* is a computed result. It is **not** a `Decision` (a Decision sta
 - Q3: `still_valid` is `yes | no_record | unknown | not_applicable`; every `chain` item has `ad_id, status,
   superseded_by, link, effective_date` (nullable); `compliance` may be null; `compliance.recorded_by` is null.
 - Q2 before the 2012-02-02 ingest: `GET /ads/FAA%3A2012-02-02/affected-aircraft` and Q3 on FAA:2008-03-02 → 404.
-- Ingest `source`: `"golden"` today (see §4 for the extraction values).
+- Ingest `source`: see §4.
+
+## 4. Agent extraction in ingest
+- `POST /ads/{ad_id}/ingest` → `source` is `"cache"` (demo mode: the cached LLM extraction), `"llm"` (live call)
+  or `"golden"` (the extraction was missing, invalid, or disagreed with golden).
+- New optional `extraction?: { used: bool, source: "cache"|"llm"|null, model, prompt_version, agreement: 0..1,
+  reason: string|null, misses: [string] }`. The extraction decides only if every quote is found in the text
+  **and** every compared field agrees with golden; otherwise golden decides and every miss is listed.
+- `rejected_fields[].check` gains `"disagrees with golden"` (value = `{missing, extra}`).
+- An extraction for an AD with no golden file never decides a status (today: ingest of such an AD → 404).
