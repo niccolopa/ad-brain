@@ -1,5 +1,5 @@
 """One endpoint per business question (contract/README.md, "Endpoints").
-Real: fleet, Q1 status, Q2 affected-aircraft and ingest, Q5 questions, demo reset. The rest still serve contract/examples/ (fakes)."""
+Real: fleet, Q1 status, Q2 affected-aircraft and ingest, Q3 supersession, Q5 questions, demo reset. The rest still serve contract/examples/ (fakes)."""
 import json
 import logging
 from datetime import UTC, date, datetime
@@ -16,6 +16,8 @@ from app.ontology import (
     AircraftStatusResponse,
     AirworthinessDirective,
     ApplicableAD,
+    ChainLink,
+    ComplianceRecord,
     ComplianceState,
     DemoResetResponse,
     Due,
@@ -30,6 +32,7 @@ from app.ontology import (
     ReasoningStep,
     ResetCounts,
     StatusChange,
+    SupersessionResponse,
 )
 
 log = logging.getLogger("adbrain.api")
@@ -266,9 +269,46 @@ def fleet() -> FleetResponse:
     return FleetResponse(aircraft=rows, computed_at=now_utc())
 
 
-@app.get("/aircraft/{aircraft_id}/ads/{ad_id}/supersession")
-def supersession(aircraft_id: str, ad_id: str) -> JSONResponse:
-    return example("q3-supersession")
+@app.get("/aircraft/{aircraft_id}/ads/{ad_id}/supersession", response_model=SupersessionResponse)
+def supersession(aircraft_id: str, ad_id: str) -> SupersessionResponse:
+    aircraft = get_aircraft(aircraft_id)
+    if not rules.is_known_ad(ad_id, STATE.ads):
+        raise NotFound("AD_NOT_FOUND", f"No AD with id {ad_id} in this system.", {"ad_id": ad_id})
+    chain, problem = rules.supersession_chain(ad_id, STATE.ads)
+    a = assess(aircraft_id)
+    head = chain[-1].ad_id
+    head_result = None if problem else a.results.get(head)
+    records = {r.ad_id: r for r in STATE.logbook if r.aircraft_id == aircraft_id and r.kind == "compliance"}
+    v = rules.still_valid(chain, problem, head_result, records, STATE.ads)
+
+    links, path, citations = [], [], []
+    for step in chain:
+        loaded = STATE.ads.get(step.ad_id)
+        links.append(ChainLink(ad_id=step.ad_id, status="superseded" if step.successor else "active",
+                               superseded_by=step.successor, link=step.link,
+                               effective_date=loaded.golden.effective_date if loaded else None))
+    if head_result is not None and head_result.verdict == "applies":
+        path += applies_path(aircraft, head, head_result)
+        citations += head_result.citations
+    for step in chain:
+        if step.successor:
+            new = STATE.ads[step.successor]
+            quotes = new.golden.field_quotes.get(step.link or "", [])
+            path.append(ReasoningStep(from_=new.ad_id, link=step.link or "supersedes", to=step.ad_id, derived=False,
+                                      note=quotes[0] if quotes else step.link or ""))
+            citations += [new.cite(q) for q in quotes[:1]]
+    rec = v.record
+    if rec is not None:
+        path.append(ReasoningStep(from_=rec.id, link="satisfies", to=rec.ad_id, derived=False,
+                                  note=f"kept valid: {v.reason}" if v.credits else rec.text))
+    citations += v.credits
+    compliance = None if rec is None else ComplianceRecord(
+        id=rec.id, ad_id=rec.ad_id, subject_id=rec.subject_id, date=rec.date, method=rec.text,
+        evidence=f"logbook {rec.id} (synthetic)" if rec.synthetic else f"logbook {rec.id}",
+        recorded_by=None, synthetic=rec.synthetic)
+    return SupersessionResponse(
+        aircraft_id=aircraft_id, asked_ad_id=ad_id, chain=links, compliance=compliance, still_valid=v.value,
+        reason=v.reason, citations=list({c.model_dump_json(): c for c in citations}.values()), reasoning_path=path)
 
 
 @app.get("/decisions")

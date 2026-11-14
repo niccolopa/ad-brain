@@ -13,6 +13,8 @@ STATE = store.load()
 ENGINE_IDS = ("FAA:2006-12-07", "FAA:2006-20-09", "FAA:2012-19-01")
 DRAFTS = {k: STATE.available[k] for k in ENGINE_IDS}  # name kept from the draft stage: the 3 engine ADs
 ECI, CRANK_2006, CRANK_2012 = DRAFTS["FAA:2006-12-07"], DRAFTS["FAA:2006-20-09"], DRAFTS["FAA:2012-19-01"]
+CREDIT_G1 = ("(1) If you previously complied with AD 2006-20-09 (71 FR 57407, September 29, 2006), no further "
+             "action is required.")
 DATE_CLAUSE = "not evaluated: manufacture/overhaul date clause (see notes)"
 client = TestClient(app)
 
@@ -76,7 +78,8 @@ def test_superseded_compliance_is_credited_and_old_ad_not_counted():
                      STATE.logbook, TODAY)
     assert a.superseded == ["FAA:2006-20-09"] and "FAA:2006-20-09" not in a.results
     assert a.compliance["FAA:2012-19-01"].id == "CR-DEMO01-ENG-1"
-    assert a.credits["FAA:2012-19-01"].quote.startswith("(g) Credit for Previous Actions (1)")
+    credit = a.credits["FAA:2012-19-01"]
+    assert credit.quote == CREDIT_G1 and credit.occurrence == 2  # rule text; occurrence 1 is the preamble
     assert a.status == "green"
 
 

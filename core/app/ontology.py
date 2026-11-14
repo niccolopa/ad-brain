@@ -72,9 +72,12 @@ class NotEvaluated(BaseModel):
 
 
 class CreditedCompliance(BaseModel):
-    """Compliance with `ad_id` (e.g. a superseded AD) satisfies this AD."""
+    """Compliance with `ad_id` (e.g. a superseded AD) satisfies this AD. `occurrence` picks the match when the
+    sentence also appears elsewhere in the file (e.g. quoted in the preamble)."""
     ad_id: str = Field(pattern=r"^(FAA|EASA):\S+$")
+    paragraph: str | None = None  # e.g. "(g)(1)", named in answers
     quote: str = Field(min_length=1)
+    occurrence: int = Field(default=1, ge=1)
 
 
 class GoldenAD(BaseModel):
@@ -100,6 +103,7 @@ class LogbookRow(BaseModel):
     date: str = Field(pattern=r"^\d{4}-\d{2}-\d{2}$")
     kind: Literal["compliance", "observation"]
     text: str
+    synthetic: bool
     fact: str | None = None
     value: FactValue | None = None
 
@@ -115,9 +119,10 @@ class LoadedAD(BaseModel):
     def ad_id(self) -> str:
         return self.golden.ad_number
 
-    def cite(self, quote: str) -> Citation:
-        # ponytail: occurrence 1 — the store checks every golden quote is found; golden quotes are unique.
-        return Citation(ad_id=self.ad_id, quote=quote, file=self.file, occurrence=1, source_url=self.source_url)
+    def cite(self, quote: str, occurrence: int = 1) -> Citation:
+        # Golden quotes are unique (occurrence 1) unless the golden record gives an occurrence; the store checks both.
+        return Citation(ad_id=self.ad_id, quote=quote, file=self.file, occurrence=occurrence,
+                        source_url=self.source_url)
 
 
 # ---------- Contract objects (contract/README.md, "Object types") ----------
@@ -244,6 +249,40 @@ class QuestionsResponse(BaseModel):
     """Q5 — GET /questions, sorted by urgency, then days_left."""
     questions: list[Question]
     urgency_rule: str
+
+
+class ChainLink(BaseModel):
+    """One AD in a supersession chain. effective_date is None for an AD with no golden record."""
+    ad_id: str
+    status: Status
+    superseded_by: str | None
+    link: Literal["supersedes", "revises"] | None
+    effective_date: str | None
+
+
+class ComplianceRecord(BaseModel):
+    """An OBSERVATION from the (synthetic) logbook."""
+    id: str
+    ad_id: str
+    subject_id: str
+    date: str
+    method: str
+    evidence: str
+    recorded_by: str | None  # the logbook has no such column
+    epistemic_class: Literal["OBSERVATION"] = "OBSERVATION"
+    synthetic: bool
+
+
+class SupersessionResponse(BaseModel):
+    """Q3 — GET /aircraft/{id}/ads/{ad_id}/supersession."""
+    aircraft_id: str
+    asked_ad_id: str
+    chain: list[ChainLink]
+    compliance: ComplianceRecord | None
+    still_valid: Literal["yes", "no_record", "unknown", "not_applicable"]
+    reason: str
+    citations: list[Citation]
+    reasoning_path: list[ReasoningStep]
 
 
 class ValidatedField(BaseModel):

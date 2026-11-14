@@ -259,7 +259,7 @@ def assess(aircraft: Aircraft, ads: list[LoadedAD], logbook: list[LogbookRow], t
             continue
         for credit in ad.golden.credited_compliance:
             if credit.ad_id in records:
-                compliance[ad.ad_id], credits[ad.ad_id] = records[credit.ad_id], ad.cite(credit.quote)
+                compliance[ad.ad_id], credits[ad.ad_id] = records[credit.ad_id], ad.cite(credit.quote, credit.occurrence)
                 break
     loaded = {ad.ad_id for ad in ads}
     replaced = {old for ad in ads for old in ad.golden.supersedes + ad.golden.revises if old in loaded}
@@ -281,3 +281,93 @@ def assess(aircraft: Aircraft, ads: list[LoadedAD], logbook: list[LogbookRow], t
     unrecorded = any(r.verdict == "applies" and ad_id not in compliance for ad_id, r in results.items())
     return Assessment(aircraft, aircraft_status(aircraft.synthetic, unrecorded, bool(questions)),
                       results, compliance, credits, questions, superseded)
+
+
+# ---------- Q3: supersession chain and validity of earlier compliance ----------
+ChainLinkType = Literal["supersedes", "revises"]
+Validity = Literal["yes", "no_record", "unknown", "not_applicable"]
+
+
+@dataclass
+class ChainStep:
+    ad_id: str
+    successor: str | None = None  # the AD that supersedes/revises this one (None = in force, or chain broken)
+    link: ChainLinkType | None = None
+
+
+def successors(ad_id: str, ads: dict[str, LoadedAD]) -> list[tuple[str, ChainLinkType]]:
+    return ([(a.ad_id, "supersedes") for a in ads.values() if ad_id in a.golden.supersedes]
+            + [(a.ad_id, "revises") for a in ads.values() if ad_id in a.golden.revises])
+
+
+def is_known_ad(ad_id: str, ads: dict[str, LoadedAD]) -> bool:
+    """Loaded, or named by a loaded AD (e.g. a superseded AD with no golden file)."""
+    return ad_id in ads or bool(successors(ad_id, ads))
+
+
+def supersession_chain(ad_id: str, ads: dict[str, LoadedAD]) -> tuple[list[ChainStep], str | None]:
+    """Asked AD → … → the AD in force. Returns (chain, problem); a problem means no AD in force can be named."""
+    chain, seen = [], set()
+    current = ad_id
+    while True:
+        if current in seen:
+            log.warning("supersession cycle at %s (from %s)", current, ad_id)
+            return chain, f"supersession cycle: {' → '.join(s.ad_id for s in chain)} → {current}"
+        seen.add(current)
+        nxt = successors(current, ads)
+        if len(nxt) > 1:
+            log.warning("%s superseded by more than one AD: %s", current, nxt)
+            chain.append(ChainStep(current))
+            return chain, f"{current} is superseded by more than one AD: {', '.join(n for n, _ in nxt)}"
+        if not nxt:
+            chain.append(ChainStep(current))
+            return chain, None
+        chain.append(ChainStep(current, nxt[0][0], nxt[0][1]))
+        current = nxt[0][0]
+
+
+@dataclass
+class StillValid:
+    value: Validity
+    reason: str
+    record: LogbookRow | None = None
+    credits: list[Citation] = field(default_factory=list)
+
+
+def still_valid(chain: list[ChainStep], problem: str | None, head_result: Applicability | None,
+                records: dict[str, LogbookRow], ads: dict[str, LoadedAD]) -> StillValid:
+    """Is the compliance that counts for the AD in force still valid? A missing credit label is 'unknown', never 'no':
+    the golden record not naming a credit does not prove the AD text gives none."""
+    if problem or head_result is None:
+        return StillValid("unknown", problem or "no AD in force could be determined")
+    head = chain[-1].ad_id
+    if head_result.verdict == "not_applicable":
+        return StillValid("not_applicable", f"{head} (in force) does not apply: {head_result.why}")
+    if head_result.verdict == "unknown":
+        return StillValid("unknown", f"whether {head} (in force) applies is open: {head_result.question}")
+    if head in records:
+        return StillValid("yes", f"{head} is in force and has its own compliance record {records[head].id}",
+                          records[head])
+    for i in range(len(chain) - 2, -1, -1):  # nearest earlier AD with a record first
+        old = chain[i].ad_id
+        if old not in records:
+            continue
+        rec, cites, notes = records[old], [], []
+        for prev, step in zip(chain[i:], chain[i + 1:]):
+            credit = next((c for c in ads[step.ad_id].golden.credited_compliance if c.ad_id == prev.ad_id), None)
+            if credit is None:
+                return StillValid("unknown", f"{head} has no compliance record of its own; record {rec.id} is for "
+                                  f"{old}, and the labelled data names no credit in {step.ad_id} for {prev.ad_id}: "
+                                  "check the AD text", rec)
+            cites.append(ads[step.ad_id].cite(credit.quote, credit.occurrence))
+            notes.append(f"paragraph {credit.paragraph or '(unnamed)'} of {step.ad_id}: \"{credit.quote}\"")
+        return StillValid("yes", f"{head} has no compliance record of its own; record {rec.id} (compliance with "
+                          f"{old}) is credited by " + "; ".join(notes), rec, cites)
+    for credit in ads[head].golden.credited_compliance:  # asked AD is the head: its own credits (same rule as Q1)
+        if credit.ad_id in records:
+            rec = records[credit.ad_id]
+            return StillValid("yes", f"{head} has no compliance record of its own; record {rec.id} (compliance with "
+                              f"{credit.ad_id}) is credited by paragraph {credit.paragraph or '(unnamed)'} of {head}: "
+                              f"\"{credit.quote}\"", rec, [ads[head].cite(credit.quote, credit.occurrence)])
+    names = " or ".join(s.ad_id for s in chain)
+    return StillValid("no_record", f"{head} (in force) applies ({head_result.why}); no compliance record for {names}")

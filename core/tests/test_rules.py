@@ -23,7 +23,7 @@ def plane(model: str, serial, synthetic: bool = True, id_: str = "T-1") -> Aircr
 
 def obs(fact: str, value: str, id_: str = "OB-T-1") -> LogbookRow:
     return LogbookRow(id=id_, aircraft_id="T-1", subject_id="T-1", ad_id="EASA:2024-0152R1", date="2025-01-01",
-                      kind="observation", text="test", fact=fact, value=value)
+                      kind="observation", text="test", synthetic=True, fact=fact, value=value)
 
 
 # ---------- model ----------
