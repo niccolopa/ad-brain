@@ -10,7 +10,7 @@ from datetime import UTC, date, datetime
 from pathlib import Path
 
 from app import rules, store
-from app.ontology import Aircraft, LoadedAD, LogbookRow
+from app.ontology import Aircraft, Fact, LoadedAD, LogbookRow
 
 log = logging.getLogger("adbrain.evaluations")
 
@@ -43,9 +43,15 @@ def rules_version(ads: list[LoadedAD]) -> dict:
     return {**manifest, "id": canonical_sha256(manifest)}
 
 
-def snapshot_inputs(aircraft: Aircraft, logbook: list[LogbookRow], as_of: date) -> dict:
+def snapshot_inputs(aircraft: Aircraft, logbook: list[LogbookRow], as_of: date,
+                    decision_facts: list[Fact] | tuple[Fact, ...] = ()) -> dict:
     rows = sorted((r.model_dump() for r in logbook if r.aircraft_id == aircraft.id), key=lambda r: r["id"])
-    return {"aircraft": aircraft.model_dump(), "logbook": rows, "as_of_date": as_of.isoformat()}
+    inputs = {"aircraft": aircraft.model_dump(), "logbook": rows, "as_of_date": as_of.isoformat()}
+    decided = sorted((f.model_dump() for f in decision_facts if f.aircraft_id == aircraft.id),
+                     key=lambda f: (f["id"], f["fact"]))
+    if decided:  # only when present, so records made before decisions existed keep their inputs_hash
+        inputs["decisions"] = decided
+    return inputs
 
 
 def decision_of(a: rules.Assessment) -> dict:
@@ -56,7 +62,8 @@ def decision_of(a: rules.Assessment) -> dict:
 def decide(inputs: dict, ads: list[LoadedAD]) -> rules.Assessment:
     aircraft = Aircraft.model_validate(inputs["aircraft"])
     logbook = [LogbookRow.model_validate(r) for r in inputs["logbook"]]
-    return rules.assess(aircraft, ads, logbook, date.fromisoformat(inputs["as_of_date"]))
+    facts = [Fact.model_validate(f) for f in inputs.get("decisions", [])]
+    return rules.assess(aircraft, ads, logbook, date.fromisoformat(inputs["as_of_date"]), facts)
 
 
 def now_utc() -> str:

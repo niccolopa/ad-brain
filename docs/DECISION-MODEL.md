@@ -41,6 +41,7 @@ Source column: **AD** = the AD text pattern the rule implements (with an example
 | R-STATUS-AMBER | questions | synthetic aircraft, no red, ≥ 1 open QUESTION | amber | Contract: "status: amber … and the unknown as a QUESTION object" |
 | R-STATUS-GREEN | per-AD results | synthetic aircraft, every applicable AD complied, no question | green | Policy: ARCHITECTURE.md §6 |
 | R-REAL-NO-RECORDS | aircraft `synthetic` | a real aircraft (EU register) | always `no_records`, never red: "AD applies — no compliance records in this system" | Contract: "Real aircraft: status is no_records, never red" |
+| R-DECISION-ANSWER | an answered QUESTION (DECISION by a certifying engineer) | a condition fact was supplied by a human decision, not observed | the fact is used like an observation; the decision id is cited; a clash with an observation becomes a contradiction QUESTION | Policy: ARCHITECTURE.md §4 "DECISION: a human with a role, via an action" |
 | R-URGENCY | question deadline; as-of date | days until the ARC review | overdue < 0 · high ≤ 30 · medium ≤ 90 · low > 90 | Contract: q5 `urgency_rule` |
 
 **Limits, stated:** part numbers, AMOCs, terminating actions, repetitive inspections and deadline arithmetic

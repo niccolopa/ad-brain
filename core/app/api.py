@@ -6,10 +6,14 @@ from datetime import UTC, date, datetime
 from pathlib import Path
 
 from fastapi import FastAPI, Request
+from fastapi.encoders import jsonable_encoder
+from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 
 from app import evaluations, extract, llm, rules, store
 from app.ontology import (
+    OPPOSITE,
+    ActionLogEntry,
     AdDetailResponse,
     AdExtraction,
     AffectedAircraft,
@@ -17,6 +21,8 @@ from app.ontology import (
     Aircraft,
     AircraftStatusResponse,
     AirworthinessDirective,
+    AnswerRequest,
+    AnswerResponse,
     ApplicabilityGroup,
     ApplicableAD,
     ChainLink,
@@ -24,13 +30,17 @@ from app.ontology import (
     ComplianceState,
     ConditionOut,
     CreditOut,
+    CurrentReplay,
+    DecisionRecord,
     DecisionSnapshot,
+    DecisionsResponse,
     DemoResetResponse,
     Due,
     Error,
     Evaluation,
     ExtractionInfo,
     ExtractionMiss,
+    Fact,
     FleetAircraft,
     FleetResponse,
     IngestChanges,
@@ -38,8 +48,11 @@ from app.ontology import (
     LoadedAD,
     NotAffected,
     NotEvaluatedOut,
+    Person,
+    Question,
     QuestionsResponse,
     ReasoningStep,
+    RefusedAttempt,
     ReplayChanges,
     ReplayResponse,
     ResetCounts,
@@ -66,7 +79,25 @@ class NotFound(Exception):
         self.status_code = status_code
 
 
-HTTP_CONFLICT = 409
+HTTP_FORBIDDEN, HTTP_CONFLICT, HTTP_UNPROCESSABLE = 403, 409, 422
+ANSWER_ROLE = "certifying_engineer"  # only a certifying engineer answers a QUESTION (mechanic → OBSERVATION: LATER)
+DEMO_PEOPLE = {  # the demo's people are synthetic; ids as in contract/examples
+    "certifying_engineer": Person(id="P-CE-1", name="Certifying Engineer 1 (synthetic)", role="certifying_engineer",
+                                  synthetic=True),
+    "mechanic": Person(id="P-ME-1", name="Mechanic 1 (synthetic)", role="mechanic", synthetic=True),
+    "agent": Person(id="P-AG-1", name="Analyst agent", role="agent", synthetic=True),
+}
+# "yes" to "Is X installed / embodied / listed?" sets the positive value of the condition's fact.
+POSITIVE_VALUE = {"equipment_installed": "yes", "part_installed": "yes", "serial_listed": "yes",
+                  "modification_not_embodied": "embodied"}
+REAL_AIRCRAFT_REASON = "real aircraft: needs a real certifying engineer"
+
+
+@app.exception_handler(RequestValidationError)
+def validation_error(_: Request, exc: RequestValidationError) -> JSONResponse:
+    err = Error(error_code="VALIDATION_ERROR", message="Missing or malformed parameters.",
+                details={"errors": jsonable_encoder(exc.errors())})
+    return JSONResponse(err.model_dump(), status_code=HTTP_UNPROCESSABLE)
 
 
 @app.exception_handler(NotFound)
@@ -106,8 +137,14 @@ def ad_object(ad: LoadedAD) -> AirworthinessDirective:
         source_url=ad.source_url, file=ad.file)
 
 
+def decision_facts() -> list[Fact]:
+    """Facts supplied by human decisions (answered QUESTIONs), used by the rules like observations."""
+    return [Fact(id=d.id, aircraft_id=d.aircraft_id, fact=k, value=v) for d in STATE.decisions for k, v in d.facts.items()]
+
+
 def assess(aircraft_id: str) -> rules.Assessment:
-    return rules.assess(get_aircraft(aircraft_id), list(STATE.ads.values()), STATE.logbook, date.today())
+    return rules.assess(get_aircraft(aircraft_id), list(STATE.ads.values()), STATE.logbook, date.today(),
+                        decision_facts())
 
 
 def applies_path(aircraft: Aircraft, ad_id: str, res: rules.Applicability, suffix: str = "") -> list[ReasoningStep]:
@@ -143,7 +180,7 @@ def summary(a: rules.Assessment, applicable: list[ApplicableAD]) -> str:
 @app.get("/aircraft/{aircraft_id}/status", response_model=AircraftStatusResponse)
 def aircraft_status(aircraft_id: str) -> AircraftStatusResponse:
     aircraft, ads, today = get_aircraft(aircraft_id), list(STATE.ads.values()), date.today()
-    inputs = evaluations.snapshot_inputs(aircraft, STATE.logbook, today)
+    inputs = evaluations.snapshot_inputs(aircraft, STATE.logbook, today, decision_facts())
     a = evaluations.decide(inputs, ads)
     ev = EVAL_LOG.record(a, inputs, ads)
     applicable, path = [], []
@@ -370,7 +407,7 @@ def supersession(aircraft_id: str, ad_id: str) -> SupersessionResponse:
         id=rec.id, ad_id=rec.ad_id, subject_id=rec.subject_id, date=rec.date, method=rec.text,
         evidence=f"logbook {rec.id} (synthetic)" if rec.synthetic else f"logbook {rec.id}",
         recorded_by=None, synthetic=rec.synthetic)
-    inputs = evaluations.snapshot_inputs(aircraft, STATE.logbook, date.today())
+    inputs = evaluations.snapshot_inputs(aircraft, STATE.logbook, date.today(), decision_facts())
     return SupersessionResponse(
         aircraft_id=aircraft_id, asked_ad_id=ad_id, chain=links, compliance=compliance, still_valid=v.value,
         reason=v.reason, citations=list({c.model_dump_json(): c for c in citations}.values()), reasoning_path=path,
@@ -400,12 +437,106 @@ def replay(evaluation_id: str) -> ReplayResponse:
     return ReplayResponse(
         evaluation_id=evaluation_id, same=r.same, before=DecisionSnapshot(**evaluations.decision_of_record(record)),
         after=DecisionSnapshot(**r.after), changed=ReplayChanges(**r.changed()),
-        replay_evaluation_id=r.new_record["id"], inputs_hash=record["inputs_hash"], replayed_at=now_utc())
+        replay_evaluation_id=r.new_record["id"], inputs_hash=record["inputs_hash"], replayed_at=now_utc(),
+        current=current_replay(record))
 
 
-@app.get("/decisions")
-def decisions(aircraft_id: str | None = None, ad_id: str | None = None) -> JSONResponse:
-    return example("q4-decisions")
+def current_replay(record: dict) -> CurrentReplay | None:
+    """Same aircraft and date, today's logbook and decisions, current rules: names the decisions that changed it."""
+    aircraft = STATE.aircraft.get(record["aircraft_id"])
+    if aircraft is None:
+        return None
+    inputs = evaluations.snapshot_inputs(aircraft, STATE.logbook, date.fromisoformat(record["as_of_date"]),
+                                         decision_facts())
+    now = evaluations.decision_of(evaluations.decide(inputs, list(STATE.ads.values())))
+    was = {f["id"] for f in record["inputs"].get("decisions", [])}
+    is_ = {f["id"] for f in inputs.get("decisions", [])}
+    return CurrentReplay(**now, inputs_changed=evaluations.canonical_sha256(inputs) != record["inputs_hash"],
+                         decisions_added=sorted(is_ - was), decisions_removed=sorted(was - is_),
+                         same_as_recorded=now == evaluations.decision_of_record(record))
+
+
+@app.get("/decisions", response_model=DecisionsResponse)
+def decisions(aircraft_id: str | None = None, ad_id: str | None = None) -> DecisionsResponse:
+    """Human DECISION records (answered QUESTIONs). Empty after /demo/reset. Unknown aircraft_id → 404."""
+    if aircraft_id is not None:
+        get_aircraft(aircraft_id)
+    return DecisionsResponse(decisions=[d for d in STATE.decisions if (aircraft_id is None or d.aircraft_id == aircraft_id)
+                                        and (ad_id is None or d.ad_id == ad_id)])
+
+
+def log_action(action: str, role: str, params: dict, objects: list[str], result: str,
+               reason: str | None = None) -> ActionLogEntry:
+    person = DEMO_PEOPLE.get(role)
+    entry = ActionLogEntry(id=f"AL-{len(STATE.action_log) + 1:04d}", action=action,
+                           actor={"id": person.id if person else None, "role": role}, at=now_utc(), params=params,
+                           objects_edited=objects, result=result, reason=reason)
+    STATE.action_log.append(entry)
+    return entry
+
+
+def refuse(question_id: str, aircraft_id: str, role: str, body: AnswerRequest, failed: list[str], reason: str):
+    """Log the refused attempt (readable by the UI on GET /questions) and answer 403."""
+    entry = log_action("AnswerQuestion", role, {"question_id": question_id, **body.model_dump()}, [], "refused", reason)
+    STATE.refused.append(RefusedAttempt(id=entry.id, at=entry.at, action="AnswerQuestion", question_id=question_id,
+                                        aircraft_id=aircraft_id, actor_role=role, failed_criteria=failed,
+                                        reason=reason))
+    raise NotFound("SUBMISSION_CRITERIA_FAILED", reason, {"action": "AnswerQuestion", "actor_role": role,
+                   "failed_criteria": failed, "attempt_logged_as": entry.id}, HTTP_FORBIDDEN)
+
+
+def find_question(question_id: str) -> tuple[rules.Assessment, Question] | None:
+    for aircraft_id in STATE.aircraft:
+        a = assess(aircraft_id)
+        for q in a.questions:
+            if q.id == question_id:
+                return a, q
+    return None
+
+
+@app.post("/questions/{question_id}/answer", response_model=AnswerResponse)
+def answer_question(question_id: str, body: AnswerRequest) -> AnswerResponse:
+    """A certifying engineer answers an open QUESTION: a human DECISION that supplies the unknown fact.
+    Refused (403, logged): any other role; any real aircraft (the demo's engineer is synthetic)."""
+    found = find_question(question_id)
+    if found is None:
+        if any(d.question_id == question_id for d in STATE.decisions):
+            raise NotFound("ALREADY_ANSWERED", f"Question {question_id} was already answered.",
+                           {"question_id": question_id}, HTTP_CONFLICT)
+        raise NotFound("QUESTION_NOT_FOUND", f"No open question with id {question_id}.", {"question_id": question_id})
+    a, q = found
+    role = body.answered_by_role
+    if role != ANSWER_ROLE:
+        refuse(question_id, q.aircraft_id, role, body, [f"role = {ANSWER_ROLE}"],
+               f"A {role} cannot answer a QUESTION: a certifying engineer must decide.")
+    if not a.aircraft.synthetic:
+        refuse(question_id, q.aircraft_id, role, body, ["aircraft is synthetic (the demo's engineers are synthetic)"],
+               REAL_AIRCRAFT_REASON)
+    conditions = a.results[q.ad_id].unknown_conditions
+    if len(conditions) != 1:
+        raise NotFound("ANSWER_NOT_SUPPORTED", "Only questions about exactly one fact can be answered yet "
+                       "(multi-fact and serial questions: not built yet).",
+                       {"question_id": question_id, "unknown_facts": [c.fact for c in conditions]}, HTTP_UNPROCESSABLE)
+    cond = conditions[0]
+    positive = POSITIVE_VALUE[cond.kind]
+    value = positive if body.answer == "yes" else OPPOSITE[positive]
+    decision_id = f"D-{len(STATE.decisions) + 1:04d}"
+    entry = log_action("AnswerQuestion", role, {"question_id": question_id, **body.model_dump()},
+                       [decision_id, q.aircraft_id], "ok")
+    person = DEMO_PEOPLE[ANSWER_ROLE]
+    decision = DecisionRecord(
+        id=decision_id, question_id=question_id, question=q.text, aircraft_id=q.aircraft_id, ad_id=q.ad_id,
+        answer=body.answer, facts={cond.fact: value}, rationale=body.note, evidence=[body.note], made_by=person,
+        made_at=entry.at, action_log_id=entry.id, synthetic=True, citations=q.citations,
+        reasoning_path=[
+            ReasoningStep(from_=decision_id, link="madeBy", to=person.id, derived=False,
+                          note=f"role {person.role} (synthetic)", rule_id=rules.R_DECISION_ANSWER),
+            ReasoningStep(from_=decision_id, link="justifiedBy", to=q.ad_id, derived=False,
+                          note=f"answers {question_id}: {cond.fact} = {value}", rule_id=rules.R_DECISION_ANSWER)])
+    STATE.decisions.append(decision)
+    after = assess(q.aircraft_id).status
+    return AnswerResponse(decision=decision, action_log=entry,
+                          aircraft_status=StatusChange(aircraft_id=q.aircraft_id, from_=a.status, to=after))
 
 
 @app.get("/questions", response_model=QuestionsResponse)
@@ -413,7 +544,9 @@ def questions(aircraft_id: str | None = None) -> QuestionsResponse:
     """Unknown aircraft_id → 404 (contract rule 2: never a 200 with empty data for a missing object)."""
     ids = [get_aircraft(aircraft_id).id] if aircraft_id is not None else list(STATE.aircraft)
     found = [q for ac_id in ids for q in assess(ac_id).questions]
-    return QuestionsResponse(questions=rules.sort_questions(found), urgency_rule=rules.URGENCY_RULE)
+    refused = [r for r in STATE.refused if aircraft_id is None or r.aircraft_id == aircraft_id]
+    return QuestionsResponse(questions=rules.sort_questions(found), urgency_rule=rules.URGENCY_RULE,
+                             refused_attempts=refused)
 
 
 def ad_extraction(golden_ad: LoadedAD) -> AdExtraction:

@@ -3,7 +3,7 @@ so a missing quote or title is a data bug to fix, not to skip."""
 import csv
 import json
 import logging
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 
 from pydantic import ValidationError
@@ -41,6 +41,10 @@ class State:
     aircraft: dict[str, Aircraft]
     logbook: list[LogbookRow]
     ingest_runs: int = 0
+    # Human actions in the demo (cleared by /demo/reset; in memory only)
+    decisions: list = field(default_factory=list)  # DecisionRecord
+    action_log: list = field(default_factory=list)  # ActionLogEntry, refused attempts included
+    refused: list = field(default_factory=list)  # RefusedAttempt
 
 
 def ad_text(ad: LoadedAD) -> str:

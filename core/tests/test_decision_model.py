@@ -56,6 +56,10 @@ def fired_everywhere() -> set[str]:
     odd.append(demo01.model_copy(update={"id": "T-4", "serial": "172S9000"}))
     for ac in odd:
         fired |= set(rules.assess(ac, ADS, log, TODAY).rule_ids)
+    from app.ontology import Fact  # a human decision supplying a fact (answered QUESTION)
+    fired |= set(rules.assess(STATE.aircraft["DEMO-03"], ADS, STATE.logbook, TODAY,
+                              [Fact(id="D-T", aircraft_id="DEMO-03", fact="ECi_AEL65102_cylinders_installed",
+                                    value="no")]).rule_ids)
     for path in ["/aircraft/DEMO-01/ads/FAA%3A2006-20-09/supersession"]:
         for step in client.get(path).json()["reasoning_path"]:
             fired.add(step["rule_id"])

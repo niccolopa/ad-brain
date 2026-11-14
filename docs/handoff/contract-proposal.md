@@ -61,3 +61,21 @@ plus optional:
   decided_by: "extraction"|"golden"|"not_loaded", reason, misses: [{field, agent_proposed: [..], golden: [..],
   decided: "golden"}]}`.
 - 404 `AD_NOT_FOUND` for an AD with no golden record, including ADs only named by another AD (e.g. FAA:2008-03-02).
+
+## 6. Answering a QUESTION (human DECISION)
+- New `POST /questions/{id}/answer` with `{answer: "yes"|"no", answered_by_role, note}` (note = rationale, required).
+  200 → `{decision: Decision, action_log: ActionLog, aircraft_status: {aircraft_id, from, to}}`.
+  - 403 `SUBMISSION_CRITERIA_FAILED` (logged; `details.attempt_logged_as`): role ≠ `certifying_engineer`, or a
+    real aircraft ("real aircraft: needs a real certifying engineer" — the demo's engineer is synthetic).
+  - 404 `QUESTION_NOT_FOUND` · 409 `ALREADY_ANSWERED` · 422 `ANSWER_NOT_SUPPORTED` (question about more than one
+    fact, or a serial question: not built yet) · 422 `VALIDATION_ERROR` (malformed body, Error shape).
+- `Decision` (q4 shape) gains `question_id`, `question`, `answer`, `facts: {fact: value}`; `what` is
+  `"answer_question"`; `made_by` is `P-CE-1` (synthetic); `reasoning_path` = madeBy + justifiedBy, `rule_id`
+  `R-DECISION-ANSWER`.
+- `GET /decisions` returns the real records (empty after `/demo/reset`; the example's D-DEMO05-1 is gone);
+  unknown `aircraft_id` → 404.
+- `GET /questions` gains optional `refused_attempts: [{id, at, action, question_id, aircraft_id, actor_role,
+  failed_criteria, reason}]`, so the UI can show a refusal.
+- `POST /evaluations/{id}/replay` gains optional `current: {status, verdicts, inputs_changed, decisions_added,
+  decisions_removed, same_as_recorded}`: the same aircraft and date with today's logbook and decisions.
+- Evaluation `inputs` gains `decisions` when the aircraft has any.

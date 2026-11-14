@@ -1,7 +1,7 @@
 """Shared shapes from contract/README.md ("Shared shapes"). The UI generates its types from these."""
-from typing import Any, Literal
+from typing import Annotated, Any, Literal
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, StringConstraints
 
 EpistemicClass = Literal["REGULATION", "DECISION", "OBSERVATION", "HYPOTHESIS", "QUESTION"]
 Status = Literal["active", "superseded", "contested"]
@@ -128,6 +128,16 @@ class LoadedAD(BaseModel):
                         source_url=self.source_url, origin="golden")  # every quote we cite is a golden one
 
 
+class Fact(BaseModel):
+    """A fact about an aircraft supplied by a human DECISION (an answered QUESTION). Used by the rules exactly like
+    an observed logbook fact; a disagreement with an observation becomes a contradiction QUESTION."""
+    id: str  # the decision id, e.g. D-0001
+    aircraft_id: str
+    fact: str
+    value: FactValue
+    source: Literal["decision"] = "decision"
+
+
 # ---------- Contract objects (contract/README.md, "Object types") ----------
 
 class Aircraft(BaseModel):
@@ -251,10 +261,85 @@ class FleetResponse(BaseModel):
     computed_at: str
 
 
+Role = Literal["mechanic", "certifying_engineer", "agent"]
+
+
+class Person(BaseModel):
+    id: str
+    name: str
+    role: Role
+    synthetic: bool
+
+
+class ActionLogEntry(BaseModel):
+    """Every action attempt, done or refused: who, when, what, why."""
+    id: str
+    action: str
+    actor: dict
+    at: str
+    params: dict
+    objects_edited: list[str]
+    result: Literal["ok", "refused"]
+    reason: str | None = None
+
+
+class RefusedAttempt(BaseModel):
+    """An action that failed its submission criteria; shown by the UI next to the question."""
+    id: str  # the action-log id
+    at: str
+    action: str
+    question_id: str
+    aircraft_id: str
+    actor_role: str
+    failed_criteria: list[str]
+    reason: str
+
+
 class QuestionsResponse(BaseModel):
     """Q5 — GET /questions, sorted by urgency, then days_left."""
     questions: list[Question]
     urgency_rule: str
+    refused_attempts: list[RefusedAttempt] | None = None  # optional for the contract
+
+
+class AnswerRequest(BaseModel):
+    """POST /questions/{id}/answer."""
+    answer: Literal["yes", "no"]
+    answered_by_role: Annotated[str, StringConstraints(strip_whitespace=True, min_length=1)]
+    note: Annotated[str, StringConstraints(strip_whitespace=True, min_length=1)]  # the rationale; required
+
+
+class DecisionRecord(BaseModel):
+    """A human DECISION: a certifying engineer answered a QUESTION. Supplies a fact the rules use."""
+    id: str
+    what: Literal["answer_question"] = "answer_question"
+    question_id: str
+    question: str
+    aircraft_id: str
+    ad_id: str
+    answer: Literal["yes", "no"]
+    facts: dict[str, FactValue]
+    rationale: str
+    evidence: list[str]
+    made_by: Person
+    made_at: str
+    epistemic_class: Literal["DECISION"] = "DECISION"
+    status: Status = "active"
+    action_log_id: str
+    synthetic: bool
+    citations: list[Citation]
+    reasoning_path: list[ReasoningStep]
+
+
+class DecisionsResponse(BaseModel):
+    """Q4 — GET /decisions?aircraft_id=&ad_id="""
+    decisions: list[DecisionRecord]
+
+
+class AnswerResponse(BaseModel):
+    decision: DecisionRecord
+    action_log: ActionLogEntry
+    aircraft_status: "StatusChange"
 
 
 class ChainLink(BaseModel):
@@ -334,6 +419,16 @@ class ReplayChanges(BaseModel):
     ads_changed: list[str]
 
 
+class CurrentReplay(BaseModel):
+    """The same aircraft and date with today's inputs (logbook + decisions): shows what a new decision changed."""
+    status: AircraftStatus
+    verdicts: dict[str, Literal["applies", "not_applicable", "unknown"]]
+    inputs_changed: bool
+    decisions_added: list[str]
+    decisions_removed: list[str]
+    same_as_recorded: bool
+
+
 class ReplayResponse(BaseModel):
     """POST /evaluations/{id}/replay: same recorded inputs, current rules."""
     evaluation_id: str
@@ -344,6 +439,7 @@ class ReplayResponse(BaseModel):
     replay_evaluation_id: str
     inputs_hash: str
     replayed_at: str
+    current: CurrentReplay | None = None  # optional for the contract
 
 
 class ApplicabilityGroup(BaseModel):
@@ -477,7 +573,8 @@ class DemoResetResponse(BaseModel):
 
 # Optional top-level fields proposed in docs/handoff/contract-proposal.md (not yet in contract/examples/).
 PROPOSED_OPTIONAL_FIELDS = frozenset({"evaluation_id", "rules_version", "inputs_hash", "extraction", "loaded",
-                                      "applicability", "conditions", "not_evaluated", "credited_compliance"})
+                                      "applicability", "conditions", "not_evaluated", "credited_compliance",
+                                      "refused_attempts", "current"})
 
 
 def shape_errors(expected: dict, actual: object) -> list[str]:

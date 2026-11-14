@@ -5,7 +5,18 @@ from dataclasses import dataclass, field
 from datetime import date
 from typing import Literal
 
-from app.ontology import OPPOSITE, Aircraft, Citation, GoldenApplicability, LoadedAD, LogbookRow, Question, Urgency
+from app.ontology import (
+    OPPOSITE,
+    Aircraft,
+    Citation,
+    Fact,
+    GoldenApplicability,
+    GoldenCondition,
+    LoadedAD,
+    LogbookRow,
+    Question,
+    Urgency,
+)
 
 log = logging.getLogger("adbrain.rules")
 
@@ -54,6 +65,7 @@ R_STATUS_AMBER = "R-STATUS-AMBER"
 R_STATUS_GREEN = "R-STATUS-GREEN"
 R_REAL_NO_RECORDS = "R-REAL-NO-RECORDS"
 R_URGENCY = "R-URGENCY"
+R_DECISION_ANSWER = "R-DECISION-ANSWER"
 RULE_IDS = frozenset(v for k, v in dict(globals()).items() if k.startswith("R_") and isinstance(v, str))
 STATUS_RULE = {"red": R_STATUS_RED, "amber": R_STATUS_AMBER, "green": R_STATUS_GREEN,
                "no_records": R_REAL_NO_RECORDS}
@@ -77,6 +89,7 @@ class Applicability:
     via: Via = "airframe"
     rule_ids: list[str] = field(default_factory=list)  # every rule that fired, in order
     decided_by: str = ""  # the rule that decided the verdict
+    unknown_conditions: list[GoldenCondition] = field(default_factory=list)  # what an answer to its QUESTION sets
 
 
 def normalise_model(raw: str) -> str:
@@ -145,7 +158,7 @@ def engine_id(aircraft: Aircraft) -> str:
     return aircraft.id + ENGINE_ID_SUFFIX
 
 
-def evaluate(ad: LoadedAD, aircraft: Aircraft, facts: dict[str, list[LogbookRow]]) -> Applicability:
+def evaluate(ad: LoadedAD, aircraft: Aircraft, facts: dict[str, list[LogbookRow | Fact]]) -> Applicability:
     """Model + serial range + conditions. `facts` = this aircraft's observations by fact key.
     Rows are matched on the airframe model first, else on the installed engine model (inferred link)."""
     model = normalise_model(aircraft.model)
@@ -206,6 +219,8 @@ def evaluate(ad: LoadedAD, aircraft: Aircraft, facts: dict[str, list[LogbookRow]
         obs = facts.get(cond.fact, [])
         values = {o.value for o in obs}
         used += [o.id for o in obs]
+        if any(getattr(o, "source", "observation") == "decision" for o in obs):
+            fired.append(R_DECISION_ANSWER)  # a person with a role supplied this fact by answering a QUESTION
         if len(values) > 1:
             log.warning("contradicting observations %s for %s on %s", [o.id for o in obs], cond.fact, aircraft.id)
             unknown.append(cond)
@@ -237,7 +252,7 @@ def evaluate(ad: LoadedAD, aircraft: Aircraft, facts: dict[str, list[LogbookRow]
         question = " ".join(tpl.format(values=" or ".join(v), ac=aircraft.id) for tpl, v in by_template.items())
         decided = R_CONTRADICTION_TO_QUESTION if R_CONTRADICTION_TO_QUESTION in fired else R_CONDITION_UNKNOWN
         return Applicability("unknown", why, row=match, question=question, citations=cites, observations=used,
-                             via=via, rule_ids=fired, decided_by=decided)
+                             via=via, rule_ids=fired, decided_by=decided, unknown_conditions=unknown)
     return Applicability("applies", why, row=match, citations=cites, observations=used, via=via, rule_ids=fired,
                          decided_by=decided)
 
@@ -299,12 +314,16 @@ class Assessment:
     rule_ids: list[str] = field(default_factory=list)  # every rule that fired for this aircraft, status rule last
 
 
-def assess(aircraft: Aircraft, ads: list[LoadedAD], logbook: list[LogbookRow], today: date) -> Assessment:
+def assess(aircraft: Aircraft, ads: list[LoadedAD], logbook: list[LogbookRow], today: date,
+           decision_facts: list[Fact] | tuple[Fact, ...] = ()) -> Assessment:
     rows = [r for r in logbook if r.aircraft_id == aircraft.id]
-    facts: dict[str, list[LogbookRow]] = {}
+    facts: dict[str, list[LogbookRow | Fact]] = {}
     for r in rows:
         if r.kind == "observation" and r.fact:
             facts.setdefault(r.fact, []).append(r)
+    for f in decision_facts:
+        if f.aircraft_id == aircraft.id:
+            facts.setdefault(f.fact, []).append(f)
     records = {r.ad_id: r for r in rows if r.kind == "compliance"}
     compliance: dict[str, LogbookRow] = {}
     credits: dict[str, Citation] = {}
