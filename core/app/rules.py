@@ -197,6 +197,17 @@ def urgency(days_left: int) -> Urgency:
     return "medium" if days_left <= URGENCY_MEDIUM_DAYS else "low"
 
 
+URGENCY_RULE = (f"overdue < 0 days · high ≤ {URGENCY_HIGH_DAYS} · medium ≤ {URGENCY_MEDIUM_DAYS} · "
+                f"low > {URGENCY_MEDIUM_DAYS} (days until the deadline)")
+URGENCY_ORDER = {"overdue": 0, "high": 1, "medium": 2, "low": 3, None: 4}  # None: real aircraft, no deadline
+
+
+def sort_questions(questions: list[Question]) -> list[Question]:
+    """By urgency, then days_left (no deadline last), then id for a stable order."""
+    return sorted(questions, key=lambda q: (URGENCY_ORDER[q.urgency],
+                                            q.days_left if q.days_left is not None else float("inf"), q.id))
+
+
 def due_citation(ad: LoadedAD, row: GoldenApplicability | None) -> Citation | None:
     """The compliance-time quote naming the matched group ('Group 3 and Group 4' for Group 4); else None."""
     label = group_label(row) if row else None

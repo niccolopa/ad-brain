@@ -1,5 +1,5 @@
 """One endpoint per business question (contract/README.md, "Endpoints").
-Real: Q1 status, Q2 affected-aircraft and ingest, demo reset. The rest still serve contract/examples/ (fakes)."""
+Real: fleet, Q1 status, Q2 affected-aircraft and ingest, Q5 questions, demo reset. The rest still serve contract/examples/ (fakes)."""
 import json
 import logging
 from datetime import UTC, date, datetime
@@ -20,10 +20,13 @@ from app.ontology import (
     DemoResetResponse,
     Due,
     Error,
+    FleetAircraft,
+    FleetResponse,
     IngestChanges,
     IngestResponse,
     LoadedAD,
     NotAffected,
+    QuestionsResponse,
     ReasoningStep,
     ResetCounts,
     StatusChange,
@@ -236,9 +239,31 @@ def ingest(ad_id: str) -> IngestResponse:
         reasoning_path=path)
 
 
-@app.get("/fleet")
-def fleet() -> JSONResponse:
-    return example("fleet")
+def fleet_reason(a: rules.Assessment) -> str:
+    """One line for the fleet board (template, no LLM)."""
+    applies = [(k, r) for k, r in a.results.items() if r.verdict == "applies"]
+    if a.status == "no_records":
+        return rules.NO_RECORDS_REASON if applies else "No AD in the loaded set applies — no compliance records in this system"
+    if a.status == "red":
+        return "; ".join(f"AD {k} applies ({rules.group_label(r.row) if r.row and rules.group_label(r.row) else r.why})"
+                         " and has no compliance record" for k, r in applies if k not in a.compliance)
+    if a.status == "amber":
+        q = rules.sort_questions(a.questions)
+        line = f"Open question: {q[0].text} (AD {q[0].ad_id})"
+        if q[0].days_left is not None and q[0].days_left <= rules.URGENCY_HIGH_DAYS:
+            line += f" — ARC review in {q[0].days_left} days"
+        return line + (f" (+{len(q) - 1} more)" if len(q) > 1 else "")
+    return "All applicable ADs complied with or not applicable"
+
+
+@app.get("/fleet", response_model=FleetResponse)
+def fleet() -> FleetResponse:
+    rows = []
+    for ac_id in STATE.aircraft:
+        a = assess(ac_id)
+        rows.append(FleetAircraft(**a.aircraft.model_dump(), status=a.status, reason=fleet_reason(a),
+                                  open_questions=len(a.questions)))
+    return FleetResponse(aircraft=rows, computed_at=now_utc())
 
 
 @app.get("/aircraft/{aircraft_id}/ads/{ad_id}/supersession")
@@ -251,9 +276,12 @@ def decisions(aircraft_id: str | None = None, ad_id: str | None = None) -> JSONR
     return example("q4-decisions")
 
 
-@app.get("/questions")
-def questions(aircraft_id: str | None = None) -> JSONResponse:
-    return example("q5-questions")
+@app.get("/questions", response_model=QuestionsResponse)
+def questions(aircraft_id: str | None = None) -> QuestionsResponse:
+    """Unknown aircraft_id → 404 (contract rule 2: never a 200 with empty data for a missing object)."""
+    ids = [get_aircraft(aircraft_id).id] if aircraft_id is not None else list(STATE.aircraft)
+    found = [q for ac_id in ids for q in assess(ac_id).questions]
+    return QuestionsResponse(questions=rules.sort_questions(found), urgency_rule=rules.URGENCY_RULE)
 
 
 @app.get("/ads/{ad_id}")

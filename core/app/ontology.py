@@ -227,6 +227,25 @@ class AffectedAircraftResponse(BaseModel):
     reasoning_path: list[ReasoningStep]
 
 
+class FleetAircraft(Aircraft):
+    """One row of the fleet board: identity + status + one-line reason."""
+    status: AircraftStatus
+    reason: str
+    open_questions: int
+
+
+class FleetResponse(BaseModel):
+    """GET /fleet."""
+    aircraft: list[FleetAircraft]
+    computed_at: str
+
+
+class QuestionsResponse(BaseModel):
+    """Q5 — GET /questions, sorted by urgency, then days_left."""
+    questions: list[Question]
+    urgency_rule: str
+
+
 class ValidatedField(BaseModel):
     """One extracted field and the check of its quote against the AD text."""
     field: str
