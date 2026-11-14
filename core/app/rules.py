@@ -9,7 +9,7 @@ from app.ontology import OPPOSITE, Aircraft, Citation, GoldenApplicability, Load
 
 log = logging.getLogger("adbrain.rules")
 
-MANUFACTURER_PREFIXES = ("CESSNA", "TECNAM")
+MANUFACTURER_PREFIXES = ("CESSNA", "TECNAM", "LYCOMING")
 # Register format "<model>-<digits>" → AD serial format. Only these models; anything else is unclear.
 REGISTER_HYPHEN_PREFIX = {"172S": "172S", "172R": "172"}  # 172S-10705 → 172S10705 · 172R-80221 → 17280221
 SERIAL_RE = re.compile(r"^(?P<prefix>(?:.*[A-Z])?)(?P<number>\d+)$")
@@ -18,10 +18,15 @@ URGENCY_MEDIUM_DAYS = 90
 NO_RECORDS_REASON = "AD applies — no compliance records in this system"
 QUESTION_BLOCKS = "ARC review sign-off"
 QUESTION_DEADLINE_DRIVER = "ARC review due (synthetic)"
-CONDITION_VERB = {"equipment_installed": "installed", "part_installed": "installed",
-                  "modification_not_embodied": "embodied"}
+QUESTION_TEMPLATE = {"equipment_installed": "Is {values} installed on {ac}?",
+                     "part_installed": "Is {values} installed on {ac}?",
+                     "modification_not_embodied": "Is {values} embodied on {ac}?",
+                     "serial_listed": "Is {ac}'s {values}?"}
+NOT_EVALUATED_NOTE = "not evaluated: {clause} (see notes)"
+ENGINE_ID_SUFFIX = "/engine"
 
 Verdict = Literal["applies", "not_applicable", "unknown"]
+Via = Literal["airframe", "engine"]
 
 
 @dataclass(frozen=True)
@@ -39,6 +44,7 @@ class Applicability:
     question: str | None = None
     citations: list[Citation] = field(default_factory=list)
     observations: list[str] = field(default_factory=list)  # logbook row ids used
+    via: Via = "airframe"
 
 
 def normalise_model(raw: str) -> str:
@@ -97,16 +103,41 @@ def group_label(row: GoldenApplicability) -> str | None:
     return m[1] if m else None
 
 
+def model_matches(row: GoldenApplicability, model: str) -> bool:
+    """Exact model, or for a series row ('IO-360') any model of that series ('IO-360-L2A', not 'AEIO-360-B1B')."""
+    m = normalise_model(row.model)
+    return model.startswith(m + "-") if row.series else model == m
+
+
+def engine_id(aircraft: Aircraft) -> str:
+    return aircraft.id + ENGINE_ID_SUFFIX
+
+
 def evaluate(ad: LoadedAD, aircraft: Aircraft, facts: dict[str, list[LogbookRow]]) -> Applicability:
-    """Model + serial range + conditions. `facts` = this aircraft's observations by fact key."""
+    """Model + serial range + conditions. `facts` = this aircraft's observations by fact key.
+    Rows are matched on the airframe model first, else on the installed engine model (inferred link)."""
     model = normalise_model(aircraft.model)
-    rows = [r for r in ad.golden.applicability if normalise_model(r.model) == model]
+    rows = [r for r in ad.golden.applicability if model_matches(r, model)]
+    via: Via = "airframe"
     if not rows:
-        return Applicability("not_applicable", f"model {model} is not listed")
+        engine = normalise_model(aircraft.engine_model)
+        rows = [r for r in ad.golden.applicability if model_matches(r, engine)]
+        if not rows:
+            return Applicability("not_applicable", f"model {model} and engine {engine} are not listed")
+        via = "engine"
 
     ranged = [r for r in rows if r.serial_from is not None or r.serial_to is not None]
     match = next((r for r in rows if r not in ranged), None)  # an all-serials row matches any serial
-    if match is None:
+    if match is None and via == "engine":
+        # ponytail: no engine serials in this system; a ranged engine row can only be a question
+        return Applicability("unknown", f"engine serial not in this system: {engine_id(aircraft)}",
+                             question=f"engine serial unclear: {engine_id(aircraft)}",
+                             citations=[ad.cite(r.quote) for r in rows], via=via)
+    if via == "engine":
+        assert match is not None
+        why = (f"engine {engine} is an {match.model} series engine" if match.series
+               else f"engine {engine} is listed")
+    elif match is None:
         norm = normalise_serial(aircraft.serial, model)
         serial = parse_serial(norm) if norm else None
         if serial is None or all(parse_serial(r.serial_from or r.serial_to).prefix != serial.prefix for r in ranged):
@@ -137,19 +168,24 @@ def evaluate(ad: LoadedAD, aircraft: Aircraft, facts: dict[str, list[LogbookRow]
             why += f"; {cond.fact} = {cond.applies_when} ({obs[0].id})"
         elif values == {OPPOSITE[cond.applies_when]}:
             return Applicability("not_applicable", f"{why}, but {cond.fact} = {obs[0].value} ({obs[0].id})",
-                                 row=match, citations=cites + [ad.cite(cond.quote)], observations=used)
+                                 row=match, citations=cites + [ad.cite(cond.quote)], observations=used, via=via)
         else:
             if values:
                 log.warning("observation value %s does not fit condition %s on %s", values, cond.fact, aircraft.id)
             unknown.append(cond)
+    # Never hide a limit: clauses the rules do not evaluate are named in the answer and cited.
+    for n in ad.golden.not_evaluated:
+        why += "; " + NOT_EVALUATED_NOTE.format(clause=n.clause)
+        cites.append(ad.cite(n.quote))
     if unknown:
         cites += [ad.cite(q) for q in dict.fromkeys(c.quote for c in unknown)]
-        by_verb: dict[str, list[str]] = {}
+        by_template: dict[str, list[str]] = {}
         for c in unknown:
-            by_verb.setdefault(CONDITION_VERB[c.kind], []).append(c.value)
-        question = " ".join(f"Is {' or '.join(v)} {verb} on {aircraft.id}?" for verb, v in by_verb.items())
-        return Applicability("unknown", why, row=match, question=question, citations=cites, observations=used)
-    return Applicability("applies", why, row=match, citations=cites, observations=used)
+            by_template.setdefault(QUESTION_TEMPLATE[c.kind], []).append(c.value)
+        question = " ".join(tpl.format(values=" or ".join(v), ac=aircraft.id) for tpl, v in by_template.items())
+        return Applicability("unknown", why, row=match, question=question, citations=cites, observations=used,
+                             via=via)
+    return Applicability("applies", why, row=match, citations=cites, observations=used, via=via)
 
 
 def urgency(days_left: int) -> Urgency:
@@ -190,9 +226,11 @@ class Assessment:
     """Everything Q1 and Q2 need about one aircraft against the loaded ADs."""
     aircraft: Aircraft
     status: str
-    results: dict[str, Applicability]  # ad_id → verdict
-    compliance: dict[str, LogbookRow]  # ad_id → compliance record
+    results: dict[str, Applicability]  # ad_id → verdict, active ADs only
+    compliance: dict[str, LogbookRow]  # ad_id → compliance record (its own, or a credited AD's)
+    credits: dict[str, Citation]  # ad_id → quote that credits the record of another AD
     questions: list[Question]
+    superseded: list[str]  # ADs that would apply but are superseded by an active AD: not counted for status
 
 
 def assess(aircraft: Aircraft, ads: list[LoadedAD], logbook: list[LogbookRow], today: date) -> Assessment:
@@ -201,8 +239,22 @@ def assess(aircraft: Aircraft, ads: list[LoadedAD], logbook: list[LogbookRow], t
     for r in rows:
         if r.kind == "observation" and r.fact:
             facts.setdefault(r.fact, []).append(r)
-    compliance = {r.ad_id: r for r in rows if r.kind == "compliance"}
-    results = {ad.ad_id: evaluate(ad, aircraft, facts) for ad in ads}
+    records = {r.ad_id: r for r in rows if r.kind == "compliance"}
+    compliance: dict[str, LogbookRow] = {}
+    credits: dict[str, Citation] = {}
+    for ad in ads:
+        if ad.ad_id in records:
+            compliance[ad.ad_id] = records[ad.ad_id]
+            continue
+        for credit in ad.golden.credited_compliance:
+            if credit.ad_id in records:
+                compliance[ad.ad_id], credits[ad.ad_id] = records[credit.ad_id], ad.cite(credit.quote)
+                break
+    loaded = {ad.ad_id for ad in ads}
+    replaced = {old for ad in ads for old in ad.golden.supersedes + ad.golden.revises if old in loaded}
+    all_results = {ad.ad_id: evaluate(ad, aircraft, facts) for ad in ads}
+    superseded = [k for k, r in all_results.items() if k in replaced and r.verdict != "not_applicable"]
+    results = {k: r for k, r in all_results.items() if k not in replaced}
 
     questions = []
     deadline = aircraft.arc_review_due if aircraft.synthetic else None
@@ -217,4 +269,4 @@ def assess(aircraft: Aircraft, ads: list[LoadedAD], logbook: list[LogbookRow], t
                 synthetic=aircraft.synthetic, citations=res.citations))
     unrecorded = any(r.verdict == "applies" and ad_id not in compliance for ad_id, r in results.items())
     return Assessment(aircraft, aircraft_status(aircraft.synthetic, unrecorded, bool(questions)),
-                      results, compliance, questions)
+                      results, compliance, credits, questions, superseded)

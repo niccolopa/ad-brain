@@ -16,6 +16,7 @@ REPO = Path(__file__).resolve().parents[2]
 DATA = REPO / "data"
 GOLDEN_DIR = DATA / "golden"
 GOLDEN_TEMPLATE = "TEMPLATE.json"
+GOLDEN_DRAFTS_DIR = GOLDEN_DIR / "drafts"  # unchecked drafts: never loaded by load()
 ADS_DIR = DATA / "raw" / "ads"
 INDEX_MD = DATA / "raw" / "INDEX.md"
 SOURCES_CSV = ADS_DIR / "SOURCES.csv"
@@ -60,6 +61,8 @@ def field_checks(ad: LoadedAD, text: str) -> list[ValidatedField]:
     if g.revises:
         items.append(("revises", g.revises, fq.get("revises", [])))
     items.append(("compliance_time", g.compliance_time_text, fq.get("compliance_time_text", [])))
+    items += [("not_evaluated", n.clause, [n.quote]) for n in g.not_evaluated]
+    items += [("credited_compliance", c.ad_id, [c.quote]) for c in g.credited_compliance]
     out = []
     for name, value, quotes in items:
         for q in quotes or [""]:  # a value with no quote is rejected, never silently accepted
@@ -105,11 +108,12 @@ def _bool(value: str, where: str) -> bool:
     return value == CSV_TRUE
 
 
-def load_ads() -> dict[str, LoadedAD]:
+def load_ads(golden_dir: Path | None = None) -> dict[str, LoadedAD]:
+    """Golden ADs in golden_dir (default GOLDEN_DIR; not recursive, so drafts/ is never loaded)."""
     titles = parse_index_titles(INDEX_MD.read_text(encoding="utf-8"))
     sources = {r["id"]: r for r in _read_csv(SOURCES_CSV, {"id", "file", "source_url"})}
     ads: dict[str, LoadedAD] = {}
-    for path in sorted(GOLDEN_DIR.glob("*.json")):
+    for path in sorted((golden_dir or GOLDEN_DIR).glob("*.json")):
         if path.name == GOLDEN_TEMPLATE:
             continue
         try:
@@ -127,6 +131,7 @@ def load_ads() -> dict[str, LoadedAD]:
         text = txt.read_text(encoding="utf-8")
         quotes = [r.quote for r in golden.applicability] + [c.quote for c in golden.conditions]
         quotes += [q for qs in golden.field_quotes.values() for q in qs]
+        quotes += [n.quote for n in golden.not_evaluated] + [c.quote for c in golden.credited_compliance]
         for q in quotes:
             n = quote_count(q, text)
             if n == 0:

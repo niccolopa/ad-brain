@@ -170,3 +170,24 @@ def test_not_loaded_must_name_a_golden_ad(monkeypatch):
     monkeypatch.setattr(store, "NOT_LOADED_AT_RESET", frozenset({"FAA:0000-00-00"}))
     with pytest.raises(store.DataError, match="NOT_LOADED_AT_RESET"):
         store.load()
+
+
+@pytest.mark.parametrize("extra", [
+    {"credited_compliance": [{"ad_id": "2024-0152", "quote": "Revision: This AD revises EASA AD 2024-0152"}]},
+    {"credited_compliance": [{"ad_id": "EASA:2024-0152", "quote": "not in the text"}]},
+    {"not_evaluated": [{"clause": "x", "quote": ""}]},
+    {"not_evaluated": [{"clause": "", "quote": "Revision: This AD revises EASA AD 2024-0152"}]},
+    {"not_evaluated": [{"clause": "x", "quote": "not in the text"}]},
+    {"applicability": [{"model": "P2008 JC", "series": "sometimes", "serial_from": None, "serial_to": None,
+                        "quote": "P2008 JC"}]},
+])
+def test_bad_new_golden_keys_fail(golden_copy, extra):
+    _edit(golden_copy / "EASA-2024-0152R1.json", lambda d: d.update(extra))
+    with pytest.raises(store.DataError):
+        store.load_ads()
+
+
+def test_field_checks_cover_new_keys():
+    ad = store.load_ads(store.GOLDEN_DRAFTS_DIR)["FAA:2012-19-01"]
+    fields = {c.field for c in store.field_checks(ad, store.ad_text(ad))}
+    assert {"not_evaluated", "credited_compliance"} <= fields

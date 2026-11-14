@@ -85,6 +85,19 @@ def assess(aircraft_id: str) -> rules.Assessment:
     return rules.assess(get_aircraft(aircraft_id), list(STATE.ads.values()), STATE.logbook, date.today())
 
 
+def applies_path(aircraft: Aircraft, ad_id: str, res: rules.Applicability, suffix: str = "") -> list[ReasoningStep]:
+    """AD appliesTo aircraft; via the engine: aircraft hasInstalled engine + AD appliesTo engine ⇒ derived link."""
+    if res.via == "airframe":
+        return [ReasoningStep(from_=ad_id, link="appliesTo", to=aircraft.id, derived=False, note=res.why + suffix)]
+    eng = rules.engine_id(aircraft)
+    return [
+        ReasoningStep(from_=aircraft.id, link="hasInstalled", to=eng, derived=False, note=aircraft.engine_model),
+        ReasoningStep(from_=ad_id, link="appliesTo", to=eng, derived=False, note=res.why),
+        ReasoningStep(from_=ad_id, link="appliesTo", to=aircraft.id, derived=True,
+                      note=f"inferred from the two links above: {res.why}{suffix}"),
+    ]
+
+
 def summary(a: rules.Assessment, applicable: list[ApplicableAD]) -> str:
     """Template text (no LLM): the UI never needs a live call to render."""
     ac = a.aircraft.id
@@ -107,22 +120,22 @@ def aircraft_status(aircraft_id: str) -> AircraftStatusResponse:
     for ad_id, res in a.results.items():
         if res.verdict != "applies":
             continue
-        ad, rec = STATE.ads[ad_id], a.compliance.get(ad_id)
+        ad, rec, credit = STATE.ads[ad_id], a.compliance.get(ad_id), a.credits.get(ad_id)
         applicable.append(ApplicableAD(
             ad_id=ad_id, title=ad.title, status=ad_object(ad).status, applies_because=res.why,
             compliance=ComplianceState(state="complied" if rec else "no_record", record_id=rec.id if rec else None),
             due=Due(text=ad.golden.compliance_time_text, citation=rules.due_citation(ad, res.row),
                     overdue=(rec is None) if a.aircraft.synthetic else None),
-            citations=res.citations))
-        note = res.why + (f"; complied {rec.id}" if rec else "; no compliance record")
-        path.append(ReasoningStep(from_=ad_id, link="appliesTo", to=a.aircraft.id, derived=False, note=note))
+            citations=res.citations + ([credit] if credit else [])))
+        path += applies_path(a.aircraft, ad_id, res, f"; complied {rec.id}" if rec else "; no compliance record")
         if rec:
-            path.append(ReasoningStep(from_=rec.id, link="satisfies", to=ad_id, derived=False, note=rec.text))
+            note = f"credited: compliance with {rec.ad_id}: {credit.quote}" if credit else rec.text
+            path.append(ReasoningStep(from_=rec.id, link="satisfies", to=ad_id, derived=False, note=note))
     citations = [c for x in applicable for c in x.citations + ([x.due.citation] if x.due.citation else [])]
     citations += [c for q in a.questions for c in q.citations]
     return AircraftStatusResponse(
         aircraft=a.aircraft, status=a.status, summary=summary(a, applicable), summary_source="template",
-        applicable_ads=applicable, superseded_ads=[], open_questions=a.questions, hypotheses=[],
+        applicable_ads=applicable, superseded_ads=a.superseded, open_questions=a.questions, hypotheses=[],
         citations=list({c.model_dump_json(): c for c in citations}.values()),  # dedupe, keep order
         reasoning_path=path, computed_at=now_utc())
 
@@ -133,13 +146,15 @@ def affected_aircraft(ad_id: str) -> AffectedAircraftResponse:
     affected, not_affected, questions, path, citations = [], [], [], [], []
     for ac in STATE.aircraft.values():
         a = assess(ac.id)
-        res = a.results[ad_id]
-        if res.verdict == "applies":
+        res = a.results.get(ad_id)
+        if res is None:  # superseded by an active AD
+            not_affected.append(NotAffected(aircraft_id=ac.id, why=f"{ad_id} is superseded"))
+        elif res.verdict == "applies":
             all_serials = res.row is not None and res.row.serial_from is None and res.row.serial_to is None
-            affected.append(AffectedAircraft(aircraft_id=ac.id, model=ac.model, serial=ac.serial,
-                                             via="all_serials" if all_serials else "serial_range",
+            via = "installed_engine" if res.via == "engine" else "all_serials" if all_serials else "serial_range"
+            affected.append(AffectedAircraft(aircraft_id=ac.id, model=ac.model, serial=ac.serial, via=via,
                                              why=res.why, status_now=a.status))
-            path.append(ReasoningStep(from_=ad_id, link="appliesTo", to=ac.id, derived=False, note=res.why))
+            path += applies_path(ac, ad_id, res)
             citations += res.citations
         elif res.verdict == "unknown":
             questions += [q for q in a.questions if q.ad_id == ad_id]
@@ -207,9 +222,9 @@ def ingest(ad_id: str) -> IngestResponse:
                            note=(g.field_quotes.get("revises") or ["revises"])[0]) for old in g.revises]
     if ad_id in STATE.ads:
         for ac_id in STATE.aircraft:
-            res = assess(ac_id).results[ad_id]
-            if res.verdict == "applies":
-                path.append(ReasoningStep(from_=ad_id, link="appliesTo", to=ac_id, derived=False, note=res.why))
+            res = assess(ac_id).results.get(ad_id)
+            if res is not None and res.verdict == "applies":
+                path += applies_path(STATE.aircraft[ac_id], ad_id, res)
     return IngestResponse(
         run_id=f"ING-{date.today().isoformat()}-{STATE.ingest_runs:03d}", ad_id=ad_id, source="golden",
         validated_fields=validated, rejected_fields=rejected,

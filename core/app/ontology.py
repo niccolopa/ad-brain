@@ -52,15 +52,28 @@ class GoldenApplicability(BaseModel):
     model: str = Field(min_length=1)
     serial_from: str | None
     serial_to: str | None
+    series: bool = False  # True: `model` is an engine series ('IO-360' matches 'IO-360-L2A')
     quote: str = Field(min_length=1)
 
 
 class GoldenCondition(BaseModel):
     """The AD applies only if logbook fact `fact` has value `applies_when` (all conditions AND)."""
-    kind: Literal["equipment_installed", "modification_not_embodied", "part_installed"]
+    kind: Literal["equipment_installed", "modification_not_embodied", "part_installed", "serial_listed"]
     fact: str = Field(min_length=1)
     applies_when: FactValue
     value: str = Field(min_length=1)
+    quote: str = Field(min_length=1)
+
+
+class NotEvaluated(BaseModel):
+    """A clause of the AD the rules do not evaluate. Shown in every answer where the AD applies."""
+    clause: str = Field(min_length=1)
+    quote: str = Field(min_length=1)
+
+
+class CreditedCompliance(BaseModel):
+    """Compliance with `ad_id` (e.g. a superseded AD) satisfies this AD."""
+    ad_id: str = Field(pattern=r"^(FAA|EASA):\S+$")
     quote: str = Field(min_length=1)
 
 
@@ -72,6 +85,8 @@ class GoldenAD(BaseModel):
     revises: list[str] = []
     applicability: list[GoldenApplicability] = Field(min_length=1)
     conditions: list[GoldenCondition] = []
+    not_evaluated: list[NotEvaluated] = []
+    credited_compliance: list[CreditedCompliance] = []
     compliance_time_text: str
     field_quotes: dict[str, list[str]] = {}
 
@@ -191,7 +206,7 @@ class AffectedAircraft(BaseModel):
     aircraft_id: str
     model: str
     serial: str
-    via: Literal["serial_range", "all_serials"]
+    via: Literal["serial_range", "all_serials", "installed_engine"]
     why: str
     status_now: AircraftStatus
 
