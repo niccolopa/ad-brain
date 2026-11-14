@@ -18,7 +18,7 @@ __pycache__/
 node_modules/
 dist/
 
-# Generated runtime data (the demo DB is rebuilt by `make reset`)
+# Generated runtime data (the demo DB is rebuilt by the demo reset)
 *.db
 *.sqlite
 *.sqlite3

@@ -1,0 +1,32 @@
+{
+  "request": {
+    "method": "POST",
+    "path": "/demo/reset"
+  },
+  "response": {
+    "http_status": 200,
+    "body": {
+      "ok": true,
+      "state": "demo-2026-11-14",
+      "reset_at": "2026-11-14T16:59:00Z",
+      "counts": {
+        "ads": 20,
+        "aircraft": 5,
+        "questions": 2,
+        "decisions": 1,
+        "proposals": 0,
+        "logbook_records": 21
+      },
+      "not_loaded": [
+        "FAA:2012-02-02"
+      ],
+      "aircraft_status": {
+        "DEMO-01": "green",
+        "DEMO-02": "green",
+        "DEMO-03": "amber",
+        "DEMO-04": "amber",
+        "DEMO-05": "green"
+      }
+    }
+  }
+}

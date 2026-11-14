@@ -1,0 +1,16 @@
+{
+  "request": {
+    "method": "GET",
+    "path": "/aircraft/EI-XXX/status"
+  },
+  "response": {
+    "http_status": 404,
+    "body": {
+      "error_code": "AIRCRAFT_NOT_FOUND",
+      "message": "No aircraft with id EI-XXX in this system.",
+      "details": {
+        "id": "EI-XXX"
+      }
+    }
+  }
+}

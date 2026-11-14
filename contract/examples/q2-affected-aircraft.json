@@ -1,0 +1,59 @@
+{
+  "request": {
+    "method": "GET",
+    "path": "/ads/EASA%3A2018-0072/affected-aircraft"
+  },
+  "response": {
+    "http_status": 200,
+    "body": {
+      "ad": {
+        "ad_id": "EASA:2018-0072",
+        "authority": "EASA",
+        "title": "Fuel System – Firewall – Inspection / Modification",
+        "effective_date": "2018-04-11",
+        "status": "active",
+        "supersedes": [],
+        "superseded_by": null,
+        "revises": null,
+        "source_url": "https://ad.easa.europa.eu/ad/2018-0072",
+        "file": "data/raw/ads/EASA-2018-0072.txt"
+      },
+      "checked_aircraft": 5,
+      "affected": [
+        {
+          "aircraft_id": "DEMO-04",
+          "model": "Tecnam P2008 JC",
+          "serial": "1050",
+          "via": "serial_range",
+          "why": "S/N 1050 is within 1002–1085",
+          "status_now": "amber"
+        }
+      ],
+      "not_affected": [
+        {
+          "aircraft_id": "DEMO-05",
+          "why": "S/N 1150 is outside 1002–1085"
+        }
+      ],
+      "open_questions": [],
+      "citations": [
+        {
+          "ad_id": "EASA:2018-0072",
+          "quote": "P2008 JC aeroplanes, serial numbers 1002 to 1085 inclusive.",
+          "file": "data/raw/ads/EASA-2018-0072.txt",
+          "occurrence": 1,
+          "source_url": "https://ad.easa.europa.eu/ad/2018-0072"
+        }
+      ],
+      "reasoning_path": [
+        {
+          "from": "EASA:2018-0072",
+          "link": "appliesTo",
+          "to": "DEMO-04",
+          "derived": false,
+          "note": "P2008 JC, S/N 1050 in 1002–1085"
+        }
+      ]
+    }
+  }
+}

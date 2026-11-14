@@ -1,0 +1,35 @@
+{
+  "request": {
+    "method": "POST",
+    "path": "/actions/RecordCompliance",
+    "body": {
+      "actor": {
+        "person_id": "P-AG-1",
+        "role": "agent"
+      },
+      "params": {
+        "aircraft_id": "DEMO-01",
+        "ad_id": "FAA:2012-02-02",
+        "date": "2026-11-14",
+        "method": "fuel return line replaced",
+        "evidence": "logbook page (synthetic)"
+      },
+      "read_version": 3
+    }
+  },
+  "response": {
+    "http_status": 403,
+    "body": {
+      "error_code": "SUBMISSION_CRITERIA_FAILED",
+      "message": "An agent cannot record compliance. Propose it instead: a mechanic or a certifying engineer must approve.",
+      "details": {
+        "action": "RecordCompliance",
+        "actor_role": "agent",
+        "failed_criteria": [
+          "role ∈ {mechanic, certifying_engineer}"
+        ],
+        "attempt_logged_as": "AL-0012"
+      }
+    }
+  }
+}

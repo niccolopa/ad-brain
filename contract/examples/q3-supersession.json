@@ -1,0 +1,91 @@
+{
+  "request": {
+    "method": "GET",
+    "path": "/aircraft/DEMO-01/ads/FAA%3A2006-20-09/supersession"
+  },
+  "response": {
+    "http_status": 200,
+    "body": {
+      "aircraft_id": "DEMO-01",
+      "asked_ad_id": "FAA:2006-20-09",
+      "chain": [
+        {
+          "ad_id": "FAA:2006-20-09",
+          "status": "superseded",
+          "superseded_by": "FAA:2012-19-01"
+        },
+        {
+          "ad_id": "FAA:2012-19-01",
+          "status": "active",
+          "effective_date": "2012-10-24"
+        }
+      ],
+      "compliance": {
+        "id": "CR-DEMO01-ENG-1",
+        "ad_id": "FAA:2006-20-09",
+        "subject_id": "DEMO-01/engine",
+        "date": "2009-05-14",
+        "method": "crankshaft replaced per AD 2006-20-09 (engine listed in Lycoming MSB 569A)",
+        "evidence": "engine logbook entry (synthetic)",
+        "recorded_by": "P-ME-1",
+        "epistemic_class": "OBSERVATION",
+        "synthetic": true
+      },
+      "still_valid": "yes",
+      "reason": "The superseding AD says that previous compliance with AD 2006-20-09 needs no further action.",
+      "citations": [
+        {
+          "ad_id": "FAA:2012-19-01",
+          "quote": "This AD supersedes AD 2006-20-09 (71 FR 57407, September 29, 2006).",
+          "file": "data/raw/ads/FAA-2012-19-01.txt",
+          "occurrence": 1,
+          "source_url": "https://ad.easa.europa.eu/ad/US-2012-19-01"
+        },
+        {
+          "ad_id": "FAA:2012-19-01",
+          "quote": "(1) If you previously complied with AD 2006-20-09 (71 FR 57407, September 29, 2006), no further action is required.",
+          "file": "data/raw/ads/FAA-2012-19-01.txt",
+          "occurrence": 2,
+          "source_url": "https://ad.easa.europa.eu/ad/US-2012-19-01"
+        }
+      ],
+      "reasoning_path": [
+        {
+          "from": "DEMO-01",
+          "link": "hasInstalled",
+          "to": "DEMO-01/engine",
+          "derived": false,
+          "note": "Lycoming IO-360-L2A"
+        },
+        {
+          "from": "FAA:2012-19-01",
+          "link": "appliesTo",
+          "to": "DEMO-01/engine",
+          "derived": false,
+          "note": "(L)IO-360 series, engine listed in Lycoming MSB 569A"
+        },
+        {
+          "from": "FAA:2012-19-01",
+          "link": "appliesTo",
+          "to": "DEMO-01",
+          "derived": true,
+          "note": "inferred from the two links above"
+        },
+        {
+          "from": "FAA:2012-19-01",
+          "link": "supersedes",
+          "to": "FAA:2006-20-09",
+          "derived": false,
+          "note": "paragraph (b) Affected ADs"
+        },
+        {
+          "from": "CR-DEMO01-ENG-1",
+          "link": "satisfies",
+          "to": "FAA:2006-20-09",
+          "derived": false,
+          "note": "kept valid by paragraph (g)(1) of the new AD"
+        }
+      ]
+    }
+  }
+}

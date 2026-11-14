@@ -1,0 +1,46 @@
+{
+  "request": {
+    "method": "POST",
+    "path": "/actions/ProposeAction",
+    "body": {
+      "actor": {
+        "person_id": "P-AG-1",
+        "role": "agent"
+      },
+      "params": {
+        "action": "RecordCompliance",
+        "aircraft_id": "DEMO-01",
+        "ad_id": "FAA:2012-02-02",
+        "date": "2026-11-14",
+        "method": "fuel return line replaced",
+        "evidence": "logbook page (synthetic)"
+      },
+      "read_version": 3
+    }
+  },
+  "response": {
+    "http_status": 202,
+    "body": {
+      "proposal_id": "PR-0004",
+      "status": "PENDING",
+      "action": "RecordCompliance",
+      "params": {
+        "aircraft_id": "DEMO-01",
+        "ad_id": "FAA:2012-02-02",
+        "date": "2026-11-14",
+        "method": "fuel return line replaced",
+        "evidence": "logbook page (synthetic)"
+      },
+      "proposed_by": {
+        "id": "P-AG-1",
+        "name": "Analyst agent",
+        "role": "agent"
+      },
+      "epistemic_class": "HYPOTHESIS",
+      "needs_role": [
+        "mechanic",
+        "certifying_engineer"
+      ]
+    }
+  }
+}
