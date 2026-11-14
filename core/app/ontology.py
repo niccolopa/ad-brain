@@ -21,6 +21,7 @@ class Citation(BaseModel):
     file: str
     occurrence: int = Field(ge=1)
     source_url: str
+    origin: Literal["golden", "extraction"] | None = None  # "golden" = human-checked quote; optional for the contract
 
 
 class ReasoningStep(BaseModel):
@@ -31,6 +32,7 @@ class ReasoningStep(BaseModel):
     to: str
     derived: bool
     note: str
+    rule_id: str | None = None  # the rule that fired (docs/DECISION-MODEL.md); optional for the contract
 
 
 class Error(BaseModel):
@@ -72,9 +74,12 @@ class NotEvaluated(BaseModel):
 
 
 class CreditedCompliance(BaseModel):
-    """Compliance with `ad_id` (e.g. a superseded AD) satisfies this AD."""
+    """Compliance with `ad_id` (e.g. a superseded AD) satisfies this AD. `occurrence` picks the match when the
+    sentence also appears elsewhere in the file (e.g. quoted in the preamble)."""
     ad_id: str = Field(pattern=r"^(FAA|EASA):\S+$")
+    paragraph: str | None = None  # e.g. "(g)(1)", named in answers
     quote: str = Field(min_length=1)
+    occurrence: int = Field(default=1, ge=1)
 
 
 class GoldenAD(BaseModel):
@@ -100,6 +105,7 @@ class LogbookRow(BaseModel):
     date: str = Field(pattern=r"^\d{4}-\d{2}-\d{2}$")
     kind: Literal["compliance", "observation"]
     text: str
+    synthetic: bool
     fact: str | None = None
     value: FactValue | None = None
 
@@ -110,14 +116,16 @@ class LoadedAD(BaseModel):
     title: str
     file: str  # repo-relative, as in Citation.file
     source_url: str
+    golden_file: str  # the golden JSON it was loaded from (repo-relative, or absolute in tests); hashed in rules_version
 
     @property
     def ad_id(self) -> str:
         return self.golden.ad_number
 
-    def cite(self, quote: str) -> Citation:
-        # ponytail: occurrence 1 — the store checks every golden quote is found; golden quotes are unique.
-        return Citation(ad_id=self.ad_id, quote=quote, file=self.file, occurrence=1, source_url=self.source_url)
+    def cite(self, quote: str, occurrence: int = 1) -> Citation:
+        # Golden quotes are unique (occurrence 1) unless the golden record gives an occurrence; the store checks both.
+        return Citation(ad_id=self.ad_id, quote=quote, file=self.file, occurrence=occurrence,
+                        source_url=self.source_url, origin="golden")  # every quote we cite is a golden one
 
 
 # ---------- Contract objects (contract/README.md, "Object types") ----------
@@ -200,6 +208,9 @@ class AircraftStatusResponse(BaseModel):
     citations: list[Citation]
     reasoning_path: list[ReasoningStep]
     computed_at: str
+    evaluation_id: str | None = None  # GET /evaluations/{id}; optional for the contract
+    rules_version: str | None = None
+    inputs_hash: str | None = None
 
 
 class AffectedAircraft(BaseModel):
@@ -246,6 +257,95 @@ class QuestionsResponse(BaseModel):
     urgency_rule: str
 
 
+class ChainLink(BaseModel):
+    """One AD in a supersession chain. effective_date is None for an AD with no golden record."""
+    ad_id: str
+    status: Status
+    superseded_by: str | None
+    link: Literal["supersedes", "revises"] | None
+    effective_date: str | None
+
+
+class ComplianceRecord(BaseModel):
+    """An OBSERVATION from the (synthetic) logbook."""
+    id: str
+    ad_id: str
+    subject_id: str
+    date: str
+    method: str
+    evidence: str
+    recorded_by: str | None  # the logbook has no such column
+    epistemic_class: Literal["OBSERVATION"] = "OBSERVATION"
+    synthetic: bool
+
+
+class SupersessionResponse(BaseModel):
+    """Q3 — GET /aircraft/{id}/ads/{ad_id}/supersession."""
+    aircraft_id: str
+    asked_ad_id: str
+    chain: list[ChainLink]
+    compliance: ComplianceRecord | None
+    still_valid: Literal["yes", "no_record", "unknown", "not_applicable"]
+    reason: str
+    citations: list[Citation]
+    reasoning_path: list[ReasoningStep]
+    rules_version: str | None = None  # optional for the contract
+    inputs_hash: str | None = None
+
+
+class AdVersion(BaseModel):
+    ad_id: str
+    sha256: str
+
+
+class RulesVersion(BaseModel):
+    """Which rules decided: rules.py hash + every active AD's golden-file hash; `id` hashes both."""
+    id: str
+    rules_py: str
+    ads: list[AdVersion]
+
+
+class Evaluation(BaseModel):
+    """GET /evaluations/{id}. A computed result (not a DECISION: that is a person with a role)."""
+    id: str
+    kind: Literal["computed"] = "computed"
+    aircraft_id: str
+    as_of_date: str
+    status: AircraftStatus
+    verdicts: dict[str, Literal["applies", "not_applicable", "unknown"]]
+    rule_ids_fired: list[str]
+    rules_version: RulesVersion
+    inputs_hash: str
+    inputs: dict
+    decided_at: str
+    replay_of: str | None
+
+
+class DecisionSnapshot(BaseModel):
+    status: AircraftStatus
+    verdicts: dict[str, Literal["applies", "not_applicable", "unknown"]]
+
+
+class ReplayChanges(BaseModel):
+    rules_version: bool
+    rules_py: bool
+    ads_added: list[str]
+    ads_removed: list[str]
+    ads_changed: list[str]
+
+
+class ReplayResponse(BaseModel):
+    """POST /evaluations/{id}/replay: same recorded inputs, current rules."""
+    evaluation_id: str
+    same: bool
+    before: DecisionSnapshot
+    after: DecisionSnapshot
+    changed: ReplayChanges
+    replay_evaluation_id: str
+    inputs_hash: str
+    replayed_at: str
+
+
 class ValidatedField(BaseModel):
     """One extracted field and the check of its quote against the AD text."""
     field: str
@@ -253,7 +353,7 @@ class ValidatedField(BaseModel):
     quote: str
     file: str
     occurrence: int
-    check: Literal["quote found in text", "quote not found in text"]
+    check: Literal["quote found in text", "quote not found in text", "disagrees with golden"]
 
 
 class StatusChange(BaseModel):
@@ -268,6 +368,19 @@ class IngestChanges(BaseModel):
     aircraft_status_changed: list[StatusChange]
 
 
+class ExtractionInfo(BaseModel):
+    """How the LLM extraction was used by an ingest. It decides only if every quote is found and every compared
+    field agrees with the human-checked golden file; otherwise golden decides and every miss is listed."""
+    used: bool
+    source: Literal["cache", "llm"] | None
+    model: str | None
+    prompt_version: str | None
+    agreement: float | None
+    reason: str | None
+    misses: list[str]
+    citations_from: Literal["golden"] = "golden"  # values may come from the extraction; quotes never do
+
+
 class IngestResponse(BaseModel):
     """Q2 — POST /ads/{ad_id}/ingest. A pipeline run, not an action. Demo mode: source = golden, no LLM."""
     run_id: str
@@ -278,6 +391,7 @@ class IngestResponse(BaseModel):
     changes: IngestChanges
     citations: list[Citation]
     reasoning_path: list[ReasoningStep]
+    extraction: ExtractionInfo | None = None  # optional for the contract
 
 
 class ResetCounts(BaseModel):
@@ -298,13 +412,17 @@ class DemoResetResponse(BaseModel):
     aircraft_status: dict[str, AircraftStatus]
 
 
+# Optional top-level fields proposed in docs/handoff/contract-proposal.md (not yet in contract/examples/).
+PROPOSED_OPTIONAL_FIELDS = frozenset({"evaluation_id", "rules_version", "inputs_hash", "extraction"})
+
+
 def shape_errors(expected: dict, actual: object) -> list[str]:
     """Contract check used by tests and scripts/smoke.py: same top-level keys as the example,
     and every citation / reasoning step / error validates against the shared shapes."""
     if not isinstance(actual, dict):
         return [f"body is {type(actual).__name__}, not an object"]
     errors = [f"missing key {k!r}" for k in expected if k not in actual]
-    errors += [f"unexpected key {k!r}" for k in actual if k not in expected]
+    errors += [f"unexpected key {k!r}" for k in actual if k not in expected and k not in PROPOSED_OPTIONAL_FIELDS]
     if "error_code" in expected:
         errors += _validate(Error, actual, "body")
 

@@ -28,6 +28,36 @@ ENGINE_ID_SUFFIX = "/engine"
 Verdict = Literal["applies", "not_applicable", "unknown"]
 Via = Literal["airframe", "engine"]
 
+# ---------- Rule ids. docs/DECISION-MODEL.md lists exactly these (tests/test_decision_model.py checks it) ----------
+R_MODEL_EXACT = "R-MODEL-EXACT"
+R_MODEL_SERIES = "R-MODEL-SERIES"
+R_MODEL_NOT_LISTED = "R-MODEL-NOT-LISTED"
+R_ENGINE_DERIVED = "R-ENGINE-DERIVED"
+R_SERIAL_NORMALISE = "R-SERIAL-NORMALISE"
+R_SERIAL_ALL = "R-SERIAL-ALL"
+R_SERIAL_RANGE = "R-SERIAL-RANGE"
+R_SERIAL_OUTSIDE = "R-SERIAL-OUTSIDE"
+R_UNCLEAR_TO_QUESTION = "R-UNCLEAR-TO-QUESTION"
+R_CONDITION_HOLDS = "R-CONDITION-HOLDS"
+R_CONDITION_FAILS = "R-CONDITION-FAILS"
+R_CONDITION_UNKNOWN = "R-CONDITION-UNKNOWN"
+R_CONTRADICTION_TO_QUESTION = "R-CONTRADICTION-TO-QUESTION"
+R_NOT_EVALUATED = "R-NOT-EVALUATED"
+R_COMPLIANCE_RECORD = "R-COMPLIANCE-RECORD"
+R_CREDIT = "R-CREDIT"
+R_CREDIT_UNLABELLED = "R-CREDIT-UNLABELLED"
+R_SUPERSEDED_NOT_COUNTED = "R-SUPERSEDED-NOT-COUNTED"
+R_CHAIN = "R-CHAIN"
+R_CHAIN_BROKEN = "R-CHAIN-BROKEN"
+R_STATUS_RED = "R-STATUS-RED"
+R_STATUS_AMBER = "R-STATUS-AMBER"
+R_STATUS_GREEN = "R-STATUS-GREEN"
+R_REAL_NO_RECORDS = "R-REAL-NO-RECORDS"
+R_URGENCY = "R-URGENCY"
+RULE_IDS = frozenset(v for k, v in dict(globals()).items() if k.startswith("R_") and isinstance(v, str))
+STATUS_RULE = {"red": R_STATUS_RED, "amber": R_STATUS_AMBER, "green": R_STATUS_GREEN,
+               "no_records": R_REAL_NO_RECORDS}
+
 
 @dataclass(frozen=True)
 class Serial:
@@ -45,6 +75,8 @@ class Applicability:
     citations: list[Citation] = field(default_factory=list)
     observations: list[str] = field(default_factory=list)  # logbook row ids used
     via: Via = "airframe"
+    rule_ids: list[str] = field(default_factory=list)  # every rule that fired, in order
+    decided_by: str = ""  # the rule that decided the verdict
 
 
 def normalise_model(raw: str) -> str:
@@ -98,8 +130,8 @@ def range_text(row: GoldenApplicability) -> str:
 
 
 def group_label(row: GoldenApplicability) -> str | None:
-    """'Group 4: Model 172S, …' → 'Group 4'. Only when the quote itself names the group."""
-    m = re.match(r"^(Group \d+):", row.quote)
+    """'Group 4: Model 172S, …' or '(4) Group 4: Model 172S, …' → 'Group 4'. Only when the quote names the group."""
+    m = re.match(r"^(?:\(\d+\)\s*)?(Group \d+):", row.quote)
     return m[1] if m else None
 
 
@@ -123,8 +155,12 @@ def evaluate(ad: LoadedAD, aircraft: Aircraft, facts: dict[str, list[LogbookRow]
         engine = normalise_model(aircraft.engine_model)
         rows = [r for r in ad.golden.applicability if model_matches(r, engine)]
         if not rows:
-            return Applicability("not_applicable", f"model {model} and engine {engine} are not listed")
+            return Applicability("not_applicable", f"model {model} and engine {engine} are not listed",
+                                 rule_ids=[R_MODEL_NOT_LISTED], decided_by=R_MODEL_NOT_LISTED)
         via = "engine"
+    fired = [R_MODEL_SERIES if any(r.series for r in rows) else R_MODEL_EXACT]
+    if via == "engine":
+        fired.append(R_ENGINE_DERIVED)
 
     ranged = [r for r in rows if r.serial_from is not None or r.serial_to is not None]
     match = next((r for r in rows if r not in ranged), None)  # an all-serials row matches any serial
@@ -132,26 +168,35 @@ def evaluate(ad: LoadedAD, aircraft: Aircraft, facts: dict[str, list[LogbookRow]
         # ponytail: no engine serials in this system; a ranged engine row can only be a question
         return Applicability("unknown", f"engine serial not in this system: {engine_id(aircraft)}",
                              question=f"engine serial unclear: {engine_id(aircraft)}",
-                             citations=[ad.cite(r.quote) for r in rows], via=via)
+                             citations=[ad.cite(r.quote) for r in rows], via=via,
+                             rule_ids=fired + [R_UNCLEAR_TO_QUESTION], decided_by=R_UNCLEAR_TO_QUESTION)
     if via == "engine":
         assert match is not None
         why = (f"engine {engine} is an {match.model} series engine" if match.series
                else f"engine {engine} is listed")
+        fired.append(R_SERIAL_ALL)
     elif match is None:
         norm = normalise_serial(aircraft.serial, model)
         serial = parse_serial(norm) if norm else None
+        if norm and isinstance(aircraft.serial, str) and norm != aircraft.serial.strip().upper():
+            fired.append(R_SERIAL_NORMALISE)
         if serial is None or all(parse_serial(r.serial_from or r.serial_to).prefix != serial.prefix for r in ranged):
             log.warning("serial unclear: %r (%s, %s)", aircraft.serial, aircraft.id, ad.ad_id)
             return Applicability("unknown", f"serial unclear: {aircraft.serial}",
                                  question=f"serial unclear: {aircraft.serial}",
-                                 citations=[ad.cite(r.quote) for r in rows])
+                                 citations=[ad.cite(r.quote) for r in rows],
+                                 rule_ids=fired + [R_UNCLEAR_TO_QUESTION], decided_by=R_UNCLEAR_TO_QUESTION)
         match = next((r for r in ranged if in_range(serial, r)), None)
         if match is None:
             return Applicability("not_applicable", f"S/N {norm} is outside "
-                                 + ", ".join(range_text(r) for r in ranged))
+                                 + ", ".join(range_text(r) for r in ranged),
+                                 rule_ids=fired + [R_SERIAL_OUTSIDE], decided_by=R_SERIAL_OUTSIDE)
         why = f"S/N {norm} is within {range_text(match)}"
+        fired.append(R_SERIAL_RANGE)
     else:
         why = range_text(match)
+        fired.append(R_SERIAL_ALL)
+    decided = fired[-1]
     if label := group_label(match):
         why += f" ({label})"
     cites = [ad.cite(match.quote)]
@@ -164,28 +209,37 @@ def evaluate(ad: LoadedAD, aircraft: Aircraft, facts: dict[str, list[LogbookRow]
         if len(values) > 1:
             log.warning("contradicting observations %s for %s on %s", [o.id for o in obs], cond.fact, aircraft.id)
             unknown.append(cond)
+            fired.append(R_CONTRADICTION_TO_QUESTION)
         elif values == {cond.applies_when}:
             why += f"; {cond.fact} = {cond.applies_when} ({obs[0].id})"
+            fired.append(R_CONDITION_HOLDS)
+            decided = R_CONDITION_HOLDS
         elif values == {OPPOSITE[cond.applies_when]}:
             return Applicability("not_applicable", f"{why}, but {cond.fact} = {obs[0].value} ({obs[0].id})",
-                                 row=match, citations=cites + [ad.cite(cond.quote)], observations=used, via=via)
+                                 row=match, citations=cites + [ad.cite(cond.quote)], observations=used, via=via,
+                                 rule_ids=fired + [R_CONDITION_FAILS], decided_by=R_CONDITION_FAILS)
         else:
             if values:
                 log.warning("observation value %s does not fit condition %s on %s", values, cond.fact, aircraft.id)
             unknown.append(cond)
+            fired.append(R_CONDITION_UNKNOWN)
     # Never hide a limit: clauses the rules do not evaluate are named in the answer and cited.
     for n in ad.golden.not_evaluated:
         why += "; " + NOT_EVALUATED_NOTE.format(clause=n.clause)
         cites.append(ad.cite(n.quote))
+        fired.append(R_NOT_EVALUATED)
+    fired = list(dict.fromkeys(fired))
     if unknown:
         cites += [ad.cite(q) for q in dict.fromkeys(c.quote for c in unknown)]
         by_template: dict[str, list[str]] = {}
         for c in unknown:
             by_template.setdefault(QUESTION_TEMPLATE[c.kind], []).append(c.value)
         question = " ".join(tpl.format(values=" or ".join(v), ac=aircraft.id) for tpl, v in by_template.items())
+        decided = R_CONTRADICTION_TO_QUESTION if R_CONTRADICTION_TO_QUESTION in fired else R_CONDITION_UNKNOWN
         return Applicability("unknown", why, row=match, question=question, citations=cites, observations=used,
-                             via=via)
-    return Applicability("applies", why, row=match, citations=cites, observations=used, via=via)
+                             via=via, rule_ids=fired, decided_by=decided)
+    return Applicability("applies", why, row=match, citations=cites, observations=used, via=via, rule_ids=fired,
+                         decided_by=decided)
 
 
 def urgency(days_left: int) -> Urgency:
@@ -242,6 +296,7 @@ class Assessment:
     credits: dict[str, Citation]  # ad_id → quote that credits the record of another AD
     questions: list[Question]
     superseded: list[str]  # ADs that would apply but are superseded by an active AD: not counted for status
+    rule_ids: list[str] = field(default_factory=list)  # every rule that fired for this aircraft, status rule last
 
 
 def assess(aircraft: Aircraft, ads: list[LoadedAD], logbook: list[LogbookRow], today: date) -> Assessment:
@@ -259,7 +314,7 @@ def assess(aircraft: Aircraft, ads: list[LoadedAD], logbook: list[LogbookRow], t
             continue
         for credit in ad.golden.credited_compliance:
             if credit.ad_id in records:
-                compliance[ad.ad_id], credits[ad.ad_id] = records[credit.ad_id], ad.cite(credit.quote)
+                compliance[ad.ad_id], credits[ad.ad_id] = records[credit.ad_id], ad.cite(credit.quote, credit.occurrence)
                 break
     loaded = {ad.ad_id for ad in ads}
     replaced = {old for ad in ads for old in ad.golden.supersedes + ad.golden.revises if old in loaded}
@@ -279,5 +334,112 @@ def assess(aircraft: Aircraft, ads: list[LoadedAD], logbook: list[LogbookRow], t
                 days_left=days, urgency=urgency(days) if days is not None else None,
                 synthetic=aircraft.synthetic, citations=res.citations))
     unrecorded = any(r.verdict == "applies" and ad_id not in compliance for ad_id, r in results.items())
-    return Assessment(aircraft, aircraft_status(aircraft.synthetic, unrecorded, bool(questions)),
-                      results, compliance, credits, questions, superseded)
+    status = aircraft_status(aircraft.synthetic, unrecorded, bool(questions))
+    fired = [rid for r in results.values() for rid in r.rule_ids]
+    applied = [k for k, r in results.items() if r.verdict == "applies" and k in compliance]
+    if any(k not in credits for k in applied):
+        fired.append(R_COMPLIANCE_RECORD)
+    if any(k in credits for k in applied):
+        fired.append(R_CREDIT)
+    if superseded:
+        fired.append(R_SUPERSEDED_NOT_COUNTED)
+    if any(q.urgency for q in questions):
+        fired.append(R_URGENCY)
+    fired.append(STATUS_RULE[status])
+    return Assessment(aircraft, status, results, compliance, credits, questions, superseded,
+                      list(dict.fromkeys(fired)))
+
+
+# ---------- Q3: supersession chain and validity of earlier compliance ----------
+ChainLinkType = Literal["supersedes", "revises"]
+Validity = Literal["yes", "no_record", "unknown", "not_applicable"]
+
+
+@dataclass
+class ChainStep:
+    ad_id: str
+    successor: str | None = None  # the AD that supersedes/revises this one (None = in force, or chain broken)
+    link: ChainLinkType | None = None
+
+
+def successors(ad_id: str, ads: dict[str, LoadedAD]) -> list[tuple[str, ChainLinkType]]:
+    return ([(a.ad_id, "supersedes") for a in ads.values() if ad_id in a.golden.supersedes]
+            + [(a.ad_id, "revises") for a in ads.values() if ad_id in a.golden.revises])
+
+
+def is_known_ad(ad_id: str, ads: dict[str, LoadedAD]) -> bool:
+    """Loaded, or named by a loaded AD (e.g. a superseded AD with no golden file)."""
+    return ad_id in ads or bool(successors(ad_id, ads))
+
+
+def supersession_chain(ad_id: str, ads: dict[str, LoadedAD]) -> tuple[list[ChainStep], str | None]:
+    """Asked AD → … → the AD in force. Returns (chain, problem); a problem means no AD in force can be named."""
+    chain, seen = [], set()
+    current = ad_id
+    while True:
+        if current in seen:
+            log.warning("supersession cycle at %s (from %s)", current, ad_id)
+            return chain, f"supersession cycle: {' → '.join(s.ad_id for s in chain)} → {current}"
+        seen.add(current)
+        nxt = successors(current, ads)
+        if len(nxt) > 1:
+            log.warning("%s superseded by more than one AD: %s", current, nxt)
+            chain.append(ChainStep(current))
+            return chain, f"{current} is superseded by more than one AD: {', '.join(n for n, _ in nxt)}"
+        if not nxt:
+            chain.append(ChainStep(current))
+            return chain, None
+        chain.append(ChainStep(current, nxt[0][0], nxt[0][1]))
+        current = nxt[0][0]
+
+
+@dataclass
+class StillValid:
+    value: Validity
+    reason: str
+    record: LogbookRow | None = None
+    credits: list[Citation] = field(default_factory=list)
+    rule_ids: list[str] = field(default_factory=list)
+
+
+def still_valid(chain: list[ChainStep], problem: str | None, head_result: Applicability | None,
+                records: dict[str, LogbookRow], ads: dict[str, LoadedAD]) -> StillValid:
+    """Is the compliance that counts for the AD in force still valid? A missing credit label is 'unknown', never 'no':
+    the golden record not naming a credit does not prove the AD text gives none."""
+    if problem or head_result is None:
+        return StillValid("unknown", problem or "no AD in force could be determined", rule_ids=[R_CHAIN_BROKEN])
+    head = chain[-1].ad_id
+    base = ([R_CHAIN] if len(chain) > 1 else []) + head_result.rule_ids
+    if head_result.verdict == "not_applicable":
+        return StillValid("not_applicable", f"{head} (in force) does not apply: {head_result.why}", rule_ids=base)
+    if head_result.verdict == "unknown":
+        return StillValid("unknown", f"whether {head} (in force) applies is open: {head_result.question}",
+                          rule_ids=base)
+    if head in records:
+        return StillValid("yes", f"{head} is in force and has its own compliance record {records[head].id}",
+                          records[head], rule_ids=base + [R_COMPLIANCE_RECORD])
+    for i in range(len(chain) - 2, -1, -1):  # nearest earlier AD with a record first
+        old = chain[i].ad_id
+        if old not in records:
+            continue
+        rec, cites, notes = records[old], [], []
+        for prev, step in zip(chain[i:], chain[i + 1:]):
+            credit = next((c for c in ads[step.ad_id].golden.credited_compliance if c.ad_id == prev.ad_id), None)
+            if credit is None:
+                return StillValid("unknown", f"{head} has no compliance record of its own; record {rec.id} is for "
+                                  f"{old}, and the labelled data names no credit in {step.ad_id} for {prev.ad_id}: "
+                                  "check the AD text", rec, rule_ids=base + [R_CREDIT_UNLABELLED])
+            cites.append(ads[step.ad_id].cite(credit.quote, credit.occurrence))
+            notes.append(f"paragraph {credit.paragraph or '(unnamed)'} of {step.ad_id}: \"{credit.quote}\"")
+        return StillValid("yes", f"{head} has no compliance record of its own; record {rec.id} (compliance with "
+                          f"{old}) is credited by " + "; ".join(notes), rec, cites, rule_ids=base + [R_CREDIT])
+    for credit in ads[head].golden.credited_compliance:  # asked AD is the head: its own credits (same rule as Q1)
+        if credit.ad_id in records:
+            rec = records[credit.ad_id]
+            return StillValid("yes", f"{head} has no compliance record of its own; record {rec.id} (compliance with "
+                              f"{credit.ad_id}) is credited by paragraph {credit.paragraph or '(unnamed)'} of {head}: "
+                              f"\"{credit.quote}\"", rec, [ads[head].cite(credit.quote, credit.occurrence)],
+                              rule_ids=base + [R_CREDIT])
+    names = " or ".join(s.ad_id for s in chain)
+    return StillValid("no_record", f"{head} (in force) applies ({head_result.why}); no compliance record for {names}",
+                      rule_ids=base)

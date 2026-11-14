@@ -1,5 +1,4 @@
-"""Aircraft → installed engine → AD inference. Fixtures: the UNCHECKED drafts in data/golden/drafts/
-(real AD text, quotes verified by the loader). They are never loaded by store.load()."""
+"""Aircraft → installed engine → AD inference, on the checked engine ADs in data/golden/."""
 from datetime import date
 
 import pytest
@@ -11,8 +10,11 @@ from app.ontology import GoldenApplicability
 
 TODAY = date(2026, 11, 14)
 STATE = store.load()
-DRAFTS = store.load_ads(store.GOLDEN_DRAFTS_DIR)
+ENGINE_IDS = ("FAA:2006-12-07", "FAA:2006-20-09", "FAA:2012-19-01")
+DRAFTS = {k: STATE.available[k] for k in ENGINE_IDS}  # name kept from the draft stage: the 3 engine ADs
 ECI, CRANK_2006, CRANK_2012 = DRAFTS["FAA:2006-12-07"], DRAFTS["FAA:2006-20-09"], DRAFTS["FAA:2012-19-01"]
+CREDIT_G1 = ("(1) If you previously complied with AD 2006-20-09 (71 FR 57407, September 29, 2006), no further "
+             "action is required.")
 DATE_CLAUSE = "not evaluated: manufacture/overhaul date clause (see notes)"
 client = TestClient(app)
 
@@ -25,9 +27,8 @@ def facts_of(aircraft_id: str) -> dict:
     return out
 
 
-def test_drafts_load_and_are_not_in_the_default_store():
-    assert set(DRAFTS) == {"FAA:2006-12-07", "FAA:2006-20-09", "FAA:2012-19-01"}
-    assert not set(DRAFTS) & set(STATE.available)
+def test_engine_ads_are_loaded_by_default():
+    assert set(ENGINE_IDS) <= set(STATE.ads)
 
 
 @pytest.mark.parametrize("engine,expected", [
@@ -77,7 +78,8 @@ def test_superseded_compliance_is_credited_and_old_ad_not_counted():
                      STATE.logbook, TODAY)
     assert a.superseded == ["FAA:2006-20-09"] and "FAA:2006-20-09" not in a.results
     assert a.compliance["FAA:2012-19-01"].id == "CR-DEMO01-ENG-1"
-    assert a.credits["FAA:2012-19-01"].quote.startswith("(g) Credit for Previous Actions (1)")
+    credit = a.credits["FAA:2012-19-01"]
+    assert credit.quote == CREDIT_G1 and credit.occurrence == 2  # rule text; occurrence 1 is the preamble
     assert a.status == "green"
 
 
@@ -109,14 +111,12 @@ def test_ranged_engine_row_is_a_question():
     assert r.verdict == "unknown" and r.question == "engine serial unclear: DEMO-01/engine"
 
 
-# ---------- over HTTP, with the drafts added to the active set for the test only ----------
+# ---------- over HTTP, demo state (engine ADs loaded) ----------
 @pytest.fixture
 def with_drafts():
     client.post("/demo/reset")
-    api.STATE.available.update(DRAFTS)
-    api.STATE.ads.update(DRAFTS)
+    assert set(ENGINE_IDS) <= set(api.STATE.ads)
     yield
-    client.post("/demo/reset")
 
 
 def test_q1_engine_path_is_drawn_with_derived_link(with_drafts):
@@ -124,7 +124,7 @@ def test_q1_engine_path_is_drawn_with_derived_link(with_drafts):
     assert b["status"] == "green" and b["superseded_ads"] == ["FAA:2006-20-09"]
     steps = [s for s in b["reasoning_path"] if "FAA:2012-19-01" in (s["from"], s["to"]) or s["link"] == "hasInstalled"]
     assert steps[0] == {"from": "DEMO-01", "link": "hasInstalled", "to": "DEMO-01/engine", "derived": False,
-                        "note": "Lycoming IO-360-L2A"}
+                        "note": "Lycoming IO-360-L2A", "rule_id": "R-ENGINE-DERIVED"}
     assert (steps[1]["from"], steps[1]["to"], steps[1]["derived"]) == ("FAA:2012-19-01", "DEMO-01/engine", False)
     assert (steps[2]["from"], steps[2]["to"], steps[2]["derived"]) == ("FAA:2012-19-01", "DEMO-01", True)
     assert DATE_CLAUSE in steps[1]["note"] and DATE_CLAUSE in steps[2]["note"]

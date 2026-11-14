@@ -1,0 +1,47 @@
+{
+  "ad_id": "EASA:2018-0072",
+  "model": "anthropic/claude-sonnet-5.5",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "81516b35e4c816609ca132bf57e2356cc61b4aca0b4bcc9f9cab70397f1ec2e4",
+  "text_sha256": "dccfeac59745dfce747806c53f51e2b8109b4b0b5d082271c091b53f2205d69f",
+  "extracted_at": "2026-11-14T11:09:56Z",
+  "raw": "{\n  \"ad_number\": \"EASA:2018-0072\",\n  \"federal_register_document_number\": null,\n  \"effective_date\": \"2018-04-11\",\n  \"supersedes\": [],\n  \"revises\": [],\n  \"applicability\": [\n    {\n      \"model\": \"P2008 JC\",\n      \"series\": false,\n      \"serial_from\": \"1002\",\n      \"serial_to\": \"1085\",\n      \"quote\": \"P2008 JC aeroplanes, serial numbers 1002 to 1085 inclusive.\"\n    }\n  ],\n  \"conditions\": [],\n  \"not_evaluated\": [],\n  \"credited_compliance\": [],\n  \"compliance_time_text\": \"Within 25 flight hours, or 25 flight cycles, or within 6 months, whichever occurs first after the effective date of this AD, accomplish a visual inspection of the firewall in accordance with the instructions of the SB. If any patch is found installed without screws, before next flight, remove and re-install the affected patch(es).\",\n  \"unsafe_condition_summary\": \"Steel patches attached with sealant on the engine firewall may detach in an engine fire, which could lead to propagation of an engine fire to other critical areas, possibly resulting in loss of the aeroplane.\",\n  \"out_of_scope_features\": [\n    {\n      \"feature\": \"Part numbers (patches P/N 28-2-1337-1 or P/N 28-2-1337-2 allowed for installation)\",\n      \"quote\": \"install, at any location described in the SB, patches with Part Number (P/N) 28-2-1337-1 or P/N\"\n    },\n    {\n      \"feature\": \"Alternative Methods of Compliance (AMOC)\",\n      \"quote\": \"If requested and appropriately substantiated, EASA can approve Alternative Methods of\"\n    }\n  ],\n  \"field_quotes\": {\n    \"federal_register_document_number\": [],\n    \"effective_date\": [\n      \"Effective Date: 11 April 2018\"\n    ],\n    \"supersedes\": [\n      \"Supersedure: None\"\n    ],\n    \"revises\": [],\n    \"compliance_time_text\": [\n      \"(1) Within 25 flight hours, or 25 flight cycles, or within 6 months, whichever occurs first after the\",\n      \"before next flight, remove and re-install the\"\n    ],\n    \"unsafe_condition_summary\": [\n      \"This condition, if not detected and corrected, could lead to propagation of an engine fire to other\",\n      \"critical areas, possibly resulting in loss of the aeroplane.\"\n    ]\n  },\n  \"labelled_by\": \"\",\n  \"checked_by\": \"\",\n  \"notes\": \"EASA AD, so federal_register_document_number is null. No Revision field, so revises is empty with no quote. Supersedure is None, so supersedes is empty (the quote 'Supersedure: None' is given only as evidence). No conditions, not_evaluated clauses or credited compliance. The AD lists no conditions that depend on FACT_KEYS.\"\n}",
+  "parsed": {
+    "ad_number": "EASA:2018-0072",
+    "effective_date": "2018-04-11",
+    "supersedes": [],
+    "revises": [],
+    "applicability": [
+      {
+        "model": "P2008 JC",
+        "serial_from": "1002",
+        "serial_to": "1085",
+        "series": false,
+        "quote": "P2008 JC aeroplanes, serial numbers 1002 to 1085 inclusive."
+      }
+    ],
+    "conditions": [],
+    "not_evaluated": [],
+    "credited_compliance": [],
+    "compliance_time_text": "Within 25 flight hours, or 25 flight cycles, or within 6 months, whichever occurs first after the effective date of this AD, accomplish a visual inspection of the firewall in accordance with the instructions of the SB. If any patch is found installed without screws, before next flight, remove and re-install the affected patch(es).",
+    "field_quotes": {
+      "federal_register_document_number": [],
+      "effective_date": [
+        "Effective Date: 11 April 2018"
+      ],
+      "supersedes": [
+        "Supersedure: None"
+      ],
+      "revises": [],
+      "compliance_time_text": [
+        "(1) Within 25 flight hours, or 25 flight cycles, or within 6 months, whichever occurs first after the",
+        "before next flight, remove and re-install the"
+      ],
+      "unsafe_condition_summary": [
+        "This condition, if not detected and corrected, could lead to propagation of an engine fire to other",
+        "critical areas, possibly resulting in loss of the aeroplane."
+      ]
+    }
+  },
+  "error": null
+}

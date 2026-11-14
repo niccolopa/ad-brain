@@ -23,7 +23,7 @@ def plane(model: str, serial, synthetic: bool = True, id_: str = "T-1") -> Aircr
 
 def obs(fact: str, value: str, id_: str = "OB-T-1") -> LogbookRow:
     return LogbookRow(id=id_, aircraft_id="T-1", subject_id="T-1", ad_id="EASA:2024-0152R1", date="2025-01-01",
-                      kind="observation", text="test", fact=fact, value=value)
+                      kind="observation", text="test", synthetic=True, fact=fact, value=value)
 
 
 # ---------- model ----------
@@ -194,7 +194,7 @@ def test_synthetic_status_order():
 def test_fleet_statuses_from_real_data():
     # full golden set = the state after FAA:2012-02-02 is ingested
     got = {a.id: rules.assess(a, ADS, STATE.logbook, TODAY).status for a in STATE.aircraft.values()}
-    assert got == {"DEMO-01": "red", "DEMO-02": "green", "DEMO-03": "green", "DEMO-04": "amber",
+    assert got == {"DEMO-01": "red", "DEMO-02": "green", "DEMO-03": "amber", "DEMO-04": "amber",
                    "DEMO-05": "green", "EI-GKN": "no_records", "EI-HAS": "no_records", "EI-GWY": "no_records"}
 
 
@@ -223,7 +223,8 @@ def test_removing_an_observation_raises_its_question():
 
 def test_real_aircraft_question_has_no_deadline():
     q = rules.assess(STATE.aircraft["EI-GWY"], ADS, STATE.logbook, TODAY).questions
-    assert [x.ad_id for x in q] == ["FAA:2004-15-18"] and q[0].deadline is None and not q[0].synthetic
+    assert [x.ad_id for x in q] == ["FAA:2004-15-18", "FAA:2006-12-07", "FAA:2012-19-01"]
+    assert all(x.deadline is None and x.urgency is None and not x.synthetic for x in q)
 
 
 # ---------- due citation ----------
@@ -233,6 +234,16 @@ def test_due_citation_picks_the_group_paragraph():
     assert c is not None and c.quote.startswith("(2) For Group 3 and Group 4 Airplanes:")
     r2 = rules.evaluate(AD_2012_02_02, plane("Cessna 172S", "172S10000"), {})
     assert rules.due_citation(AD_2012_02_02, r2.row).quote.startswith("(1) For Group 1 and Group 2 Airplanes:")
+
+
+@pytest.mark.parametrize("quote,label", [
+    ("Group 4: Model 172S, S/N 172S10490 through 172S11073", "Group 4"),
+    ("(4) Group 4: Model 172S, S/N 172S10490 through 172S11073.", "Group 4"),
+    ("Model 172S, S/N 172S10490 through 172S11073", None), ("(4) Model 172S", None), ("Groups: Group 1 are", None),
+])
+def test_group_label(quote, label):
+    row = AD_2012_02_02.golden.applicability[0].model_copy(update={"quote": quote})
+    assert rules.group_label(row) == label
 
 
 def test_due_citation_none_without_group():

@@ -1,0 +1,62 @@
+{
+  "ad_id": "EASA:2024-0152R1",
+  "model": "anthropic/claude-sonnet-5.5",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "592bb9f8caa04b9a00c15b57336efcca793bd91bbd84a96e8702e6f7af8d98ae",
+  "text_sha256": "1d0e77cdd1085d679a7107b8bd8f08de4c7b3e45cd938b31c800e33744a20016",
+  "extracted_at": "2026-11-14T11:10:02Z",
+  "raw": "{\n  \"ad_number\": \"EASA:2024-0152R1\",\n  \"federal_register_document_number\": null,\n  \"effective_date\": \"2025-02-05\",\n  \"supersedes\": [],\n  \"revises\": [\"EASA:2024-0152\"],\n  \"applicability\": [\n    {\n      \"model\": \"P2008 JC\",\n      \"series\": false,\n      \"serial_from\": null,\n      \"serial_to\": null,\n      \"quote\": \"Tecnam P2008 JC, all serial numbers (s/n), except those on which Tecnam modification\"\n    }\n  ],\n  \"conditions\": [\n    {\n      \"kind\": \"modification_not_embodied\",\n      \"fact\": \"MOD2008_233\",\n      \"applies_when\": \"not_embodied\",\n      \"value\": \"not_embodied\",\n      \"quote\": \"except those on which Tecnam modification\"\n    },\n    {\n      \"kind\": \"modification_not_embodied\",\n      \"fact\": \"SB_826_CS\",\n      \"applies_when\": \"not_embodied\",\n      \"value\": \"not_embodied\",\n      \"quote\": \"MOD2008/233 or Service Bulletin (SB) SB-826-CS has been embodied.\"\n    }\n  ],\n  \"not_evaluated\": [],\n  \"credited_compliance\": [],\n  \"compliance_time_text\": \"For Group 1 aeroplanes (s/n up to 1363 inclusive): within 25 flight hours after 15 August 2024 [the effective date of the original issue of this AD], deactivate the Advanced Start System in accordance with SB-773-CS. Group 2 aeroplanes (s/n 1364 and up) have no deactivation requirement. (Re)activation of the Advanced Start System is allowed provided SB-826-CS has been embodied.\",\n  \"unsafe_condition_summary\": \"Out-of-schedule activation of soft start at high power settings causes reduction of engine RPM, which could lead to further occurrences of loss of power, with possible increased pilot workload and reduced control of the aeroplane.\",\n  \"out_of_scope_features\": [\n    {\n      \"feature\": \"Alternative Methods of Compliance (AMOC)\",\n      \"quote\": \"If requested and appropriately substantiated, EASA can approve Alternative Methods of\"\n    },\n    {\n      \"feature\": \"Modification/deactivation per service bulletin SB-773-CS (Group 1)\",\n      \"quote\": \"modify the aeroplane by deactivating the Advanced Start System in\"\n    },\n    {\n      \"feature\": \"Reactivation allowed if SB-826-CS embodied\",\n      \"quote\": \"provided that the SB-826-CS has\"\n    }\n  ],\n  \"field_quotes\": {\n    \"federal_register_document_number\": [],\n    \"effective_date\": [\n      \"Effective Date: Revision 1: 05 February 2025\"\n    ],\n    \"supersedes\": [],\n    \"revises\": [\n      \"Revision: This AD revises EASA AD 2024-0152 dated 01 August 2024.\"\n    ],\n    \"compliance_time_text\": [\n      \"(1) For Group 1 aeroplanes: Within 25 flight hours after 15 August 2024 [the effective date of the\"\n    ],\n    \"unsafe_condition_summary\": [\n      \"This condition, if not corrected, could lead to further occurrences of loss of power, with possible\"\n    ]\n  },\n  \"labelled_by\": \"\",\n  \"checked_by\": \"\",\n  \"notes\": \"EASA AD, so federal_register_document_number is null; no supersedes (none stated). Revises field_quotes entry is present. No not_evaluated clauses or credited compliance found. Conditions: MOD2008/233 and SB-826-CS both must be not embodied for the AD to apply (exception clause 'except those on which ... or ... has been embodied'). The quote for the second condition starts after a line break; the first condition's quote is a shared sentence fragment.\"\n}",
+  "parsed": {
+    "ad_number": "EASA:2024-0152R1",
+    "effective_date": "2025-02-05",
+    "supersedes": [],
+    "revises": [
+      "EASA:2024-0152"
+    ],
+    "applicability": [
+      {
+        "model": "P2008 JC",
+        "serial_from": null,
+        "serial_to": null,
+        "series": false,
+        "quote": "Tecnam P2008 JC, all serial numbers (s/n), except those on which Tecnam modification"
+      }
+    ],
+    "conditions": [
+      {
+        "kind": "modification_not_embodied",
+        "fact": "MOD2008_233",
+        "applies_when": "not_embodied",
+        "value": "not_embodied",
+        "quote": "except those on which Tecnam modification"
+      },
+      {
+        "kind": "modification_not_embodied",
+        "fact": "SB_826_CS",
+        "applies_when": "not_embodied",
+        "value": "not_embodied",
+        "quote": "MOD2008/233 or Service Bulletin (SB) SB-826-CS has been embodied."
+      }
+    ],
+    "not_evaluated": [],
+    "credited_compliance": [],
+    "compliance_time_text": "For Group 1 aeroplanes (s/n up to 1363 inclusive): within 25 flight hours after 15 August 2024 [the effective date of the original issue of this AD], deactivate the Advanced Start System in accordance with SB-773-CS. Group 2 aeroplanes (s/n 1364 and up) have no deactivation requirement. (Re)activation of the Advanced Start System is allowed provided SB-826-CS has been embodied.",
+    "field_quotes": {
+      "federal_register_document_number": [],
+      "effective_date": [
+        "Effective Date: Revision 1: 05 February 2025"
+      ],
+      "supersedes": [],
+      "revises": [
+        "Revision: This AD revises EASA AD 2024-0152 dated 01 August 2024."
+      ],
+      "compliance_time_text": [
+        "(1) For Group 1 aeroplanes: Within 25 flight hours after 15 August 2024 [the effective date of the"
+      ],
+      "unsafe_condition_summary": [
+        "This condition, if not corrected, could lead to further occurrences of loss of power, with possible"
+      ]
+    }
+  },
+  "error": null
+}

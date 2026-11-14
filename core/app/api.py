@@ -1,5 +1,5 @@
 """One endpoint per business question (contract/README.md, "Endpoints").
-Real: fleet, Q1 status, Q2 affected-aircraft and ingest, Q5 questions, demo reset. The rest still serve contract/examples/ (fakes)."""
+Real: fleet, Q1 status, Q2 affected-aircraft and ingest, Q3 supersession, Q5 questions, demo reset. The rest still serve contract/examples/ (fakes)."""
 import json
 import logging
 from datetime import UTC, date, datetime
@@ -8,7 +8,7 @@ from pathlib import Path
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
-from app import rules, store
+from app import evaluations, extract, llm, rules, store
 from app.ontology import (
     AffectedAircraft,
     AffectedAircraftResponse,
@@ -16,10 +16,15 @@ from app.ontology import (
     AircraftStatusResponse,
     AirworthinessDirective,
     ApplicableAD,
+    ChainLink,
+    ComplianceRecord,
     ComplianceState,
+    DecisionSnapshot,
     DemoResetResponse,
     Due,
     Error,
+    Evaluation,
+    ExtractionInfo,
     FleetAircraft,
     FleetResponse,
     IngestChanges,
@@ -28,8 +33,12 @@ from app.ontology import (
     NotAffected,
     QuestionsResponse,
     ReasoningStep,
+    ReplayChanges,
+    ReplayResponse,
     ResetCounts,
     StatusChange,
+    SupersessionResponse,
+    ValidatedField,
 )
 
 log = logging.getLogger("adbrain.api")
@@ -40,16 +49,22 @@ DEMO_MODE = True
 
 app = FastAPI(title="AD Brain core")
 STATE = store.load()
+EVAL_LOG = evaluations.EvaluationLog(evaluations.LOG_FILE)
 
 
 class NotFound(Exception):
-    def __init__(self, error_code: str, message: str, details: dict) -> None:
+    """An error with a stable code. 404 unless told otherwise."""
+    def __init__(self, error_code: str, message: str, details: dict, status_code: int = 404) -> None:
         self.error = Error(error_code=error_code, message=message, details=details)
+        self.status_code = status_code
+
+
+HTTP_CONFLICT = 409
 
 
 @app.exception_handler(NotFound)
 def not_found(_: Request, exc: NotFound) -> JSONResponse:
-    return JSONResponse(exc.error.model_dump(), status_code=404)
+    return JSONResponse(exc.error.model_dump(), status_code=exc.status_code)
 
 
 @app.exception_handler(Exception)
@@ -91,13 +106,15 @@ def assess(aircraft_id: str) -> rules.Assessment:
 def applies_path(aircraft: Aircraft, ad_id: str, res: rules.Applicability, suffix: str = "") -> list[ReasoningStep]:
     """AD appliesTo aircraft; via the engine: aircraft hasInstalled engine + AD appliesTo engine ⇒ derived link."""
     if res.via == "airframe":
-        return [ReasoningStep(from_=ad_id, link="appliesTo", to=aircraft.id, derived=False, note=res.why + suffix)]
+        return [ReasoningStep(from_=ad_id, link="appliesTo", to=aircraft.id, derived=False, note=res.why + suffix,
+                              rule_id=res.decided_by)]
     eng = rules.engine_id(aircraft)
     return [
-        ReasoningStep(from_=aircraft.id, link="hasInstalled", to=eng, derived=False, note=aircraft.engine_model),
-        ReasoningStep(from_=ad_id, link="appliesTo", to=eng, derived=False, note=res.why),
+        ReasoningStep(from_=aircraft.id, link="hasInstalled", to=eng, derived=False, note=aircraft.engine_model,
+                      rule_id=rules.R_ENGINE_DERIVED),
+        ReasoningStep(from_=ad_id, link="appliesTo", to=eng, derived=False, note=res.why, rule_id=res.decided_by),
         ReasoningStep(from_=ad_id, link="appliesTo", to=aircraft.id, derived=True,
-                      note=f"inferred from the two links above: {res.why}{suffix}"),
+                      note=f"inferred from the two links above: {res.why}{suffix}", rule_id=rules.R_ENGINE_DERIVED),
     ]
 
 
@@ -118,7 +135,10 @@ def summary(a: rules.Assessment, applicable: list[ApplicableAD]) -> str:
 
 @app.get("/aircraft/{aircraft_id}/status", response_model=AircraftStatusResponse)
 def aircraft_status(aircraft_id: str) -> AircraftStatusResponse:
-    a = assess(aircraft_id)
+    aircraft, ads, today = get_aircraft(aircraft_id), list(STATE.ads.values()), date.today()
+    inputs = evaluations.snapshot_inputs(aircraft, STATE.logbook, today)
+    a = evaluations.decide(inputs, ads)
+    ev = EVAL_LOG.record(a, inputs, ads)
     applicable, path = [], []
     for ad_id, res in a.results.items():
         if res.verdict != "applies":
@@ -133,14 +153,16 @@ def aircraft_status(aircraft_id: str) -> AircraftStatusResponse:
         path += applies_path(a.aircraft, ad_id, res, f"; complied {rec.id}" if rec else "; no compliance record")
         if rec:
             note = f"credited: compliance with {rec.ad_id}: {credit.quote}" if credit else rec.text
-            path.append(ReasoningStep(from_=rec.id, link="satisfies", to=ad_id, derived=False, note=note))
+            path.append(ReasoningStep(from_=rec.id, link="satisfies", to=ad_id, derived=False, note=note,
+                                      rule_id=rules.R_CREDIT if credit else rules.R_COMPLIANCE_RECORD))
     citations = [c for x in applicable for c in x.citations + ([x.due.citation] if x.due.citation else [])]
     citations += [c for q in a.questions for c in q.citations]
     return AircraftStatusResponse(
         aircraft=a.aircraft, status=a.status, summary=summary(a, applicable), summary_source="template",
         applicable_ads=applicable, superseded_ads=a.superseded, open_questions=a.questions, hypotheses=[],
         citations=list({c.model_dump_json(): c for c in citations}.values()),  # dedupe, keep order
-        reasoning_path=path, computed_at=now_utc())
+        reasoning_path=path, computed_at=now_utc(),
+        evaluation_id=ev["id"], rules_version=ev["rules_version"]["id"], inputs_hash=ev["inputs_hash"])
 
 
 @app.get("/ads/{ad_id}/affected-aircraft", response_model=AffectedAircraftResponse)
@@ -189,6 +211,7 @@ def statuses() -> dict[str, str]:
 def demo_reset() -> DemoResetResponse:
     global STATE
     STATE = store.load()
+    EVAL_LOG.mark_reset()  # the evaluation log is append-only: reset adds a marker, never truncates
     assessments = [assess(ac_id) for ac_id in STATE.aircraft]
     return DemoResetResponse(
         ok=True, state=f"demo-{date.today().isoformat()}", reset_at=now_utc(),
@@ -200,12 +223,49 @@ def demo_reset() -> DemoResetResponse:
         aircraft_status={a.aircraft.id: a.status for a in assessments})
 
 
+def choose_source(golden_ad: LoadedAD) -> tuple[LoadedAD, str, ExtractionInfo, list[ValidatedField]]:
+    """The extraction decides only when every quote is found and every compared field agrees with golden.
+    Otherwise golden decides, and every miss is returned as a rejected field."""
+    live = not llm.demo_mode()
+    facts = extract.fact_vocabulary(STATE.available, STATE.logbook)
+    try:
+        record = extract.run(golden_ad, facts, live=live)
+    except llm.LLMUnavailable as e:
+        return golden_ad, "golden", ExtractionInfo(used=False, source=None, model=None, prompt_version=None,
+                                                   agreement=None, reason=str(e), misses=[]), []
+    used_source = "llm" if live and not record.get("fallback_reason") else "cache"
+    r = extract.evaluate_record(record, golden_ad)
+    base = {"source": used_source, "model": record.get("model"), "prompt_version": record.get("prompt_version")}
+    if not r["ok"]:
+        return golden_ad, "golden", ExtractionInfo(used=False, agreement=None, reason=r["error"], misses=[],
+                                                   **base), []
+    misses = [f"{name}: missing {f['missing']}; extra {f['extra']}" for name, f in r["fields"].items()
+              if not f["agree"]] + [f"quote not found: {q}" for q in r["rejected"]]
+    if not r["usable"]:
+        rejected = [ValidatedField(field=name, value={"missing": f["missing"], "extra": f["extra"]}, quote="",
+                                   file=golden_ad.file, occurrence=1, check="disagrees with golden")
+                    for name, f in r["fields"].items() if not f["agree"]]
+        log.warning("ingest %s: extraction not used (%d miss(es)); golden decides", golden_ad.ad_id, len(misses))
+        return golden_ad, "golden", ExtractionInfo(used=False, agreement=r["agreement"], misses=misses,
+                                                   reason="extraction disagrees with golden or a quote is not "
+                                                          "in the text: golden decides", **base), rejected
+    # Values from the extraction, citations (and every free text) from golden: the agent's quotes are verified but
+    # may stop mid-sentence, so answers cite the human-checked sentence. The decided record hashes the cache file.
+    extracted = extract.with_golden_quotes(extract.parse(record["raw"], golden_ad.ad_id), golden_ad.golden)
+    cache = extract.cache_path(golden_ad.ad_id)
+    ad = golden_ad.model_copy(update={"golden": extracted, "golden_file": cache.relative_to(store.REPO).as_posix()})
+    return ad, used_source, ExtractionInfo(
+        used=True, agreement=r["agreement"], misses=[],
+        reason="values from the extraction; citations from golden (human-checked)", **base), []
+
+
 @app.post("/ads/{ad_id}/ingest", response_model=IngestResponse)
 def ingest(ad_id: str) -> IngestResponse:
-    """Pipeline run (not an action). Demo mode: reads data/golden, no LLM. Idempotent: the AD id is the key."""
+    """Pipeline run (not an action). The LLM extraction (demo mode: its cache) fills the AD's inputs when it is
+    fully validated and agrees with golden; otherwise golden does. Idempotent: the AD id is the key."""
     if ad_id not in STATE.available:
         raise NotFound("AD_NOT_FOUND", f"No AD with id {ad_id} to ingest.", {"ad_id": ad_id})
-    ad = STATE.available[ad_id]
+    ad, source, extraction, misses = choose_source(STATE.available[ad_id])
     checks = store.field_checks(ad, store.ad_text(ad))
     validated = [c for c in checks if c.check == store.QUOTE_FOUND]
     rejected = [c for c in checks if c.check != store.QUOTE_FOUND]
@@ -219,9 +279,9 @@ def ingest(ad_id: str) -> IngestResponse:
     after = statuses()
 
     g = ad.golden
-    path = [ReasoningStep(from_=ad_id, link="supersedes", to=old, derived=False,
+    path = [ReasoningStep(from_=ad_id, link="supersedes", to=old, derived=False, rule_id=rules.R_CHAIN,
                           note=(g.field_quotes.get("supersedes") or ["supersedes"])[0]) for old in g.supersedes]
-    path += [ReasoningStep(from_=ad_id, link="revises", to=old, derived=False,
+    path += [ReasoningStep(from_=ad_id, link="revises", to=old, derived=False, rule_id=rules.R_CHAIN,
                            note=(g.field_quotes.get("revises") or ["revises"])[0]) for old in g.revises]
     if ad_id in STATE.ads:
         for ac_id in STATE.aircraft:
@@ -229,8 +289,8 @@ def ingest(ad_id: str) -> IngestResponse:
             if res is not None and res.verdict == "applies":
                 path += applies_path(STATE.aircraft[ac_id], ad_id, res)
     return IngestResponse(
-        run_id=f"ING-{date.today().isoformat()}-{STATE.ingest_runs:03d}", ad_id=ad_id, source="golden",
-        validated_fields=validated, rejected_fields=rejected,
+        run_id=f"ING-{date.today().isoformat()}-{STATE.ingest_runs:03d}", ad_id=ad_id, source=source,
+        validated_fields=validated, rejected_fields=rejected + misses, extraction=extraction,
         changes=IngestChanges(
             superseded=g.supersedes + g.revises if newly else [],
             aircraft_status_changed=[StatusChange(aircraft_id=k, from_=before[k], to=after[k])
@@ -266,9 +326,75 @@ def fleet() -> FleetResponse:
     return FleetResponse(aircraft=rows, computed_at=now_utc())
 
 
-@app.get("/aircraft/{aircraft_id}/ads/{ad_id}/supersession")
-def supersession(aircraft_id: str, ad_id: str) -> JSONResponse:
-    return example("q3-supersession")
+@app.get("/aircraft/{aircraft_id}/ads/{ad_id}/supersession", response_model=SupersessionResponse)
+def supersession(aircraft_id: str, ad_id: str) -> SupersessionResponse:
+    aircraft = get_aircraft(aircraft_id)
+    if not rules.is_known_ad(ad_id, STATE.ads):
+        raise NotFound("AD_NOT_FOUND", f"No AD with id {ad_id} in this system.", {"ad_id": ad_id})
+    chain, problem = rules.supersession_chain(ad_id, STATE.ads)
+    a = assess(aircraft_id)
+    head = chain[-1].ad_id
+    head_result = None if problem else a.results.get(head)
+    records = {r.ad_id: r for r in STATE.logbook if r.aircraft_id == aircraft_id and r.kind == "compliance"}
+    v = rules.still_valid(chain, problem, head_result, records, STATE.ads)
+
+    links, path, citations = [], [], []
+    for step in chain:
+        loaded = STATE.ads.get(step.ad_id)
+        links.append(ChainLink(ad_id=step.ad_id, status="superseded" if step.successor else "active",
+                               superseded_by=step.successor, link=step.link,
+                               effective_date=loaded.golden.effective_date if loaded else None))
+    if head_result is not None and head_result.verdict == "applies":
+        path += applies_path(aircraft, head, head_result)
+        citations += head_result.citations
+    for step in chain:
+        if step.successor:
+            new = STATE.ads[step.successor]
+            quotes = new.golden.field_quotes.get(step.link or "", [])
+            path.append(ReasoningStep(from_=new.ad_id, link=step.link or "supersedes", to=step.ad_id, derived=False,
+                                      note=quotes[0] if quotes else step.link or "", rule_id=rules.R_CHAIN))
+            citations += [new.cite(q) for q in quotes[:1]]
+    rec = v.record
+    if rec is not None:
+        path.append(ReasoningStep(from_=rec.id, link="satisfies", to=rec.ad_id, derived=False,
+                                  note=f"kept valid: {v.reason}" if v.credits else rec.text,
+                                  rule_id=rules.R_CREDIT if v.credits else rules.R_COMPLIANCE_RECORD))
+    citations += v.credits
+    compliance = None if rec is None else ComplianceRecord(
+        id=rec.id, ad_id=rec.ad_id, subject_id=rec.subject_id, date=rec.date, method=rec.text,
+        evidence=f"logbook {rec.id} (synthetic)" if rec.synthetic else f"logbook {rec.id}",
+        recorded_by=None, synthetic=rec.synthetic)
+    inputs = evaluations.snapshot_inputs(aircraft, STATE.logbook, date.today())
+    return SupersessionResponse(
+        aircraft_id=aircraft_id, asked_ad_id=ad_id, chain=links, compliance=compliance, still_valid=v.value,
+        reason=v.reason, citations=list({c.model_dump_json(): c for c in citations}.values()), reasoning_path=path,
+        rules_version=evaluations.rules_version(list(STATE.ads.values()))["id"],
+        inputs_hash=evaluations.canonical_sha256(inputs))
+
+
+def get_evaluation(evaluation_id: str) -> dict:
+    if evaluation_id not in EVAL_LOG.records:
+        raise NotFound("EVALUATION_NOT_FOUND", f"No evaluation with id {evaluation_id}.", {"id": evaluation_id})
+    return EVAL_LOG.records[evaluation_id]
+
+
+@app.get("/evaluations/{evaluation_id}", response_model=Evaluation)
+def evaluation(evaluation_id: str) -> Evaluation:
+    return Evaluation.model_validate(get_evaluation(evaluation_id))
+
+
+@app.post("/evaluations/{evaluation_id}/replay", response_model=ReplayResponse)
+def replay(evaluation_id: str) -> ReplayResponse:
+    """Recompute from the recorded inputs with the current rules and active ADs."""
+    record = get_evaluation(evaluation_id)
+    try:
+        r = EVAL_LOG.replay(record, list(STATE.ads.values()))
+    except ValueError as e:  # recorded inputs no longer match their hash
+        raise NotFound("INPUTS_HASH_MISMATCH", str(e), {"id": evaluation_id}, HTTP_CONFLICT) from e
+    return ReplayResponse(
+        evaluation_id=evaluation_id, same=r.same, before=DecisionSnapshot(**evaluations.decision_of_record(record)),
+        after=DecisionSnapshot(**r.after), changed=ReplayChanges(**r.changed()),
+        replay_evaluation_id=r.new_record["id"], inputs_hash=record["inputs_hash"], replayed_at=now_utc())
 
 
 @app.get("/decisions")

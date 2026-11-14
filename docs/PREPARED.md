@@ -10,7 +10,7 @@ The application code was written on the day; the git history shows when.
 | | Reading test on AD 2012-02-02 (go/no-go on the domain) | both |
 | | Answer from KVA on what pre-event setup is allowed: … | Matteo |
 | 13 Nov | Python dependencies pinned (no application code) | Niccolò |
-| 13 Nov | scripts/use-kva.ps1: points Claude Code at the KVA gateway from .env (tooling, no application code) | Niccolò, with Claude |
+| 13 Nov | A helper script for Claude Code tooling; deleted on 14 Nov because KVA does not allow using its key for Claude Code (see git history) | Niccolò, with Claude |
 | 13 Nov | Dataset index (data/raw/INDEX.md) and 2 draft golden labels, prepared with Claude | Niccolò |
 | 13 Nov | Dataset: FAA AD texts (EASA mirror / Federal Register) and EASA AD texts (Tecnam), downloaded and converted with a helper script kept outside the repo; provenance in data/raw/ads/SOURCES.csv | Niccolò, with Claude |
 | 13 Nov | Dataset: 5 real EU aircraft from the Irish IAA register snapshot (no owner data) + a fictional demo fleet (DEMO-01…05) | Niccolò |

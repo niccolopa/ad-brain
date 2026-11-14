@@ -30,6 +30,9 @@ data/registry/raw/
 # Original AD PDFs stay local; the extracted .txt files are committed
 data/raw/pdf/
 
+# Runtime logs (evaluation log): written by the running server, never committed
+data/runtime/
+
 # OS / editor
 .DS_Store
 Thumbs.db

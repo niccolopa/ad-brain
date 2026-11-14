@@ -26,14 +26,16 @@ def fleet() -> dict:
 def test_fleet_demo_state():
     f = fleet()
     assert {k: v["status"] for k, v in f.items()} == {
-        "DEMO-01": "green", "DEMO-02": "green", "DEMO-03": "green", "DEMO-04": "amber", "DEMO-05": "green",
+        "DEMO-01": "green", "DEMO-02": "green", "DEMO-03": "amber", "DEMO-04": "amber", "DEMO-05": "green",
         "EI-GKN": "no_records", "EI-HAS": "no_records", "EI-GWY": "no_records"}
     assert f["DEMO-04"]["open_questions"] == 1
     assert f["DEMO-04"]["reason"].startswith(
         "Open question: Is MOD2008/233 or SB-826-CS embodied on DEMO-04? (AD EASA:2024-0152R1)")
     assert f["DEMO-02"]["reason"] == "All applicable ADs complied with or not applicable"
     assert f["EI-HAS"]["reason"] == "No AD in the loaded set applies — no compliance records in this system"
-    assert f["EI-GWY"]["open_questions"] == 1 and f["EI-GWY"]["status"] == "no_records"
+    assert f["EI-GWY"]["open_questions"] == 3 and f["EI-GWY"]["status"] == "no_records"
+    assert f["DEMO-03"]["reason"].startswith("Open question: Is ECi cylinder assemblies P/N AEL65102")
+    assert f["DEMO-03"]["reason"].endswith("on DEMO-03? (AD FAA:2006-12-07)")
 
 
 def test_fleet_after_ingest_matches_contract_reason():
@@ -54,7 +56,10 @@ def test_questions_sorted_and_rule_matches_contract():
     b = client.get("/questions").json()
     ex = json.loads((EXAMPLES_DIR / "q5-questions.json").read_text(encoding="utf-8"))["response"]["body"]
     assert b["urgency_rule"] == ex["urgency_rule"]
-    assert [(q["aircraft_id"], q["urgency"]) for q in b["questions"]] == [("DEMO-04", "high"), ("EI-GWY", None)]
+    got = [(q["aircraft_id"], q["urgency"]) for q in b["questions"]]
+    assert got[:2] == [("DEMO-04", "high"), ("DEMO-03", "medium")]
+    assert len(got) == 9 and all(u is None and ac.startswith("EI-") for ac, u in got[2:])
+    assert [q["id"] for q in b["questions"][2:]] == sorted(q["id"] for q in b["questions"][2:])
 
 
 def test_questions_filter_by_aircraft():

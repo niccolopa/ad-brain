@@ -1,0 +1,55 @@
+{
+  "ad_id": "FAA:2013-03-15",
+  "model": "anthropic/claude-sonnet-5.5",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "590a28e0a528b0b11f09f052da36f25b398a5604770ec45ff4ed49ef52224b52",
+  "text_sha256": "dc164fb8e990711d90ef89d884fa49aa0952c1dfe03e17b898eca5413fd28214",
+  "extracted_at": "2026-11-14T11:12:21Z",
+  "raw": "{\n  \"ad_number\": \"FAA:2013-03-15\",\n  \"federal_register_document_number\": \"2013-02897\",\n  \"effective_date\": \"2013-03-19\",\n  \"supersedes\": [],\n  \"revises\": [],\n  \"applicability\": [\n    {\n      \"model\": \"172R\",\n      \"series\": false,\n      \"serial_from\": \"17281573\",\n      \"serial_to\": \"17281616\",\n      \"quote\": \"(1) Model 172R, serial numbers (S/N) 17281573 through 17281616; and\"\n    },\n    {\n      \"model\": \"172S\",\n      \"series\": false,\n      \"serial_from\": \"172S11074\",\n      \"serial_to\": \"172S11193\",\n      \"quote\": \"(2) Model 172S, S/N l72S11074 through 172S11193.\"\n    }\n  ],\n  \"conditions\": [],\n  \"not_evaluated\": [],\n  \"credited_compliance\": [],\n  \"compliance_time_text\": \"At whichever of the following compliance times occurs later: at the next annual inspection after March 19, 2013; within the next 100 hours time-in-service after March 19, 2013; or within the next 12 calendar months after March 19, 2013, inspect the fuel return line assembly for damage. Replace if damaged, or reinstall if not damaged, before further flight, then install the forward and aft support clamps and brackets and inspect clearances before further flight.\",\n  \"unsafe_condition_summary\": \"Chafing of a new configuration of the fuel return line assembly, caused by the fuel return line assembly rubbing against the right steering tube assembly during rudder pedal actuation.\",\n  \"out_of_scope_features\": [\n    {\n      \"feature\": \"part numbers\",\n      \"quote\": \"inspect the fuel return line\\nassembly (Cessna part number (P/N) 0516031-1) for damage\"\n    },\n    {\n      \"feature\": \"AMOC\",\n      \"quote\": \"(m) Alternative Methods of Compliance (AMOCs)\"\n    }\n  ],\n  \"field_quotes\": {\n    \"federal_register_document_number\": [\n      \"[FR Doc No: 2013-02897]\"\n    ],\n    \"effective_date\": [\n      \"This AD is effective March 19, 2013.\"\n    ],\n    \"supersedes\": [],\n    \"revises\": [],\n    \"compliance_time_text\": [\n      \"At whichever of the following compliance times that occurs later, inspect the fuel return line\",\n      \"(1) At the next annual inspection after March 19, 2013 (the effective date of this AD);\",\n      \"(2) Within the next 100 hours time-in-service (TIS) after March 19, 2013 (the effective date of\",\n      \"(3) Within the next 12 calendar months after March 19, 2013 (the effective date of this AD).\"\n    ],\n    \"unsafe_condition_summary\": [\n      \"This AD was prompted by reports of chafing of a new configuration of the fuel return line\\nassembly, which was caused by the fuel return line assembly rubbing against the right steering tube\\nassembly during rudder pedal actuation.\"\n    ]\n  },\n  \"labelled_by\": \"\",\n  \"checked_by\": \"\",\n  \"notes\": \"OCR error in the 172S applicability quote: 'l72S11074' is printed that way; the value uses the correct form 172S11074. Affected ADs paragraph says None, so supersedes and revises are empty with empty quote lists. No conditions, not_evaluated clauses, or credited compliance in the AD.\"\n}",
+  "parsed": {
+    "ad_number": "FAA:2013-03-15",
+    "effective_date": "2013-03-19",
+    "supersedes": [],
+    "revises": [],
+    "applicability": [
+      {
+        "model": "172R",
+        "serial_from": "17281573",
+        "serial_to": "17281616",
+        "series": false,
+        "quote": "(1) Model 172R, serial numbers (S/N) 17281573 through 17281616; and"
+      },
+      {
+        "model": "172S",
+        "serial_from": "172S11074",
+        "serial_to": "172S11193",
+        "series": false,
+        "quote": "(2) Model 172S, S/N l72S11074 through 172S11193."
+      }
+    ],
+    "conditions": [],
+    "not_evaluated": [],
+    "credited_compliance": [],
+    "compliance_time_text": "At whichever of the following compliance times occurs later: at the next annual inspection after March 19, 2013; within the next 100 hours time-in-service after March 19, 2013; or within the next 12 calendar months after March 19, 2013, inspect the fuel return line assembly for damage. Replace if damaged, or reinstall if not damaged, before further flight, then install the forward and aft support clamps and brackets and inspect clearances before further flight.",
+    "field_quotes": {
+      "federal_register_document_number": [
+        "[FR Doc No: 2013-02897]"
+      ],
+      "effective_date": [
+        "This AD is effective March 19, 2013."
+      ],
+      "supersedes": [],
+      "revises": [],
+      "compliance_time_text": [
+        "At whichever of the following compliance times that occurs later, inspect the fuel return line",
+        "(1) At the next annual inspection after March 19, 2013 (the effective date of this AD);",
+        "(2) Within the next 100 hours time-in-service (TIS) after March 19, 2013 (the effective date of",
+        "(3) Within the next 12 calendar months after March 19, 2013 (the effective date of this AD)."
+      ],
+      "unsafe_condition_summary": [
+        "This AD was prompted by reports of chafing of a new configuration of the fuel return line\nassembly, which was caused by the fuel return line assembly rubbing against the right steering tube\nassembly during rudder pedal actuation."
+      ]
+    }
+  },
+  "error": null
+}

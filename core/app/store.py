@@ -62,13 +62,16 @@ def field_checks(ad: LoadedAD, text: str) -> list[ValidatedField]:
         items.append(("revises", g.revises, fq.get("revises", [])))
     items.append(("compliance_time", g.compliance_time_text, fq.get("compliance_time_text", [])))
     items += [("not_evaluated", n.clause, [n.quote]) for n in g.not_evaluated]
-    items += [("credited_compliance", c.ad_id, [c.quote]) for c in g.credited_compliance]
     out = []
     for name, value, quotes in items:
         for q in quotes or [""]:  # a value with no quote is rejected, never silently accepted
             found = bool(q) and quote_count(q, text) > 0
             out.append(ValidatedField(field=name, value=value, quote=q, file=ad.file, occurrence=1,
                                       check=QUOTE_FOUND if found else QUOTE_NOT_FOUND))
+    for c in g.credited_compliance:
+        found = quote_count(c.quote, text) >= c.occurrence
+        out.append(ValidatedField(field="credited_compliance", value=c.ad_id, quote=c.quote, file=ad.file,
+                                  occurrence=c.occurrence, check=QUOTE_FOUND if found else QUOTE_NOT_FOUND))
     return out
 
 
@@ -131,14 +134,19 @@ def load_ads(golden_dir: Path | None = None) -> dict[str, LoadedAD]:
         text = txt.read_text(encoding="utf-8")
         quotes = [r.quote for r in golden.applicability] + [c.quote for c in golden.conditions]
         quotes += [q for qs in golden.field_quotes.values() for q in qs]
-        quotes += [n.quote for n in golden.not_evaluated] + [c.quote for c in golden.credited_compliance]
+        quotes += [n.quote for n in golden.not_evaluated]
         for q in quotes:
             n = quote_count(q, text)
             if n == 0:
                 raise DataError(f"{ad_id}: quote not found in {txt.name}: {q[:80]!r}")
             if n > 1:
                 log.warning("%s: quote found %d times, citing the first: %r", ad_id, n, q[:80])
+        for c in golden.credited_compliance:
+            if quote_count(c.quote, text) < c.occurrence:
+                raise DataError(f"{ad_id}: credit quote not found {c.occurrence} time(s) in {txt.name}: {c.quote[:80]!r}")
+        golden_file = path.relative_to(REPO).as_posix() if path.is_relative_to(REPO) else str(path)
         ads[ad_id] = LoadedAD(golden=golden, title=titles[ad_id], file=txt.relative_to(REPO).as_posix(),
+                              golden_file=golden_file,
                               source_url=sources[ad_id]["source_url"])
     return ads
 

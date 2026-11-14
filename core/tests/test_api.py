@@ -36,21 +36,25 @@ def test_unknown_ad_404(ad):
 
 def test_q1_demo01_green_before_ingest():
     b = client.get("/aircraft/DEMO-01/status").json()
-    assert b["status"] == "green" and b["applicable_ads"] == []
+    assert b["status"] == "green"
+    # only the engine AD applies, complied via the credited 2006-20-09 record
+    assert [(x["ad_id"], x["compliance"]["state"]) for x in b["applicable_ads"]] == [("FAA:2012-19-01", "complied")]
 
 
 def test_q1_demo01_red_group4():
     client.post(INGEST_2012_02_02)
     b = client.get("/aircraft/DEMO-01/status").json()
     assert b["status"] == "red"
-    [ad] = b["applicable_ads"]
+    [ad] = [x for x in b["applicable_ads"] if x["ad_id"] == "FAA:2012-02-02"]
     assert ad["ad_id"] == "FAA:2012-02-02" and ad["compliance"] == {"state": "no_record", "record_id": None}
     assert ad["applies_because"] == "S/N 172S10600 is within 172S10490–172S11073 (Group 4)"
+    # values came from the extraction, the citation from golden (human-checked)
     assert ad["citations"][0]["quote"] == "Group 4: Model 172S, S/N 172S10490 through 172S11073"
+    assert ad["citations"][0]["origin"] == "golden"
     assert ad["due"]["citation"]["quote"].startswith("(2) For Group 3 and Group 4 Airplanes:")
     assert ad["due"]["overdue"] is True
-    assert b["reasoning_path"][0] == {"from": "FAA:2012-02-02", "link": "appliesTo", "to": "DEMO-01",
-                                      "derived": False, "note": ad["applies_because"] + "; no compliance record"}
+    assert {"from": "FAA:2012-02-02", "link": "appliesTo", "to": "DEMO-01", "derived": False,
+            "note": ad["applies_because"] + "; no compliance record", "rule_id": "R-SERIAL-RANGE"} in b["reasoning_path"]
 
 
 def test_q1_demo04_amber_with_question():
@@ -105,14 +109,15 @@ def test_ingest_turns_demo01_green_to_red():
     r = client.post(INGEST_2012_02_02)
     assert r.status_code == 200
     b = r.json()
-    assert b["ad_id"] == "FAA:2012-02-02" and b["source"] == "golden" and b["rejected_fields"] == []
+    assert b["ad_id"] == "FAA:2012-02-02" and b["source"] == "cache" and b["rejected_fields"] == []
+    assert b["extraction"]["used"] is True and b["extraction"]["agreement"] == 1.0  # the agent filled the inputs
     assert b["changes"]["aircraft_status_changed"] == [{"aircraft_id": "DEMO-01", "from": "green", "to": "red"}]
     assert b["changes"]["superseded"] == ["FAA:2008-03-02"]
     assert all(f["check"] == "quote found in text" for f in b["validated_fields"])
     g4 = {"model": "172S", "serial_from": "172S10490", "serial_to": "172S11073"}
     assert any(f["field"] == "applicability" and f["value"] == g4 for f in b["validated_fields"])
     assert {"from": "FAA:2012-02-02", "link": "appliesTo", "to": "DEMO-01", "derived": False,
-            "note": "S/N 172S10600 is within 172S10490–172S11073 (Group 4)"} in b["reasoning_path"]
+            "note": "S/N 172S10600 is within 172S10490–172S11073 (Group 4)", "rule_id": "R-SERIAL-RANGE"}         in b["reasoning_path"]
     assert b["reasoning_path"][0]["link"] == "supersedes" and b["reasoning_path"][0]["to"] == "FAA:2008-03-02"
     assert client.get("/aircraft/DEMO-01/status").json()["status"] == "red"
 
@@ -152,6 +157,8 @@ def test_reset_undoes_ingest():
     b = client.post("/demo/reset").json()
     assert b["not_loaded"] == ["FAA:2012-02-02"]
     assert b["aircraft_status"]["DEMO-01"] == "green" and b["aircraft_status"]["DEMO-04"] == "amber"
-    assert b["counts"]["ads"] == 4 and b["counts"]["logbook_records"] == 21 and b["counts"]["aircraft"] == 8
-    assert b["counts"]["questions"] == 2  # DEMO-04 MOD, EI-GWY KAP 140
+    assert b["counts"]["ads"] == 7 and b["counts"]["logbook_records"] == 21 and b["counts"]["aircraft"] == 8
+    # DEMO-03 ECi, DEMO-04 MOD; EI-GKN and EI-HAS: ECi + MSB 569A; EI-GWY: KAP 140 + ECi + MSB 569A
+    assert b["counts"]["questions"] == 9
+    assert b["aircraft_status"]["DEMO-03"] == "amber"
     assert client.post(INGEST_2012_02_02).json()["run_id"].endswith("-001")

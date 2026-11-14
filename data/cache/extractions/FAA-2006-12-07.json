@@ -1,0 +1,190 @@
+{
+  "ad_id": "FAA:2006-12-07",
+  "model": "anthropic/claude-sonnet-5.5",
+  "prompt_version": "extract-v2",
+  "prompt_sha256": "dc9c394a2621f8403bcebb82ec94850cc5b26541f258f736a2dabf05772483b7",
+  "text_sha256": "51011bc6b548524f48b7b8b3a7af97ece77e18643e7400308106b43b8e121ff3",
+  "extracted_at": "2026-11-14T11:10:33Z",
+  "raw": "{\n  \"ad_number\": \"FAA:2006-12-07\",\n  \"federal_register_document_number\": \"06-5127\",\n  \"effective_date\": \"2006-07-11\",\n  \"supersedes\": [\"FAA:2005-26-10\"],\n  \"revises\": [],\n  \"applicability\": [\n    { \"model\": \"O-320\", \"series\": true, \"serial_from\": null, \"serial_to\": null, \"quote\": \"(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:\" },\n    { \"model\": \"IO-320\", \"series\": true, \"serial_from\": null, \"serial_to\": null, \"quote\": \"(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:\" },\n    { \"model\": \"AEIO-320\", \"series\": true, \"serial_from\": null, \"serial_to\": null, \"quote\": \"(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:\" },\n    { \"model\": \"AIO-320\", \"series\": true, \"serial_from\": null, \"serial_to\": null, \"quote\": \"(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:\" },\n    { \"model\": \"LIO-320\", \"series\": true, \"serial_from\": null, \"serial_to\": null, \"quote\": \"(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:\" },\n    { \"model\": \"O-360\", \"series\": true, \"serial_from\": null, \"serial_to\": null, \"quote\": \"(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:\" },\n    { \"model\": \"IO-360\", \"series\": true, \"serial_from\": null, \"serial_to\": null, \"quote\": \"(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:\" },\n    { \"model\": \"HO-360\", \"series\": true, \"serial_from\": null, \"serial_to\": null, \"quote\": \"(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:\" },\n    { \"model\": \"HIO-360\", \"series\": true, \"serial_from\": null, \"serial_to\": null, \"quote\": \"(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:\" },\n    { \"model\": \"AEIO-360\", \"series\": true, \"serial_from\": null, \"serial_to\": null, \"quote\": \"(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:\" },\n    { \"model\": \"LO-360\", \"series\": true, \"serial_from\": null, \"serial_to\": null, \"quote\": \"(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:\" },\n    { \"model\": \"LTO-360\", \"series\": true, \"serial_from\": null, \"serial_to\": null, \"quote\": \"(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:\" },\n    { \"model\": \"TO-360\", \"series\": true, \"serial_from\": null, \"serial_to\": null, \"quote\": \"(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:\" },\n    { \"model\": \"O-540\", \"series\": true, \"serial_from\": null, \"serial_to\": null, \"quote\": \"(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:\" },\n    { \"model\": \"IO-540\", \"series\": true, \"serial_from\": null, \"serial_to\": null, \"quote\": \"(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:\" },\n    { \"model\": \"AEIO-540\", \"series\": true, \"serial_from\": null, \"serial_to\": null, \"quote\": \"(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:\" },\n    { \"model\": \"TIO-540\", \"series\": true, \"serial_from\": null, \"serial_to\": null, \"quote\": \"(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:\" },\n    { \"model\": \"LTIO-540\", \"series\": true, \"serial_from\": null, \"serial_to\": null, \"quote\": \"(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:\" }\n  ],\n  \"conditions\": [\n    {\n      \"kind\": \"part_installed\",\n      \"fact\": \"ECi_AEL65102_cylinders_installed\",\n      \"applies_when\": \"yes\",\n      \"value\": \"ECi cylinder assemblies P/N AEL65102 series 'Classic Cast', casting head markings EC 65099-REV-1, cylinder SNs 1 through 9879, installed\",\n      \"quote\": \"(2) With ECi cylinder assemblies, part number (P/N) AEL65102 series ''Classic Cast'', having casting head markings EC 65099-REV-1; and\"\n    }\n  ],\n  \"not_evaluated\": [\n    {\n      \"clause\": \"Cylinder assemblies sold from January 1997 to September 2001 (sale date of the cylinder assemblies cannot be checked)\",\n      \"quote\": \"(sold from January 1997 to September 2001)\"\n    },\n    {\n      \"clause\": \"Engines never overhauled or majorly repaired since new need no further action (overhaul/repair history is not evaluated)\",\n      \"quote\": \"If your engine has not been overhauled or had any major repair since new, no further action is required.\"\n    },\n    {\n      \"clause\": \"Cylinder assembly serial numbers 1 through 9879 (cylinder serials, with optional L prefix, are not checked)\",\n      \"quote\": \"(3) With serial numbers (SNs) 1 through 9879 (SN may have an ''L'' prefix for a long reach spark plug), (sold from January 1997 to September 2001) installed.\"\n    }\n  ],\n  \"credited_compliance\": [],\n  \"compliance_time_text\": \"Engines overhauled or repaired since new: replace each affected cylinder assembly at no later than 800 operating hours-in-service (HIS) if it has fewer than 800 HIS on the effective date; if it has 800 HIS or more on the effective date, replace within 60 operating HIS after the effective date.\",\n  \"unsafe_condition_summary\": \"Cracks in the cylinder assemblies can cause loss of engine power and possible engine failure caused by separation of a cylinder head.\",\n  \"out_of_scope_features\": [\n    {\n      \"feature\": \"Alternative methods of compliance (AMOC)\",\n      \"quote\": \"The Manager, Special Certification Office, has the authority to approve alternative methods of compliance for this AD\"\n    },\n    {\n      \"feature\": \"Part number prohibition on installing affected cylinder assemblies\",\n      \"quote\": \"do not install any ECi cylinder assembly, P/N AEL65102,\"\n    },\n    {\n      \"feature\": \"Replacement cylinder assembly definition (part numbers)\",\n      \"quote\": \"(3) A serviceable ECi cylinder assembly, P/N AEL65102 series, ''Titan'', having casting P/N AEL85099.\"\n    }\n  ],\n  \"field_quotes\": {\n    \"federal_register_document_number\": [\"[FR Doc. 06-5127 Filed 6-5-06; 8:45 am]\"],\n    \"effective_date\": [\"(a) This airworthiness directive (AD) becomes effective July 11, 2006.\"],\n    \"supersedes\": [\"This AD supersedes 2005-26-10, Amendment 39-14431.\"],\n    \"revises\": [],\n    \"compliance_time_text\": [\n      \"(i) If the cylinder assembly has fewer than 800 operating hours-in-service (HIS) on the effective date of this AD, replace the cylinder assembly at no later than 800 operating HIS.\",\n      \"(ii) If the cylinder assembly has 800 operating HIS or more on the effective date of this AD, replace the cylinder assembly within 60 operating HIS after the effective date of this AD.\"\n    ],\n    \"unsafe_condition_summary\": [\n      \"to prevent loss of engine power due to cracks in the cylinder assemblies and possible engine failure caused by separation of a cylinder head.\"\n    ]\n  },\n  \"labelled_by\": \"LLM draft\",\n  \"checked_by\": null,\n  \"notes\": \"revises: not an EASA AD, so no Revision field; field_quotes.revises is empty. Applicability: the AD covers Lycoming 320/360/540 series engines only for the models specified in Table 1, so the series rows over-include (model suffixes not in Table 1 are not applicable); series rows were used because Table 1 is too large to quote per model, and their prefixes are those listed in Table 1 (VO-360, IVO-360 and others appearing only in Table 2 are excluded). Dashes in the AD text are en-dashes; values use plain hyphens. All applicability rows share the same paragraph (c) quote. Serial range 1-9879 refers to cylinder assembly serials, not engine serials, so engine serial_from/serial_to are null. No credited compliance paragraph: AD 2005-26-10 is superseded, but no text credits its compliance.\"\n}",
+  "parsed": {
+    "ad_number": "FAA:2006-12-07",
+    "effective_date": "2006-07-11",
+    "supersedes": [
+      "FAA:2005-26-10"
+    ],
+    "revises": [],
+    "applicability": [
+      {
+        "model": "O-320",
+        "serial_from": null,
+        "serial_to": null,
+        "series": true,
+        "quote": "(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:"
+      },
+      {
+        "model": "IO-320",
+        "serial_from": null,
+        "serial_to": null,
+        "series": true,
+        "quote": "(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:"
+      },
+      {
+        "model": "AEIO-320",
+        "serial_from": null,
+        "serial_to": null,
+        "series": true,
+        "quote": "(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:"
+      },
+      {
+        "model": "AIO-320",
+        "serial_from": null,
+        "serial_to": null,
+        "series": true,
+        "quote": "(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:"
+      },
+      {
+        "model": "LIO-320",
+        "serial_from": null,
+        "serial_to": null,
+        "series": true,
+        "quote": "(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:"
+      },
+      {
+        "model": "O-360",
+        "serial_from": null,
+        "serial_to": null,
+        "series": true,
+        "quote": "(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:"
+      },
+      {
+        "model": "IO-360",
+        "serial_from": null,
+        "serial_to": null,
+        "series": true,
+        "quote": "(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:"
+      },
+      {
+        "model": "HO-360",
+        "serial_from": null,
+        "serial_to": null,
+        "series": true,
+        "quote": "(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:"
+      },
+      {
+        "model": "HIO-360",
+        "serial_from": null,
+        "serial_to": null,
+        "series": true,
+        "quote": "(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:"
+      },
+      {
+        "model": "AEIO-360",
+        "serial_from": null,
+        "serial_to": null,
+        "series": true,
+        "quote": "(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:"
+      },
+      {
+        "model": "LO-360",
+        "serial_from": null,
+        "serial_to": null,
+        "series": true,
+        "quote": "(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:"
+      },
+      {
+        "model": "LTO-360",
+        "serial_from": null,
+        "serial_to": null,
+        "series": true,
+        "quote": "(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:"
+      },
+      {
+        "model": "TO-360",
+        "serial_from": null,
+        "serial_to": null,
+        "series": true,
+        "quote": "(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:"
+      },
+      {
+        "model": "O-540",
+        "serial_from": null,
+        "serial_to": null,
+        "series": true,
+        "quote": "(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:"
+      },
+      {
+        "model": "IO-540",
+        "serial_from": null,
+        "serial_to": null,
+        "series": true,
+        "quote": "(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:"
+      },
+      {
+        "model": "AEIO-540",
+        "serial_from": null,
+        "serial_to": null,
+        "series": true,
+        "quote": "(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:"
+      },
+      {
+        "model": "TIO-540",
+        "serial_from": null,
+        "serial_to": null,
+        "series": true,
+        "quote": "(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:"
+      },
+      {
+        "model": "LTIO-540",
+        "serial_from": null,
+        "serial_to": null,
+        "series": true,
+        "quote": "(c) This AD applies to Lycoming Engines (formerly Textron Lycoming) models 320, 360, and 540 series, parallel valve, reciprocating engines:"
+      }
+    ],
+    "conditions": [
+      {
+        "kind": "part_installed",
+        "fact": "ECi_AEL65102_cylinders_installed",
+        "applies_when": "yes",
+        "value": "ECi cylinder assemblies P/N AEL65102 series 'Classic Cast', casting head markings EC 65099-REV-1, cylinder SNs 1 through 9879, installed",
+        "quote": "(2) With ECi cylinder assemblies, part number (P/N) AEL65102 series ''Classic Cast'', having casting head markings EC 65099-REV-1; and"
+      }
+    ],
+    "not_evaluated": [
+      {
+        "clause": "Cylinder assemblies sold from January 1997 to September 2001 (sale date of the cylinder assemblies cannot be checked)",
+        "quote": "(sold from January 1997 to September 2001)"
+      },
+      {
+        "clause": "Engines never overhauled or majorly repaired since new need no further action (overhaul/repair history is not evaluated)",
+        "quote": "If your engine has not been overhauled or had any major repair since new, no further action is required."
+      },
+      {
+        "clause": "Cylinder assembly serial numbers 1 through 9879 (cylinder serials, with optional L prefix, are not checked)",
+        "quote": "(3) With serial numbers (SNs) 1 through 9879 (SN may have an ''L'' prefix for a long reach spark plug), (sold from January 1997 to September 2001) installed."
+      }
+    ],
+    "credited_compliance": [],
+    "compliance_time_text": "Engines overhauled or repaired since new: replace each affected cylinder assembly at no later than 800 operating hours-in-service (HIS) if it has fewer than 800 HIS on the effective date; if it has 800 HIS or more on the effective date, replace within 60 operating HIS after the effective date.",
+    "field_quotes": {
+      "federal_register_document_number": [
+        "[FR Doc. 06-5127 Filed 6-5-06; 8:45 am]"
+      ],
+      "effective_date": [
+        "(a) This airworthiness directive (AD) becomes effective July 11, 2006."
+      ],
+      "supersedes": [
+        "This AD supersedes 2005-26-10, Amendment 39-14431."
+      ],
+      "revises": [],
+      "compliance_time_text": [
+        "(i) If the cylinder assembly has fewer than 800 operating hours-in-service (HIS) on the effective date of this AD, replace the cylinder assembly at no later than 800 operating HIS.",
+        "(ii) If the cylinder assembly has 800 operating HIS or more on the effective date of this AD, replace the cylinder assembly within 60 operating HIS after the effective date of this AD."
+      ],
+      "unsafe_condition_summary": [
+        "to prevent loss of engine power due to cracks in the cylinder assemblies and possible engine failure caused by separation of a cylinder head."
+      ]
+    }
+  },
+  "error": null
+}
