@@ -7,6 +7,69 @@ rule that fired and the rules version that decided it.**
 
 <!-- VIDEO -->
 
+## Architecture
+
+Every box names the file or folder that implements it; dashed boxes are not built yet.
+`core/tests/test_readme_diagrams.py` fails if a path or route named in these diagrams does not exist.
+
+```mermaid
+flowchart LR
+  subgraph STACK[" "]
+    direction TB
+    subgraph APP["Applications"]
+      API["API routes · core/app/api.py<br/>Q1 /aircraft/{id}/status · Q2 /ads/{id}/affected-aircraft<br/>Q3 /aircraft/{id}/ads/{ad}/supersession · ingest /ads/{id}/ingest<br/>/fleet · /questions · /evaluations"]
+      UI["UI · ui/<br/>runs on mocks today: ui/src/mocks/"]
+      STUB["/decisions · /actions · /proposals · /ads/{id} · /compare<br/>return contract examples: not built yet"]
+    end
+    subgraph ACT["Actions and people"]
+      QS["QUESTIONs for a certifying engineer<br/>raised by core/app/rules.py, listed by /questions"]
+      ANS["Answering a QUESTION: not built yet"]
+      DEC["Human DECISION records: not built yet"]
+      APR["Approval of agent proposals: not built yet"]
+    end
+    subgraph LOGIC["Logic"]
+      DM["Decision model · core/app/rules.py<br/>25 rule ids · docs/DECISION-MODEL.md"]
+      EV["Evaluations and replay · core/app/evaluations.py"]
+      AG["Extraction agent · core/app/llm.py · core/app/extract.py<br/>only proposes inputs, each with a quote"]
+    end
+    subgraph ONT["Objects and links · core/app/ontology.py"]
+      OBJ["Aircraft · AirworthinessDirective · ComplianceRecord · Question · Evaluation"]
+      LNK["hasInstalled · appliesTo (derived when via the engine) · supersedes · revises · satisfies"]
+      ENG["Engine object: not built yet<br/>today Aircraft.engine_model, id &lt;aircraft&gt;/engine"]
+    end
+    subgraph DATA["Data"]
+      D1["Real EASA / FAA AD texts · data/raw/ads/"]
+      D2["Human-checked golden set · data/golden/"]
+      D3["Registry and logbooks · data/registry/<br/>synthetic rows marked"]
+      D4["Extraction cache · data/cache/"]
+    end
+    APP --> ACT --> LOGIC --> ONT --> DATA
+  end
+  subgraph TRUST["Provenance and trust, across all layers"]
+    direction TB
+    T1["Every answer cites the exact source sentence<br/>data/raw/ads/ · citations from data/golden/"]
+    T2["Epistemic classes produced: REGULATION · OBSERVATION · QUESTION"]
+    T3["DECISION · HYPOTHESIS: in the schema, not produced yet"]
+    T4["rules_version · inputs_hash · replay<br/>core/app/evaluations.py"]
+  end
+  STACK ~~~ TRUST
+
+  classDef app fill:#dbeafe,stroke:#1e40af,color:#0f172a
+  classDef act fill:#fef3c7,stroke:#92400e,color:#0f172a
+  classDef logic fill:#dcfce7,stroke:#166534,color:#0f172a
+  classDef ont fill:#ede9fe,stroke:#5b21b6,color:#0f172a
+  classDef data fill:#e2e8f0,stroke:#334155,color:#0f172a
+  classDef trust fill:#ffe4e6,stroke:#9f1239,color:#0f172a
+  classDef todo fill:#ffffff,stroke:#64748b,stroke-dasharray:5 5,color:#0f172a
+  class API,UI app
+  class QS act
+  class DM,EV,AG logic
+  class OBJ,LNK ont
+  class D1,D2,D3,D4 data
+  class T1,T2,T4 trust
+  class STUB,ANS,DEC,APR,ENG,T3 todo
+```
+
 ## How it decides
 
 ```mermaid
@@ -123,8 +186,9 @@ curl http://127.0.0.1:8000/questions
 
 ## Results
 
-- **Tests:** 274 passed (`python -m pytest core`, fresh clone, 14 Nov 2026), including a test that the decision
-  table and the code list the same rule ids and that every rule fires in some scenario.
+- **Tests:** 277 passed (`python -m pytest core`, 14 Nov 2026), including a test that the decision table and the
+  code list the same rule ids and that every rule fires in some scenario, and one that every path and route in the
+  diagrams above exists.
 - **Extraction agreement** (LLM vs the 8 hand-checked ADs): 5 of 8 ADs agree on every compared field; 81 of 100
   golden items matched plus 25 extra items (64.8%); 121 of 121 extracted quotes found in the AD text. Every miss
   is listed in [docs/EXTRACTION-REPORT.md](docs/EXTRACTION-REPORT.md). Where an extraction disagrees, golden decides.
