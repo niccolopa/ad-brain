@@ -1,25 +1,28 @@
 # Handoff — CORE
 <!-- Overwrite this file at every handoff. Max 25 lines. Facts only. -->
 
-Updated: 2026-11-13 evening · Branch: main · Last commit: c8813c2 — data: 21 AD texts, sources, verified relations, LF line endings (rule 7)
+Updated: 2026-11-14 · Branch: main · Last commit: see `git log` (v1: Q1 + Q2 real)
 
 ## Done since last handoff
-- data/raw/INDEX.md: every relation checked against (b)/Supersedure text; 2012-02-02 has 4 groups (172R 17281188–17281390, 172S 172S9491–172S10489, 172R 17281391–17281572, 172S 172S10490–172S11073).
-- Irish IAA register (30 Sep 2025): 6 × 172R, 14 × 172S, **0 × Tecnam P2008**. Owner/address/charge columns never read. demo-aircraft.csv: EI-GKN, EI-HAS, EI-GWY. EI-HAS is the real contradiction: register year 2000 vs serial order → delivery date unknown → AD 2008-26-10 is an open QUESTION.
-- Demo story: DEMO-01 = 172S10600 (Group 4, delivered 2007). Group 2 compliance with 2008-03-02 would satisfy 2012-02-02 ((g)(1), (h), (i) are "Retained From AD 2008-03-02"); only Group 3/4 get a new obligation ((g)(2), from 2012-03-13). Before ingest DEMO-01 is green, after ingesting 2012-02-02 red.
-- One fact, one place: italian-fleet.csv keeps identity only (mark … delivered, arc_review_due, note). Equipment facts are observations in demo-logbooks.csv (21 synthetic rows, all dated after delivery). No observation = unknown; a QUESTION only when an applicable AD depends on it. A scratch re-derivation from the two CSVs matches the draft exactly (before ingest 01/02/05 green, 03/04 amber; after, 01 red; questions: DEMO-03 ECi, DEMO-04 MOD).
-- Contract draft (data/raw/pdf/contract-draft/, not copied into contract/): DEMO-01 Group 4 + (g)(2), Q3 on DEMO-01, ad-detail cites Group 4. Quote check 22/22 ok, no VERIFY.
+- v0: FastAPI app core/app/api.py; every contract endpoint answers its example request with the example's status and top-level shape; Citation/ReasoningStep/Error validated in pytest and smoke.
+- v1 real: GET /aircraft/{id}/status and GET /ads/{ad_id}/affected-aircraft from data/golden (5 ADs) + italian-fleet.csv + demo-aircraft.csv + demo-logbooks.csv. 404 AIRCRAFT_NOT_FOUND / AD_NOT_FOUND. Titles from INDEX.md Subject; source_url from SOURCES.csv; every golden quote is checked against its .txt at startup (fails loudly).
+- Serial rules: OCR `l72S`→`172S`; `172S-NNNNN`→`172SNNNNN`, `172R-NNNNN`→`172NNNNN` (only these two); any other unclear serial → QUESTION "serial unclear: <raw>". Conditions match logbook `fact`/`value` against golden `conditions[].fact`/`applies_when` (new columns/keys).
+- Tested: DEMO-01 red, 02 green, 03 green, 04 amber (MOD question, 14 days, high), 05 green; EI-* no_records; EI-GWY KAP 140 question.
 
-## Next 3 steps
-1. Parser: accept "l72S" (lowercase L, in 2012-22-01 and 2013-03-15) and "172S-10705" / "172R-80221" register serials; tests for each, and 172RG must not match 172R.
-2. Range + deadline code with tests from real text: all 4 groups of 2012-02-02, edges 172S10489/172S10490/172S11073; (g)(2) 100 h or 12 months after 2012-03-13.
-3. Status engine: DEMO-01 green → red on ingest of 2012-02-02, from demo-logbooks.csv + italian-fleet.csv; test: delete an observation → its QUESTION appears.
+## Next 3 steps (v2)
+1. (a) Demo state starts with FAA:2012-02-02 NOT loaded, so the live ingest turns DEMO-01 green → red (demo moment 2). Today it is loaded at startup (DEMO-01 red).
+2. (b) Golden additions, drafted by Claude, checked by Niccolò against the text: FAA 2006-12-07, 2006-20-09, 2012-19-01 — needed for aircraft → engine → AD inference, Q3, and DEMO-03's ECi question (DEMO-03 is green until then).
+3. Real /fleet, /questions, /demo/reset counts from the store; deadline arithmetic (today: no record = overdue).
 
 ## Contract
-change proposed: occurrence on Citation, due.citation, compliance_time field in q2-ingest, not_loaded / aircraft_status / logbook_records in demo-reset (draft, needs both of us)
-
-## For the other role (written as GitHub issue text)
-- Contract draft ready for review in data/raw/pdf/contract-draft/: fleet.json now shows DEMO-01 red (after ingest), DEMO-02 green, DEMO-03 1 question; Q-DEMO02-KAP, Q-DEMO03-VALVE, Q-DEMO01-VALVE removed.
+change proposed: Question.deadline/days_left/urgency nullable (real aircraft have no ARC date); due.overdue null for real aircraft; source_url = SOURCES.csv blob URLs (examples show /ad/US-… pages); no example for GET /proposals and POST /proposals/{id}/reject (v0 returns {"proposals": []} / {"proposal_id", "status": "REJECTED"}).
 
 ## Tests
-no code yet · smoke test: not run (no scripts/smoke.py)
+0 → 130 passed (`python -m pytest core`) · smoke test: pass
+
+## How to run what I built
+```
+.venv\Scripts\python -m uvicorn app.api:app --app-dir core --port 8000
+.venv\Scripts\python -m pytest core
+.venv\Scripts\python scripts\smoke.py
+```
