@@ -1,25 +1,27 @@
 # Handoff — CORE
 <!-- Overwrite this file at every handoff. Max 25 lines. Facts only. -->
 
-Updated: 2026-11-13 evening · Branch: main · Last commit: c8813c2 — data: 21 AD texts, sources, verified relations, LF line endings (rule 7)
+Updated: 2026-11-14 · Branch: main · Last commit: see `git log` (v2c: real /fleet and /questions)
 
 ## Done since last handoff
-- data/raw/INDEX.md: every relation checked against (b)/Supersedure text; 2012-02-02 has 4 groups (172R 17281188–17281390, 172S 172S9491–172S10489, 172R 17281391–17281572, 172S 172S10490–172S11073).
-- Irish IAA register (30 Sep 2025): 6 × 172R, 14 × 172S, **0 × Tecnam P2008**. Owner/address/charge columns never read. demo-aircraft.csv: EI-GKN, EI-HAS, EI-GWY. EI-HAS is the real contradiction: register year 2000 vs serial order → delivery date unknown → AD 2008-26-10 is an open QUESTION.
-- Demo story: DEMO-01 = 172S10600 (Group 4, delivered 2007). Group 2 compliance with 2008-03-02 would satisfy 2012-02-02 ((g)(1), (h), (i) are "Retained From AD 2008-03-02"); only Group 3/4 get a new obligation ((g)(2), from 2012-03-13). Before ingest DEMO-01 is green, after ingesting 2012-02-02 red.
-- One fact, one place: italian-fleet.csv keeps identity only (mark … delivered, arc_review_due, note). Equipment facts are observations in demo-logbooks.csv (21 synthetic rows, all dated after delivery). No observation = unknown; a QUESTION only when an applicable AD depends on it. A scratch re-derivation from the two CSVs matches the draft exactly (before ingest 01/02/05 green, 03/04 amber; after, 01 red; questions: DEMO-03 ECi, DEMO-04 MOD).
-- Contract draft (data/raw/pdf/contract-draft/, not copied into contract/): DEMO-01 Group 4 + (g)(2), Q3 on DEMO-01, ad-detail cites Group 4. Quote check 22/22 ok, no VERIFY.
+- v2a: FAA:2012-02-02 not loaded at startup/reset (`store.NOT_LOADED_AT_RESET`). POST /ads/{id}/ingest reads data/golden (no LLM), re-checks every quote against the .txt; tested: DEMO-01 green → red, ingest twice changes nothing, changed text → rejected_fields and AD not loaded. /demo/reset returns real counts.
+- v2b: engine inference (aircraft hasInstalled engine + AD appliesTo engine ⇒ derived appliesTo aircraft), golden `series` rows, `not_evaluated` clauses named in applies_because and reasoning notes, `credited_compliance`, superseded ADs not counted for status. Drafts FAA 2006-12-07 / 2006-20-09 / 2012-19-01 in data/golden/drafts/ (NOT loaded; tests use them as labelled unchecked fixtures). Check table: data/raw/pdf/golden-check-2.md (git-ignored, local only).
+- v2c: GET /fleet (8 aircraft, one-line reason) and GET /questions (sorted urgency → days_left; unknown aircraft_id → 404) from the store.
 
 ## Next 3 steps
-1. Parser: accept "l72S" (lowercase L, in 2012-22-01 and 2013-03-15) and "172S-10705" / "172R-80221" register serials; tests for each, and 172RG must not match 172R.
-2. Range + deadline code with tests from real text: all 4 groups of 2012-02-02, edges 172S10489/172S10490/172S11073; (g)(2) 100 h or 12 months after 2012-03-13.
-3. Status engine: DEMO-01 green → red on ingest of 2012-02-02, from demo-logbooks.csv + italian-fleet.csv; test: delete an observation → its QUESTION appears.
+1. Niccolò checks the drafts against golden-check-2.md, fills checked_by, moves them to data/golden/ → DEMO-03 amber (ECi question), Q3 data ready.
+2. Real Q3 /aircraft/{id}/ads/{ad_id}/supersession (chain + credited compliance), then /ads/{id} detail.
+3. Actions + action log (RecordCompliance, ProposeAction 202, role check 403) — demo moment 4.
 
 ## Contract
-change proposed: occurrence on Citation, due.citation, compliance_time field in q2-ingest, not_loaded / aircraft_status / logbook_records in demo-reset (draft, needs both of us)
-
-## For the other role (written as GitHub issue text)
-- Contract draft ready for review in data/raw/pdf/contract-draft/: fleet.json now shows DEMO-01 red (after ingest), DEMO-02 green, DEMO-03 1 question; Q-DEMO02-KAP, Q-DEMO03-VALVE, Q-DEMO01-VALVE removed.
+change proposed: AffectedAircraft.via adds "installed_engine"; ingest `source` = "golden" in demo mode; Question deadline/days_left/urgency nullable (real aircraft); /fleet lists the 3 real EI-* aircraft too; /questions unknown aircraft_id → 404.
 
 ## Tests
-no code yet · smoke test: not run (no scripts/smoke.py)
+146 → 185 passed (`python -m pytest core`) · smoke test: pass
+
+## How to run what I built
+```
+.venv\Scripts\python -m uvicorn app.api:app --app-dir core --port 8000
+.venv\Scripts\python -m pytest core
+.venv\Scripts\python scripts\smoke.py
+```

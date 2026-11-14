@@ -1,22 +1,22 @@
-id,aircraft_id,subject_id,ad_id,date,kind,text,synthetic
-CR-DEMO01-AF-1,DEMO-01,DEMO-01,FAA:2008-26-10,2009-03-20,compliance,Alternate static air source selector valve inspected per (e)(1): placard does not obstruct the port (Cessna SB08-34-02 Rev 1),true
-OB-DEMO01-AF-1,DEMO-01,DEMO-01,FAA:2008-10-02,2009-03-20,observation,Alternate static air source selector valve inspected: P/N is not 2013142-18 (no such valve installed after 2007-11-19),true
-OB-DEMO01-AF-2,DEMO-01,DEMO-01,FAA:2004-15-18,2009-03-20,observation,KAP 140 autopilot not installed,true
-OB-DEMO01-AF-3,DEMO-01,DEMO-01,FAA:2012-22-01,2009-03-20,observation,Fuel return modification kit MK172-28-01 not incorporated,true
-CR-DEMO01-ENG-1,DEMO-01,DEMO-01/engine,FAA:2006-20-09,2009-05-14,compliance,Crankshaft replaced per AD 2006-20-09 (Lycoming MSB 569A),true
-OB-DEMO01-ENG-1,DEMO-01,DEMO-01/engine,FAA:2012-19-01,2009-05-14,observation,Engine S/N is listed in Lycoming MSB 569A,true
-OB-DEMO01-ENG-2,DEMO-01,DEMO-01/engine,FAA:2005-19-11,2009-05-14,observation,Engine S/N not listed in Lycoming MSB 566 Table 3; replacement crankshaft S/N not listed in Table 4,true
-OB-DEMO01-ENG-3,DEMO-01,DEMO-01/engine,FAA:2006-12-07,2009-05-14,observation,Cylinder assemblies are not ECi P/N AEL65102 series,true
-CR-DEMO02-AF-1,DEMO-02,DEMO-02,FAA:2013-03-15,2013-06-10,compliance,Fuel return line support clamps and brackets installed per AD 2013-03-15,true
-OB-DEMO02-AF-2,DEMO-02,DEMO-02,FAA:2012-22-01,2013-06-10,observation,Fuel return modification kit MK172-28-01 not incorporated,true
-OB-DEMO02-AF-3,DEMO-02,DEMO-02,FAA:2008-10-02,2013-06-10,observation,Alternate static air source selector valve inspected: P/N is not 2013142-18 (never installed as a replacement),true
-OB-DEMO02-ENG-1,DEMO-02,DEMO-02/engine,FAA:2005-19-11,2013-06-10,observation,Engine S/N not listed in Lycoming MSB 566 Table 3,true
-OB-DEMO02-ENG-2,DEMO-02,DEMO-02/engine,FAA:2012-19-01,2013-06-10,observation,Engine S/N and crankshaft S/N not listed in Lycoming MSB 569A,true
-OB-DEMO02-ENG-3,DEMO-02,DEMO-02/engine,FAA:2006-12-07,2013-06-10,observation,Cylinder assemblies are not ECi P/N AEL65102 series,true
-OB-DEMO03-AF-1,DEMO-03,DEMO-03,FAA:2004-15-18,2015-04-02,observation,KAP 140 autopilot not installed,true
-OB-DEMO03-AF-2,DEMO-03,DEMO-03,FAA:2012-22-01,2015-04-02,observation,Fuel return modification kit MK172-28-01 not incorporated,true
-OB-DEMO03-AF-3,DEMO-03,DEMO-03,FAA:2008-10-02,2015-04-02,observation,Alternate static air source selector valve inspected: P/N is not 2013142-18 (never installed as a replacement),true
-OB-DEMO03-ENG-1,DEMO-03,DEMO-03/engine,FAA:2005-19-11,2015-04-02,observation,Engine S/N not listed in Lycoming MSB 566 Table 3,true
-OB-DEMO03-ENG-2,DEMO-03,DEMO-03/engine,FAA:2012-19-01,2015-04-02,observation,Engine S/N and crankshaft S/N not listed in Lycoming MSB 569A,true
-CR-DEMO04-AF-1,DEMO-04,DEMO-04,EASA:2018-0072,2018-06-15,compliance,Firewall visual inspection done per EASA AD 2018-0072,true
-OB-DEMO05-AF-1,DEMO-05,DEMO-05,EASA:2024-0152R1,2025-03-10,observation,Tecnam modification MOD2008/233 embodied,true
+id,aircraft_id,subject_id,ad_id,date,kind,text,synthetic,fact,value
+CR-DEMO01-AF-1,DEMO-01,DEMO-01,FAA:2008-26-10,2009-03-20,compliance,Alternate static air source selector valve inspected per (e)(1): placard does not obstruct the port (Cessna SB08-34-02 Rev 1),true,,
+OB-DEMO01-AF-1,DEMO-01,DEMO-01,FAA:2008-10-02,2009-03-20,observation,Alternate static air source selector valve inspected: P/N is not 2013142-18 (no such valve installed after 2007-11-19),true,valve_2013142_18_installed,no
+OB-DEMO01-AF-2,DEMO-01,DEMO-01,FAA:2004-15-18,2009-03-20,observation,KAP 140 autopilot not installed,true,KAP140_installed,no
+OB-DEMO01-AF-3,DEMO-01,DEMO-01,FAA:2012-22-01,2009-03-20,observation,Fuel return modification kit MK172-28-01 not incorporated,true,kit_MK172_28_01_incorporated,no
+CR-DEMO01-ENG-1,DEMO-01,DEMO-01/engine,FAA:2006-20-09,2009-05-14,compliance,Crankshaft replaced per AD 2006-20-09 (Lycoming MSB 569A),true,,
+OB-DEMO01-ENG-1,DEMO-01,DEMO-01/engine,FAA:2012-19-01,2009-05-14,observation,Engine S/N is listed in Lycoming MSB 569A,true,engine_listed_MSB569A,yes
+OB-DEMO01-ENG-2,DEMO-01,DEMO-01/engine,FAA:2005-19-11,2009-05-14,observation,Engine S/N not listed in Lycoming MSB 566 Table 3; replacement crankshaft S/N not listed in Table 4,true,engine_or_crankshaft_listed_MSB566,no
+OB-DEMO01-ENG-3,DEMO-01,DEMO-01/engine,FAA:2006-12-07,2009-05-14,observation,Cylinder assemblies are not ECi P/N AEL65102 series,true,ECi_AEL65102_cylinders_installed,no
+CR-DEMO02-AF-1,DEMO-02,DEMO-02,FAA:2013-03-15,2013-06-10,compliance,Fuel return line support clamps and brackets installed per AD 2013-03-15,true,,
+OB-DEMO02-AF-2,DEMO-02,DEMO-02,FAA:2012-22-01,2013-06-10,observation,Fuel return modification kit MK172-28-01 not incorporated,true,kit_MK172_28_01_incorporated,no
+OB-DEMO02-AF-3,DEMO-02,DEMO-02,FAA:2008-10-02,2013-06-10,observation,Alternate static air source selector valve inspected: P/N is not 2013142-18 (never installed as a replacement),true,valve_2013142_18_installed,no
+OB-DEMO02-ENG-1,DEMO-02,DEMO-02/engine,FAA:2005-19-11,2013-06-10,observation,Engine S/N not listed in Lycoming MSB 566 Table 3,true,engine_or_crankshaft_listed_MSB566,no
+OB-DEMO02-ENG-2,DEMO-02,DEMO-02/engine,FAA:2012-19-01,2013-06-10,observation,Engine S/N and crankshaft S/N not listed in Lycoming MSB 569A,true,engine_listed_MSB569A,no
+OB-DEMO02-ENG-3,DEMO-02,DEMO-02/engine,FAA:2006-12-07,2013-06-10,observation,Cylinder assemblies are not ECi P/N AEL65102 series,true,ECi_AEL65102_cylinders_installed,no
+OB-DEMO03-AF-1,DEMO-03,DEMO-03,FAA:2004-15-18,2015-04-02,observation,KAP 140 autopilot not installed,true,KAP140_installed,no
+OB-DEMO03-AF-2,DEMO-03,DEMO-03,FAA:2012-22-01,2015-04-02,observation,Fuel return modification kit MK172-28-01 not incorporated,true,kit_MK172_28_01_incorporated,no
+OB-DEMO03-AF-3,DEMO-03,DEMO-03,FAA:2008-10-02,2015-04-02,observation,Alternate static air source selector valve inspected: P/N is not 2013142-18 (never installed as a replacement),true,valve_2013142_18_installed,no
+OB-DEMO03-ENG-1,DEMO-03,DEMO-03/engine,FAA:2005-19-11,2015-04-02,observation,Engine S/N not listed in Lycoming MSB 566 Table 3,true,engine_or_crankshaft_listed_MSB566,no
+OB-DEMO03-ENG-2,DEMO-03,DEMO-03/engine,FAA:2012-19-01,2015-04-02,observation,Engine S/N and crankshaft S/N not listed in Lycoming MSB 569A,true,engine_listed_MSB569A,no
+CR-DEMO04-AF-1,DEMO-04,DEMO-04,EASA:2018-0072,2018-06-15,compliance,Firewall visual inspection done per EASA AD 2018-0072,true,,
+OB-DEMO05-AF-1,DEMO-05,DEMO-05,EASA:2024-0152R1,2025-03-10,observation,Tecnam modification MOD2008/233 embodied,true,MOD2008_233,embodied

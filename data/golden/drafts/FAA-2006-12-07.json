@@ -1,0 +1,155 @@
+{
+  "ad_number": "FAA:2006-12-07",
+  "federal_register_document_number": "06-5127",
+  "effective_date": "2006-07-11",
+  "supersedes": [
+    "FAA:2005-26-10"
+  ],
+  "revises": [],
+  "applicability": [
+    {
+      "model": "IO-360-B1B",
+      "serial_from": null,
+      "serial_to": null,
+      "quote": "IO–360–B1B, B1BD, B1D, B1E, B1F, B1F6, B1G6, B2E, B2F, B2F6, B4A, E1A, L2A, M1A, M1B."
+    },
+    {
+      "model": "IO-360-B1BD",
+      "serial_from": null,
+      "serial_to": null,
+      "quote": "IO–360–B1B, B1BD, B1D, B1E, B1F, B1F6, B1G6, B2E, B2F, B2F6, B4A, E1A, L2A, M1A, M1B."
+    },
+    {
+      "model": "IO-360-B1D",
+      "serial_from": null,
+      "serial_to": null,
+      "quote": "IO–360–B1B, B1BD, B1D, B1E, B1F, B1F6, B1G6, B2E, B2F, B2F6, B4A, E1A, L2A, M1A, M1B."
+    },
+    {
+      "model": "IO-360-B1E",
+      "serial_from": null,
+      "serial_to": null,
+      "quote": "IO–360–B1B, B1BD, B1D, B1E, B1F, B1F6, B1G6, B2E, B2F, B2F6, B4A, E1A, L2A, M1A, M1B."
+    },
+    {
+      "model": "IO-360-B1F",
+      "serial_from": null,
+      "serial_to": null,
+      "quote": "IO–360–B1B, B1BD, B1D, B1E, B1F, B1F6, B1G6, B2E, B2F, B2F6, B4A, E1A, L2A, M1A, M1B."
+    },
+    {
+      "model": "IO-360-B1F6",
+      "serial_from": null,
+      "serial_to": null,
+      "quote": "IO–360–B1B, B1BD, B1D, B1E, B1F, B1F6, B1G6, B2E, B2F, B2F6, B4A, E1A, L2A, M1A, M1B."
+    },
+    {
+      "model": "IO-360-B1G6",
+      "serial_from": null,
+      "serial_to": null,
+      "quote": "IO–360–B1B, B1BD, B1D, B1E, B1F, B1F6, B1G6, B2E, B2F, B2F6, B4A, E1A, L2A, M1A, M1B."
+    },
+    {
+      "model": "IO-360-B2E",
+      "serial_from": null,
+      "serial_to": null,
+      "quote": "IO–360–B1B, B1BD, B1D, B1E, B1F, B1F6, B1G6, B2E, B2F, B2F6, B4A, E1A, L2A, M1A, M1B."
+    },
+    {
+      "model": "IO-360-B2F",
+      "serial_from": null,
+      "serial_to": null,
+      "quote": "IO–360–B1B, B1BD, B1D, B1E, B1F, B1F6, B1G6, B2E, B2F, B2F6, B4A, E1A, L2A, M1A, M1B."
+    },
+    {
+      "model": "IO-360-B2F6",
+      "serial_from": null,
+      "serial_to": null,
+      "quote": "IO–360–B1B, B1BD, B1D, B1E, B1F, B1F6, B1G6, B2E, B2F, B2F6, B4A, E1A, L2A, M1A, M1B."
+    },
+    {
+      "model": "IO-360-B4A",
+      "serial_from": null,
+      "serial_to": null,
+      "quote": "IO–360–B1B, B1BD, B1D, B1E, B1F, B1F6, B1G6, B2E, B2F, B2F6, B4A, E1A, L2A, M1A, M1B."
+    },
+    {
+      "model": "IO-360-E1A",
+      "serial_from": null,
+      "serial_to": null,
+      "quote": "IO–360–B1B, B1BD, B1D, B1E, B1F, B1F6, B1G6, B2E, B2F, B2F6, B4A, E1A, L2A, M1A, M1B."
+    },
+    {
+      "model": "IO-360-L2A",
+      "serial_from": null,
+      "serial_to": null,
+      "quote": "IO–360–B1B, B1BD, B1D, B1E, B1F, B1F6, B1G6, B2E, B2F, B2F6, B4A, E1A, L2A, M1A, M1B."
+    },
+    {
+      "model": "IO-360-M1A",
+      "serial_from": null,
+      "serial_to": null,
+      "quote": "IO–360–B1B, B1BD, B1D, B1E, B1F, B1F6, B1G6, B2E, B2F, B2F6, B4A, E1A, L2A, M1A, M1B."
+    },
+    {
+      "model": "IO-360-M1B",
+      "serial_from": null,
+      "serial_to": null,
+      "quote": "IO–360–B1B, B1BD, B1D, B1E, B1F, B1F6, B1G6, B2E, B2F, B2F6, B4A, E1A, L2A, M1A, M1B."
+    }
+  ],
+  "conditions": [
+    {
+      "kind": "part_installed",
+      "fact": "ECi_AEL65102_cylinders_installed",
+      "applies_when": "yes",
+      "value": "ECi cylinder assemblies P/N AEL65102 series 'Classic Cast', casting head markings EC 65099-REV-1, cylinder SN 1 through 9879",
+      "quote": "(2) With ECi cylinder assemblies, part number (P/N) AEL65102 series ''Classic Cast'', having casting head markings EC 65099-REV-1; and"
+    }
+  ],
+  "not_evaluated": [
+    {
+      "clause": "manufacture/overhaul date clause",
+      "quote": "(f) If your engine has not been overhauled or had any major repair since new, no further action is required."
+    }
+  ],
+  "credited_compliance": [],
+  "compliance_time_text": "If an affected ECi cylinder assembly is installed: fewer than 800 operating hours-in-service (HIS) on 2006-07-11 -> replace no later than 800 HIS; 800 HIS or more -> replace within 60 HIS after 2006-07-11.",
+  "unsafe_condition_summary": "Cracks in the cylinder assemblies could cause loss of engine power and engine failure from separation of a cylinder head.",
+  "out_of_scope_features": [
+    {
+      "feature": "part number: ECi cylinder assembly P/N AEL65102 series",
+      "quote": "(2) With ECi cylinder assemblies, part number (P/N) AEL65102 series ''Classic Cast'', having casting head markings EC 65099-REV-1; and"
+    },
+    {
+      "feature": "hours-based compliance time (cylinder operating HIS not in this system)",
+      "quote": "(ii) If the cylinder assembly has 800 operating HIS or more on the effective date of this AD, replace the cylinder assembly within 60 operating HIS after the effective date of this AD."
+    },
+    {
+      "feature": "AMOC",
+      "quote": "(j) The Manager, Special Certification Office, has the authority to approve alternative methods of compliance for this AD if requested using the procedures found in 14 CFR 39.19."
+    }
+  ],
+  "field_quotes": {
+    "federal_register_document_number": [
+      "[FR Doc. 06-5127 Filed 6-5-06; 8:45 am]"
+    ],
+    "effective_date": [
+      "(a) This airworthiness directive (AD) becomes effective July 11, 2006."
+    ],
+    "supersedes": [
+      "(b) This AD supersedes 2005-26-10, Amendment 39-14431."
+    ],
+    "revises": [],
+    "compliance_time_text": [
+      "(i) If the cylinder assembly has fewer than 800 operating hours-in-service (HIS) on the effective date of this AD, replace the cylinder assembly at no later than 800 operating HIS.",
+      "(ii) If the cylinder assembly has 800 operating HIS or more on the effective date of this AD, replace the cylinder assembly within 60 operating HIS after the effective date of this AD."
+    ],
+    "unsafe_condition_summary": [
+      "(d) This AD results from reports of applicability errors found in AD 2005-26-10. We are issuing this AD to prevent loss of engine power due to cracks in the cylinder assemblies and possible engine failure caused by separation of a cylinder head."
+    ]
+  },
+  "labelled_by": "Claude Code draft (v2b), NOT checked: every quote verified by string match only; values need Niccolò's check against the text (see data/raw/pdf/golden-check-2.md)",
+  "checked_by": "",
+  "notes": "Applicability: only the Table 1 row that lists IO-360-L2A (cylinder P/N group AEL65102-NST12, IO-360 models B1B ... M1B, 15 rows) is labelled; the other Table 1 rows (O-320, IO-320, O-360, O-540, IO-540 ...) are NOT labelled. The table prints en dashes ('IO–360–'): the quote keeps them, values use plain hyphens. The condition folds (c)(2) P/N + casting head markings and (c)(3) cylinder SN 1 through 9879 into one fact (ECi_AEL65102_cylinders_installed); the (c)(3) quote is not stored. NOT EVALUATED: (f) engines never overhauled or majorly repaired since new need no action (no overhaul history in this system); listed in not_evaluated and shown in every answer where the AD applies. 2005-26-10 is not in the dataset."
+}

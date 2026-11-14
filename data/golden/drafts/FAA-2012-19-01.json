@@ -1,0 +1,174 @@
+{
+  "ad_number": "FAA:2012-19-01",
+  "federal_register_document_number": "2012-22924",
+  "effective_date": "2012-10-24",
+  "supersedes": [
+    "FAA:2006-20-09"
+  ],
+  "revises": [],
+  "applicability": [
+    {
+      "model": "O-360",
+      "series": true,
+      "serial_from": null,
+      "serial_to": null,
+      "quote": "This AD applies to Lycoming Engines (L)O-360, (L)IO-360, AEIO-360, IO-390, AEIO-390,"
+    },
+    {
+      "model": "LO-360",
+      "series": true,
+      "serial_from": null,
+      "serial_to": null,
+      "quote": "This AD applies to Lycoming Engines (L)O-360, (L)IO-360, AEIO-360, IO-390, AEIO-390,"
+    },
+    {
+      "model": "IO-360",
+      "series": true,
+      "serial_from": null,
+      "serial_to": null,
+      "quote": "This AD applies to Lycoming Engines (L)O-360, (L)IO-360, AEIO-360, IO-390, AEIO-390,"
+    },
+    {
+      "model": "LIO-360",
+      "series": true,
+      "serial_from": null,
+      "serial_to": null,
+      "quote": "This AD applies to Lycoming Engines (L)O-360, (L)IO-360, AEIO-360, IO-390, AEIO-390,"
+    },
+    {
+      "model": "AEIO-360",
+      "series": true,
+      "serial_from": null,
+      "serial_to": null,
+      "quote": "This AD applies to Lycoming Engines (L)O-360, (L)IO-360, AEIO-360, IO-390, AEIO-390,"
+    },
+    {
+      "model": "IO-390",
+      "series": true,
+      "serial_from": null,
+      "serial_to": null,
+      "quote": "This AD applies to Lycoming Engines (L)O-360, (L)IO-360, AEIO-360, IO-390, AEIO-390,"
+    },
+    {
+      "model": "AEIO-390",
+      "series": true,
+      "serial_from": null,
+      "serial_to": null,
+      "quote": "This AD applies to Lycoming Engines (L)O-360, (L)IO-360, AEIO-360, IO-390, AEIO-390,"
+    },
+    {
+      "model": "O-540",
+      "series": true,
+      "serial_from": null,
+      "serial_to": null,
+      "quote": "540, IO-540, AEIO-540, (L)TIO-540, IO-580, AEIO-580, and IO-720 series reciprocating engines"
+    },
+    {
+      "model": "IO-540",
+      "series": true,
+      "serial_from": null,
+      "serial_to": null,
+      "quote": "540, IO-540, AEIO-540, (L)TIO-540, IO-580, AEIO-580, and IO-720 series reciprocating engines"
+    },
+    {
+      "model": "AEIO-540",
+      "series": true,
+      "serial_from": null,
+      "serial_to": null,
+      "quote": "540, IO-540, AEIO-540, (L)TIO-540, IO-580, AEIO-580, and IO-720 series reciprocating engines"
+    },
+    {
+      "model": "TIO-540",
+      "series": true,
+      "serial_from": null,
+      "serial_to": null,
+      "quote": "540, IO-540, AEIO-540, (L)TIO-540, IO-580, AEIO-580, and IO-720 series reciprocating engines"
+    },
+    {
+      "model": "LTIO-540",
+      "series": true,
+      "serial_from": null,
+      "serial_to": null,
+      "quote": "540, IO-540, AEIO-540, (L)TIO-540, IO-580, AEIO-580, and IO-720 series reciprocating engines"
+    },
+    {
+      "model": "IO-580",
+      "series": true,
+      "serial_from": null,
+      "serial_to": null,
+      "quote": "540, IO-540, AEIO-540, (L)TIO-540, IO-580, AEIO-580, and IO-720 series reciprocating engines"
+    },
+    {
+      "model": "AEIO-580",
+      "series": true,
+      "serial_from": null,
+      "serial_to": null,
+      "quote": "540, IO-540, AEIO-540, (L)TIO-540, IO-580, AEIO-580, and IO-720 series reciprocating engines"
+    },
+    {
+      "model": "IO-720",
+      "series": true,
+      "serial_from": null,
+      "serial_to": null,
+      "quote": "540, IO-540, AEIO-540, (L)TIO-540, IO-580, AEIO-580, and IO-720 series reciprocating engines"
+    }
+  ],
+  "conditions": [
+    {
+      "kind": "serial_listed",
+      "fact": "engine_listed_MSB569A",
+      "applies_when": "yes",
+      "value": "engine S/N (Tables 1-4) or crankshaft S/N (Table 5) listed in Lycoming MSB 569A",
+      "quote": "listed by engine model number and serial number in Table 1, Table 2, Table 3, or Table 4 of Lycoming Mandatory Service Bulletin (MSB) 569A, dated April 11, 2006, and those engines with crankshafts listed by crankshaft serial number in Table 5 of Lycoming MSB 569A, dated April 11, 2006."
+    }
+  ],
+  "not_evaluated": [
+    {
+      "clause": "manufacture/overhaul date clause",
+      "quote": "These applicable engines are manufactured new, rebuilt, overhauled, or had a crankshaft installed after January 1, 1997, according to Supplement No. 1 to Lycoming MSB No. 569A, dated May 27, 2009."
+    },
+    {
+      "clause": "crankshaft Table 5 clause (engine listed, crankshaft not listed: no action)",
+      "quote": "(4) If Table 1, Table 2, Table 3, or Table 4 of Lycoming MSB No. 569A, dated April 11, 2006, lists your engine S/N, and Table 5 of MSB No. 569A, dated April 11, 2006, does not list your crankshaft S/N, no further action is required."
+    }
+  ],
+  "credited_compliance": [
+    {
+      "ad_id": "FAA:2006-20-09",
+      "quote": "(g) Credit for Previous Actions (1) If you previously complied with AD 2006-20-09 (71 FR 57407, September 29, 2006), no further action is required."
+    }
+  ],
+  "compliance_time_text": "Engine listed in MSB 569A Tables 1-4 and crankshaft listed in Table 5 (or crankshaft listed as a replacement): replace the crankshaft at the earliest of the next engine overhaul, the next crankcase separation, or 12 years from the time the crankshaft first entered service or was last overhauled, whichever is later.",
+  "unsafe_condition_summary": "Failure of certain crankshafts could cause total engine power loss, in-flight engine failure and possible loss of the aircraft; the AD corrects the MSB 569A start date and adds IO-390, AEIO-390 and AEIO-580 engines.",
+  "out_of_scope_features": [
+    {
+      "feature": "part number: crankshaft serial numbers listed in Lycoming MSB 569A Table 5 (not in the AD text)",
+      "quote": "listed by engine model number and serial number in Table 1, Table 2, Table 3, or Table 4 of Lycoming Mandatory Service Bulletin (MSB) 569A, dated April 11, 2006, and those engines with crankshafts listed by crankshaft serial number in Table 5 of Lycoming MSB 569A, dated April 11, 2006."
+    },
+    {
+      "feature": "AMOC",
+      "quote": "(i) Alternative Methods of Compliance (AMOC)"
+    }
+  ],
+  "field_quotes": {
+    "federal_register_document_number": [
+      "[FR Doc No: 2012-22924]"
+    ],
+    "effective_date": [
+      "(a) Effective Date This AD is effective October 24, 2012."
+    ],
+    "supersedes": [
+      "This AD supersedes AD 2006-20-09 (71 FR 57407, September 29, 2006)."
+    ],
+    "revises": [],
+    "compliance_time_text": [
+      "(1) If Table 1, Table 2, Table 3, or Table 4 of Lycoming MSB No. 569A, dated April 11, 2006, lists your engine serial number (S/N), and Table 5 of MSB No. 569A, dated April 11, 2006, lists your crankshaft S/N, replace the affected crankshaft with a crankshaft that is not listed in Table 5 of MSB No. 569A at the earliest of the following:"
+    ],
+    "unsafe_condition_summary": [
+      "(d) Unsafe Condition This AD results from Lycoming Engines discovering that the March 1, 1997 start date of affected engine models in Lycoming MSB No. 569A, is incorrect."
+    ]
+  },
+  "labelled_by": "Claude Code draft (v2b), NOT checked: every quote verified by string match only; values need Niccolò's check against the text (see data/raw/pdf/golden-check-2.md)",
+  "checked_by": "",
+  "notes": "Applicability (c): one series row per engine series, series = true (the engine model must start with '<series>-'); '(L)' prefixes expanded as in 2006-20-09. The (c) sentence splits 'O-' / '540' across lines: the first quote stops before the split, the second starts at '540,'. Specific engines via the condition fact engine_listed_MSB569A (engine Tables 1-4 OR crankshaft Table 5 of MSB 569A). credited_compliance: (g)(1) previous compliance with AD 2006-20-09 satisfies this AD; the quote includes the (g) heading because the (1) sentence also appears in the preamble (line 103). The effective date quote includes the (a) heading (the DATES line repeats it). NOT EVALUATED (shown in every answer where the AD applies): the January 1, 1997 date clause in (c) and (g)(3); the (g)(4) clause (engine listed, crankshaft not listed: no action). Also not modelled: (g)(2) MSB 569A accomplished, (g)(5) TIO-540-U2A."
+}
