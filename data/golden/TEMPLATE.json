@@ -8,7 +8,7 @@
     { "model": "", "serial_from": "", "serial_to": "", "quote": "" }
   ],
   "conditions": [
-    { "kind": "equipment_installed | modification_not_embodied | part_installed", "value": "", "quote": "" }
+    { "kind": "equipment_installed | modification_not_embodied | part_installed", "fact": "", "applies_when": "yes | no | embodied | not_embodied", "value": "", "quote": "" }
   ],
   "compliance_time_text": "",
   "unsafe_condition_summary": "",
@@ -25,5 +25,5 @@
   },
   "labelled_by": "",
   "checked_by": "",
-  "notes": "Copy serial numbers exactly as written (e.g. 172S9491). Every value carries the verbatim quote it was read from: in its own 'quote' (applicability, conditions, out_of_scope_features) or in field_quotes[field] (the other fields). A quote matches the .txt after collapsing whitespace, must not cross a hyphen split across lines, and should be unique (add the paragraph heading if needed). OCR errors (e.g. 'l72S'): the quote keeps them, the value uses the correct form, and notes say so. EASA ADs: federal_register_document_number = null. serial_from/serial_to = null means all serial numbers; serial_from = serial_to for a single serial. conditions: all must hold (AND); omit the key if there are none. revises: EASA revisions only. Empty value with nothing to quote (e.g. no Revision field): leave its field_quotes list empty and say so in notes. out_of_scope_features: part numbers, AMOC, terminating action, repetitive inspection — list any that appear, each with its quote."
+  "notes": "Copy serial numbers exactly as written (e.g. 172S9491). Every value carries the verbatim quote it was read from: in its own 'quote' (applicability, conditions, out_of_scope_features) or in field_quotes[field] (the other fields). A quote matches the .txt after collapsing whitespace, must not cross a hyphen split across lines, and should be unique (add the paragraph heading if needed). OCR errors (e.g. 'l72S'): the quote keeps them, the value uses the correct form, and notes say so. EASA ADs: federal_register_document_number = null. serial_from/serial_to = null means all serial numbers; serial_from = serial_to for a single serial. conditions: all must hold (AND); omit the key if there are none. fact = the key used in data/registry/demo-logbooks.csv 'fact' column (e.g. KAP140_installed, MOD2008_233); the condition holds when the logbook 'value' equals applies_when. revises: EASA revisions only. Empty value with nothing to quote (e.g. no Revision field): leave its field_quotes list empty and say so in notes. out_of_scope_features: part numbers, AMOC, terminating action, repetitive inspection — list any that appear, each with its quote."
 }

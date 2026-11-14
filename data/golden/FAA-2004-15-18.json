@@ -160,6 +160,8 @@
   "conditions": [
     {
       "kind": "equipment_installed",
+      "fact": "KAP140_installed",
+      "applies_when": "yes",
       "value": "KAP 140 autopilot computer system, P/N 065-00176-2501, 065-00176-2602, 065-00176-5001, 065-00176-5101, 065-00176-5201, 065-00176-5402 or 065-00176-7702",
       "quote": "(1) equipped with a KAP 140 autopilot computer system"
     }

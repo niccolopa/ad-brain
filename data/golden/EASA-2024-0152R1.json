@@ -17,11 +17,15 @@
   "conditions": [
     {
       "kind": "modification_not_embodied",
+      "fact": "MOD2008_233",
+      "applies_when": "not_embodied",
       "value": "MOD2008/233",
       "quote": "Tecnam P2008 JC, all serial numbers (s/n), except those on which Tecnam modification MOD2008/233 or Service Bulletin (SB) SB-826-CS has been embodied."
     },
     {
       "kind": "modification_not_embodied",
+      "fact": "SB_826_CS",
+      "applies_when": "not_embodied",
       "value": "SB-826-CS",
       "quote": "Tecnam P2008 JC, all serial numbers (s/n), except those on which Tecnam modification MOD2008/233 or Service Bulletin (SB) SB-826-CS has been embodied."
     }
