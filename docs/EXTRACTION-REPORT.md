@@ -9,23 +9,24 @@ What is compared, per AD: effective date, supersedes, revises, applicability row
 - ADs fully in agreement (all quotes found, every compared field equal): **5 / 8**
 - Items matched: **81 / 100** golden items, plus **25** extra items not in golden → agreement 64.8% (matched / (golden + extra))
 - Quotes found in the AD text: **121 / 121**
-- Tokens: 71,517 input + 25,609 output for the 8 cached extractions; all 9 extraction calls logged, including the earlier one-AD check: 78,912 + 26,876.
-- Cost reported by the gateway (`usage.cost`): **0 of 9 calls**.
+- Tokens: 71,517 input + 25,609 output for the 8 cached extractions; all 10 extraction calls logged, including the earlier one-AD check and any measured re-runs: 86,370 + 28,189.
+- Cost reported by the gateway (`usage.cost`): **1 of 10 calls**, $0.0280.
 - Calls logged before cost was recorded: 9; estimate for those only: ≈ $0.43 (Anthropic list price for Claude Sonnet 5.5, $2 / $10 per million input / output tokens).
-- The gateway returns `usage.cost` (checked on 14 Nov with one minimal call: $0.000024); `core/app/llm.py` logs it as `cost_usd` from then on. The extraction was not re-run to get real costs, because that would replace the cached extraction the demo uses.
+- The gateway returns `usage.cost` (checked on 14 Nov with one minimal call: $0.000024); `core/app/llm.py` logs it as `cost_usd` from then on. To measure it on a real extraction without replacing the cached one the demo uses, AD re-runs write to a temporary cache folder; their gateway cost is in the last column.
+- Measured: FAA:2012-02-02 re-run cost $0.0280 at the gateway vs ≈ $0.0276 estimated for the cached run (7,458 + 1,313 tokens vs 7,458 + 1,268).
 
 ## Per AD
 
-| AD | Agreement | Quotes found | Used by ingest | Input tokens | Output tokens | Latency | USD |
-|---|---|---|---|---|---|---|---|
-| EASA:2018-0072 | 100% | 4 / 4 | yes | 3,615 | 974 | 6.3 s | ≈ $0.017 (estimate) |
-| EASA:2024-0152R1 | 100% | 6 / 6 | yes | 4,368 | 1,273 | 8.0 s | ≈ $0.021 (estimate) |
-| FAA:2004-15-18 | 100% | 29 / 29 | yes | 9,198 | 4,155 | 23.4 s | ≈ $0.060 (estimate) |
-| FAA:2006-12-07 | 8% | 26 / 26 | no (golden decides) | 17,275 | 5,470 | 29.7 s | ≈ $0.089 (estimate) |
-| FAA:2006-20-09 | 83% | 18 / 18 | no (golden decides) | 14,460 | 5,935 | 37.4 s | ≈ $0.088 (estimate) |
-| FAA:2012-02-02 | 100% | 9 / 9 | yes | 7,458 | 1,268 | 8.4 s | ≈ $0.028 (estimate) |
-| FAA:2012-19-01 | 83% | 22 / 22 | no (golden decides) | 8,066 | 5,405 | 32.1 s | ≈ $0.070 (estimate) |
-| FAA:2013-03-15 | 100% | 7 / 7 | yes | 7,077 | 1,129 | 6.9 s | ≈ $0.025 (estimate) |
+| AD | Agreement | Quotes found | Used by ingest | Input tokens | Output tokens | Latency | Cached run (USD) | Measured re-run (gateway USD) |
+|---|---|---|---|---|---|---|---|---|
+| EASA:2018-0072 | 100% | 4 / 4 | yes | 3,615 | 974 | 6.3 s | ≈ $0.017 (estimate) | — |
+| EASA:2024-0152R1 | 100% | 6 / 6 | yes | 4,368 | 1,273 | 8.0 s | ≈ $0.021 (estimate) | — |
+| FAA:2004-15-18 | 100% | 29 / 29 | yes | 9,198 | 4,155 | 23.4 s | ≈ $0.060 (estimate) | — |
+| FAA:2006-12-07 | 8% | 26 / 26 | no (golden decides) | 17,275 | 5,470 | 29.7 s | ≈ $0.089 (estimate) | — |
+| FAA:2006-20-09 | 83% | 18 / 18 | no (golden decides) | 14,460 | 5,935 | 37.4 s | ≈ $0.088 (estimate) | — |
+| FAA:2012-02-02 | 100% | 9 / 9 | yes | 7,458 | 1,268 | 8.4 s | ≈ $0.028 (estimate) | $0.0280 (7,458 + 1,313 tokens, 2026-11-14) |
+| FAA:2012-19-01 | 83% | 22 / 22 | no (golden decides) | 8,066 | 5,405 | 32.1 s | ≈ $0.070 (estimate) | — |
+| FAA:2013-03-15 | 100% | 7 / 7 | yes | 7,077 | 1,129 | 6.9 s | ≈ $0.025 (estimate) | — |
 
 ## Every miss
 

@@ -7,3 +7,4 @@
 {"at": "2026-11-14T11:11:49Z", "purpose": "extraction", "model": "anthropic/claude-sonnet-5.5", "prompt_tokens": 7458, "completion_tokens": 1268, "total_tokens": 8726, "latency_ms": 8379, "outcome": "ok"}
 {"at": "2026-11-14T11:12:21Z", "purpose": "extraction", "model": "anthropic/claude-sonnet-5.5", "prompt_tokens": 8066, "completion_tokens": 5405, "total_tokens": 13471, "latency_ms": 32085, "outcome": "ok"}
 {"at": "2026-11-14T11:12:28Z", "purpose": "extraction", "model": "anthropic/claude-sonnet-5.5", "prompt_tokens": 7077, "completion_tokens": 1129, "total_tokens": 8206, "latency_ms": 6943, "outcome": "ok"}
+{"at": "2026-11-14T13:09:09Z", "purpose": "extraction", "model": "anthropic/claude-sonnet-5.5", "ref": "FAA:2012-02-02", "prompt_tokens": 7458, "completion_tokens": 1313, "total_tokens": 8771, "latency_ms": 8355, "outcome": "ok", "cost_usd": 0.028046, "gateway_cost_usd": 0.028046, "market_cost_usd": 0.028046}

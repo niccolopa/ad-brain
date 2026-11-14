@@ -57,6 +57,19 @@ def money(u: dict) -> str:
     return f"${value:.4f} (gateway)" if reported else f"≈ ${value:.3f} (estimate)"
 
 
+def measured(ad_id: str, rows: list[dict]) -> list[dict]:
+    """Later live re-runs of this AD (into a temporary cache) whose usage row carries the gateway's cost."""
+    return [u for u in rows if u.get("ref") == ad_id and isinstance(u.get("cost_usd"), (int, float))]
+
+
+def measured_text(ad_id: str, rows: list[dict]) -> str:
+    runs = measured(ad_id, rows)
+    if not runs:
+        return "—"
+    return "; ".join(f"${u['cost_usd']:.4f} ({u['prompt_tokens']:,} + {u['completion_tokens']:,} tokens, {u['at'][:10]})"
+                     for u in runs)
+
+
 def main() -> int:
     report = json.loads(REPORT_JSON.read_text(encoding="utf-8"))
     usage = [json.loads(line) for line in USAGE.read_text(encoding="utf-8").splitlines() if line.strip()]
@@ -119,26 +132,32 @@ def main() -> int:
         f"agreement {matched / (golden + extra):.1%} (matched / (golden + extra))"),
         f"- Quotes found in the AD text: **{found} / {quotes}**",
         (f"- Tokens: {p_tok:,} input + {c_tok:,} output for the {len(report)} cached extractions; all "
-         f"{len(rows)} extraction calls logged, including the earlier one-AD check: {p_all:,} + {c_all:,}."),
+         f"{len(rows)} extraction calls logged, including the earlier one-AD check and any measured re-runs: "
+         f"{p_all:,} + {c_all:,}."),
         (f"- Cost reported by the gateway (`usage.cost`): **{len(reported)} of {len(rows)} calls**"
          + (f", ${sum(reported):.4f}." if reported else ".")),
         (f"- Calls logged before cost was recorded: {len(estimated)}; estimate for those only: "
          f"≈ ${sum(estimated):.2f} ({ESTIMATE_SOURCE})." if estimated else "- Every call has a gateway-reported cost."),
         ("- The gateway returns `usage.cost` (checked on 14 Nov with one minimal call: $0.000024); `core/app/llm.py` "
-         "logs it as `cost_usd` from then on. The extraction was not re-run to get real costs, because that would "
-         "replace the cached extraction the demo uses."),
+         "logs it as `cost_usd` from then on. To measure it on a real extraction without replacing the cached one "
+         "the demo uses, AD re-runs write to a temporary cache folder; their gateway cost is in the last column."),
+        *[(f"- Measured: {ad_id} re-run cost ${u['cost_usd']:.4f} at the gateway vs ≈ ${cost(by_ad[ad_id])[0]:.4f} "
+           f"estimated for the cached run ({u['prompt_tokens']:,} + {u['completion_tokens']:,} tokens vs "
+           f"{by_ad[ad_id]['prompt_tokens']:,} + {by_ad[ad_id]['completion_tokens']:,}).")
+          for ad_id in sorted(by_ad) for u in measured(ad_id, other)],
         "",
         "## Per AD",
         "",
-        "| AD | Agreement | Quotes found | Used by ingest | Input tokens | Output tokens | Latency | USD |",
-        "|---|---|---|---|---|---|---|---|",
+        ("| AD | Agreement | Quotes found | Used by ingest | Input tokens | Output tokens | Latency | "
+         "Cached run (USD) | Measured re-run (gateway USD) |"),
+        "|---|---|---|---|---|---|---|---|---|",
     ]
     for r in report:
         u = by_ad[r["ad_id"]]
         lines.append(f"| {r['ad_id']} | {r['agreement']:.0%} | {r['quotes_checked'] - r['quotes_rejected']} / "
                      f"{r['quotes_checked']} | {'yes' if r['usable'] else 'no (golden decides)'} | "
                      f"{u['prompt_tokens']:,} | {u['completion_tokens']:,} | {u['latency_ms'] / 1000:.1f} s | "
-                     f"{money(u)} |")
+                     f"{money(u)} | {measured_text(r['ad_id'], other)} |")
     lines += ["", "## Every miss", ""]
     for r in report:
         for name, f in r["fields"].items():

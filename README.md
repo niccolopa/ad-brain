@@ -192,9 +192,9 @@ curl http://127.0.0.1:8000/questions
 - **Extraction agreement** (LLM vs the 8 hand-checked ADs): 5 of 8 ADs agree on every compared field; 81 of 100
   golden items matched plus 25 extra items (64.8%); 121 of 121 extracted quotes found in the AD text. Every miss
   is listed in [docs/EXTRACTION-REPORT.md](docs/EXTRACTION-REPORT.md). Where an extraction disagrees, golden decides.
-- **Cost:** 105,788 tokens for all extraction calls. These calls were logged before the gateway's own cost
-  (`usage.cost`) was recorded, so the cost is an estimate: about $0.43 at Anthropic's list price for Claude
-  Sonnet 5.5. New calls log the gateway's cost; per AD in the report.
+- **Cost:** the 9 calls behind the cached extraction (105,788 tokens) were logged before the gateway's own cost
+  was recorded: about $0.43 at Anthropic's list price for Claude Sonnet 5.5, an estimate. One measured re-run of
+  FAA:2012-02-02 cost $0.0280 at the gateway, against ≈ $0.0276 estimated for the cached run; per AD in the report.
 - **Decision model:** [docs/DECISION-MODEL.md](docs/DECISION-MODEL.md).
 
 ## Honesty
