@@ -1,0 +1,1 @@
+{"at": "2026-11-14T11:01:45Z", "purpose": "extraction", "model": "anthropic/claude-sonnet-5.5", "prompt_tokens": 7395, "completion_tokens": 1267, "total_tokens": 8662, "latency_ms": 7999, "outcome": "ok"}
