@@ -138,7 +138,7 @@
       "(d) This AD results from reports of 23 confirmed failures of similar crankshafts in Lycoming Engines 360 and 540 series reciprocating engines. We are issuing this AD to prevent failure of the crankshaft, which will result in total engine power loss, in-flight engine failure, and possible loss of the aircraft."
     ]
   },
-  "labelled_by": "Claude Code draft (v2b), NOT checked: every quote verified by string match only; values need Niccolò's check against the text (see data/raw/pdf/golden-check-2.md)",
+  "labelled_by": "Niccolò: applicability, dates and relations checked against the text; summaries drafted by Claude Code, not checked",
   "checked_by": "",
   "notes": "Applicability (c): one series row per engine series, series = true (the engine model must start with '<series>-'); '(L)O-360' = O-360 and LO-360, '(L)IO-360' = IO-360 and LIO-360, '(L)TIO-540' = TIO-540 and LTIO-540. The (c) sentence splits 'IO-' / '540' across lines: the first quote stops before the split, the second starts at '540,'. The specific engines are those listed in MSB 569A (not in the AD text): modelled as the condition fact engine_listed_MSB569A (engine Tables 1-4 OR crankshaft Table 5). The 'installed on' aircraft table in (c) is for information only. (b) Affected ADs reads 'None.': supersedes is [] with no quote. The file carries 'SUPERSEDED' watermark lines; no quote crosses one. NOT EVALUATED (shown in every answer where the AD applies): the March 1, 1997 date clause in (c) and (g); the (h) clause (engine listed, crankshaft not listed: no action). Also not modelled: (f) no-action clauses for engines in compliance with MSB 552/553/566/569, and (i) TIO-540-U2A S/N L-4641-61A."
 }

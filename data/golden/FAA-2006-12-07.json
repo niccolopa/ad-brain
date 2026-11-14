@@ -149,7 +149,7 @@
       "(d) This AD results from reports of applicability errors found in AD 2005-26-10. We are issuing this AD to prevent loss of engine power due to cracks in the cylinder assemblies and possible engine failure caused by separation of a cylinder head."
     ]
   },
-  "labelled_by": "Claude Code draft (v2b), NOT checked: every quote verified by string match only; values need Niccolò's check against the text (see data/raw/pdf/golden-check-2.md)",
+  "labelled_by": "Niccolò: applicability, dates and relations checked against the text; summaries drafted by Claude Code, not checked",
   "checked_by": "",
   "notes": "Applicability: only the Table 1 row that lists IO-360-L2A (cylinder P/N group AEL65102-NST12, IO-360 models B1B ... M1B, 15 rows) is labelled; the other Table 1 rows (O-320, IO-320, O-360, O-540, IO-540 ...) are NOT labelled. The table prints en dashes ('IO–360–'): the quote keeps them, values use plain hyphens. The condition folds (c)(2) P/N + casting head markings and (c)(3) cylinder SN 1 through 9879 into one fact (ECi_AEL65102_cylinders_installed); the (c)(3) quote is not stored. NOT EVALUATED: (f) engines never overhauled or majorly repaired since new need no action (no overhaul history in this system); listed in not_evaluated and shown in every answer where the AD applies. 2005-26-10 is not in the dataset."
 }

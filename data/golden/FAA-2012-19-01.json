@@ -168,7 +168,7 @@
       "(d) Unsafe Condition This AD results from Lycoming Engines discovering that the March 1, 1997 start date of affected engine models in Lycoming MSB No. 569A, is incorrect."
     ]
   },
-  "labelled_by": "Claude Code draft (v2b), NOT checked: every quote verified by string match only; values need Niccolò's check against the text (see data/raw/pdf/golden-check-2.md)",
+  "labelled_by": "Niccolò: applicability, dates and relations checked against the text; summaries drafted by Claude Code, not checked",
   "checked_by": "",
   "notes": "Applicability (c): one series row per engine series, series = true (the engine model must start with '<series>-'); '(L)' prefixes expanded as in 2006-20-09. The (c) sentence splits 'O-' / '540' across lines: the first quote stops before the split, the second starts at '540,'. Specific engines via the condition fact engine_listed_MSB569A (engine Tables 1-4 OR crankshaft Table 5 of MSB 569A). credited_compliance: (g)(1) previous compliance with AD 2006-20-09 satisfies this AD; the quote includes the (g) heading because the (1) sentence also appears in the preamble (line 103). The effective date quote includes the (a) heading (the DATES line repeats it). NOT EVALUATED (shown in every answer where the AD applies): the January 1, 1997 date clause in (c) and (g)(3); the (g)(4) clause (engine listed, crankshaft not listed: no action). Also not modelled: (g)(2) MSB 569A accomplished, (g)(5) TIO-540-U2A."
 }
