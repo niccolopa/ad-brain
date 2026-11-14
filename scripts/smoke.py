@@ -12,12 +12,12 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "core"))
-from app.ontology import shape_errors  # noqa: E402
+from app.ontology import shape_errors
 
 DEFAULT_BASE_URL = "http://127.0.0.1:8000"
 TIMEOUT_S = 10
 EXAMPLES_DIR = REPO / "contract" / "examples"
-SKIP = {"error-not-found"}  # v0 fakes have no 404 yet; removed in v1
+SKIP: set[str] = set()  # example files not to call
 
 
 def call(base: str, method: str, path: str, body: object = None) -> tuple[int, object]:

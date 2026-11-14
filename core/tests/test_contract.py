@@ -8,8 +8,7 @@ from app.api import EXAMPLES_DIR, app
 from app.ontology import shape_errors
 
 client = TestClient(app)
-# error-not-found.json is covered by the 404 tests in test_api.py.
-EXAMPLES = sorted(p for p in EXAMPLES_DIR.glob("*.json") if p.stem != "error-not-found")
+EXAMPLES = sorted(EXAMPLES_DIR.glob("*.json"))
 
 
 @pytest.mark.parametrize("path", EXAMPLES, ids=[p.stem for p in EXAMPLES])
